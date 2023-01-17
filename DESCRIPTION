@@ -1,18 +1,18 @@
 Package: CopernicusMarine
 Type: Package
 Title: Search Download and Handle Data from Copernicus Marine Service Information
-Version: 0.0.2
-Date: 2023-01-16
+Version: 0.0.3
+Date: 2023-01-17
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre", "dtc"),
     email = "pepijn.devries@outlook.com",
     comment = c(ORCID = "0000-0002-7961-6646")))
 Author:
     Pepijn de Vries [aut, cre, dtc] (0000-0002-7961-6646)
 Maintainer: Pepijn de Vries <pepijn.devries@outlook.com>
-Description: Subset and download marine data from EU Copernicus
-    Marine Service Information. Import data on the oceans
-    physical and biogeochemical state from Copernicus into R
-    without the need of external software.
+Description: Subset and download data from EU Copernicus Marine
+    Service Information: <https://data.marine.copernicus.eu>.
+    Import data on the oceans physical and biogeochemical state
+    from Copernicus into R without the need of external software.
 Depends:
     R (>= 3.5.0)
 Imports:

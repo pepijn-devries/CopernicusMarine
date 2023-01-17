@@ -9,7 +9,7 @@
 #' @name copernicus_product_metadata
 #' @family product-functions
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' copernicus_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 #' }
 #' @author Pepijn de Vries

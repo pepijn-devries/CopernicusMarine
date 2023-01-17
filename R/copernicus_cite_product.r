@@ -10,7 +10,7 @@
 #' @name copernicus_cite_product
 #' @family product-functions
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' copernicus_cite_product("SST_MED_PHY_SUBSKIN_L4_NRT_010_036")
 #' }
 #' @author Pepijn de Vries

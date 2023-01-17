@@ -79,7 +79,7 @@ copernicus_ftp_list <- function(
 #' @name copernicus_ftp_get
 #' @export
 copernicus_ftp_get <- function(
-    url, destination, show_progress = T, overwrite = F,
+    url, destination, show_progress = TRUE, overwrite = FALSE,
     username = getOption("CopernicusMarine_uid", ""),
     password = getOption("CopernicusMarine_pwd", "")) {
   if (!dir.exists(destination)) stop("'destination' either doesn't exist or is not a directory!")

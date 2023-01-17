@@ -37,7 +37,7 @@ Returns an updated \code{map}
 to it.
 }
 \examples{
-\dontrun{
+\donttest{
 leaflet::leaflet() \%>\%
   leaflet::setView(lng = 3, lat = 54, zoom = 4) \%>\%
   leaflet::addProviderTiles("Esri.WorldImagery") \%>\%

@@ -15,8 +15,8 @@ copernicus_ftp_list(
 copernicus_ftp_get(
   url,
   destination,
-  show_progress = T,
-  overwrite = F,
+  show_progress = TRUE,
+  overwrite = FALSE,
   username = getOption("CopernicusMarine_uid", ""),
   password = getOption("CopernicusMarine_pwd", "")
 )
