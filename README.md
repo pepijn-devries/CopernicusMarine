@@ -163,6 +163,9 @@ store specific regions of the tiles as a [geo-referenced
 tiff](https://en.wikipedia.org/wiki/GeoTIFF) file for future use. Use
 `copernicus_wms2geotiff` for that purpose.
 
+Note that the WMS functions may not work on systems that don’t support
+GDAL utils.
+
 ### Citing the data you use
 
 A Copernicus account comes with several terms of use. One of these is

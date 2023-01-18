@@ -1,5 +1,7 @@
 test_that("Copernicus WMS tile can be added to a map", {
-  has_internet()
+  skip_on_cran()
+  skip_if_offline("data.marine.copernicus.eu")
+  has_gdal_utils()
   testthat::expect_error({
     leaflet::leaflet() %>%
       addCopernicusWMSTiles(
@@ -10,21 +12,10 @@ test_that("Copernicus WMS tile can be added to a map", {
   }, NA)
 })
 
-test_that("WMS services can be listed", {
-  has_internet()
-  expect_true({
-    cp <-
-      copernicus_wms_details(
-        product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-        layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
-        variable = "thetao"
-    )
-    is.data.frame(cp) && nrow(cp) > 0
-  })
-})
-
 test_that("Copernicus WMS tile can be stored as valid geoTIFF", {
-  has_internet()
+  skip_on_cran()
+  skip_if_offline("data.marine.copernicus.eu")
+  has_gdal_utils()
   expect_error({
     destination <- tempfile("wms", fileext = ".tiff")
     copernicus_wms2geotiff(

@@ -1,5 +1,6 @@
 test_that("Copernicus files can be downloaded via FTP", {
-  has_internet()
+  skip_on_cran()
+  skip_if_offline("data.marine.copernicus.eu")
   has_account_details()
   expect_error({
     cop_ftp_files <- copernicus_ftp_list("GLOBAL_OMI_WMHE_heattrp")

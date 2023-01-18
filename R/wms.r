@@ -2,6 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')` Web Map Services are not available for all
 #' products and layers. Use this function to obtain URLs of WMS services if any.
+#' @template wms_template
 #' @inheritParams copernicus_download_motu
 #' @return Returns a `tibble` with WMS URLs and descriptors for the specified product.
 #' @rdname copernicus_wms_details
@@ -23,10 +24,11 @@ copernicus_wms_details <- function(product, layer, variable) {
   copwmsinfo <- sf::gdal_utils("info", paste0("WMS:", product_details$wmsUrl), quiet = TRUE)
   
   desc <- copwmsinfo %>% stringr::str_match_all("SUBDATASET_(\\d)_DESC=(.*?)\n")
+  if (length(desc) == 0) return(dplyr::tibble(desc = character(0), url = character(0)))
   desc <- desc[[1]][,3]
   url  <- copwmsinfo %>% stringr::str_match_all("SUBDATASET_(\\d)_NAME=(.*?)\n")
   url  <- url[[1]][,3]
-  dplyr::bind_cols(desc = desc, url = url)
+  return(dplyr::bind_cols(desc = desc, url = url))
 }
 
 #' Add Copernicus Marine WMS Tiles to a leaflet map
@@ -34,6 +36,7 @@ copernicus_wms_details <- function(product, layer, variable) {
 #' `r lifecycle::badge('experimental')` Create an interactive map with
 #' `leaflet::leaflet()` and add layers of Copernicus marine WMS data
 #' to it.
+#' @template wms_template
 #' @param map A map widget object created from [`leaflet::leaflet()`]
 #' @inheritParams copernicus_download_motu
 #' @param options Passed on to [`leaflet::addWMSTiles()`].
@@ -76,6 +79,7 @@ addCopernicusWMSTiles <- function(map, product, layer, variable,
 #' For that purpose you need to extract and download a specific region in a format
 #' that can be handled by plots. You can use this function to store a subset of a
 #' WMS map as a geo-referenced TIFF file.
+#' @template wms_template
 #' @inheritParams copernicus_download_motu
 #' @param destination File name for the geo-referenced TIFF.
 #' @param width Width in pixels of the TIFF image.

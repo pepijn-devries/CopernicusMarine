@@ -22,6 +22,9 @@ Returns a \code{tibble} with WMS URLs and descriptors for the specified product.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Web Map Services are not available for all
 products and layers. Use this function to obtain URLs of WMS services if any.
 }
+\note{
+WMS functions don't work on systems that don't support GDAL utils
+}
 \examples{
 \donttest{
 copernicus_wms_details(

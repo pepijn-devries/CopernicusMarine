@@ -36,6 +36,9 @@ Returns an updated \code{map}
 \code{leaflet::leaflet()} and add layers of Copernicus marine WMS data
 to it.
 }
+\note{
+WMS functions don't work on systems that don't support GDAL utils
+}
 \examples{
 \donttest{
 leaflet::leaflet() \%>\%

@@ -45,6 +45,9 @@ For that purpose you need to extract and download a specific region in a format
 that can be handled by plots. You can use this function to store a subset of a
 WMS map as a geo-referenced TIFF file.
 }
+\note{
+WMS functions don't work on systems that don't support GDAL utils
+}
 \examples{
 \donttest{
 destination <- tempfile("wms", fileext = ".tiff")
