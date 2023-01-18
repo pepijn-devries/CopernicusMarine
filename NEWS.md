@@ -1,4 +1,9 @@
-CopernicusMarine v0.02 (Release date: 2023-01-16)
+CopernicusMarine vTODO (Release date: TODO)
+-------------
+
+  * TODO
+
+CopernicusMarine v0.03 (Release date: 2023-01-16)
 -------------
 
   * Initial implementation features data imports via:
