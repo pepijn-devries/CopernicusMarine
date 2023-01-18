@@ -19,7 +19,7 @@ Copernicus marine product
 for a specific marine product.
 }
 \examples{
-\dontrun{
+\donttest{
 copernicus_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 }
 }

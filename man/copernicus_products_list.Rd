@@ -22,7 +22,7 @@ a named \code{list} when \code{info_type = "meta"}.
 descriptions for marine products available from Copernicus
 }
 \examples{
-\dontrun{
+\donttest{
 copernicus_products_list()
 
 ## Query a specific product:

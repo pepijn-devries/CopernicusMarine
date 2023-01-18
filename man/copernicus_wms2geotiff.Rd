@@ -46,7 +46,7 @@ that can be handled by plots. You can use this function to store a subset of a
 WMS map as a geo-referenced TIFF file.
 }
 \examples{
-\dontrun{
+\donttest{
 destination <- tempfile("wms", fileext = ".tiff")
 copernicus_wms2geotiff(
   product     = "GLOBAL_ANALYSISFORECAST_PHY_001_024",

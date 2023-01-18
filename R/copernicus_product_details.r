@@ -9,7 +9,7 @@
 #' @name copernicus_product_details
 #' @family product-functions
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' copernicus_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 #' 
 #' copernicus_product_details(
@@ -46,7 +46,7 @@ copernicus_product_details <- function(product, layer, variable) {
 #' @rdname copernicus_product_services
 #' @name copernicus_product_services
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' copernicus_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 #' }
 #' @author Pepijn de Vries

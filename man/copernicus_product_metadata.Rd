@@ -18,7 +18,7 @@ Returns a named \code{list} with info about the requested \code{product}.
 for specific Copernicus marine products
 }
 \examples{
-\dontrun{
+\donttest{
 copernicus_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 }
 }

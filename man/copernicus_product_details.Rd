@@ -23,7 +23,7 @@ Returns a named \code{list} with properties of the requested product.
 narrowed down to specific layers and/or variables within the product.
 }
 \examples{
-\dontrun{
+\donttest{
 copernicus_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 
 copernicus_product_details(

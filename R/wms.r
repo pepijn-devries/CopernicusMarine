@@ -8,7 +8,7 @@
 #' @name copernicus_wms_details
 #' @family wms-functions
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' copernicus_wms_details(
 #'   product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
 #'   layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
@@ -20,7 +20,7 @@
 copernicus_wms_details <- function(product, layer, variable) {
   product_details <- copernicus_product_details(product, layer, variable)
 
-  copwmsinfo <- sf::gdal_utils("info", paste0("WMS:", product_details$wmsUrl), quiet = T)
+  copwmsinfo <- sf::gdal_utils("info", paste0("WMS:", product_details$wmsUrl), quiet = TRUE)
   
   desc <- copwmsinfo %>% stringr::str_match_all("SUBDATASET_(\\d)_DESC=(.*?)\n")
   desc <- desc[[1]][,3]
@@ -43,7 +43,7 @@ copernicus_wms_details <- function(product, layer, variable) {
 #' @name addCopernicusWMSTiles
 #' @family wms-functions
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' leaflet::leaflet() %>%
 #'   leaflet::setView(lng = 3, lat = 54, zoom = 4) %>%
 #'   leaflet::addProviderTiles("Esri.WorldImagery") %>%
@@ -85,7 +85,7 @@ addCopernicusWMSTiles <- function(map, product, layer, variable,
 #' @name copernicus_wms2geotiff
 #' @family wms-functions
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' destination <- tempfile("wms", fileext = ".tiff")
 #' copernicus_wms2geotiff(
 #'   product     = "GLOBAL_ANALYSISFORECAST_PHY_001_024",

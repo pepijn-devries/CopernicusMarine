@@ -3,11 +3,16 @@
 \name{\%>\%}
 \alias{\%>\%}
 \title{Objects exported from other packages}
+\value{
+Returns the result of the function call on the right-hand side of the pipe operator.
+The left-hand side is used as first argument to the call to the right-hand side. For
+more details see \link[dplyr:reexports]{dplyr::reexports}.
+}
 \description{
 Objects imported and exported from other packages. See original documentation for more details.
 }
 \details{
 \describe{
-\item{dplyr}{\code{\link[dplyr:reexports]{\\\%>\\\%()}}}
+\item{dplyr pipe operator}{\code{\link[dplyr:reexports]{\%>\%}}}
 }
 }

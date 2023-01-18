@@ -13,7 +13,7 @@
 #' @name copernicus_products_list
 #' @family product-functions
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' copernicus_products_list()
 #' 
 #' ## Query a specific product:

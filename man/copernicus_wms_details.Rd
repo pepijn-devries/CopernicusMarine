@@ -23,7 +23,7 @@ Returns a \code{tibble} with WMS URLs and descriptors for the specified product.
 products and layers. Use this function to obtain URLs of WMS services if any.
 }
 \examples{
-\dontrun{
+\donttest{
 copernicus_wms_details(
   product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
   layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
