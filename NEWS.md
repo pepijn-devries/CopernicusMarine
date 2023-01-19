@@ -1,4 +1,4 @@
-CopernicusMarine v0.0.4 (Release date: 2023-01-18)
+CopernicusMarine v0.0.5 (Release date: 2023-01-19)
 -------------
 
   * Fix in tests in order to comply with CRAN
