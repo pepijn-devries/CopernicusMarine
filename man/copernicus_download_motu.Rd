@@ -54,7 +54,8 @@ overwritten when the exist. Instead an error will be thrown if this is the case.
 \code{TRUE}, existing files will be overwritten.}
 }
 \value{
-Returns \code{NULL} invisibly but saves the requested file at the \code{destination} when successful.
+Returns a \code{logical} value invisibly indicating whether the requested file was
+successfully stored at the \code{destination}.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Subset and download a specific marine product from Copernicus.

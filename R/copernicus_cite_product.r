@@ -3,7 +3,7 @@
 #' `r lifecycle::badge('stable')` Get details for properly citing a Copernicus product.
 #'
 #' @inheritParams copernicus_download_motu
-#' @return Returns a list of character strings. The first element is always the product title, id and doi.
+#' @return Returns a vector of character strings. The first element is always the product title, id and doi.
 #' Remaining elements are other associated references. Note that the remaining references are returned as
 #' listed at Copernicus. Note that the citing formatting does not appear to be standardised.
 #' @rdname copernicus_cite_product
@@ -17,6 +17,7 @@
 #' @export
 copernicus_cite_product <- function(product) {
   product_details <- copernicus_product_details(product)
+  if (is.null(product_details)) return(NULL)
   result <- product_details$refs
   result <- c(doi = with(product_details, sprintf("E.U. Copernicus Marine Service Information; %s - %s (%s). DOI:%s",
                                                   title, id, creationDate, doi)), result)
