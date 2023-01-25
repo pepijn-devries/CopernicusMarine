@@ -20,6 +20,7 @@
 #' @export
 copernicus_wms_details <- function(product, layer, variable) {
   product_details <- copernicus_product_details(product, layer, variable)
+  if (is.null(product_details)) return(NULL)
 
   copwmsinfo <- sf::gdal_utils("info", paste0("WMS:", product_details$wmsUrl), quiet = TRUE)
   
@@ -47,23 +48,26 @@ copernicus_wms_details <- function(product, layer, variable) {
 #' @family wms-functions
 #' @examples
 #' \donttest{
-#' leaflet::leaflet() %>%
-#'   leaflet::setView(lng = 3, lat = 54, zoom = 4) %>%
-#'   leaflet::addProviderTiles("Esri.WorldImagery") %>%
-#'   addCopernicusWMSTiles(
-#'     product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-#'     layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
-#'     variable = "thetao"
-#'   )
+#' if (interactive()) {
+#'   leaflet::leaflet() %>%
+#'     leaflet::setView(lng = 3, lat = 54, zoom = 4) %>%
+#'     leaflet::addProviderTiles("Esri.WorldImagery") %>%
+#'     addCopernicusWMSTiles(
+#'       product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+#'       layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
+#'       variable = "thetao")
+#' }
 #' }
 #' @author Pepijn de Vries
 #' @export
 addCopernicusWMSTiles <- function(map, product, layer, variable,
                                   options = leaflet::WMSTileOptions(format = "image/png", transparent = TRUE),
                                   ...) {
+  detail <- copernicus_product_details(product, layer, variable)
+  if (is.null(detail)) return(NULL)
   leaflet::addWMSTiles(
     map = map,
-    baseUrl = copernicus_product_details(product, layer, variable)[["wmsUrl"]],
+    baseUrl = detail[["wmsUrl"]],
     layers  = variable,
     options = options,
     ...
@@ -106,6 +110,7 @@ addCopernicusWMSTiles <- function(map, product, layer, variable,
 copernicus_wms2geotiff <- function(product, layer, variable, region, destination, width, height) {
   wms_details     <- copernicus_wms_details(product, layer, variable)
   product_details <- copernicus_product_details(product, layer, variable)
+  if (is.null(wms_details) || is.null(product_details)) return(NULL)
   desc            <- NULL # <- silences R checks with respect to global bindings...
   url             <-
     wms_details %>%

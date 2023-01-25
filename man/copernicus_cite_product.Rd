@@ -11,7 +11,7 @@ copernicus_cite_product(product)
 Can be obtained with \code{\link{copernicus_products_list}}.}
 }
 \value{
-Returns a list of character strings. The first element is always the product title, id and doi.
+Returns a vector of character strings. The first element is always the product title, id and doi.
 Remaining elements are other associated references. Note that the remaining references are returned as
 listed at Copernicus. Note that the citing formatting does not appear to be standardised.
 }

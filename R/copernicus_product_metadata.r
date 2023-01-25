@@ -4,7 +4,8 @@
 #' for specific Copernicus marine products
 #'
 #' @inheritParams copernicus_download_motu
-#' @return Returns a named `list` with info about the requested `product`.
+#' @return Returns a named `list` with info about the requested `product`. Returns `NULL`
+#' when contacting Copernicus fails.
 #' @rdname copernicus_product_metadata
 #' @name copernicus_product_metadata
 #' @family product-functions
@@ -16,8 +17,13 @@
 #' @export
 copernicus_product_metadata <- function(product) {
   meta_data <-
-    sprintf("https://cmems-be.lobelia.earth/api/metadata/%s", product) %>%
-    httr::GET() %>%
+    .try_online({
+      sprintf("https://cmems-be.lobelia.earth/api/metadata/%s", product) %>%
+        httr::GET()
+    }, "Copernicus")
+  if (is.null(meta_data)) return(NULL)
+  meta_data <-
+    meta_data %>%
     httr::content() %>%
     xml2::as_list()
   return(meta_data)

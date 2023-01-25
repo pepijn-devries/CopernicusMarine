@@ -11,7 +11,8 @@ copernicus_product_metadata(product)
 Can be obtained with \code{\link{copernicus_products_list}}.}
 }
 \value{
-Returns a named \code{list} with info about the requested \code{product}.
+Returns a named \code{list} with info about the requested \code{product}. Returns \code{NULL}
+when contacting Copernicus fails.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Collect meta information, such as vocabularies used,
