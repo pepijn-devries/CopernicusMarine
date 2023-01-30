@@ -20,7 +20,7 @@ programme and facilitates retrieval of information from
 
 ## Why use `{CopernicusMarine}`
 
-Previously, there was only a MOTUS client available for Python.
+Previously, there was only a MOTU client available for Python.
 Therefore, automating Copernicus downloads in R used to require
 installation of python and its
 [motuclient](https://pypi.org/project/motuclient/) package. The
@@ -96,7 +96,7 @@ copernicus_download_motu(
 mydata <- stars::read_stars(destination)
 #> vo, uo,
 
-plot(mydata["vo"], col = hcl.colors(100), axes = T)
+plot(mydata["vo"], col = hcl.colors(100), axes = TRUE)
 ```
 
 ![](man/figures/README-motu-subset-1.png)<!-- -->
@@ -112,7 +112,7 @@ your product. First you can list files available for a specific product:
 ``` r
 cop_ftp_files <- copernicus_ftp_list("GLOBAL_ANALYSISFORECAST_PHY_001_024", "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m")
 cop_ftp_files
-#> # A tibble: 814 x 8
+#> # A tibble: 818 x 8
 #>    flags        len protocol       size month   day time  url                   
 #>    <chr>      <int> <chr>         <int> <chr> <int> <chr> <chr>                 
 #>  1 -rw-rw-r--     1 ftp      1937968861 Oct      14 06:10 ftp://nrt.cmems-du.eu~
@@ -125,7 +125,7 @@ cop_ftp_files
 #>  8 -rw-rw-r--     1 ftp      1937954892 Oct      14 06:10 ftp://nrt.cmems-du.eu~
 #>  9 -rw-rw-r--     1 ftp      1937964478 Oct      14 06:09 ftp://nrt.cmems-du.eu~
 #> 10 -rw-rw-r--     1 ftp      1937962443 Oct      14 06:06 ftp://nrt.cmems-du.eu~
-#> # ... with 804 more rows
+#> # ... with 808 more rows
 ```
 
 Downloading the first file can be done with
@@ -163,6 +163,9 @@ store specific regions of the tiles as a [geo-referenced
 tiff](https://en.wikipedia.org/wiki/GeoTIFF) file for future use. Use
 `copernicus_wms2geotiff` for that purpose.
 
+Note that the WMS functions may not work on systems that don’t support
+GDAL utils.
+
 ### Citing the data you use
 
 A Copernicus account comes with several terms of use. One of these is
@@ -175,7 +178,7 @@ code:
 ``` r
 copernicus_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 #> $doi
-#> [1] "Global Ocean 1/12° Physics Analysis and Forecast updated Daily - GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14). DOI:10.48670/moi-00016"
+#> [1] "E.U. Copernicus Marine Service Information; Global Ocean 1/12° Physics Analysis and Forecast updated Daily - GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14). DOI:10.48670/moi-00016"
 ```
 
 ## Resources

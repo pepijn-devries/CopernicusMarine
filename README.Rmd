@@ -84,7 +84,7 @@ copernicus_download_motu(
 
 mydata <- stars::read_stars(destination)
 
-plot(mydata["vo"], col = hcl.colors(100), axes = T)
+plot(mydata["vo"], col = hcl.colors(100), axes = TRUE)
 ```
 
 <h3 id="sec-ftp">Downloading a complete Copernicus marine product</h3>
@@ -92,7 +92,7 @@ plot(mydata["vo"], col = hcl.colors(100), axes = T)
 If you don't want to subset the data and want the complete set, you can use the File Transfer Protocol (FTP) if
 that service is available for your product. First you can list files available for a specific product:
 
-```{r, eval = T}
+```{r, eval=TRUE}
 cop_ftp_files <- copernicus_ftp_list("GLOBAL_ANALYSISFORECAST_PHY_001_024", "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m")
 cop_ftp_files
 ```
@@ -124,6 +124,8 @@ When you want to use WMS tiles in static plots, you could download and store spe
 as a [geo-referenced tiff](https://en.wikipedia.org/wiki/GeoTIFF) file for future use. Use `copernicus_wms2geotiff`
 for that purpose.
 
+Note that the WMS functions may not work on systems that don't support GDAL utils.
+
 ### Citing the data you use
 
 A Copernicus account comes with several terms of use. One of these is that you
@@ -137,7 +139,7 @@ copernicus_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 
 ## Resources
 
-```{r, eval=TRUE, echo = F}
+```{r, eval=TRUE, echo=FALSE}
 cop_det <- copernicus_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 ```
 

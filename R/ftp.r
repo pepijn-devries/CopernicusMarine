@@ -14,8 +14,8 @@
 #' @inheritParams copernicus_download_motu
 #' @return In case of `copernicus_ftp_list` a `tibble` is returned containing available URLs
 #' (for the specified product and layer) and some meta information is returned.
-#' In case of `copernicus_ftp_get` an invisible `NULL` is returned, but the
-#' requested file is stored at the `destination` path.
+#' In case of `copernicus_ftp_get` an invisible `logical` value is returned, indicating whether
+#' the requested file is successfully stored at the `destination` path.
 #' @rdname copernicus_ftp
 #' @name copernicus_ftp_list
 #' @examples
@@ -36,10 +36,16 @@ copernicus_ftp_list <- function(
   name <- NULL # workaround for 'no visible binding global for global variable'
   dirlist <- function(url){
     dir_result <-
-      httr::GET(
-        url,
-        httr::authenticate(user = getOption("CopernicusMarine_uid", ""), password = getOption("CopernicusMarine_pwd", "")),
-        dirlistonly = TRUE) %>%
+      .try_online({
+        httr::GET(
+          url,
+          httr::authenticate(user = getOption("CopernicusMarine_uid", ""), password = getOption("CopernicusMarine_pwd", "")),
+          dirlistonly = TRUE)
+      }, "Copernicus")
+    if (is.null(dir_result)) return(NULL)
+    
+    dir_result <-
+      dir_result %>%
       `[[`("content") %>%
       rawToChar() %>%
       readr::read_fwf(
@@ -64,6 +70,7 @@ copernicus_ftp_list <- function(
   }
 
   base_url <- copernicus_product_services(product)
+  if (length(base_url) == 0) return(NULL)
 
   if (missing(layer)) {
     base_url <- dirname(base_url$ftp)[[1]]
@@ -85,12 +92,14 @@ copernicus_ftp_get <- function(
   if (!dir.exists(destination)) stop("'destination' either doesn't exist or is not a directory!")
   destination <- file.path(destination, basename(url))
   
-  result <- httr::GET(
-    url, httr::write_disk(destination, overwrite = overwrite),
-    if (show_progress) httr::progress() else NULL,
-    httr::authenticate(user = getOption("CopernicusMarine_uid", ""),
-                       password = getOption("CopernicusMarine_pwd", ""))
-  )
+  result <-
+    .try_online({
+      httr::GET(
+        url, httr::write_disk(destination, overwrite = overwrite),
+        if (show_progress) httr::progress() else NULL,
+        httr::authenticate(user = getOption("CopernicusMarine_uid", ""),
+                           password = getOption("CopernicusMarine_pwd", ""))
+      )}, "Copernicus")
 
-  return(invisible(NULL))
+  return(invisible(!is.null(result)))
 }

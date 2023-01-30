@@ -15,7 +15,8 @@ whereas \code{"meta"} returns meta information for the executed query (e.g. numb
 }
 \value{
 Returns a \code{tibble} of products available from \url{https://data.marine.copernicus.eu} or
-a named \code{list} when \code{info_type = "meta"}.
+a named \code{list} when \code{info_type = "meta"}. Returns \code{NULL} in case on-line services are
+unavailable.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Collect a list of products and some brief

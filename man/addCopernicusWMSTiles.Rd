@@ -36,16 +36,20 @@ Returns an updated \code{map}
 \code{leaflet::leaflet()} and add layers of Copernicus marine WMS data
 to it.
 }
+\note{
+WMS functions don't work on systems that don't support GDAL utils
+}
 \examples{
 \donttest{
-leaflet::leaflet() \%>\%
-  leaflet::setView(lng = 3, lat = 54, zoom = 4) \%>\%
-  leaflet::addProviderTiles("Esri.WorldImagery") \%>\%
-  addCopernicusWMSTiles(
-    product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-    layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
-    variable = "thetao"
-  )
+if (interactive()) {
+  leaflet::leaflet() \%>\%
+    leaflet::setView(lng = 3, lat = 54, zoom = 4) \%>\%
+    leaflet::addProviderTiles("Esri.WorldImagery") \%>\%
+    addCopernicusWMSTiles(
+      product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+      layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
+      variable = "thetao")
+}
 }
 }
 \seealso{

@@ -8,7 +8,8 @@
 #' @param info_type One of `"list"` (default) or `"meta"`. `"list"` returns the actual list
 #' whereas `"meta"` returns meta information for the executed query (e.g. number of hits).
 #' @return Returns a `tibble` of products available from <https://data.marine.copernicus.eu> or
-#' a named `list` when `info_type = "meta"`.
+#' a named `list` when `info_type = "meta"`. Returns `NULL` in case on-line services are
+#' unavailable.
 #' @rdname copernicus_products_list
 #' @name copernicus_products_list
 #' @family product-functions
@@ -26,12 +27,15 @@ copernicus_products_list <- function(..., info_type = c("list", "meta")) {
   payload     <- .payload_data_list
   payload_mod <- list(...)
   payload[names(payload_mod)] <- payload_mod
-  result <-
+  result <- .try_online({
     httr::POST(
       "https://cmems-be.lobelia.earth/api/datasets",
       body   = payload,
-      encode = "json"
-    ) %>%
+      encode = "json")
+  }, "Copernicus")
+  if (is.null(result)) return(NULL)
+  result <-
+    result %>%
     httr::content("text") %>%
     jsonlite::fromJSON()
   switch(

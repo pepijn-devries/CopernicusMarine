@@ -22,8 +22,15 @@
 #' @export
 copernicus_product_details <- function(product, layer, variable) {
   if (missing(layer) && !missing(variable)) stop("Variable specified without layer.")
-  result <- sprintf("https://cmems-be.lobelia.earth/api/dataset/%s?variant=detailed-v2", product) %>%
-    httr::GET() %>%
+  if (missing(product)) product <- ""
+  result <- .try_online({
+    sprintf("https://cmems-be.lobelia.earth/api/dataset/%s?variant=detailed-v2", product) %>%
+      httr::GET()
+  }, "Copernicus") 
+  if (is.null(result)) return(NULL)
+  
+  result <-
+    result %>%
     httr::content("text") %>%
     jsonlite::fromJSON()
   if (!missing(layer)) {

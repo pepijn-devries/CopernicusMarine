@@ -48,8 +48,8 @@ overwritten when the exist. Instead an error will be thrown if this is the case.
 \value{
 In case of \code{copernicus_ftp_list} a \code{tibble} is returned containing available URLs
 (for the specified product and layer) and some meta information is returned.
-In case of \code{copernicus_ftp_get} an invisible \code{NULL} is returned, but the
-requested file is stored at the \code{destination} path.
+In case of \code{copernicus_ftp_get} an invisible \code{logical} value is returned, indicating whether
+the requested file is successfully stored at the \code{destination} path.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Full marine data sets can be downloaded using the

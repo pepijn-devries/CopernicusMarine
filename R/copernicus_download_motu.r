@@ -25,7 +25,8 @@
 #' @param overwrite A `logical` value. When `FALSE` (default), files at the `destination` won't be
 #' overwritten when the exist. Instead an error will be thrown if this is the case. When set to
 #' `TRUE`, existing files will be overwritten.
-#' @return Returns `NULL` invisibly but saves the requested file at the `destination` when successful.
+#' @return Returns a `logical` value invisibly indicating whether the requested file was
+#' successfully stored at the `destination`.
 #' @rdname copernicus_download_motu
 #' @name copernicus_download_motu
 #' @examples
@@ -58,9 +59,11 @@ copernicus_download_motu <- function(
   
   # Go to motu login page end get form id (lt)
   login_form <-
-    "https://cmems-cas.cls.fr/cas/login" %>%
-    httr::GET()
-
+    .try_online({
+      httr::GET("https://cmems-cas.cls.fr/cas/login")
+    }, "log-in page")
+  if (is.null(login_form)) return(invisible(FALSE))
+  
   ## Check if you are already logged in:
   success <-
     login_form %>%
@@ -81,9 +84,12 @@ copernicus_download_motu <- function(
     message(crayon::white("Logging in onto MOTU server..."))
     
     login_result <-
-      sprintf("https://cmems-cas.cls.fr/cas/login?username=%s&password=%s&lt=%s&execution=e1s1&_eventId=submit",
-              username, password, lt) %>%
-      httr::GET()
+      .try_online({
+        sprintf("https://cmems-cas.cls.fr/cas/login?username=%s&password=%s&lt=%s&execution=e1s1&_eventId=submit",
+                username, password, lt) %>%
+          httr::GET()
+      }, "log-in page")
+    if (is.null(login_result)) return(invisible(FALSE))
     
     success <-
       login_result %>% httr::content() %>% rvest::html_element(xpath = "//div[@id='msg']") %>% rvest::html_attr("class")
@@ -95,8 +101,7 @@ copernicus_download_motu <- function(
   
   product_services <- copernicus_product_services(product) %>% dplyr::filter(layer == {{layer}}) %>% dplyr::pull("motu")
   
-  if (is.na(product_services))
-    stop("There is no subsetting MOTU server available for the requested data")
+  if (is.null(product_services) || is.na(product_services)) return(invisible(FALSE))
   
   if (missing(timerange)) timerange <- NULL else timerange <- format(as.POSIXct(timerange), "%Y-%m-%d+%H%%3A%M%%3A%S")
   prepare_url <-
@@ -112,14 +117,16 @@ copernicus_download_motu <- function(
     paste0(collapse = "&")
 
   result <-
-    prepare_url %>%
-    httr::GET(
-      ## Make sure to pass on cookies obtained earlier with account details:
-      do.call(
-        httr::set_cookies,
-        as.list(structure(login_result$cookies$value, names = login_result$cookies$name))
-      )
-  )
+    .try_online({
+      prepare_url %>%
+        httr::GET(
+          ## Make sure to pass on cookies obtained earlier with account details:
+          do.call(
+            httr::set_cookies,
+            as.list(structure(login_result$cookies$value, names = login_result$cookies$name))
+          )
+        )}, "Copernicus")
+  if (is.null(result)) return(invisible(FALSE))
   
   if (result$headers$`content-type` %>% startsWith("text/html")) {
     errors <-
@@ -127,7 +134,10 @@ copernicus_download_motu <- function(
       httr::content() %>%
       rvest::html_element(xpath = "//p[@class='error']") %>%
       rvest::html_text()
-    if (!is.na(errors)) stop(errors)
+    if (!is.na(errors)) {
+      message(errors)
+      return(invisible(FALSE))
+    }
     
     message(crayon::white("Downloading file..."))
     
@@ -138,17 +148,21 @@ copernicus_download_motu <- function(
       rvest::html_attr("action")
     if (dir.exists(destination))
       destination <- file.path(destination, basename(download_url))
-    download_url %>%
-      httr::GET(
-        httr::write_disk(destination, overwrite = overwrite),
-        ## Make sure to pass on cookies obtained earlier with account details:
-        do.call(
-          httr::set_cookies,
-          as.list(structure(login_result$cookies$value, names = login_result$cookies$name))
+    download_result <- .try_online({
+      download_url %>%
+        httr::GET(
+          httr::write_disk(destination, overwrite = overwrite),
+          ## Make sure to pass on cookies obtained earlier with account details:
+          do.call(
+            httr::set_cookies,
+            as.list(structure(login_result$cookies$value, names = login_result$cookies$name))
+          )
         )
-      )
+      }, "Copernicus")
+    
+    if (is.null(download_result)) return(invisible(FALSE))
     message(crayon::green("Done"))
-    return(invisible(NULL))
+    return(invisible(TRUE))
     
   } else {
     stop("Retrieved unexpected content...")
