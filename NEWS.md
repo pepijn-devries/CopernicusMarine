@@ -1,3 +1,8 @@
+CopernicusMarine v0.0.7 (Release date: 2023-02-10)
+-------------
+
+  * Bug fix in log-in routine
+
 CopernicusMarine v0.0.6 (Release date: 2023-01-23)
 -------------
 

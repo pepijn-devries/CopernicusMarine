@@ -86,7 +86,7 @@ copernicus_download_motu <- function(
     login_result <-
       .try_online({
         sprintf("https://cmems-cas.cls.fr/cas/login?username=%s&password=%s&lt=%s&execution=e1s1&_eventId=submit",
-                username, password, lt) %>%
+                utils::URLencode(username), utils::URLencode(password), lt) %>%
           httr::GET()
       }, "log-in page")
     if (is.null(login_result)) return(invisible(FALSE))
