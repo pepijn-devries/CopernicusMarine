@@ -68,7 +68,7 @@ that it is secure enough, you can also store these options in your
 can also provide your account details as arguments to the functions.
 
 The example below demonstrates how to subset a specific layer for a
-specific product. The subset is constrained by the `region`,
+specific product (for a list of available datasets run `copernicus_products_list()`). The subset is constrained by the `region`,
 `timerange`, `verticalrange` and `sub_variables` arguments. The subset
 is downloaded to the temporary file specified with `destination` and can
 be read using the [`{stars}`](https://r-spatial.github.io/stars/)
