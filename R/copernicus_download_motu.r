@@ -33,7 +33,7 @@
 #' \dontrun{
 #' destination <- tempfile("copernicus", fileext = ".nc")
 #'
-#' ## Assuming that Copernicus account details are provided as `options`
+#' ## Assuming that Copernicus account details are provided as `option`
 #' copernicus_download_motu(
 #'   destination   = destination,
 #'   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -98,10 +98,13 @@ copernicus_download_motu <- function(
   }
   
   message(crayon::white("Preparing download..."))
+ 
+  product_services <- copernicus_product_services(product) %>% dplyr::filter(layer == {{layer}})
   
-  product_services <- copernicus_product_services(product) %>% dplyr::filter(layer == {{layer}}) %>% dplyr::pull("motu")
+  if (!"motu" %in% names(product_services) || is.na(product_services$motu))
+    return(invisible(FALSE))
   
-  if (is.null(product_services) || is.na(product_services)) return(invisible(FALSE))
+  product_services <- product_services %>% dplyr::pull("motu")
   
   if (missing(timerange)) timerange <- NULL else timerange <- format(as.POSIXct(timerange), "%Y-%m-%d+%H%%3A%M%%3A%S")
   prepare_url <-
@@ -138,7 +141,6 @@ copernicus_download_motu <- function(
       message(errors)
       return(invisible(FALSE))
     }
-    
     message(crayon::white("Downloading file..."))
     
     download_url <-

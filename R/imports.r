@@ -6,7 +6,7 @@
 #' \item{dplyr pipe operator}{[`%>%`][dplyr::reexports]}
 #' }
 #' @importFrom dplyr %>%
-#' @return Returns the result of the function call on the right-hand side of the pipe operator.
+#' @returns Returns the result of the function call on the right-hand side of the pipe operator.
 #' The left-hand side is used as first argument to the call to the right-hand side. For
 #' more details see [dplyr::reexports].
 #' @export %>%

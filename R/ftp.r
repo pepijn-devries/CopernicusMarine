@@ -8,11 +8,13 @@
 #' [`copernicus_ftp_list`].
 #' @param show_progress A `logical` value. When `TRUE` (default) the download progress will be shown.
 #' This can be useful for large files.
+#' @param recursive A `logical` value. When `TRUE` all nested files will be listed.
 #' @param overwrite A `logical` value. When `FALSE` (default), files at the `destination` won't be
 #' overwritten when the exist. Instead an error will be thrown if this is the case. When set to
 #' `TRUE`, existing files will be overwritten.
+#' @param subdir A `character` string of a subdir which will be appended to the obtained ftp address.
 #' @inheritParams copernicus_download_motu
-#' @return In case of `copernicus_ftp_list` a `tibble` is returned containing available URLs
+#' @returns In case of `copernicus_ftp_list` a `tibble` is returned containing available URLs
 #' (for the specified product and layer) and some meta information is returned.
 #' In case of `copernicus_ftp_get` an invisible `logical` value is returned, indicating whether
 #' the requested file is successfully stored at the `destination` path.
@@ -31,8 +33,10 @@
 #' @export
 copernicus_ftp_list <- function(
     product, layer,
-    username = getOption("CopernicusMarine_uid", ""),
-    password = getOption("CopernicusMarine_pwd", "")) {
+    username  = getOption("CopernicusMarine_uid", ""),
+    password  = getOption("CopernicusMarine_pwd", ""),
+    recursive = TRUE,
+    subdir    = NULL) {
   name <- NULL # workaround for 'no visible binding global for global variable'
   dirlist <- function(url){
     dir_result <-
@@ -43,19 +47,19 @@ copernicus_ftp_list <- function(
           dirlistonly = TRUE)
       }, "Copernicus")
     if (is.null(dir_result)) return(NULL)
-    
+ 
     dir_result <-
       dir_result %>%
       `[[`("content") %>%
       rawToChar() %>%
-      readr::read_fwf(
-        name_repair = ~c("flags", "len", "protocol", "protocol2", "size", "month", "day", "time", "name"),
+      readr::read_table(
+        col_names = c("flags", "len", "protocol", "protocol2", "size", "month", "day", "time", "name"),
         col_types = readr::cols(
           flags     = readr::col_character(),
           len       = readr::col_integer(),
           protocol  = readr::col_character(),
           protocol2 = readr::col_character(),
-          size      = readr::col_integer(),
+          size      = readr::col_number(),
           month     = readr::col_character(),
           day       = readr::col_integer(),
           time      = readr::col_character(),
@@ -64,7 +68,7 @@ copernicus_ftp_list <- function(
       dplyr::select(!dplyr::any_of(c("protocol2", "name"))) %>%
       dplyr::rowwise() %>%
       dplyr::group_map(~{
-        if (startsWith(..1$flags, "d")) dirlist(sprintf("%s/", ..1$url)) else ..1
+        if (recursive && startsWith(..1$flags, "d")) dirlist(sprintf("%s/", ..1$url)) else ..1
       }) %>%
       dplyr::bind_rows()
   }
@@ -77,6 +81,7 @@ copernicus_ftp_list <- function(
   } else {
     base_url <- base_url %>% dplyr::filter(layer == {{layer}}) %>% dplyr::pull("ftp")
   }
+  base_url <- paste(c(base_url, subdir), collapse = "/")
 
   result <- dirlist(paste0(base_url, "/"))
   return(result)

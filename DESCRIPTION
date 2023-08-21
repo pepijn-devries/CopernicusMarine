@@ -1,7 +1,7 @@
 Package: CopernicusMarine
 Type: Package
 Title: Search Download and Handle Data from Copernicus Marine Service Information
-Version: 0.0.7
+Version: 0.0.8
 Date: 2023-02-10
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre", "dtc"),
     email = "pepijn.devries@outlook.com",
@@ -37,6 +37,6 @@ BugReports: https://github.com/pepijn-devries/CopernicusMarine/issues
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
