@@ -170,7 +170,7 @@ GDAL utils.
 
 A Copernicus account comes with several terms of use. One of these is
 that you [properly
-cite](https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-or-reference-copernicus-marine-products-and-services)
+cite](https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-copernicus-marine-products-and-services)
 the data you use in publications. In fact, we also have credit the data
 used in this documentation, which can be easily done with the following
 code:

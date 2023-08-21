@@ -13,7 +13,7 @@ Subset and download data from EU Copernicus Marine Service Information: \url{htt
 \seealso{
 Useful links:
 \itemize{
-  \item \url{<https://github.com/pepijn-devries/CopernicusMarine>}
+  \item \url{https://github.com/pepijn-devries/CopernicusMarine}
   \item Report bugs at \url{https://github.com/pepijn-devries/CopernicusMarine/issues}
 }
 
