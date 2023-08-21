@@ -4,7 +4,7 @@
 #' products and layers. Use this function to obtain URLs of WMS services if any.
 #' @template wms_template
 #' @inheritParams copernicus_download_motu
-#' @return Returns a `tibble` with WMS URLs and descriptors for the specified product.
+#' @returns Returns a `tibble` with WMS URLs and descriptors for the specified product.
 #' @rdname copernicus_wms_details
 #' @name copernicus_wms_details
 #' @family wms-functions
@@ -42,7 +42,7 @@ copernicus_wms_details <- function(product, layer, variable) {
 #' @inheritParams copernicus_download_motu
 #' @param options Passed on to [`leaflet::addWMSTiles()`].
 #' @param ... Passed on to [`leaflet::addWMSTiles()`].
-#' @return Returns an updated `map`
+#' @returns Returns an updated `map`
 #' @rdname addCopernicusWMSTiles
 #' @name addCopernicusWMSTiles
 #' @family wms-functions
@@ -88,7 +88,7 @@ addCopernicusWMSTiles <- function(map, product, layer, variable,
 #' @param destination File name for the geo-referenced TIFF.
 #' @param width Width in pixels of the TIFF image.
 #' @param height Height in pixels of the TIFF image.
-#' @return Stores the file as `destination` and returns invisible `NULL`
+#' @returns Stores the file as `destination` and returns invisible `NULL`
 #' @rdname copernicus_wms2geotiff
 #' @name copernicus_wms2geotiff
 #' @family wms-functions

@@ -66,7 +66,7 @@ at \url{https://data.marine.copernicus.eu} before you can use this function.
 \dontrun{
 destination <- tempfile("copernicus", fileext = ".nc")
 
-## Assuming that Copernicus account details are provided as `options`
+## Assuming that Copernicus account details are provided as `option`
 copernicus_download_motu(
   destination   = destination,
   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",

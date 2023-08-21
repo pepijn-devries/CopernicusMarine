@@ -4,7 +4,7 @@
 #' for specific Copernicus marine products
 #'
 #' @inheritParams copernicus_download_motu
-#' @return Returns a named `list` with info about the requested `product`. Returns `NULL`
+#' @returns Returns a named `list` with info about the requested `product`. Returns `NULL`
 #' when contacting Copernicus fails.
 #' @rdname copernicus_product_metadata
 #' @name copernicus_product_metadata
