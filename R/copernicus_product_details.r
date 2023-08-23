@@ -60,6 +60,9 @@ copernicus_product_details <- function(product, layer, variable) {
 #' @export
 copernicus_product_services <- function(product) {
   services <- copernicus_product_details(product)
-  services <- services$services %>% purrr::map_dfr(dplyr::as_tibble) %>% dplyr::mutate(layer = names(services$services))
+  services <- services$services %>% purrr::map_dfr(dplyr::as_tibble) %>%
+    dplyr::mutate(layer = {
+      nms <- names(services$services)
+      nms[nms != ""] })
   return(services)
 }

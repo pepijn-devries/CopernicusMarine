@@ -9,7 +9,9 @@ copernicus_ftp_list(
   product,
   layer,
   username = getOption("CopernicusMarine_uid", ""),
-  password = getOption("CopernicusMarine_pwd", "")
+  password = getOption("CopernicusMarine_pwd", ""),
+  recursive = TRUE,
+  subdir = NULL
 )
 
 copernicus_ftp_get(
@@ -32,6 +34,10 @@ or as argument here.}
 
 \item{password}{Your Copernicus marine password. Can be provided as \code{option(CopernicusMarine_pwd = "my_password")},
 or as argument here.}
+
+\item{recursive}{A \code{logical} value. When \code{TRUE} all nested files will be listed.}
+
+\item{subdir}{A \code{character} string of a subdir which will be appended to the obtained ftp address.}
 
 \item{url}{The URL of the file to be downloaded. Obtain this URL with
 \code{\link{copernicus_ftp_list}}.}

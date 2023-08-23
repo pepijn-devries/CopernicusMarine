@@ -61,8 +61,8 @@ Subsetting data using MOTU server
 </h3>
 
 The code below assumes that you have registered your account details
-using `option(CopernicusMarine_uid = "my_user_name")` and
-`option(CopernicusMarine_pwd = "my_password")`. If you are comfortable
+using `options(CopernicusMarine_uid = "my_user_name")` and
+`options(CopernicusMarine_pwd = "my_password")`. If you are comfortable
 that it is secure enough, you can also store these options in your
 `.Rprofile` such that they will be loaded each session. Otherwise, you
 can also provide your account details as arguments to the functions.
@@ -170,7 +170,7 @@ GDAL utils.
 
 A Copernicus account comes with several terms of use. One of these is
 that you [properly
-cite](https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-or-reference-copernicus-marine-products-and-services)
+cite](https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-copernicus-marine-products-and-services)
 the data you use in publications. In fact, we also have credit the data
 used in this documentation, which can be easily done with the following
 code:
