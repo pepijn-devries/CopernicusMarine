@@ -1,3 +1,8 @@
+CopernicusMarine v0.1.0 (Release date: 2023-11-08)
+-------------
+
+ * Fix for migrated Copernicus server
+
 CopernicusMarine v0.0.9 (Release date: 2023-08-21)
 -------------
 
