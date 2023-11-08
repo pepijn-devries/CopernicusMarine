@@ -18,7 +18,7 @@
 copernicus_product_metadata <- function(product) {
   meta_data <-
     .try_online({
-      sprintf("https://cmems-be.lobelia.earth/api/metadata/%s", product) %>%
+      sprintf("https://data-be-prd.marine.copernicus.eu/api/metadata/%s", product) %>%
         httr::GET()
     }, "Copernicus")
   if (is.null(meta_data)) return(NULL)

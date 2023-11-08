@@ -100,7 +100,10 @@ copernicus_download_motu <- function(
   message(crayon::white("Preparing download..."))
  
   product_services <- copernicus_product_services(product) %>% dplyr::filter(layer == {{layer}})
-  
+
+  if (nrow(product_services) == 0)
+    stop("No services available, please check if you specified the 'product' and 'layer' name correctly, and whether the layer has a MOTU service.")
+
   if (!"motu" %in% names(product_services) || is.na(product_services$motu))
     return(invisible(FALSE))
   
