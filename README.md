@@ -1,6 +1,8 @@
 
 > `{CopernicusMarine}` Easily access information from
 > <https://data.marine.copernicus.eu>
+> [![version](https://www.r-pkg.org/badges/version/CopernicusMarine)](https://CRAN.R-project.org/package=CopernicusMarine)
+> ![cranlogs](https://cranlogs.r-pkg.org/badges/CopernicusMarine)
 
 ## Overview
 
@@ -61,8 +63,8 @@ Subsetting data using MOTU server
 </h3>
 
 The code below assumes that you have registered your account details
-using `options(CopernicusMarine_uid = "my_user_name")` and
-`options(CopernicusMarine_pwd = "my_password")`. If you are comfortable
+using `option(CopernicusMarine_uid = "my_user_name")` and
+`option(CopernicusMarine_pwd = "my_password")`. If you are comfortable
 that it is secure enough, you can also store these options in your
 `.Rprofile` such that they will be loaded each session. Otherwise, you
 can also provide your account details as arguments to the functions.
@@ -112,20 +114,20 @@ your product. First you can list files available for a specific product:
 ``` r
 cop_ftp_files <- copernicus_ftp_list("GLOBAL_ANALYSISFORECAST_PHY_001_024", "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m")
 cop_ftp_files
-#> # A tibble: 818 x 8
+#> # A tibble: 1,112 x 8
 #>    flags        len protocol       size month   day time  url                   
-#>    <chr>      <int> <chr>         <int> <chr> <int> <chr> <chr>                 
-#>  1 -rw-rw-r--     1 ftp      1937968861 Oct      14 06:10 ftp://nrt.cmems-du.eu~
-#>  2 -rw-rw-r--     1 ftp      1937978851 Oct      14 06:08 ftp://nrt.cmems-du.eu~
-#>  3 -rw-rw-r--     1 ftp      1937888467 Oct      14 06:07 ftp://nrt.cmems-du.eu~
-#>  4 -rw-rw-r--     1 ftp      1938380754 Oct      14 06:06 ftp://nrt.cmems-du.eu~
-#>  5 -rw-rw-r--     1 ftp      1938177028 Oct      14 06:09 ftp://nrt.cmems-du.eu~
-#>  6 -rw-rw-r--     1 ftp      1938234339 Oct      14 06:08 ftp://nrt.cmems-du.eu~
-#>  7 -rw-rw-r--     1 ftp      1938285902 Oct      14 06:08 ftp://nrt.cmems-du.eu~
-#>  8 -rw-rw-r--     1 ftp      1937954892 Oct      14 06:10 ftp://nrt.cmems-du.eu~
-#>  9 -rw-rw-r--     1 ftp      1937964478 Oct      14 06:09 ftp://nrt.cmems-du.eu~
-#> 10 -rw-rw-r--     1 ftp      1937962443 Oct      14 06:06 ftp://nrt.cmems-du.eu~
-#> # ... with 808 more rows
+#>    <chr>      <int> <chr>         <dbl> <chr> <int> <chr> <chr>                 
+#>  1 -rw-rw-r--     1 ftp      1937968861 Oct      14 2022  ftp://nrt.cmems-du.eu~
+#>  2 -rw-rw-r--     1 ftp      1937978851 Oct      14 2022  ftp://nrt.cmems-du.eu~
+#>  3 -rw-rw-r--     1 ftp      1937888467 Oct      14 2022  ftp://nrt.cmems-du.eu~
+#>  4 -rw-rw-r--     1 ftp      1938380754 Oct      14 2022  ftp://nrt.cmems-du.eu~
+#>  5 -rw-rw-r--     1 ftp      1938177028 Oct      14 2022  ftp://nrt.cmems-du.eu~
+#>  6 -rw-rw-r--     1 ftp      1938234339 Oct      14 2022  ftp://nrt.cmems-du.eu~
+#>  7 -rw-rw-r--     1 ftp      1938285902 Oct      14 2022  ftp://nrt.cmems-du.eu~
+#>  8 -rw-rw-r--     1 ftp      1937954892 Oct      14 2022  ftp://nrt.cmems-du.eu~
+#>  9 -rw-rw-r--     1 ftp      1937964478 Oct      14 2022  ftp://nrt.cmems-du.eu~
+#> 10 -rw-rw-r--     1 ftp      1937962443 Oct      14 2022  ftp://nrt.cmems-du.eu~
+#> # i 1,102 more rows
 ```
 
 Downloading the first file can be done with
@@ -170,7 +172,7 @@ GDAL utils.
 
 A Copernicus account comes with several terms of use. One of these is
 that you [properly
-cite](https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-copernicus-marine-products-and-services)
+cite](https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-or-reference-copernicus-marine-products-and-services)
 the data you use in publications. In fact, we also have credit the data
 used in this documentation, which can be easily done with the following
 code:
@@ -178,13 +180,13 @@ code:
 ``` r
 copernicus_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 #> $doi
-#> [1] "E.U. Copernicus Marine Service Information; Global Ocean 1/12° Physics Analysis and Forecast updated Daily - GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14). DOI:10.48670/moi-00016"
+#> [1] "E.U. Copernicus Marine Service Information; Global Ocean Physics Analysis and Forecast - GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14). DOI:10.48670/moi-00016"
 ```
 
 ## Resources
 
 -   [E.U. Copernicus Marine Service
     Information](https://data.marine.copernicus.eu)
--   [Global Ocean 1/12° Physics Analysis and Forecast updated Daily -
+-   [Global Ocean Physics Analysis and Forecast -
     GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14);
     DOI:10.48670/moi-00016](https://doi.org/10.48670/moi-00016)

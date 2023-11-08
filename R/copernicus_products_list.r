@@ -29,7 +29,7 @@ copernicus_products_list <- function(..., info_type = c("list", "meta")) {
   payload[names(payload_mod)] <- payload_mod
   result <- .try_online({
     httr::POST(
-      "https://cmems-be.lobelia.earth/api/datasets",
+      "https://data-be-prd.marine.copernicus.eu/api/datasets",
       body   = payload,
       encode = "json")
   }, "Copernicus")
