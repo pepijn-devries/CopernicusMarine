@@ -114,7 +114,7 @@ your product. First you can list files available for a specific product:
 ``` r
 cop_ftp_files <- copernicus_ftp_list("GLOBAL_ANALYSISFORECAST_PHY_001_024", "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m")
 cop_ftp_files
-#> # A tibble: 1,112 x 8
+#> # A tibble: 1,113 x 8
 #>    flags        len protocol       size month   day time  url                   
 #>    <chr>      <int> <chr>         <dbl> <chr> <int> <chr> <chr>                 
 #>  1 -rw-rw-r--     1 ftp      1937968861 Oct      14 2022  ftp://nrt.cmems-du.eu~
@@ -127,7 +127,7 @@ cop_ftp_files
 #>  8 -rw-rw-r--     1 ftp      1937954892 Oct      14 2022  ftp://nrt.cmems-du.eu~
 #>  9 -rw-rw-r--     1 ftp      1937964478 Oct      14 2022  ftp://nrt.cmems-du.eu~
 #> 10 -rw-rw-r--     1 ftp      1937962443 Oct      14 2022  ftp://nrt.cmems-du.eu~
-#> # i 1,102 more rows
+#> # i 1,103 more rows
 ```
 
 Downloading the first file can be done with
@@ -172,7 +172,7 @@ GDAL utils.
 
 A Copernicus account comes with several terms of use. One of these is
 that you [properly
-cite](https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-or-reference-copernicus-marine-products-and-services)
+cite](https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-copernicus-marine-products-and-services)
 the data you use in publications. In fact, we also have credit the data
 used in this documentation, which can be easily done with the following
 code:
