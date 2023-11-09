@@ -1,3 +1,8 @@
+CopernicusMarine v0.1.1 (Release date: 2023-11-09)
+-------------
+
+ * Fix to pass CRAN checks
+
 CopernicusMarine v0.1.0 (Release date: 2023-11-08)
 -------------
 
