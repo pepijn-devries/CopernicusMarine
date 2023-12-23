@@ -57,46 +57,11 @@ copernicus_download_motu <- function(
     password = getOption("CopernicusMarine_pwd", ""),
     destination, product, layer, variable, output, region, timerange, verticalrange, sub_variables, overwrite = FALSE) {
   
-  # Go to motu login page end get form id (lt)
-  login_form <-
-    .try_online({
-      httr::GET("https://cmems-cas.cls.fr/cas/login")
-    }, "log-in page")
-  if (is.null(login_form)) return(invisible(FALSE))
-  
-  ## Check if you are already logged in:
-  success <-
-    login_form %>%
-    httr::content() %>%
-    rvest::html_element(xpath = "//div[@id='msg']") %>% rvest::html_attr("class")
+  login <- copernicus_login(username, password)
+  login_result <- attr(login, "response")
+    
+  if (!login) stop("Failed to log in. Are you sure you have provided valid credentials?")
 
-  if (!is.na(success) && success == "success") {
-    message(crayon::white("Already logged in"))
-    login_result <- login_form
-  } else {
-    lt <-
-      login_form %>%
-      httr::content() %>%
-      rvest::html_element(xpath = "//input[@name='lt']") %>%
-      rvest::html_attr("value")
-    
-    # Now submit login form with account details and obtain cookies required to continue
-    message(crayon::white("Logging in onto MOTU server..."))
-    
-    login_result <-
-      .try_online({
-        sprintf("https://cmems-cas.cls.fr/cas/login?username=%s&password=%s&lt=%s&execution=e1s1&_eventId=submit",
-                utils::URLencode(username), utils::URLencode(password), lt) %>%
-          httr::GET()
-      }, "log-in page")
-    if (is.null(login_result)) return(invisible(FALSE))
-    
-    success <-
-      login_result %>% httr::content() %>% rvest::html_element(xpath = "//div[@id='msg']") %>% rvest::html_attr("class")
-    
-    if (is.na(success) || success != "success") stop("Failed to log in. Are you sure you have provided valid credentials?")
-  }
-  
   message(crayon::white("Preparing download..."))
  
   product_services <- copernicus_product_services(product) %>% dplyr::filter(layer == {{layer}})
