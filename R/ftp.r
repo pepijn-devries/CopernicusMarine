@@ -41,17 +41,19 @@ copernicus_ftp_list <- function(
   dirlist <- function(url){
     dir_result <-
       .try_online({
-        httr::GET(
-          url,
-          httr::authenticate(user = getOption("CopernicusMarine_uid", ""), password = getOption("CopernicusMarine_pwd", "")),
-          dirlistonly = TRUE)
+        url |>
+          httr2::request() |>
+          httr2::req_method("LIST") |>
+          .ftp_auth(username, password) |>
+          httr2::req_options(dirlistonly = TRUE) |>
+          httr2::req_perform()
       }, "Copernicus")
     if (is.null(dir_result)) return(NULL)
  
     dir_result <-
-      dir_result %>%
-      `[[`("content") %>%
-      rawToChar() %>%
+      dir_result |>
+      httr2::resp_body_raw() |>
+      rawToChar() |>
       readr::read_table(
         col_names = c("flags", "len", "protocol", "protocol2", "size", "month", "day", "time", "name"),
         col_types = readr::cols(
@@ -63,13 +65,13 @@ copernicus_ftp_list <- function(
           month     = readr::col_character(),
           day       = readr::col_integer(),
           time      = readr::col_character(),
-          name      = readr::col_character())) %>%
-      dplyr::mutate(url = paste0(url, name)) %>%
-      dplyr::select(!dplyr::any_of(c("protocol2", "name"))) %>%
-      dplyr::rowwise() %>%
+          name      = readr::col_character())) |>
+      dplyr::mutate(url = paste0(url, name)) |>
+      dplyr::select(!dplyr::any_of(c("protocol2", "name"))) |>
+      dplyr::rowwise() |>
       dplyr::group_map(~{
         if (recursive && startsWith(..1$flags, "d")) dirlist(sprintf("%s/", ..1$url)) else ..1
-      }) %>%
+      }) |>
       dplyr::bind_rows()
   }
 
@@ -79,7 +81,7 @@ copernicus_ftp_list <- function(
   if (missing(layer)) {
     base_url <- dirname(base_url$ftp)[[1]]
   } else {
-    base_url <- base_url %>% dplyr::filter(layer == {{layer}}) %>% dplyr::pull("ftp")
+    base_url <- base_url |> dplyr::filter(layer == {{layer}}) |> dplyr::pull("ftp")
   }
   base_url <- paste(c(base_url, subdir), collapse = "/")
 
@@ -96,15 +98,25 @@ copernicus_ftp_get <- function(
     password = getOption("CopernicusMarine_pwd", "")) {
   if (!dir.exists(destination)) stop("'destination' either doesn't exist or is not a directory!")
   destination <- file.path(destination, basename(url))
-  
+
+  if (!overwrite && file.exists(destination))
+    stop("Destination file already exists. Set 'overwrite' to TRUE to proceed.")
   result <-
     .try_online({
-      httr::GET(
-        url, httr::write_disk(destination, overwrite = overwrite),
-        if (show_progress) httr::progress() else NULL,
-        httr::authenticate(user = getOption("CopernicusMarine_uid", ""),
-                           password = getOption("CopernicusMarine_pwd", ""))
-      )}, "Copernicus")
+      url <-
+        url |>
+        httr2::request() |>
+        .ftp_auth(username, password)
+      if (show_progress) url <- url |> httr2::req_progress()
+      url |> httr2::req_perform(destination)
+    }, "Copernicus")
 
   return(invisible(!is.null(result)))
+}
+
+.ftp_auth <- function(x, pwd, uid) {
+  x |>
+    httr2::req_options(
+      httpauth = 1, # 1 = basic authorisation
+      userpwd  = paste0(utils::URLencode(pwd), ":", utils::URLencode(uid)))
 }

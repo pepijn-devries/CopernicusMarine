@@ -20,10 +20,10 @@ copernicus_download_motu(
 )
 }
 \arguments{
-\item{username}{Your Copernicus marine user name. Can be provided as \code{option(CopernicusMarine_uid = "my_user_name")},
+\item{username}{Your Copernicus marine user name. Can be provided as \code{options(CopernicusMarine_uid = "my_user_name")},
 or as argument here.}
 
-\item{password}{Your Copernicus marine password. Can be provided as \code{option(CopernicusMarine_pwd = "my_password")},
+\item{password}{Your Copernicus marine password. Can be provided as \code{options(CopernicusMarine_pwd = "my_password")},
 or as argument here.}
 
 \item{destination}{File or path where the requested file will be downloaded to.}
@@ -66,7 +66,7 @@ at \url{https://data.marine.copernicus.eu} before you can use this function.
 \dontrun{
 destination <- tempfile("copernicus", fileext = ".nc")
 
-## Assuming that Copernicus account details are provided as `option`
+## Assuming that Copernicus account details are provided as `options`
 copernicus_download_motu(
   destination   = destination,
   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",

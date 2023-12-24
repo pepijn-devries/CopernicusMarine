@@ -28,16 +28,16 @@ copernicus_products_list <- function(..., info_type = c("list", "meta")) {
   payload_mod <- list(...)
   payload[names(payload_mod)] <- payload_mod
   result <- .try_online({
-    httr::POST(
-      "https://data-be-prd.marine.copernicus.eu/api/datasets",
-      body   = payload,
-      encode = "json")
+    "https://data-be-prd.marine.copernicus.eu/api/datasets" |>
+      httr2::request() |>
+      httr2::req_method("POST") |>
+      httr2::req_body_json(payload) |>
+      httr2::req_perform()
   }, "Copernicus")
   if (is.null(result)) return(NULL)
   result <-
-    result %>%
-    httr::content("text") %>%
-    jsonlite::fromJSON()
+    result |>
+    httr2::resp_body_json()
   switch(
     info_type,
     meta = {
@@ -45,10 +45,9 @@ copernicus_products_list <- function(..., info_type = c("list", "meta")) {
     },
     ## default is main data:
     {
-      result %>%
-        `[[`("datasets") %>%
-        purrr::map(~purrr::map(.x, list)) %>%
-        purrr::map_dfr(~ .x %>% dplyr::as_tibble(), .id = "product_id") %>%
+      result[["datasets"]] |>
+        purrr::map(~purrr::map(.x, list)) |>
+        purrr::map_dfr(~ .x |> dplyr::as_tibble(), .id = "product_id") |>
         dplyr::mutate(
           dplyr::across(
             dplyr::everything(),
