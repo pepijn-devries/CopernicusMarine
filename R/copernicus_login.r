@@ -11,7 +11,7 @@
 #' @author Pepijn de Vries
 #' @examples
 #' \dontrun{
-#' ## This will return FALSE if you have not set your account details with 'option'.
+#' ## This will return FALSE if you have not set your account details with 'options'.
 #' ## If you have specified your account details and there are no other problems,
 #' ## it will return TRUE.
 #' copernicus_login()

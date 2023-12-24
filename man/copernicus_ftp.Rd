@@ -29,10 +29,10 @@ Can be obtained with \code{\link{copernicus_products_list}}.}
 
 \item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{copernicus_product_details}}.}
 
-\item{username}{Your Copernicus marine user name. Can be provided as \code{option(CopernicusMarine_uid = "my_user_name")},
+\item{username}{Your Copernicus marine user name. Can be provided as \code{options(CopernicusMarine_uid = "my_user_name")},
 or as argument here.}
 
-\item{password}{Your Copernicus marine password. Can be provided as \code{option(CopernicusMarine_pwd = "my_password")},
+\item{password}{Your Copernicus marine password. Can be provided as \code{options(CopernicusMarine_pwd = "my_password")},
 or as argument here.}
 
 \item{recursive}{A \code{logical} value. When \code{TRUE} all nested files will be listed.}
