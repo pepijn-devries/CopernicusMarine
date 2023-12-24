@@ -24,10 +24,10 @@ copernicus_wms_details <- function(product, layer, variable) {
 
   copwmsinfo <- sf::gdal_utils("info", paste0("WMS:", product_details$wmsUrl), quiet = TRUE)
   
-  desc <- copwmsinfo %>% stringr::str_match_all("SUBDATASET_(\\d)_DESC=(.*?)\n")
+  desc <- copwmsinfo |> stringr::str_match_all("SUBDATASET_(\\d)_DESC=(.*?)\n")
   if (length(desc) == 0) return(dplyr::tibble(desc = character(0), url = character(0)))
   desc <- desc[[1]][,3]
-  url  <- copwmsinfo %>% stringr::str_match_all("SUBDATASET_(\\d)_NAME=(.*?)\n")
+  url  <- copwmsinfo |> stringr::str_match_all("SUBDATASET_(\\d)_NAME=(.*?)\n")
   url  <- url[[1]][,3]
   return(dplyr::bind_cols(desc = desc, url = url))
 }
@@ -49,9 +49,9 @@ copernicus_wms_details <- function(product, layer, variable) {
 #' @examples
 #' \donttest{
 #' if (interactive()) {
-#'   leaflet::leaflet() %>%
-#'     leaflet::setView(lng = 3, lat = 54, zoom = 4) %>%
-#'     leaflet::addProviderTiles("Esri.WorldImagery") %>%
+#'   leaflet::leaflet() |>
+#'     leaflet::setView(lng = 3, lat = 54, zoom = 4) |>
+#'     leaflet::addProviderTiles("Esri.WorldImagery") |>
 #'     addCopernicusWMSTiles(
 #'       product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
 #'       layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
@@ -113,9 +113,9 @@ copernicus_wms2geotiff <- function(product, layer, variable, region, destination
   if (is.null(wms_details) || is.null(product_details)) return(NULL)
   desc            <- NULL # <- silences R checks with respect to global bindings...
   url             <-
-    wms_details %>%
-    dplyr::filter(desc == variable | dplyr::n() == 1) %>%
-    dplyr::pull("url") %>%
+    wms_details |>
+    dplyr::filter(desc == variable | dplyr::n() == 1) |>
+    dplyr::pull("url") |>
     stringr::str_replace("BBOX=(.*?)$", paste0("BBOX=", paste0(region, collapse = ',')))
   sf::gdal_utils(
     "translate",
