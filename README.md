@@ -16,9 +16,9 @@ state. The `{CopernicusMarine}` R package is developed apart from this
 programme and facilitates retrieval of information from
 <https://data.marine.copernicus.eu>. With the package you can:
 
--   List available marine data for Copernicus and provide
-    meta-information.
--   Download and use the data directly in R.
+- List available marine data for Copernicus and provide
+  meta-information.
+- Download and use the data directly in R.
 
 ## Why use `{CopernicusMarine}`
 
@@ -27,7 +27,8 @@ Therefore, automating Copernicus downloads in R used to require
 installation of python and its
 [motuclient](https://pypi.org/project/motuclient/) package. The
 `{CopernicusMarine}` R package has a much simpler installation procedure
-(see below) and does not depend on third party software.
+(see below) and does not depend on third party software, other than
+packages available from [CRAN](https://cran.r-project.org/).
 
 ## Installation
 
@@ -52,9 +53,9 @@ terms](https://marine.copernicus.eu/user-corner/service-commitments-and-licence)
 The usage section briefly shows three different ways of obtaining data
 from Copernicus:
 
--   [Using the MOTU server](#sec-motu)
--   [Using the FTP server](#sec-ftp)
--   [Using the WMS server](#sec-wms)
+- [Using the MOTU server](#sec-motu)
+- [Using the FTP server](#sec-ftp)
+- [Using the WMS server](#sec-wms)
 
 Please check the manual for complete documentation of the package.
 
@@ -63,8 +64,8 @@ Subsetting data using MOTU server
 </h3>
 
 The code below assumes that you have registered your account details
-using `option(CopernicusMarine_uid = "my_user_name")` and
-`option(CopernicusMarine_pwd = "my_password")`. If you are comfortable
+using `options(CopernicusMarine_uid = "my_user_name")` and
+`options(CopernicusMarine_pwd = "my_password")`. If you are comfortable
 that it is secure enough, you can also store these options in your
 `.Rprofile` such that they will be loaded each session. Otherwise, you
 can also provide your account details as arguments to the functions.
@@ -114,20 +115,20 @@ your product. First you can list files available for a specific product:
 ``` r
 cop_ftp_files <- copernicus_ftp_list("GLOBAL_ANALYSISFORECAST_PHY_001_024", "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m")
 cop_ftp_files
-#> # A tibble: 1,113 x 8
+#> # A tibble: 1,156 × 8
 #>    flags        len protocol       size month   day time  url                   
 #>    <chr>      <int> <chr>         <dbl> <chr> <int> <chr> <chr>                 
-#>  1 -rw-rw-r--     1 ftp      1937968861 Oct      14 2022  ftp://nrt.cmems-du.eu~
-#>  2 -rw-rw-r--     1 ftp      1937978851 Oct      14 2022  ftp://nrt.cmems-du.eu~
-#>  3 -rw-rw-r--     1 ftp      1937888467 Oct      14 2022  ftp://nrt.cmems-du.eu~
-#>  4 -rw-rw-r--     1 ftp      1938380754 Oct      14 2022  ftp://nrt.cmems-du.eu~
-#>  5 -rw-rw-r--     1 ftp      1938177028 Oct      14 2022  ftp://nrt.cmems-du.eu~
-#>  6 -rw-rw-r--     1 ftp      1938234339 Oct      14 2022  ftp://nrt.cmems-du.eu~
-#>  7 -rw-rw-r--     1 ftp      1938285902 Oct      14 2022  ftp://nrt.cmems-du.eu~
-#>  8 -rw-rw-r--     1 ftp      1937954892 Oct      14 2022  ftp://nrt.cmems-du.eu~
-#>  9 -rw-rw-r--     1 ftp      1937964478 Oct      14 2022  ftp://nrt.cmems-du.eu~
-#> 10 -rw-rw-r--     1 ftp      1937962443 Oct      14 2022  ftp://nrt.cmems-du.eu~
-#> # i 1,103 more rows
+#>  1 -rw-rw-r--     1 ftp      1937968861 Oct      14 2022  ftp://nrt.cmems-du.eu…
+#>  2 -rw-rw-r--     1 ftp      1937978851 Oct      14 2022  ftp://nrt.cmems-du.eu…
+#>  3 -rw-rw-r--     1 ftp      1937888467 Oct      14 2022  ftp://nrt.cmems-du.eu…
+#>  4 -rw-rw-r--     1 ftp      1938380754 Oct      14 2022  ftp://nrt.cmems-du.eu…
+#>  5 -rw-rw-r--     1 ftp      1938177028 Oct      14 2022  ftp://nrt.cmems-du.eu…
+#>  6 -rw-rw-r--     1 ftp      1938234339 Oct      14 2022  ftp://nrt.cmems-du.eu…
+#>  7 -rw-rw-r--     1 ftp      1938285902 Oct      14 2022  ftp://nrt.cmems-du.eu…
+#>  8 -rw-rw-r--     1 ftp      1937954892 Oct      14 2022  ftp://nrt.cmems-du.eu…
+#>  9 -rw-rw-r--     1 ftp      1937964478 Oct      14 2022  ftp://nrt.cmems-du.eu…
+#> 10 -rw-rw-r--     1 ftp      1937962443 Oct      14 2022  ftp://nrt.cmems-du.eu…
+#> # ℹ 1,146 more rows
 ```
 
 Downloading the first file can be done with
@@ -185,8 +186,8 @@ copernicus_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 
 ## Resources
 
--   [E.U. Copernicus Marine Service
-    Information](https://data.marine.copernicus.eu)
--   [Global Ocean Physics Analysis and Forecast -
-    GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14);
-    DOI:10.48670/moi-00016](https://doi.org/10.48670/moi-00016)
+- [E.U. Copernicus Marine Service
+  Information](https://data.marine.copernicus.eu)
+- [Global Ocean Physics Analysis and Forecast -
+  GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14);
+  DOI:10.48670/moi-00016](https://doi.org/10.48670/moi-00016)

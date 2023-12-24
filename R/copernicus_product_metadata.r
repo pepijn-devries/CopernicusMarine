@@ -18,13 +18,14 @@
 copernicus_product_metadata <- function(product) {
   meta_data <-
     .try_online({
-      sprintf("https://data-be-prd.marine.copernicus.eu/api/metadata/%s", product) %>%
-        httr::GET()
+      sprintf("https://data-be-prd.marine.copernicus.eu/api/metadata/%s", product) |>
+        httr2::request() |>
+        httr2::req_perform()
     }, "Copernicus")
   if (is.null(meta_data)) return(NULL)
   meta_data <-
-    meta_data %>%
-    httr::content() %>%
+    meta_data |>
+    httr2::resp_body_xml() |>
     xml2::as_list()
   return(meta_data)
 }

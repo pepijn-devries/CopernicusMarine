@@ -4,9 +4,9 @@
 #' This particular function uses the MOTU server for this purpose. You need to register an account
 #' at <https://data.marine.copernicus.eu> before you can use this function.
 #'
-#' @param username Your Copernicus marine user name. Can be provided as `option(CopernicusMarine_uid = "my_user_name")`,
+#' @param username Your Copernicus marine user name. Can be provided as `options(CopernicusMarine_uid = "my_user_name")`,
 #' or as argument here.
-#' @param password Your Copernicus marine password. Can be provided as `option(CopernicusMarine_pwd = "my_password")`,
+#' @param password Your Copernicus marine password. Can be provided as `options(CopernicusMarine_pwd = "my_password")`,
 #' or as argument here.
 #' @param destination File or path where the requested file will be downloaded to.
 #' @param product An identifier (type `character`) of the desired Copernicus marine product.
@@ -33,7 +33,7 @@
 #' \dontrun{
 #' destination <- tempfile("copernicus", fileext = ".nc")
 #'
-#' ## Assuming that Copernicus account details are provided as `option`
+#' ## Assuming that Copernicus account details are provided as `options`
 #' copernicus_download_motu(
 #'   destination   = destination,
 #'   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -56,15 +56,15 @@ copernicus_download_motu <- function(
     username = getOption("CopernicusMarine_uid", ""),
     password = getOption("CopernicusMarine_pwd", ""),
     destination, product, layer, variable, output, region, timerange, verticalrange, sub_variables, overwrite = FALSE) {
-  
   login <- copernicus_login(username, password)
   login_result <- attr(login, "response")
-    
+  cookies      <- attr(login, "cookies")
+
   if (!login) stop("Failed to log in. Are you sure you have provided valid credentials?")
 
   message(crayon::white("Preparing download..."))
  
-  product_services <- copernicus_product_services(product) %>% dplyr::filter(layer == {{layer}})
+  product_services <- copernicus_product_services(product) |> dplyr::filter(layer == {{layer}})
 
   if (nrow(product_services) == 0)
     stop("No services available, please check if you specified the 'product' and 'layer' name correctly, and whether the layer has a MOTU service.")
@@ -72,7 +72,7 @@ copernicus_download_motu <- function(
   if (!"motu" %in% names(product_services) || is.na(product_services$motu))
     return(invisible(FALSE))
   
-  product_services <- product_services %>% dplyr::pull("motu")
+  product_services <- product_services |> dplyr::pull("motu")
   
   if (missing(timerange)) timerange <- NULL else timerange <- format(as.POSIXct(timerange), "%Y-%m-%d+%H%%3A%M%%3A%S")
   prepare_url <-
@@ -84,26 +84,23 @@ copernicus_download_motu <- function(
       if (is.null(timerange))     NULL else sprintf("t_lo=%s&t_hi=%s", timerange[1], timerange[2]),
       if (missing(verticalrange)) NULL else sprintf("z_lo=%s&z_hi=%s", verticalrange[1], verticalrange[2]),
       if (missing(sub_variables)) NULL else paste0(sprintf("variable=%s", sub_variables), collapse = "&")
-    ) %>%
+    ) |>
     paste0(collapse = "&")
 
   result <-
     .try_online({
-      prepare_url %>%
-        httr::GET(
-          ## Make sure to pass on cookies obtained earlier with account details:
-          do.call(
-            httr::set_cookies,
-            as.list(structure(login_result$cookies$value, names = login_result$cookies$name))
-          )
-        )}, "Copernicus")
+      prepare_url |>
+        httr2::request() |>
+        httr2::req_cookie_preserve(cookies) |> ## Preserve cookies obtained earlier with account details
+        httr2::req_perform()
+        }, "Copernicus")
   if (is.null(result)) return(invisible(FALSE))
   
-  if (result$headers$`content-type` %>% startsWith("text/html")) {
+  if (result$headers$`content-type` |> startsWith("text/html")) {
     errors <-
-      result %>%
-      httr::content() %>%
-      rvest::html_element(xpath = "//p[@class='error']") %>%
+      result |>
+      httr2::resp_body_html() |>
+      rvest::html_element(xpath = "//p[@class='error']") |>
       rvest::html_text()
     if (!is.na(errors)) {
       message(errors)
@@ -112,22 +109,19 @@ copernicus_download_motu <- function(
     message(crayon::white("Downloading file..."))
     
     download_url <-
-      result %>%
-      httr::content() %>%
-      rvest::html_element(xpath = "//form[@name='dlform']") %>%
+      result |>
+      httr2::resp_body_html() |>
+      rvest::html_element(xpath = "//form[@name='dlform']") |>
       rvest::html_attr("action")
     if (dir.exists(destination))
       destination <- file.path(destination, basename(download_url))
+    if (!overwrite & file.exists(destination))
+      stop("Destination file already exists. Set 'overwrite' to TRUE to proceed.")
     download_result <- .try_online({
-      download_url %>%
-        httr::GET(
-          httr::write_disk(destination, overwrite = overwrite),
-          ## Make sure to pass on cookies obtained earlier with account details:
-          do.call(
-            httr::set_cookies,
-            as.list(structure(login_result$cookies$value, names = login_result$cookies$name))
-          )
-        )
+      download_url |>
+        httr2::request() |>
+        httr2::req_cookie_preserve(cookies) |>
+        httr2::req_perform(destination)
       }, "Copernicus")
     
     if (is.null(download_result)) return(invisible(FALSE))

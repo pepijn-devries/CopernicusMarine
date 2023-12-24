@@ -1,7 +1,7 @@
 Package: CopernicusMarine
 Type: Package
 Title: Search Download and Handle Data from Copernicus Marine Service Information
-Version: 0.1.2
+Version: 0.1.3
 Date: 2023-11-09
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre", "dtc"),
     email = "pepijn.devries@outlook.com",
@@ -14,12 +14,11 @@ Description: Subset and download data from EU Copernicus Marine
     Import data on the oceans physical and biogeochemical state
     from Copernicus into R without the need of external software.
 Depends:
-    R (>= 3.5.0)
+    R (>= 4.1.0)
 Imports:
     crayon,
     dplyr,
-    httr,
-    jsonlite,
+    httr2,
     leaflet,
     purrr,
     readr,

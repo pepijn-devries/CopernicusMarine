@@ -24,17 +24,17 @@ copernicus_product_details <- function(product, layer, variable) {
   if (missing(layer) && !missing(variable)) stop("Variable specified without layer.")
   if (missing(product)) product <- ""
   result <- .try_online({
-    sprintf("https://data-be-prd.marine.copernicus.eu/api/dataset/%s?variant=detailed-v2", product) %>%
-      httr::GET()
-  }, "Copernicus") 
+    sprintf("https://data-be-prd.marine.copernicus.eu/api/dataset/%s?variant=detailed-v2", product) |>
+      httr2::request() |>
+      httr2::req_perform()
+  }, "Copernicus")
   if (is.null(result)) return(NULL)
   
   result <-
-    result %>%
-    httr::content("text") %>%
-    jsonlite::fromJSON()
+    result |>
+    httr2::resp_body_json()
   if (!missing(layer)) {
-    result <- result$layers[names(result$layers) %>% startsWith(paste0(layer, "/"))]
+    result <- result$layers[names(result$layers) |> startsWith(paste0(layer, "/"))]
   }
   if (!missing(variable)) {
     result <- result[[paste0(c(layer, variable), collapse = "/")]]
@@ -60,7 +60,7 @@ copernicus_product_details <- function(product, layer, variable) {
 #' @export
 copernicus_product_services <- function(product) {
   services <- copernicus_product_details(product)
-  services <- services$services %>% purrr::map_dfr(dplyr::as_tibble) %>%
+  services <- services$services |> purrr::map_dfr(dplyr::as_tibble) |>
     dplyr::mutate(layer = {
       nms <- names(services$services)
       nms[nms != ""] })

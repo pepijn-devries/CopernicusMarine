@@ -1,3 +1,10 @@
+CopernicusMarine v0.1.3 (Release date: 2023-12-24)
+-------------
+
+ * Added login function
+ * Switched from `httr` to `httr2` dependency
+ * Switch from `magrittr`'s pipe to R's native pipe operator
+
 CopernicusMarine v0.1.1 (Release date: 2023-11-09)
 -------------
 

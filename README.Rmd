@@ -33,7 +33,7 @@ retrieval of information from <https://data.marine.copernicus.eu>. With the pack
 Previously, there was only a MOTU client available for Python. Therefore, automating Copernicus downloads in R
 used to require installation of python and its [motuclient](https://pypi.org/project/motuclient/) package. The
 `{CopernicusMarine}` R package has a much simpler installation procedure (see below) and does not depend on
-third party software.
+third party software, other than packages available from [CRAN](https://cran.r-project.org/).
 
 ## Installation
 
@@ -61,8 +61,8 @@ Please check the manual for complete documentation of the package.
 
 <h3 id="sec-motu">Subsetting data using MOTU server</h3>
 
-The code below assumes that you have registered your account details using `option(CopernicusMarine_uid = "my_user_name")` and
-`option(CopernicusMarine_pwd = "my_password")`. If you are comfortable that it is secure enough, you can also store these
+The code below assumes that you have registered your account details using `options(CopernicusMarine_uid = "my_user_name")` and
+`options(CopernicusMarine_pwd = "my_password")`. If you are comfortable that it is secure enough, you can also store these
 options in your `.Rprofile` such that they will be loaded each session. Otherwise, you can also provide your account details
 as arguments to the functions.
 

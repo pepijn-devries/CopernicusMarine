@@ -10,10 +10,10 @@ copernicus_login(
 )
 }
 \arguments{
-\item{username}{Your Copernicus marine user name. Can be provided as \code{option(CopernicusMarine_uid = "my_user_name")},
+\item{username}{Your Copernicus marine user name. Can be provided as \code{options(CopernicusMarine_uid = "my_user_name")},
 or as argument here.}
 
-\item{password}{Your Copernicus marine password. Can be provided as \code{option(CopernicusMarine_pwd = "my_password")},
+\item{password}{Your Copernicus marine password. Can be provided as \code{options(CopernicusMarine_pwd = "my_password")},
 or as argument here.}
 }
 \value{
@@ -29,7 +29,7 @@ It can be used to test your account details.
 }
 \examples{
 \dontrun{
-## This will return FALSE if you have not set your account details with 'option'.
+## This will return FALSE if you have not set your account details with 'options'.
 ## If you have specified your account details and there are no other problems,
 ## it will return TRUE.
 copernicus_login()

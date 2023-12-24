@@ -42,9 +42,9 @@ WMS functions don't work on systems that don't support GDAL utils
 \examples{
 \donttest{
 if (interactive()) {
-  leaflet::leaflet() \%>\%
-    leaflet::setView(lng = 3, lat = 54, zoom = 4) \%>\%
-    leaflet::addProviderTiles("Esri.WorldImagery") \%>\%
+  leaflet::leaflet() |>
+    leaflet::setView(lng = 3, lat = 54, zoom = 4) |>
+    leaflet::addProviderTiles("Esri.WorldImagery") |>
     addCopernicusWMSTiles(
       product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
       layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
