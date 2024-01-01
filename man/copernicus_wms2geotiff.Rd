@@ -36,8 +36,9 @@ Should be in the order of: xmin, ymin, xmax, ymax.}
 Stores the file as \code{destination} and returns invisible \code{NULL}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Extract and store imagery from a Copernicus WMS
-as a geo-referenced TIFF.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} This function interacts with deprecated Copernicus Marine
+Services. It will become \code{\link[=.Defunct]{.Defunct()}} in future versions. Extract and store imagery from a
+Copernicus WMS as a geo-referenced TIFF.
 }
 \details{
 A Web Map Service (WMS) cannot be plotted directly (base, ggplot2 and/or lattice).
@@ -49,7 +50,7 @@ WMS map as a geo-referenced TIFF file.
 WMS functions don't work on systems that don't support GDAL utils
 }
 \examples{
-\donttest{
+\dontrun{
 destination <- tempfile("wms", fileext = ".tiff")
 copernicus_wms2geotiff(
   product     = "GLOBAL_ANALYSISFORECAST_PHY_001_024",

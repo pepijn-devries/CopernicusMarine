@@ -29,11 +29,11 @@ Can be obtained with \code{\link{copernicus_products_list}}.}
 
 \item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{copernicus_product_details}}.}
 
-\item{username}{Your Copernicus marine user name. Can be provided as \code{options(CopernicusMarine_uid = "my_user_name")},
-or as argument here.}
+\item{username}{Your Copernicus marine user name. Can be provided as
+\code{options(CopernicusMarine_uid = "my_user_name")}, or as argument here.}
 
-\item{password}{Your Copernicus marine password. Can be provided as \code{options(CopernicusMarine_pwd = "my_password")},
-or as argument here.}
+\item{password}{Your Copernicus marine password. Can be provided as
+\code{options(CopernicusMarine_pwd = "my_password")}, or as argument here.}
 
 \item{recursive}{A \code{logical} value. When \code{TRUE} all nested files will be listed.}
 
@@ -58,7 +58,7 @@ In case of \code{copernicus_ftp_get} an invisible \code{logical} value is return
 the requested file is successfully stored at the \code{destination} path.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Full marine data sets can be downloaded using the
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Full marine data sets can be downloaded using the
 File Transfer Protocol (FTP). Use these functions to list download locations and get
 the files.
 }

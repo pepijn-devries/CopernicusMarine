@@ -32,7 +32,7 @@ Can be obtained with \code{\link{copernicus_product_details}}.}
 Returns an updated \code{map}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Create an interactive map with
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Create an interactive map with
 \code{leaflet::leaflet()} and add layers of Copernicus marine WMS data
 to it.
 }
@@ -40,7 +40,7 @@ to it.
 WMS functions don't work on systems that don't support GDAL utils
 }
 \examples{
-\donttest{
+\dontrun{
 if (interactive()) {
   leaflet::leaflet() |>
     leaflet::setView(lng = 3, lat = 54, zoom = 4) |>

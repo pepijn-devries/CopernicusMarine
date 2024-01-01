@@ -15,11 +15,11 @@ Returns a \code{tibble} with a list of available services for a
 Copernicus marine product
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Obtain an overview of services provided by Copernicus
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Obtain an overview of services provided by Copernicus
 for a specific marine product.
 }
 \examples{
-\donttest{
+\dontrun{
 copernicus_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 }
 }

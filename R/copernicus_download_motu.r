@@ -1,13 +1,10 @@
 #' Subset and download a specific marine product from Copernicus
 #'
-#' `r lifecycle::badge('stable')` Subset and download a specific marine product from Copernicus.
-#' This particular function uses the MOTU server for this purpose. You need to register an account
-#' at <https://data.marine.copernicus.eu> before you can use this function.
+#' `r lifecycle::badge('deprecated')` The MOTU servers will be discontinued by Copernicus Marine Services. Use [`cms_download_subset()`]
+#' instead to download subsets.
 #'
-#' @param username Your Copernicus marine user name. Can be provided as `options(CopernicusMarine_uid = "my_user_name")`,
-#' or as argument here.
-#' @param password Your Copernicus marine password. Can be provided as `options(CopernicusMarine_pwd = "my_password")`,
-#' or as argument here.
+#' @include cms_login.r
+#' @inheritParams cms_login
 #' @param destination File or path where the requested file will be downloaded to.
 #' @param product An identifier (type `character`) of the desired Copernicus marine product.
 #' Can be obtained with [`copernicus_products_list`].
@@ -25,7 +22,7 @@
 #' @param overwrite A `logical` value. When `FALSE` (default), files at the `destination` won't be
 #' overwritten when the exist. Instead an error will be thrown if this is the case. When set to
 #' `TRUE`, existing files will be overwritten.
-#' @return Returns a `logical` value invisibly indicating whether the requested file was
+#' @returns Returns a `logical` value invisibly indicating whether the requested file was
 #' successfully stored at the `destination`.
 #' @rdname copernicus_download_motu
 #' @name copernicus_download_motu
@@ -56,6 +53,8 @@ copernicus_download_motu <- function(
     username = getOption("CopernicusMarine_uid", ""),
     password = getOption("CopernicusMarine_pwd", ""),
     destination, product, layer, variable, output, region, timerange, verticalrange, sub_variables, overwrite = FALSE) {
+  .Deprecated("cms_download_subset")
+  
   login <- copernicus_login(username, password)
   login_result <- attr(login, "response")
   cookies      <- attr(login, "cookies")
