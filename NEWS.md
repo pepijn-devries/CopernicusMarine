@@ -1,6 +1,9 @@
-CopernicusMarine v0.1.3 (Release date: 2023-12-24)
+CopernicusMarine v0.2.0 (Release date: 2024-01-01)
 -------------
 
+ * Added functions for new services (subset, STAC and WMTS)
+ * Added warnings to functions interacting with
+   deprecated Copernicus Marine services.
  * Added login function
  * Switched from `httr` to `httr2` dependency
  * Switch from `magrittr`'s pipe to R's native pipe operator

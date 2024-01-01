@@ -19,14 +19,14 @@ Can be obtained with \code{\link{copernicus_product_details}}.}
 Returns a \code{tibble} with WMS URLs and descriptors for the specified product.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Web Map Services are not available for all
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Web Map Services are not available for all
 products and layers. Use this function to obtain URLs of WMS services if any.
 }
 \note{
 WMS functions don't work on systems that don't support GDAL utils
 }
 \examples{
-\donttest{
+\dontrun{
 copernicus_wms_details(
   product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
   layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",

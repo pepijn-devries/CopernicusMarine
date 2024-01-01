@@ -7,7 +7,7 @@ has_account_details <- function() {
 has_gdal_utils <- function() {
   result <- tryCatch({
     cp <-
-      copernicus_wms_details(
+      cms_wmts_details(
         product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
         layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
         variable = "thetao"
