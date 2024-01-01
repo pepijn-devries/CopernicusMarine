@@ -1,6 +1,8 @@
 #' Obtain meta data for a specific Copernicus marine product
 #'
-#' `r lifecycle::badge('stable')` Collect meta information, such as vocabularies used,
+#' `r lifecycle::badge('deprecated')` Deprecated. Use [`cms_product_metadata()`] instead.
+#' 
+#' Collect meta information, such as vocabularies used,
 #' for specific Copernicus marine products
 #'
 #' @inheritParams copernicus_download_motu
@@ -10,22 +12,12 @@
 #' @name copernicus_product_metadata
 #' @family product-functions
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' copernicus_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 #' }
 #' @author Pepijn de Vries
 #' @export
 copernicus_product_metadata <- function(product) {
-  meta_data <-
-    .try_online({
-      sprintf("https://data-be-prd.marine.copernicus.eu/api/metadata/%s", product) |>
-        httr2::request() |>
-        httr2::req_perform()
-    }, "Copernicus")
-  if (is.null(meta_data)) return(NULL)
-  meta_data <-
-    meta_data |>
-    httr2::resp_body_xml() |>
-    xml2::as_list()
-  return(meta_data)
+  .Deprecated("cms_product_metadata")
+  cms_product_metadata(product)
 }

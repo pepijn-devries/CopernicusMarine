@@ -15,16 +15,24 @@ Returns a named \code{list} with info about the requested \code{product}. Return
 when contacting Copernicus fails.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Collect meta information, such as vocabularies used,
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Deprecated. Use \code{\link[=cms_product_metadata]{cms_product_metadata()}} instead.
+}
+\details{
+Collect meta information, such as vocabularies used,
 for specific Copernicus marine products
 }
 \examples{
-\donttest{
+\dontrun{
 copernicus_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 }
 }
 \seealso{
 Other product-functions: 
+\code{\link{cms_cite_product}()},
+\code{\link{cms_product_details}()},
+\code{\link{cms_product_metadata}()},
+\code{\link{cms_product_services}()},
+\code{\link{cms_products_list}()},
 \code{\link{copernicus_cite_product}()},
 \code{\link{copernicus_product_details}()},
 \code{\link{copernicus_products_list}()}

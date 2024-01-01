@@ -1,6 +1,6 @@
 #' List and get FTP files for a Copernicus marine product
 #'
-#' `r lifecycle::badge('stable')` Full marine data sets can be downloaded using the
+#' `r lifecycle::badge('deprecated')` Full marine data sets can be downloaded using the
 #' File Transfer Protocol (FTP). Use these functions to list download locations and get
 #' the files.
 #'
@@ -37,6 +37,7 @@ copernicus_ftp_list <- function(
     password  = getOption("CopernicusMarine_pwd", ""),
     recursive = TRUE,
     subdir    = NULL) {
+  .Deprecated("cms_list_stac_files")
   name <- NULL # workaround for 'no visible binding global for global variable'
   dirlist <- function(url){
     dir_result <-
@@ -96,6 +97,7 @@ copernicus_ftp_get <- function(
     url, destination, show_progress = TRUE, overwrite = FALSE,
     username = getOption("CopernicusMarine_uid", ""),
     password = getOption("CopernicusMarine_pwd", "")) {
+  .Deprecated("cms_download_stac")
   if (!dir.exists(destination)) stop("'destination' either doesn't exist or is not a directory!")
   destination <- file.path(destination, basename(url))
 

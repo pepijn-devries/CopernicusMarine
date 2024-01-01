@@ -1,12 +1,12 @@
 #' Contact Copernicus Marine login page
 #' 
-#' Contact Copernicus Marine login page and check if login is successful.
+#' `r lifecycle::badge('deprecated')` This login method is only used by the
+#' download methods that are deprecated by Copernicus Marine Services. Use
+#' [`cms_login()`] instead.
 #' 
-#' This function will return a logical value indicating if the login is successful.
-#' It can be used to test your account details.
-#' 
-#' @inheritParams copernicus_download_motu
-#' @return Returns a `logical` value indicating if the login is successful.
+#' @include cms_login.r
+#' @inheritParams cms_login
+#' @returns Returns a `logical` value indicating if the login is successful.
 #' The response from the login page is returned as an attribute named `response`.
 #' @author Pepijn de Vries
 #' @examples
@@ -16,6 +16,8 @@
 #' ## it will return TRUE.
 #' copernicus_login()
 #' }
+#' @name copernicus_login
+#' @rdname copernicus_login
 #' @export
 copernicus_login <- function(
     username = getOption("CopernicusMarine_uid", ""),
