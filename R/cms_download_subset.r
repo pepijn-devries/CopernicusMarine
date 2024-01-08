@@ -58,6 +58,8 @@ cms_download_subset <- function(
     verticalrange,
     overwrite = FALSE) {
 
+  if (dir.exists(destination))
+    stop("Destination should be a filename not a path")
   if (!overwrite & file.exists(destination))
     stop("Destination file already exists. Set 'overwrite' to TRUE to proceed.")
   
@@ -74,15 +76,11 @@ cms_download_subset <- function(
     variable[var_check2]
   ) |> unique()
 
-  payload <- c("lonMin", "latMin", "lonMax", "latMax", "timeMin", "timeMax",
-               "elevationMin", "elevationMax", "extraVariableIds")
   payload <- list(
     datasetId    = product,
     subdatasetId = layer,
-    variableIds  = variable,
-    subsetValues = structure(purrr::map(seq_along(payload),
-                                        ~structure(list(), names = character(0))),
-                             names = payload))
+    variableIds  = variable)
+  
   payload[["subsetValues"]][["extraVariableIds"]] <- variable
   
   if (!missing(region)) {
@@ -128,6 +126,11 @@ cms_download_subset <- function(
     
     if (job_check$finished) break
     Sys.sleep(0.5)
+  }
+
+  if (is.null(job_check$url)) {
+    message(job_check$`_errorDescription`)
+    return(invisible(FALSE))
   }
   
   message(crayon::white("Downloading file..."))
