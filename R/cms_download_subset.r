@@ -76,29 +76,30 @@ cms_download_subset <- function(
     variable[var_check2]
   ) |> unique()
 
+  scalar <- function(x) structure(x, class = "scalar")
   payload <- list(
-    datasetId    = product,
-    subdatasetId = layer,
+    datasetId    = scalar(product),
+    subdatasetId = scalar(layer),
     variableIds  = variable)
   
   payload[["subsetValues"]][["extraVariableIds"]] <- variable
   
   if (!missing(region)) {
-    payload[["subsetValues"]][["lonMin"]] <- region[[1]]
-    payload[["subsetValues"]][["latMin"]] <- region[[2]]
-    payload[["subsetValues"]][["lonMax"]] <- region[[3]]
-    payload[["subsetValues"]][["latMax"]] <- region[[4]]
+    payload[["subsetValues"]][["lonMin"]] <- scalar(region[[1]])
+    payload[["subsetValues"]][["latMin"]] <- scalar(region[[2]])
+    payload[["subsetValues"]][["lonMax"]] <- scalar(region[[3]])
+    payload[["subsetValues"]][["latMax"]] <- scalar(region[[4]])
   }
   if (!missing(timerange)) {
     timerange <- timerange |>
       as.POSIXct(tz = "UTC") |>
       as.numeric(origin = "1970-01-01 UTC")*1000
-    payload[["subsetValues"]][["timeMin"]] <- timerange[[1]]
-    payload[["subsetValues"]][["timeMax"]] <- timerange[[2]]
+    payload[["subsetValues"]][["timeMin"]] <- scalar(timerange[[1]])
+    payload[["subsetValues"]][["timeMax"]] <- scalar(timerange[[2]])
   }
   if (!missing(verticalrange)) {
-    payload[["subsetValues"]][["elevationMin"]] <- verticalrange[[1]]
-    payload[["subsetValues"]][["elevationMax"]] <- verticalrange[[2]]
+    payload[["subsetValues"]][["elevationMin"]] <- scalar(verticalrange[[1]])
+    payload[["subsetValues"]][["elevationMax"]] <- scalar(verticalrange[[2]])
   }
   
   job <-
@@ -106,7 +107,7 @@ cms_download_subset <- function(
       base_url |>
         httr2::request() |>
         httr2::req_auth_basic(username, password) |>
-        httr2::req_body_json(payload) |>
+        httr2::req_body_json(payload, auto_unbox = FALSE) |>
         httr2::req_perform()
     }, "subset-job")
   if (is.null(job)) return(invisible(FALSE))
