@@ -1,3 +1,8 @@
+CopernicusMarine v0.2.1 (Release date: 2024-01-08)
+-------------
+
+ * Some fixes in the subset download routine
+
 CopernicusMarine v0.2.0 (Release date: 2024-01-01)
 -------------
 
