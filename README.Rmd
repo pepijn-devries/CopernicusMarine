@@ -82,7 +82,7 @@ cms_download_subset(
   variable      = "sea_water_velocity",
   region        = c(-1, 50, 10, 55),
   timerange     = c("2021-01-01", "2021-01-02"),
-  verticalrange = c(0, 2)
+  verticalrange = c(0, -2)
 )
 
 mydata <- stars::read_stars(destination)

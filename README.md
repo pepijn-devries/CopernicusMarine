@@ -87,7 +87,7 @@ cms_download_subset(
   variable      = "sea_water_velocity",
   region        = c(-1, 50, 10, 55),
   timerange     = c("2021-01-01", "2021-01-02"),
-  verticalrange = c(0, 2)
+  verticalrange = c(0, -2)
 )
 #> Preparing job...
 #> Waiting for job to finish...
@@ -117,7 +117,7 @@ stac_files <-
     "GLOBAL_ANALYSISFORECAST_PHY_001_024",
     "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m")
 stac_files
-#> # A tibble: 1,165 × 8
+#> # A tibble: 1,190 × 8
 #>    home          native current_path LastModified ETag  Size  StorageClass Type 
 #>    <chr>         <chr>  <chr>        <chr>        <chr> <chr> <chr>        <chr>
 #>  1 s3.waw3-1.cl… mdl-n… native/GLOB… 2023-11-17T… "\"3… 1937… STANDARD     Norm…
@@ -130,7 +130,7 @@ stac_files
 #>  8 s3.waw3-1.cl… mdl-n… native/GLOB… 2023-11-17T… "\"6… 1937… STANDARD     Norm…
 #>  9 s3.waw3-1.cl… mdl-n… native/GLOB… 2023-11-17T… "\"5… 1937… STANDARD     Norm…
 #> 10 s3.waw3-1.cl… mdl-n… native/GLOB… 2023-11-17T… "\"6… 1937… STANDARD     Norm…
-#> # ℹ 1,155 more rows
+#> # ℹ 1,180 more rows
 ```
 
 Downloading the first file can be done with

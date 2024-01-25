@@ -17,7 +17,8 @@
 #' @param timerange A `vector` with two elements (lower and upper value)
 #' for a requested time range. The `vector` should be coercible to `POSIXct`.
 #' @param verticalrange A `vector` with two elements (minimum and maximum)
-#' numerical values for the depth of the vertical layers (if any).
+#' numerical values for the depth of the vertical layers (if any). Note that values below the
+#' sea surface needs to be specified as negative values.
 #' @param overwrite A `logical` value. When `FALSE` (default), files at the `destination` won't be
 #' overwritten when the exist. Instead an error will be thrown if this is the case. When set to
 #' `TRUE`, existing files will be overwritten.
@@ -37,7 +38,7 @@
 #'   variable      = "sea_water_velocity",
 #'   region        = c(-1, 50, 10, 55),
 #'   timerange     = c("2021-01-01 UTC", "2021-01-02 UTC"),
-#'   verticalrange = c(0, 2)
+#'   verticalrange = c(0, -2)
 #' )
 #' 
 #' mydata <- stars::read_stars(destination)
