@@ -46,10 +46,10 @@ cms_wmts_details <- function(product, layer, variable) {
       "WMTS:https://wmts.marine.copernicus.eu/teroWmts/%s?request=GetCapabilities" |>
         sprintf(product),
       quiet = TRUE)
-  desc <- copwmtsinfo |> stringr::str_match_all("SUBDATASET_(\\d)_DESC=(.*?)\n")
+  desc <- copwmtsinfo |> stringr::str_match_all("SUBDATASET_(\\d+)_DESC=(.*?)\n")
   if (length(desc) == 0) return(dplyr::tibble(desc = character(0), url = character(0)))
   desc <- desc[[1]][,3]
-  url  <- copwmtsinfo |> stringr::str_match_all("SUBDATASET_(\\d)_NAME=(.*?)\n")
+  url  <- copwmtsinfo |> stringr::str_match_all("SUBDATASET_(\\d+)_NAME=(.*?)\n")
   url  <- url[[1]][,3]
   result <- dplyr::bind_cols(desc = desc, url = url)
   
@@ -73,7 +73,14 @@ addCmsWMTSTiles <- function(
   
   detail <- cms_wmts_details(product, layer, variable)
   detail <- detail$url |> strsplit(",") |> unlist()
-  detail <- detail[startsWith(detail, "layer=")]
+  detail <- detail[startsWith(detail, "layer=")] |> unique()
+  if (length(detail) == 0) rlang::abort(
+    c(x = "Could not find a WMTS URL",
+      i = "Check your parameter settings"))
+  if (length(detail) > 1) rlang::abort(
+    c(x = "Found ambiguous WMTS URLs",
+      i = "Check your parameter settings"))
+  
   leaflet::addTiles(
     map = map,
     urlTemplate =

@@ -1,3 +1,8 @@
+CopernicusMarine v0.2.3.001 (Release date: 2024-02-26)
+-------------
+
+ * Fix in `addCmsWMTSTiles`
+
 CopernicusMarine v0.2.3 (Release date: 2024-01-25)
 -------------
 
