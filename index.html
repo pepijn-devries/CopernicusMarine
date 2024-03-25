@@ -39,7 +39,7 @@
     
     <a class="navbar-brand me-2" href="index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.3.001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -176,9 +176,9 @@ Copernicus Web Map Tile Services (WMTS)
 </h3>
 <p>Web Map Tile Services (WMTS) allow to quickly plot pre-rendered images onto a map. This may not be useful when you need the data for analyses but is handy for quick visualisations, inspection or presentation of data. In R it is very easy to add WMTS layers to an interactive map using <a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a> widgets. This is demonstrated with the example below (note that in the documentation the map is only shown statically and is not interactive).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leaflet</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-methods.html" class="external-link">setView</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="fl">3</span>, lat <span class="op">=</span> <span class="fl">54</span>, zoom <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addProviderTiles.html" class="external-link">addProviderTiles</a></span><span class="op">(</span><span class="st">"Esri.WorldImagery"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<code class="sourceCode R"><span><span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/leaflet.html" class="external-link">leaflet</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-methods.html" class="external-link">setView</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="fl">3</span>, lat <span class="op">=</span> <span class="fl">54</span>, zoom <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/addProviderTiles.html" class="external-link">addProviderTiles</a></span><span class="op">(</span><span class="st">"Esri.WorldImagery"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/cms_wmts.html">addCmsWMTSTiles</a></span><span class="op">(</span></span>
 <span>    product     <span class="op">=</span> <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span>
 <span>    layer       <span class="op">=</span> <span class="st">"cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m"</span>,</span>

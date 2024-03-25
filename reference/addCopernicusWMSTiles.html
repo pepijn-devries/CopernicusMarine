@@ -14,7 +14,7 @@ to it."><meta property="og:image" content="https://pepijn-devries.github.io/Cope
     
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.3.001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,7 @@ to it."><meta property="og:image" content="https://pepijn-devries.github.io/Cope
 
     <div class="ref-description section level2">
     <p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a> Create an interactive map with
-<code><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leaflet::leaflet()</a></code> and add layers of Copernicus marine WMS data
+<code><a href="https://rstudio.github.io/leaflet/reference/leaflet.html" class="external-link">leaflet::leaflet()</a></code> and add layers of Copernicus marine WMS data
 to it.</p>
     </div>
 
@@ -62,7 +62,7 @@ to it.</p>
 <span>  <span class="va">product</span>,</span>
 <span>  <span class="va">layer</span>,</span>
 <span>  <span class="va">variable</span>,</span>
-<span>  options <span class="op">=</span> <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-options.html" class="external-link">WMSTileOptions</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"image/png"</span>, transparent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  options <span class="op">=</span> <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-options.html" class="external-link">WMSTileOptions</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"image/png"</span>, transparent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -70,7 +70,7 @@ to it.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>map</dt>
-<dd><p>A map widget object created from <code><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leaflet::leaflet()</a></code></p></dd>
+<dd><p>A map widget object created from <code><a href="https://rstudio.github.io/leaflet/reference/leaflet.html" class="external-link">leaflet::leaflet()</a></code></p></dd>
 
 
 <dt>product</dt>
@@ -88,11 +88,11 @@ Can be obtained with <code><a href="copernicus_product_details.html">copernicus_
 
 
 <dt>options</dt>
-<dd><p>Passed on to <code><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html" class="external-link">leaflet::addWMSTiles()</a></code>.</p></dd>
+<dd><p>Passed on to <code><a href="https://rstudio.github.io/leaflet/reference/map-layers.html" class="external-link">leaflet::addWMSTiles()</a></code>.</p></dd>
 
 
 <dt>...</dt>
-<dd><p>Passed on to <code><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html" class="external-link">leaflet::addWMSTiles()</a></code>.</p></dd>
+<dd><p>Passed on to <code><a href="https://rstudio.github.io/leaflet/reference/map-layers.html" class="external-link">leaflet::addWMSTiles()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -122,9 +122,9 @@ Can be obtained with <code><a href="copernicus_product_details.html">copernicus_
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leaflet</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>    <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-methods.html" class="external-link">setView</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="fl">3</span>, lat <span class="op">=</span> <span class="fl">54</span>, zoom <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>    <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addProviderTiles.html" class="external-link">addProviderTiles</a></span><span class="op">(</span><span class="st">"Esri.WorldImagery"</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/leaflet.html" class="external-link">leaflet</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-methods.html" class="external-link">setView</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="fl">3</span>, lat <span class="op">=</span> <span class="fl">54</span>, zoom <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/addProviderTiles.html" class="external-link">addProviderTiles</a></span><span class="op">(</span><span class="st">"Esri.WorldImagery"</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>    <span class="fu">addCopernicusWMSTiles</span><span class="op">(</span></span></span>
 <span class="r-in"><span>      product  <span class="op">=</span> <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span></span>
 <span class="r-in"><span>      layer    <span class="op">=</span> <span class="st">"cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m"</span>,</span></span>

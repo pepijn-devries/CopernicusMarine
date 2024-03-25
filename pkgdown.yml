@@ -1,8 +1,8 @@
-pandoc: 2.19.2
+pandoc: 3.1.11
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-01-29T22:14Z
+last_built: 2024-03-25T23:22Z
 urls:
   reference: https://pepijn-devries.github.io/CopernicusMarine/reference
   article: https://pepijn-devries.github.io/CopernicusMarine/articles
