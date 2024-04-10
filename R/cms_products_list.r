@@ -89,4 +89,5 @@ cms_products_list <- function(..., info_type = c("list", "meta")) {
   offset        = 0,
   size          = 1000,
   variant       = "summary",
-  includeOmis   = TRUE)
+  includeOmis   = TRUE,
+  `__myOcean__` = TRUE)
