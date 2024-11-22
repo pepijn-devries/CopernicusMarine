@@ -1,84 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/404.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/index.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/CopernicusMarine-package.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/addCopernicusWMSTiles.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_cite_product.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_login.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_product_details.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_product_metadata.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_product_services.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_products_list.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_stac.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_wmts.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/copernicus_cite_product.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/copernicus_download_motu.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/copernicus_ftp.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/copernicus_login.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/copernicus_product_details.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/copernicus_product_metadata.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/copernicus_product_services.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/copernicus_products_list.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/copernicus_wms2geotiff.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/copernicus_wms_details.html</loc>
-  </url>
-  <url>
-    <loc>https://pepijn-devries.github.io/CopernicusMarine/reference/index.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/404.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/LICENSE.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/authors.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/index.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/news/index.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/reference/CopernicusMarine-package.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_cite_product.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_login.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_product_details.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_product_metadata.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_product_services.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_products_list.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_stac.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/reference/cms_wmts.html</loc></url>
+<url><loc>https://pepijn-devries.github.io/CopernicusMarine/reference/index.html</loc></url>
 </urlset>
+
