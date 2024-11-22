@@ -11,7 +11,7 @@
 #' Can be obtained with [`cms_products_list`].
 #' @param layer The name of a desired layer within a product (type `character`). Can be obtained with [`cms_product_details`].
 #' @param variable The name of a desired variable in a specific layer of a product (type `character`).
-#' Can be obtained with [`copernicus_product_details`].
+#' Can be obtained with [`cms_product_details`].
 #' @param region Specification of the bounding box as a `vector` of `numeric`s WGS84 lat and lon coordinates.
 #' Should be in the order of: xmin, ymin, xmax, ymax.
 #' @param timerange A `vector` with two elements (lower and upper value)

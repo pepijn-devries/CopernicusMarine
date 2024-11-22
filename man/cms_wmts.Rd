@@ -27,7 +27,7 @@ Can be obtained with \code{\link{cms_products_list}}.}
 \item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{cms_product_details}}.}
 
 \item{variable}{The name of a desired variable in a specific layer of a product (type \code{character}).
-Can be obtained with \code{\link{copernicus_product_details}}.}
+Can be obtained with \code{\link{cms_product_details}}.}
 
 \item{map}{A map widget object created from \code{\link[leaflet:leaflet]{leaflet::leaflet()}}}
 
@@ -48,7 +48,7 @@ as \code{"list"} (default) or \code{"xml"} (\code{\link[xml2:xml_new_document]{x
 of \code{type}. \code{AddCmsWMTSTiles} returns a \code{leaflet} \code{map} updated with the requested tiles.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Functions for retrieving Web Map Tile Services infromation for
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Functions for retrieving Web Map Tile Services information for
 specific products, layers and variables and add them to a \code{leaflet} map.
 }
 \examples{
