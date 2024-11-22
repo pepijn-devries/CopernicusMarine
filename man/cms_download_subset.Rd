@@ -32,7 +32,7 @@ Can be obtained with \code{\link{cms_products_list}}.}
 \item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{cms_product_details}}.}
 
 \item{variable}{The name of a desired variable in a specific layer of a product (type \code{character}).
-Can be obtained with \code{\link{copernicus_product_details}}.}
+Can be obtained with \code{\link{cms_product_details}}.}
 
 \item{region}{Specification of the bounding box as a \code{vector} of \code{numeric}s WGS84 lat and lon coordinates.
 Should be in the order of: xmin, ymin, xmax, ymax.}

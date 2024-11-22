@@ -37,10 +37,10 @@ cms_product_details <- function(product, layer, variable,
     result |>
     httr2::resp_body_json()
   if (!missing(layer)) {
-    result <- result$layers[names(result$layers) |> startsWith(paste0(layer, "/"))]
+    result <- result$layers[names(result$layers) |> startsWith(paste0(layer, "_"))]
   }
   if (!missing(variable)) {
-    result <- result[[paste0(c(layer, variable), collapse = "/")]]
+    result <- result[names(result) |> endsWith(paste0("/", variable))]
   }
   return(result)
 }

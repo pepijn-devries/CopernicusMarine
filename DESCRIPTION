@@ -1,8 +1,7 @@
 Package: CopernicusMarine
 Type: Package
 Title: Search Download and Handle Data from Copernicus Marine Service Information
-Version: 0.2.3.002
-Date: 2024-04-10
+Version: 0.2.3.003
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre", "dtc"),
     email = "pepijn.devries@outlook.com",
     comment = c(ORCID = "0000-0002-7961-6646")))
@@ -21,9 +20,7 @@ Imports:
     httr2,
     leaflet,
     purrr,
-    readr,
     rlang,
-    rvest,
     sf,
     stringr,
     tidyr,
@@ -55,13 +52,5 @@ Collate:
     'cms_products_list.r'
     'cms_stac_properties.r'
     'cms_wmts.r'
-    'copernicus_cite_product.r'
-    'copernicus_download_motu.r'
-    'copernicus_login.r'
-    'copernicus_product_details.r'
-    'copernicus_product_metadata.r'
-    'copernicus_products_list.r'
-    'ftp.r'
     'generics.r'
     'import.r'
-    'wms.r'

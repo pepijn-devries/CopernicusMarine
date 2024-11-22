@@ -35,11 +35,7 @@ Other product-functions:
 \code{\link{cms_cite_product}()},
 \code{\link{cms_product_details}()},
 \code{\link{cms_product_metadata}()},
-\code{\link{cms_product_services}()},
-\code{\link{copernicus_cite_product}()},
-\code{\link{copernicus_product_details}()},
-\code{\link{copernicus_product_metadata}()},
-\code{\link{copernicus_products_list}()}
+\code{\link{cms_product_services}()}
 }
 \author{
 Pepijn de Vries

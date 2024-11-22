@@ -1,16 +1,20 @@
-CopernicusMarine v0.2.3.002 (Release date: 2024-04-10)
+CopernicusMarine v0.2.3.003
 -------------
 
+ * added check workflow
+ * added code coverage workflow
+ * removed deprecated functions
+ * updated documentation
  * Fix in `addCmsWMTSTiles`
  * Fix for change in remote API
 
-CopernicusMarine v0.2.3 (Release date: 2024-01-25)
+CopernicusMarine v0.2.3
 -------------
 
  * Some fixes in the subset download routine
  * Additions to documentation
 
-CopernicusMarine v0.2.0 (Release date: 2024-01-01)
+CopernicusMarine v0.2.0
 -------------
 
  * Added functions for new services (subset, STAC and WMTS)
@@ -20,24 +24,24 @@ CopernicusMarine v0.2.0 (Release date: 2024-01-01)
  * Switched from `httr` to `httr2` dependency
  * Switch from `magrittr`'s pipe to R's native pipe operator
 
-CopernicusMarine v0.1.1 (Release date: 2023-11-09)
+CopernicusMarine v0.1.1
 -------------
 
  * Fix to pass CRAN checks
 
-CopernicusMarine v0.1.0 (Release date: 2023-11-08)
+CopernicusMarine v0.1.0
 -------------
 
  * Fix for migrated Copernicus server
 
-CopernicusMarine v0.0.9 (Release date: 2023-08-21)
+CopernicusMarine v0.0.9
 -------------
 
   * Updates in order to comply with latest CRAN
     policies
   * Bug fix in log-in routine
 
-CopernicusMarine v0.0.6 (Release date: 2023-01-23)
+CopernicusMarine v0.0.6
 -------------
 
   * Fix in tests in order to comply with CRAN
@@ -47,7 +51,7 @@ CopernicusMarine v0.0.6 (Release date: 2023-01-23)
   * Update documentation on GDAL utils dependency
     in WMS functions
 
-CopernicusMarine v0.0.3 (Release date: 2023-01-16)
+CopernicusMarine v0.0.3
 -------------
 
   * Initial implementation features data imports via:
