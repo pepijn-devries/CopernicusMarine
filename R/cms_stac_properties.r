@@ -6,9 +6,10 @@ cms_stac_properties <- function(product, layer) {
     cms_product_services(product) |>
     dplyr::filter(!is.na(.data$`WWW:STAC`))
   if (!missing(layer)) services <- services |> dplyr::filter(layer == !!layer)
-  services <- services$`WWW:STAC`
+  services <- services$`WWW:STAC` |> unlist()
   
   .props <- function(stac_url) {
+
     x <- .try_online({
       httr2::request(stac_url) |>
         httr2::req_perform()

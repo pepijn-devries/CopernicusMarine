@@ -36,7 +36,7 @@ retrieval of information from <https://data.marine.copernicus.eu>. With the pack
 ## Why use `CopernicusMarine`
 
 Copernicus Marine offers access to their data services through a
-[Python application interface](https://pypi.org/project/copernicus-marine-client/).
+[Python application interface](https://pypi.org/project/copernicusmarine/).
 For R users this requires complex installation procedures and is difficult to maintain in
 a stable R package. The `CopernicusMarine` R package has
 a much simpler installation procedure (see below) and does not depend on
