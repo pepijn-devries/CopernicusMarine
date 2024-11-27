@@ -1,4 +1,4 @@
-CopernicusMarine v0.2.3.003
+CopernicusMarine v0.2.3.004
 -------------
 
  * added check workflow

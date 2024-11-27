@@ -32,11 +32,10 @@ programme and facilitates retrieval of information from
 ## Why use `CopernicusMarine`
 
 Copernicus Marine offers access to their data services through a [Python
-application
-interface](https://pypi.org/project/copernicus-marine-client/). For R
-users this requires complex installation procedures and is difficult to
-maintain in a stable R package. The `CopernicusMarine` R package has a
-much simpler installation procedure (see below) and does not depend on
+application interface](https://pypi.org/project/copernicusmarine/). For
+R users this requires complex installation procedures and is difficult
+to maintain in a stable R package. The `CopernicusMarine` R package has
+a much simpler installation procedure (see below) and does not depend on
 third party software, other than packages available from
 [CRAN](https://cran.r-project.org/).
 
