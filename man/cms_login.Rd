@@ -33,7 +33,7 @@ It can be used to test your account details.
 ## This will return FALSE if you have not set your account details with 'options'.
 ## If you have specified your account details and there are no other problems,
 ## it will return TRUE.
-copernicus_login()
+cms_login()
 }
 }
 \author{

@@ -52,7 +52,6 @@ of \code{type}. \code{AddCmsWMTSTiles} returns a \code{leaflet} \code{map} updat
 specific products, layers and variables and add them to a \code{leaflet} map.
 }
 \examples{
-\donttest{
 cms_wmts_details(
   product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
   layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
@@ -69,7 +68,6 @@ if (interactive()) {
       product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
       layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
       variable = "thetao")
-}
 }
 }
 \author{

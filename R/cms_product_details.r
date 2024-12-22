@@ -10,7 +10,6 @@
 #' @name cms_product_details
 #' @family product-functions
 #' @examples
-#' \donttest{
 #' cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 #' 
 #' cms_product_details(
@@ -18,7 +17,6 @@
 #'   layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
 #'   variable = "thetao"
 #' )
-#' }
 #' @author Pepijn de Vries
 #' @export
 cms_product_details <- function(product, layer, variable,

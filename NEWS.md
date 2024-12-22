@@ -1,4 +1,4 @@
-CopernicusMarine v0.2.3.004
+CopernicusMarine v0.2.4
 -------------
 
  * added check workflow
@@ -7,6 +7,7 @@ CopernicusMarine v0.2.3.004
  * updated documentation
  * Fix in `addCmsWMTSTiles`
  * Fix for change in remote API
+ * Fix in login function
 
 CopernicusMarine v0.2.3
 -------------

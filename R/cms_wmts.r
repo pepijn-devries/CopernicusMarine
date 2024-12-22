@@ -18,7 +18,6 @@
 #' @rdname cms_wmts
 #' @name cms_wmts_details
 #' @examples
-#' \donttest{
 #' cms_wmts_details(
 #'   product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
 #'   layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
@@ -35,7 +34,6 @@
 #'       product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
 #'       layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
 #'       variable = "thetao")
-#' }
 #' }
 #' @author Pepijn de Vries
 #' @export

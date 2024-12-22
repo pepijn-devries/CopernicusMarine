@@ -10,9 +10,7 @@
 #' @name cms_cite_product
 #' @family product-functions
 #' @examples
-#' \donttest{
 #' cms_cite_product("SST_MED_PHY_SUBSKIN_L4_NRT_010_036")
-#' }
 #' @author Pepijn de Vries
 #' @export
 cms_cite_product <- function(product) {

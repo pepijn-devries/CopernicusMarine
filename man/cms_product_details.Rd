@@ -31,7 +31,6 @@ Returns a named \code{list} with properties of the requested product.
 narrowed down to specific layers and/or variables within the product.
 }
 \examples{
-\donttest{
 cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 
 cms_product_details(
@@ -39,7 +38,6 @@ cms_product_details(
   layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
   variable = "thetao"
 )
-}
 }
 \seealso{
 Other product-functions: 

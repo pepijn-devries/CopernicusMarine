@@ -23,9 +23,7 @@ Returns \code{NULL} when contacting Copernicus fails.
 for specific Copernicus marine products
 }
 \examples{
-\donttest{
 cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
-}
 }
 \seealso{
 Other product-functions: 

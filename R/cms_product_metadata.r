@@ -14,9 +14,7 @@
 #' @name cms_product_metadata
 #' @family product-functions
 #' @examples
-#' \donttest{
 #' cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
-#' }
 #' @author Pepijn de Vries
 #' @export
 cms_product_metadata <- function(product, type = c("list", "xml")) {
