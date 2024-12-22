@@ -18,15 +18,16 @@
 #' @rdname cms_wmts
 #' @name cms_wmts_details
 #' @examples
-#' cms_wmts_details(
-#'   product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-#'   layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
-#'   variable = "thetao"
-#' )
+#' wmts_details <-
+#'   cms_wmts_details(
+#'     product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+#'     layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
+#'     variable = "thetao"
+#'   )
 #' 
 #' cms_wmts_get_capabilities("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 #' 
-#' if (interactive()) {
+#' if (interactive() && nrow(wmts_details) > 0) {
 #'   leaflet::leaflet() |>
 #'     leaflet::setView(lng = 3, lat = 54, zoom = 4) |>
 #'     leaflet::addProviderTiles("Esri.WorldImagery") |>
@@ -43,7 +44,8 @@ cms_wmts_details <- function(product, layer, variable) {
       "info",
       "WMTS:https://wmts.marine.copernicus.eu/teroWmts/%s?request=GetCapabilities" |>
         sprintf(product),
-      quiet = TRUE)
+      quiet = TRUE) |>
+    suppressWarnings()
   desc <- copwmtsinfo |> stringr::str_match_all("SUBDATASET_(\\d+)_DESC=(.*?)\n")
   if (length(desc) == 0) return(dplyr::tibble(desc = character(0), url = character(0)))
   desc <- desc[[1]][,3]
@@ -102,11 +104,14 @@ cms_wmts_get_capabilities <- function(product, layer, variable, type = c("list",
   set <- c(product, layer, variable) |>
     paste0(collapse = "/")
   result <-
-    .wmts_base_url |>
-    paste0(product, "/", .wmts_req, "GetCapabilities&layer=", set) |>
-    httr2::request() |>
-    httr2::req_perform() |>
-    httr2::resp_body_xml()
+    .try_online({
+      .wmts_base_url |>
+        paste0(product, "/", .wmts_req, "GetCapabilities&layer=", set) |>
+        httr2::request() |>
+        httr2::req_perform()
+    }, "wmts.marine.copernicus.eu")
+  if (is.null(result)) return(NULL)
+  result <- httr2::resp_body_xml(result)
   if (type == "list") result <- xml2::as_list(result)
   return(result)
 }

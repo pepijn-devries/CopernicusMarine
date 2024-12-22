@@ -31,6 +31,7 @@ cms_product_details <- function(product, layer, variable,
       httr2::req_perform()
   }, "Copernicus")
   
+  if (is.null(result)) return (result)
   result <-
     result |>
     httr2::resp_body_json()
