@@ -7,8 +7,7 @@
 [![R-CMD-check](https://github.com/pepijn-devries/CopernicusMarine/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pepijn-devries/CopernicusMarine/actions/workflows/R-CMD-check.yaml)
 ![cranlogs](https://cranlogs.r-pkg.org/badges/CopernicusMarine)
 [![version](https://www.r-pkg.org/badges/version/CopernicusMarine)](https://CRAN.R-project.org/package=CopernicusMarine)
-[![cran
-checks](https://badges.cranchecks.info/worst/CopernicusMarine.svg)](https://cran.r-project.org/web/checks/check_results_CopernicusMarine.html)
+<!--[![cran checks](https://badges.cranchecks.info/worst/CopernicusMarine.svg)](https://cran.r-project.org/web/checks/check_results_CopernicusMarine.html)-->
 [![ggsankeyfier status
 badge](https://pepijn-devries.r-universe.dev/badges/CopernicusMarine)](https://pepijn-devries.r-universe.dev/CopernicusMarine)
 <!-- badges: end -->
@@ -115,7 +114,7 @@ stac_files <-
     "GLOBAL_ANALYSISFORECAST_PHY_001_024",
     "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m")
 stac_files
-#> # A tibble: 915 × 8
+#> # A tibble: 945 × 8
 #>    home          native current_path LastModified ETag  Size  StorageClass Type 
 #>    <chr>         <chr>  <chr>        <chr>        <chr> <chr> <chr>        <chr>
 #>  1 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"4… 1939… STANDARD     Norm…
@@ -128,7 +127,7 @@ stac_files
 #>  8 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"5… 1939… STANDARD     Norm…
 #>  9 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"9… 1939… STANDARD     Norm…
 #> 10 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"1… 1939… STANDARD     Norm…
-#> # ℹ 905 more rows
+#> # ℹ 935 more rows
 ```
 
 Downloading the first file can be done with

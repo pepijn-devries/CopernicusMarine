@@ -17,7 +17,7 @@
 #' ## This will return FALSE if you have not set your account details with 'options'.
 #' ## If you have specified your account details and there are no other problems,
 #' ## it will return TRUE.
-#' copernicus_login()
+#' cms_login()
 #' }
 #' @name cms_login
 #' @rdname cms_login
@@ -40,7 +40,7 @@ cms_login <- function(
   result <- resp |>
     httr2::resp_body_json()
   
-  result <- identical(result, structure(list(), names = character()))
+  result <- !identical(result, structure(list(), names = character()))
   
   attr(result, "response") <- resp
   attr(result, "cookies")  <- cookies

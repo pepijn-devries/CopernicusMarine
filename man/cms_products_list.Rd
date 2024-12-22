@@ -23,12 +23,10 @@ unavailable.
 descriptions for marine products available from Copernicus
 }
 \examples{
-\donttest{
 cms_products_list()
 
 ## Query a specific product:
 cms_products_list(freeText = "GLOBAL_ANALYSISFORECAST_PHY_001_024")
-}
 }
 \seealso{
 Other product-functions: 

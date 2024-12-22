@@ -52,16 +52,16 @@ of \code{type}. \code{AddCmsWMTSTiles} returns a \code{leaflet} \code{map} updat
 specific products, layers and variables and add them to a \code{leaflet} map.
 }
 \examples{
-\donttest{
-cms_wmts_details(
-  product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-  layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
-  variable = "thetao"
-)
+wmts_details <-
+  cms_wmts_details(
+    product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+    layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
+    variable = "thetao"
+  )
 
 cms_wmts_get_capabilities("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 
-if (interactive()) {
+if (interactive() && nrow(wmts_details) > 0) {
   leaflet::leaflet() |>
     leaflet::setView(lng = 3, lat = 54, zoom = 4) |>
     leaflet::addProviderTiles("Esri.WorldImagery") |>
@@ -69,7 +69,6 @@ if (interactive()) {
       product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
       layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
       variable = "thetao")
-}
 }
 }
 \author{
