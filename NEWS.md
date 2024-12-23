@@ -1,3 +1,6 @@
+CopernicusMarine v0.2.4.0001
+-------------
+
 CopernicusMarine v0.2.4
 -------------
 
