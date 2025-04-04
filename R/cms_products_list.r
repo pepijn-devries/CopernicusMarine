@@ -76,7 +76,7 @@ cms_products_list <- function(..., info_type = c("list", "meta")) {
              "directives",
              "communities",
              "originatingCenter"),
-  facetValues = suppressWarnings(structure(NULL, names = character(0))),
+  facetValues = structure(list(), names = character(0)),
   freeText = "",
   dateRange =
     list(

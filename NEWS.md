@@ -1,10 +1,15 @@
+CopernicusMarine v0.2.5
+-------------
+
+ * Fix to pass CRAN checks
+
 CopernicusMarine v0.2.4
 -------------
 
- * added check workflow
- * added code coverage workflow
- * removed deprecated functions
- * updated documentation
+ * Added check workflow
+ * Added code coverage workflow
+ * Removed deprecated functions
+ * Updated documentation
  * Fix in `addCmsWMTSTiles`
  * Fix for change in remote API
  * Fix in login function
