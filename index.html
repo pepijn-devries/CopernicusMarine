@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -129,7 +129,7 @@ Downloading a complete Copernicus marine product
 <span>    <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span>
 <span>    <span class="st">"cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m"</span><span class="op">)</span></span>
 <span><span class="va">stac_files</span></span>
-<span><span class="co">#&gt; # A tibble: 945 × 8</span></span>
+<span><span class="co">#&gt; # A tibble: 946 × 8</span></span>
 <span><span class="co">#&gt;    home          native current_path LastModified ETag  Size  StorageClass Type </span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;</span></span>
 <span><span class="co">#&gt;  1 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"4… 1939… STANDARD     Norm…</span></span>
@@ -142,7 +142,7 @@ Downloading a complete Copernicus marine product
 <span><span class="co">#&gt;  8 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"5… 1939… STANDARD     Norm…</span></span>
 <span><span class="co">#&gt;  9 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"9… 1939… STANDARD     Norm…</span></span>
 <span><span class="co">#&gt; 10 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"1… 1939… STANDARD     Norm…</span></span>
-<span><span class="co">#&gt; # ℹ 935 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt; # ℹ 936 more rows</span></span></code></pre></div>
 <p>Downloading the first file can be done with <code>cms_download_stac(stac_files[1,,drop = FALSE], tempdir())</code>, where the file would be stored in a temporary directory. By default the progress is printed as files can be very large and may take some time to download.</p>
 <h3 id="usage-3">
 Copernicus Web Map Tile Services (WMTS)
@@ -215,7 +215,8 @@ Copernicus Web Map Tile Services (WMTS)
 <ul class="list-unstyled">
 <li><a href="https://github.com/pepijn-devries/CopernicusMarine/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/pepijn-devries/CopernicusMarine/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://CRAN.R-project.org/package=CopernicusMarine" class="external-link"><img src="https://www.r-pkg.org/badges/version/CopernicusMarine" alt="version"></a></li>
-<li><a href="https://pepijn-devries.r-universe.dev/CopernicusMarine" class="external-link"><img src="https://pepijn-devries.r-universe.dev/badges/CopernicusMarine" alt="ggsankeyfier status badge"></a></li>
+<li><a href="https://cran.r-project.org/web/checks/check_results_CopernicusMarine.html" class="external-link"><img src="https://badges.cranchecks.info/worst/CopernicusMarine.svg" alt="cran checks"></a></li>
+<li><a href="https://pepijn-devries.r-universe.dev/CopernicusMarine" class="external-link"><img src="https://pepijn-devries.r-universe.dev/badges/CopernicusMarine" alt="CopernicusMarine status badge"></a></li>
 </ul>
 </div>
 
