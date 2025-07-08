@@ -35,7 +35,7 @@ cms_login <- function(
       httr2::req_method("POST") |>
       httr2::req_headers(authorization = paste0("Bearer ", token$access_token)) |>
       httr2::req_perform()
-  })
+  }, "login-page")
   
   if (is.null(details)) return(NULL) else
     return(httr2::resp_body_json(details))
@@ -57,7 +57,7 @@ cms_login <- function(
           scope      = "openid profile email"
         ) |>
         httr2::req_perform()
-    })
+    }, "login-page")
   if (is.null(token_request))
     return (NULL) else return(httr2::resp_body_json(token_request))
 }
