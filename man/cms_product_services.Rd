@@ -15,7 +15,7 @@ Returns a \code{tibble} with a list of available services for a
 Copernicus marine \code{product}.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Obtain an overview of services provided by Copernicus
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Obtain an overview of services provided by Copernicus
 for a specific marine product.
 }
 \examples{
@@ -25,7 +25,6 @@ cms_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 Other product-functions: 
 \code{\link{cms_cite_product}()},
 \code{\link{cms_product_details}()},
-\code{\link{cms_product_metadata}()},
 \code{\link{cms_products_list}()}
 }
 \author{

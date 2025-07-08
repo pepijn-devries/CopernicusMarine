@@ -104,39 +104,24 @@ meantime, you could have a look at this
 Downloading a complete Copernicus marine product
 </h3>
 
-If you don’t want to subset the data and want the complete set, you can
-use the SpatioTemporal Asset Catalogs (STAC), if these are available for
-your product. First you can list STAC files available for a specific
-product (and layer):
+Due to changes in the Copernicus Marine API, downloading full datasets
+is currently not possible through R (directly). We are working on this
+and hope to have this up and running again soon.
+<!-- If you don't want to subset the data and want the complete set, you can use the -->
+<!-- SpatioTemporal Asset Catalogs (STAC), if these are available for your product. -->
+<!-- First you can list STAC files available for a specific product (and layer): -->
 
-``` r
-stac_files <-
-  cms_list_stac_files(
-    "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-    "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m")
-stac_files
-#> # A tibble: 946 × 8
-#>    home          native current_path LastModified ETag  Size  StorageClass Type 
-#>    <chr>         <chr>  <chr>        <chr>        <chr> <chr> <chr>        <chr>
-#>  1 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"4… 1939… STANDARD     Norm…
-#>  2 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"9… 1939… STANDARD     Norm…
-#>  3 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"9… 1939… STANDARD     Norm…
-#>  4 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"c… 1939… STANDARD     Norm…
-#>  5 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"2… 1938… STANDARD     Norm…
-#>  6 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"0… 1938… STANDARD     Norm…
-#>  7 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"5… 1939… STANDARD     Norm…
-#>  8 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"5… 1939… STANDARD     Norm…
-#>  9 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"9… 1939… STANDARD     Norm…
-#> 10 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"1… 1939… STANDARD     Norm…
-#> # ℹ 936 more rows
-```
-
-Downloading the first file can be done with
-`cms_download_stac(stac_files[1,,drop = FALSE], tempdir())`, where the
-file would be stored in a temporary directory. By default the progress
-is printed as files can be very large and may take some time to
-download.
-
+<!-- ```{r, eval=TRUE} -->
+<!-- stac_files <- -->
+<!--   cms_list_stac_files( -->
+<!--     "GLOBAL_ANALYSISFORECAST_PHY_001_024", -->
+<!--     "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m") -->
+<!-- stac_files -->
+<!-- ``` -->
+<!-- Downloading the first file can be done with -->
+<!-- `cms_download_stac(stac_files[1,,drop = FALSE], tempdir())`, where the -->
+<!-- file would be stored in a temporary directory. By default the progress is printed as files can be very large and -->
+<!-- may take some time to download. -->
 <h3 id="sec-wmts">
 Copernicus Web Map Tile Services (WMTS)
 </h3>

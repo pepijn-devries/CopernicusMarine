@@ -1,3 +1,10 @@
+CopernicusMarine v0.2.5.0001
+-------------
+
+ * Decommissioned STAC functions in order to
+   pass pass CRAN checks. Alternative implementations
+   are on its way
+
 CopernicusMarine v0.2.5
 -------------
 

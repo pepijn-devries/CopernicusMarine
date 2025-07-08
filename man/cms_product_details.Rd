@@ -42,7 +42,6 @@ cms_product_details(
 \seealso{
 Other product-functions: 
 \code{\link{cms_cite_product}()},
-\code{\link{cms_product_metadata}()},
 \code{\link{cms_product_services}()},
 \code{\link{cms_products_list}()}
 }

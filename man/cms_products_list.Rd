@@ -32,7 +32,6 @@ cms_products_list(freeText = "GLOBAL_ANALYSISFORECAST_PHY_001_024")
 Other product-functions: 
 \code{\link{cms_cite_product}()},
 \code{\link{cms_product_details}()},
-\code{\link{cms_product_metadata}()},
 \code{\link{cms_product_services}()}
 }
 \author{
