@@ -2,21 +2,23 @@
 % Please edit documentation in R/cms_product_metadata.r
 \name{cms_product_metadata}
 \alias{cms_product_metadata}
-\title{Obtain meta data (Deprecated)}
+\title{Obtain product meta data}
 \usage{
-cms_product_metadata(product, type = c("list", "xml"))
+cms_product_metadata(product, type, ...)
 }
 \arguments{
-\item{product}{Ignored.}
+\item{product}{Ignored. TODO}
 
-\item{type}{Ignored.}
+\item{type}{Deprecated and ignored.}
 }
 \value{
-Returns \code{NULL} as this service is no longer provided by Copernicus.
+TODO
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}This function is no longer supported by Copernicus
-Marine. Use \code{cms_product_details()} instead.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}TODO
+}
+\examples{
+cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 }
 \author{
 Pepijn de Vries

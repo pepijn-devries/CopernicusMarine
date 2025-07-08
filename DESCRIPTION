@@ -41,6 +41,7 @@ Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
 Collate: 
     'CopernicusMarine-package.r'
+    'cms_catalogue_entry.R'
     'cms_cite_product.r'
     'cms_download_stac.r'
     'cms_login.r'

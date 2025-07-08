@@ -17,16 +17,15 @@ cms_login(
 \code{options(CopernicusMarine_pwd = "my_password")}, or as argument here.}
 }
 \value{
-Returns a \code{logical} value indicating if the login is successful.
-The response from the login page is returned as an attribute named \code{response}.
+Returns a named \code{list} with your account details if successful,
+returns \code{NULL} otherwise.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Contact Copernicus Marine login page
 and check if login is successful.
 }
 \details{
-This function will return a logical value indicating if the login is successful.
-It can be used to test your account details.
+This function will return your account details if successful.
 }
 \examples{
 \dontrun{
