@@ -1,12 +1,13 @@
 #' @export
 cms_get_client_info <- function() {
   ci <- .try_online({
-    "https://stac-dta.marine.copernicus.eu/clients-config-v1" |>
+    "https://stac.marine.copernicus.eu/clients-config-v1" |>
       httr2::request() |>
       httr2::req_perform()
   }, "client-info-page")
   if (is.null(ci)) return(NULL) else return(httr2::resp_body_json(ci))
 }
+#TODO
 temp <- function() {
   products <-
     "https://s3.waw4-1.cloudferro.com/mdl-metadata-dta/dataset_product_id_mapping.json" |>
@@ -26,3 +27,6 @@ temp <- function() {
 # product_collection = pystac.Collection.from_dict(
 #   product_json
 # )
+# "describe": ["mds", "mds/serverlessArco/meta"],
+# "get":      ["mds", "mds/serverlessNative", "mds/serverlessArco/meta"],
+# "subset":   ["mds", "mds/serverlessArco", "mds/serverlessArco/meta"],

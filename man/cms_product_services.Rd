@@ -4,7 +4,7 @@
 \alias{cms_product_services}
 \title{Obtain available services for a specific Copernicus marine product}
 \usage{
-cms_product_services(product)
+cms_product_services(product, ...)
 }
 \arguments{
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.

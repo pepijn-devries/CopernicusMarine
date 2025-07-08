@@ -12,26 +12,25 @@
 #' @family product-functions
 #' @author Pepijn de Vries
 #' @export
-cms_product_services <- function(product) {
-  result <- cms_product_details(product)
-  result <- result$stacItems |>
-    lapply(\(x)
-           lapply(x$assets, \(y)
-                  tibble::enframe(y) |>
-                    tidyr::pivot_wider(values_from = "value", names_from = "name"))) |>
-    lapply(dplyr::bind_rows)
-  layers <- names(result)
-  result <- tibble::tibble(layer = layers, data = result) |>
-    tidyr::unnest("data")
+cms_product_services <- function(product, ...) {
+  meta_data <- cms_product_metadata(product)
   result <-
-    result |>
+    meta_data$assets |>
+    .simplify() |>
     dplyr::mutate(
       dplyr::across(
         dplyr::everything(),
-        function (x) {
-          if (all(lengths(x) == 1)) unlist(x) else x
-        }
+        .simplify
       )
     )
+
+  unnest_names <- names(result)
+  for (uname in unnest_names) {
+    result <- tidyr::unnest_wider(result, uname, names_sep = "_")
+  }
+  result <- dplyr::bind_cols(
+    meta_data |> dplyr::select(-"assets"),
+    result
+  )
   return(result)
 }

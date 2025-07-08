@@ -18,12 +18,17 @@ cms_product_metadata <- function(product, type, ...) {
   links     <- lapply(details$links, as.data.frame) |> dplyr::bind_rows()
   item      <- links |> dplyr::filter(.data$rel == "item") |> dplyr::pull("href")
   meta_url  <- paste(attr(details, "stac_url"), product, item, sep = "/")
-  meta_data <- .try_online({
-    meta_url |>
-      httr2::request() |>
-      httr2::req_perform()
-  }, "meta-data-page")
-  if (is.null(meta_data)) return(NULL) else {
-    return(httr2::resp_body_json(meta_data))
-  }
+  lapply(meta_url, function(u) {
+    .try_online({
+      u |>
+        httr2::request() |>
+        httr2::req_perform()
+    }, "meta-data-page")
+  }) |>
+    lapply(function(x) {
+      if (is.null(x)) return(NULL) else {
+        return(httr2::resp_body_json(x))
+      }
+    }) |>
+    .simplify()
 }
