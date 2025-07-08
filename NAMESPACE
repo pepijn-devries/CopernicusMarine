@@ -2,6 +2,7 @@
 
 export(addCmsWMTSTiles)
 export(cms_cite_product)
+export(cms_download_native)
 export(cms_download_stac)
 export(cms_download_subset)
 export(cms_get_client_info)

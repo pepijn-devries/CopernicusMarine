@@ -15,6 +15,7 @@ Description: Subset and download data from EU Copernicus Marine
 Depends:
     R (>= 4.1.0)
 Imports:
+    aws.s3,
     crayon,
     dplyr,
     httr2,
@@ -43,6 +44,7 @@ Collate:
     'CopernicusMarine-package.r'
     'cms_catalogue_entry.R'
     'cms_cite_product.r'
+    'cms_download_native.R'
     'cms_download_stac.r'
     'cms_login.r'
     'cms_download_subset.r'
