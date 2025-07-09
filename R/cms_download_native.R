@@ -8,7 +8,6 @@
 #' 
 #' @export
 cms_download_native <- function(destination, product, layer, pattern, ...) {
-  browser() #TODO
   if (missing(pattern)) pattern <- ""
 
   file_list <- cms_list_native_files(product, layer, pattern)
