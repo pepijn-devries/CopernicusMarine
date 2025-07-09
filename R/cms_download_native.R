@@ -2,16 +2,62 @@
 #' cms_download_native(
 #'   destination   = tempdir(),
 #'   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-#'   layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m"
+#'   layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+#'   pattern       = "m_20220630"
 #' )
 #' 
 #' @export
-cms_download_native <- function(destination, product, layer, ...) {
+cms_download_native <- function(destination, product, layer, pattern, ...) {
+  browser() #TODO
+  if (missing(pattern)) pattern <- ""
+
+  file_list <- cms_list_native_files(product, layer, pattern)
+  if (nrow(file_list)) stop("TODO multiple files download not yet implemented")
+  con <- aws.s3::s3connection(
+    file_list$Key[[1]],
+    region = "",
+    bucket = file_list$Bucket[[1]],
+    base_url = file_list$base_url
+  )
+  ## TODO read from s3 connection and write to local file (and optionally show progress)
+  temp <- readBin(con, "raw", 1024L)
+  close(con)
+
+}
+
+#' @examples
+#' cms_list_native_files(
+#'   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+#'   layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m"
+#' )
+#' @export
+cms_list_native_files <- function(product, layer, pattern, ...) {
+  s3_info <- .preprocess_native(product, layer)
+  
+  if (is.null(s3_info)) return(NULL)
+  
+  with(s3_info, {
+    aws.s3::get_bucket_df(
+      path,
+      region = "",
+      bucket = bucket,
+      base_url = endpoint
+    ) |>
+      dplyr::filter(grepl(pattern, .data$Key, perl = TRUE)) |>
+      dplyr::mutate(base_url = endpoint)
+  })
+}
+
+.preprocess_native <- function(product, layer, ...) {
   services <-
-    cms_product_services(product) |>
+    cms_product_services(product)
+  if (is.null(services)) return(NULL)
+  services <-
+    services |>
     dplyr::filter(startsWith(.data$id, layer))
   native_url <- services$native_href
-  ## TODO regex used in python toolbox to parse url
+  
+  ## regex used in python toolbox to parse url
   parse_regex <- "^(http|https):\\/\\/([\\w\\-\\.]+)(:[\\d]+)?(\\/.*)"
   
   m <- gregexpr(parse_regex, native_url, perl = TRUE)
@@ -21,47 +67,14 @@ cms_download_native <- function(destination, product, layer, ...) {
     mapply(function(start, len) {
       substr(native_url, start, start + len - 1)
     }, start = m_start, len = m_length)
+  segments <- strsplit(fragments[4], "/") |> unlist()
   
-  endpoint_url <- paste(fragments[1], "://", fragments[2], sep = "")
-  full_path    <- fragments[4]
-  segments     <- strsplit(full_path, "/") |> unlist()
-  bucket       <- segments[[2]]
-  path         <- segments[-1:-2] |> paste(collapse = "/")
-
-  ## The line below will list objects for a completely different product :S
-  my_bucketlist <-
-    aws.s3::get_bucket(
-      bucket = segments[[2]],
-      region = "",
-      base_url = fragments[[2]]
-    )
-  ## Same as above, but data.frame representation:
-  my_bucketlist_r <-
-    my_bucketlist |>
-    lapply(unclass) |>
-    lapply(as.data.frame) |>
-    dplyr::bind_rows()
+  list(
+    endpoint     = fragments[2],
+    endpoint_url = paste(fragments[1], "://", fragments[2], sep = ""),
+    full_path    = fragments[4],
+    bucket       = segments[[2]],
+    path         = segments[-1:-2] |> paste(collapse = "/")
+  )
   
-  ## The bucket below does exist
-  aws.s3::bucket_exists(
-    bucket = segments[[2]],
-    region = "",
-    path = "native/GLOBAL_ANALYSISFORECAST_BGC_001_028/cmems_mod_glo_bgc-bio_anfc_0.25deg_P1D-m_202311/2022/01/mercatorbiomer4v2r1_global_mean_bio_20220101.nc",
-    base_url = fragments[[2]]
-  )
-
-  ## The connection below works! But it is for the wrong product!
-  # path = "native/GLOBAL_ANALYSISFORECAST_BGC_001_028/cmems_mod_glo_bgc-bio_anfc_0.25deg_P1D-m_202311/2022/01/mercatorbiomer4v2r1_global_mean_bio_20220101.nc",
-  con <- aws.s3::s3connection(
-    "native/GLOBAL_ANALYSISFORECAST_BGC_001_028/cmems_mod_glo_bgc-bio_anfc_0.25deg_P1D-m_202311/2022/01/mercatorbiomer4v2r1_global_mean_bio_20220101.nc",
-    region = "",
-    bucket = segments[[2]],
-    base_url = fragments[[2]]
-  )
-  ## Can read from this connection, read a fragment of 1MB:
-  temp <- readBin(con, "raw", 1024L)
-  close(con)
-
-  aws.s3::bucket_exists(segments[[2]], region = "", base_url = fragments[[2]])
-    
 }
