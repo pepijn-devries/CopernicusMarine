@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Error><Code>InvalidBucketName</Code><Message>The specified bucket is not valid.</Message><BucketName>C:\Users\vries171\AppData\Local\Temp\Rtmpy8Dfnp</BucketName><RequestId>NMM3P786SNGDJ8M7</RequestId><HostId>U8KM4ybCshDfyZMK/UkVtaMY6vksZFd4+aytyniZQOFQPVklMgBixV7gNcXd2dIg/j2nqWN2B9I=</HostId></Error>
