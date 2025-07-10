@@ -9,6 +9,8 @@ cms_product_services(product, ...)
 \arguments{
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
 Can be obtained with \code{\link{cms_products_list}}.}
+
+\item{...}{Ignored.}
 }
 \value{
 Returns a \code{tibble} with a list of available services for a

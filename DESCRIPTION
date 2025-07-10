@@ -16,7 +16,6 @@ Depends:
     R (>= 4.1.0)
 Imports:
     aws.s3,
-    crayon,
     dplyr,
     httr2,
     leaflet,

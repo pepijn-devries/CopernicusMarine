@@ -5,6 +5,7 @@
 #' @include cms_download_subset.r
 #' @param product Ignored. TODO
 #' @param type Deprecated and ignored.
+#' @param ... Ignored
 #' @returns TODO
 #' @rdname cms_product_metadata
 #' @name cms_product_metadata
@@ -13,6 +14,10 @@
 #' @author Pepijn de Vries
 #' @export
 cms_product_metadata <- function(product, type, ...) {
+  if (!missing(type)) {
+    rlang::warn(c("argument 'type' in `cms_product_metadata()` is deprecated and ignored.",
+                  i = "Please remove from your call"))
+  }
   details <- cms_product_details(product)
   if (is.null(details)) return (NULL)
   links     <- lapply(details$links, as.data.frame) |> dplyr::bind_rows()

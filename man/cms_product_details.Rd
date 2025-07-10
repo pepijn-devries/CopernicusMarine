@@ -4,13 +4,17 @@
 \alias{cms_product_details}
 \title{Obtain details for a specific Copernicus marine product}
 \usage{
-cms_product_details(product)
+cms_product_details(product, layer, variant, ...)
 }
 \arguments{
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
 Can be obtained with \code{\link{cms_products_list}}.}
 
-\item{variant}{TODO deprecated}
+\item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{cms_product_details}}.}
+
+\item{variant}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Deprecated}
+
+\item{...}{TODO}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Obtain details for a specific Copernicus marine product.

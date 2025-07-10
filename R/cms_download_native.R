@@ -1,11 +1,26 @@
+#' Download raw files as provided to Copernicus Marine
+#' 
+#' `r lifecycle::badge('experimental')` TODO description
+#' @inheritParams cms_download_subset
+#' @param pattern TODO
+#' @param ... TODO
+#' @returns TODO
+#' @author Pepijn de Vries
 #' @examples
+#' \dontrun{
+#' cms_list_native_files(
+#'   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+#'   layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m"
+#' )
+#' 
 #' cms_download_native(
 #'   destination   = tempdir(),
 #'   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
 #'   layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
 #'   pattern       = "m_20220630"
 #' )
-#' 
+#' }
+#' @rdname cms_download_native
 #' @export
 cms_download_native <- function(destination, product, layer, pattern, ...) {
   if (missing(pattern)) pattern <- ""
@@ -24,11 +39,7 @@ cms_download_native <- function(destination, product, layer, pattern, ...) {
 
 }
 
-#' @examples
-#' cms_list_native_files(
-#'   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-#'   layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m"
-#' )
+#' @rdname cms_download_native
 #' @export
 cms_list_native_files <- function(product, layer, pattern, ...) {
   s3_info <- .preprocess_native(product, layer)

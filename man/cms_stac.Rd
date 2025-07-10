@@ -40,7 +40,7 @@ returns \code{NULL}, as the API is no longer available
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Full marine data sets can be downloaded using the
 SpatioTemporal Asset Catalogs (STAC). The API for interacting with these files is
-no longer operational. It will soon be replaced with 'native' files.
+no longer operational. Please use \code{cms_download_native()} instead.
 }
 \author{
 Pepijn de Vries

@@ -1,7 +1,9 @@
 #' List products available from data.marine.copernicus.eu
 #'
 #' `r lifecycle::badge('stable')` Collect a list of products and some brief
-#' descriptions for marine products available from Copernicus
+#' descriptions for marine products available from Copernicus. `cms_products_list()`
+#' does not use a formal API, but provides a more detailed list. `cms_products_list2()`
+#' Does use the formal API, but provides less details
 #'
 #' @param ... Allows you to pass (search) query parameters to apply to the list.
 #' When omitted, the full list of products is returned.
@@ -60,6 +62,8 @@ cms_products_list <- function(..., info_type = c("list", "meta")) {
     })
 }
 
+#' @rdname cms_products_list
+#' @name cms_products_list
 #' @export
 cms_products_list2 <- function(...) {
   clients <- cms_get_client_info()

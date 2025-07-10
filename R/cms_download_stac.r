@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('deprecated')` Full marine data sets can be downloaded using the
 #' SpatioTemporal Asset Catalogs (STAC). The API for interacting with these files is
-#' no longer operational. It will soon be replaced with 'native' files.
+#' no longer operational. Please use `cms_download_native()` instead.
 #' @inheritParams cms_download_subset
 #' @param file_tibble Ignored
 #' @param destination Ignored
@@ -14,6 +14,6 @@
 #' @author Pepijn de Vries
 #' @export
 cms_download_stac <- function(file_tibble, destination, show_progress = TRUE, overwrite = FALSE) {
-  .Deprecated()
+  .Deprecated("cms_download_native")
   return(invisible(NULL))
 }

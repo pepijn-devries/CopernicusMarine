@@ -5,6 +5,7 @@
 #'
 #' @include cms_download_subset.r
 #' @inheritParams cms_download_subset
+#' @param ... Ignored.
 #' @returns Returns a `tibble` with a list of available services for a
 #' Copernicus marine `product`.
 #' @examples
@@ -14,6 +15,7 @@
 #' @export
 cms_product_services <- function(product, ...) {
   meta_data <- cms_product_metadata(product)
+  if (is.null(meta_data)) return(NULL)
   result <-
     meta_data$assets |>
     .simplify() |>

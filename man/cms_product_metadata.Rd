@@ -10,6 +10,8 @@ cms_product_metadata(product, type, ...)
 \item{product}{Ignored. TODO}
 
 \item{type}{Deprecated and ignored.}
+
+\item{...}{Ignored}
 }
 \value{
 TODO
