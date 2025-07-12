@@ -1,5 +1,6 @@
 ---
 output: github_document
+always_allow_html: true
 ---
 
 ```{r, echo = FALSE, message = FALSE}
@@ -11,7 +12,7 @@ knitr::opts_chunk$set(
 library(CopernicusMarine)
 ```
 
-> `CopernicusMarine` Easily access information from <https://data.marine.copernicus.eu>
+# CopernicusMarine <img src="man/figures/logo.png" align="right" height="139" copyright="cc-sa" alt="logo" />
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/pepijn-devries/CopernicusMarine/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pepijn-devries/CopernicusMarine/actions/workflows/R-CMD-check.yaml)
@@ -22,8 +23,6 @@ library(CopernicusMarine)
 <!-- badges: end -->
 
 ## Overview
-
-<a href="https://github.com/pepijn-devries/CopernicusMarine/"><img src="man/figures/logo.png" alt="CopernicusMarine logo" align="right" /></a>
 
 [Copernicus Marine Service Information](https://marine.copernicus.eu/about) is a programme subsidised by the
 European Commission. Its mission is to provide free authoritative information on the oceans physical and
@@ -103,29 +102,35 @@ you could have a look at this
 
 <h3 id="sec-full">Downloading a complete Copernicus marine product</h3>
 
-If you don't want to subset the data and want the complete set, you can use the
-SpatioTemporal Asset Catalogs (STAC), if these are available for your product.
-First you can list STAC files available for a specific product (and layer):
+If you don't want to subset the data and want the complete set, you can download
+complete native files, if these are available for your product.
+You can list available files with:
 
 ```{r, eval=TRUE}
-stac_files <-
-  cms_list_stac_files(
+native_files <-
+  cms_list_native_files(
     "GLOBAL_ANALYSISFORECAST_PHY_001_024",
     "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m")
-stac_files
+native_files
 ```
 
-Downloading the first file can be done with
-`cms_download_stac(stac_files[1,,drop = FALSE], tempdir())`, where the
-file would be stored in a temporary directory. By default the progress is printed as files can be very large and
-may take some time to download.
+Downloading the first file can be done with:
+```{r, eval=FALSE}
+cms_download_native(
+  destination   = tempdir(),
+  product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+  layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+  pattern       = "m_20220630"
+)
+```
+The file would be stored in the specified destination folder.
+By default the progress is printed as files can be very large and may take some time to download.
 
 <h3 id="sec-wmts">Copernicus Web Map Tile Services (WMTS)</h3>
 
 Web Map Tile Services (WMTS) allow to quickly plot pre-rendered images onto a map. This may not be useful when
 you need the data for analyses but is handy for quick visualisations, inspection or presentation of data.
 In R it is very easy to add WMTS layers to an interactive map using [leaflet](https://rstudio.github.io/leaflet/)
-widgets. This is demonstrated with the example below (note that in the documentation the map is only shown
 statically and is not interactive).
 
 ```{r leaflet, eval=TRUE}
@@ -147,7 +152,7 @@ the data you use in publications. In fact, we also have credit the data used in 
 done with the following code:
 
 ```{r, eval=TRUE}
-cms_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+cms_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")$doi
 ```
 
 ## Resources

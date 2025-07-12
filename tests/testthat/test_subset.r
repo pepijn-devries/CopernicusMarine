@@ -28,13 +28,13 @@ test_that("Product details can't have variable without layer", {
   })
 })
 
-test_that("Product meta info make sence", {
+test_that("Product details make sence", {
   skip_on_cran()
   has_account_details()
   skip_if_offline("data.marine.copernicus.eu")
   id <- "GLOBAL_ANALYSISFORECAST_PHY_001_024"
   expect_true({
-    pd <- cms_product_metadata(id)
+    pd <- cms_product_details(id)
     is.list(pd) && length(pd) > 0
   })
 })

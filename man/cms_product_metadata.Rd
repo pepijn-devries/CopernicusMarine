@@ -2,37 +2,31 @@
 % Please edit documentation in R/cms_product_metadata.r
 \name{cms_product_metadata}
 \alias{cms_product_metadata}
-\title{Obtain meta data for a specific Copernicus marine product}
+\title{Obtain product meta data}
 \usage{
-cms_product_metadata(product, type = c("list", "xml"))
+cms_product_metadata(product, type, ...)
 }
 \arguments{
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
 Can be obtained with \code{\link{cms_products_list}}.}
 
-\item{type}{A \code{character} string indicating how the data should be returned. Should be one of
-\code{"list"} or \code{"xml"}.}
+\item{type}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Deprecated and ignored.}
+
+\item{...}{Ignored}
 }
 \value{
-Returns a named \code{list} (when \code{type = "list"}) with info about the requested \code{product}.
-Returns the same info as \code{xml_document} (see \code{\link[xml2:xml_new_document]{xml2::xml_new_document()}}) when \code{type = "xml"}.
-Returns \code{NULL} when contacting Copernicus fails.
+Returns a \code{data.frame}/\code{tibble} with the metadata. Each row in the \code{data.frame}
+represents a layer available for the product.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Collect meta information, such as vocabularies used,
-for specific Copernicus marine products
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Obtain product meta data such as spatio-temporal bounds
+of the data.
 }
 \examples{
-cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+if (interactive()) {
+  cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 }
-\seealso{
-Other product-functions: 
-\code{\link{cms_cite_product}()},
-\code{\link{cms_product_details}()},
-\code{\link{cms_product_services}()},
-\code{\link{cms_products_list}()}
 }
 \author{
 Pepijn de Vries
 }
-\concept{product-functions}

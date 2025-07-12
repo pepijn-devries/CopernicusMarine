@@ -1,6 +1,5 @@
 
-> `CopernicusMarine` Easily access information from
-> <https://data.marine.copernicus.eu>
+# CopernicusMarine <img src="man/figures/logo.png" align="right" height="139" copyright="cc-sa" alt="logo" />
 
 <!-- badges: start -->
 
@@ -14,8 +13,6 @@ badge](https://pepijn-devries.r-universe.dev/badges/CopernicusMarine)](https://p
 <!-- badges: end -->
 
 ## Overview
-
-<a href="https://github.com/pepijn-devries/CopernicusMarine/"><img src="man/figures/logo.png" alt="CopernicusMarine logo" align="right" /></a>
 
 [Copernicus Marine Service
 Information](https://marine.copernicus.eu/about) is a programme
@@ -69,6 +66,7 @@ from Copernicus:
 Please check the manual for complete documentation of the package.
 
 <h3 id="sec-subset">
+
 Downloading a subset
 </h3>
 
@@ -80,64 +78,96 @@ meantime, you could have a look at this
 [work-around](https://github.com/pepijn-devries/CopernicusMarine/issues/42#issuecomment-2079745370).
 
 <!-- The code below assumes that you have registered your account details using `options(CopernicusMarine_uid = "my_user_name")` and -->
+
 <!-- `options(CopernicusMarine_pwd = "my_password")`. If you are comfortable that it is secure enough, you can also store these -->
+
 <!-- options in your `.Rprofile` such that they will be loaded each session. Otherwise, you can also provide your account details -->
+
 <!-- as arguments to the functions. -->
+
 <!-- The example below demonstrates how to subset a specific layer for a specific product. The subset is constrained by -->
+
 <!-- the `region`, `timerange` and `verticalrange` arguments. The subset is downloaded to the temporary -->
+
 <!-- file specified with `destination` and can be read using the [`{stars}`](https://r-spatial.github.io/stars/) package. -->
+
 <!-- ```{r download-subset, eval=TRUE} -->
+
 <!-- destination <- tempfile("copernicus", fileext = ".nc") -->
+
 <!-- cms_download_subset( -->
+
 <!--   destination   = destination, -->
+
 <!--   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024", -->
+
 <!--   layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m", -->
+
 <!--   variable      = "sea_water_velocity", -->
+
 <!--   region        = c(-1, 50, 10, 55), -->
+
 <!--   timerange     = c("2021-01-01", "2021-01-02"), -->
+
 <!--   verticalrange = c(0, -2) -->
+
 <!-- ) -->
+
 <!-- mydata <- stars::read_stars(destination) -->
+
 <!-- plot(mydata["vo"], col = hcl.colors(100), axes = TRUE) -->
+
 <!-- ``` -->
+
 <h3 id="sec-full">
+
 Downloading a complete Copernicus marine product
 </h3>
 
 If you don’t want to subset the data and want the complete set, you can
-use the SpatioTemporal Asset Catalogs (STAC), if these are available for
-your product. First you can list STAC files available for a specific
-product (and layer):
+download complete native files, if these are available for your product.
+You can list available files with:
 
 ``` r
-stac_files <-
-  cms_list_stac_files(
+native_files <-
+  cms_list_native_files(
     "GLOBAL_ANALYSISFORECAST_PHY_001_024",
     "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m")
-stac_files
-#> # A tibble: 946 × 8
-#>    home          native current_path LastModified ETag  Size  StorageClass Type 
-#>    <chr>         <chr>  <chr>        <chr>        <chr> <chr> <chr>        <chr>
-#>  1 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"4… 1939… STANDARD     Norm…
-#>  2 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"9… 1939… STANDARD     Norm…
-#>  3 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"9… 1939… STANDARD     Norm…
-#>  4 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"c… 1939… STANDARD     Norm…
-#>  5 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"2… 1938… STANDARD     Norm…
-#>  6 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"0… 1938… STANDARD     Norm…
-#>  7 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"5… 1939… STANDARD     Norm…
-#>  8 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"5… 1939… STANDARD     Norm…
-#>  9 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"9… 1939… STANDARD     Norm…
-#> 10 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"1… 1939… STANDARD     Norm…
-#> # ℹ 936 more rows
+native_files
+#> # A tibble: 1,000 × 9
+#>    Key   LastModified ETag  Size  Owner_ID Owner_DisplayName StorageClass Bucket
+#>    <chr> <chr>        <chr> <chr> <chr>    <chr>             <chr>        <chr> 
+#>  1 nati… 2024-04-18T… "\"4… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
+#>  2 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
+#>  3 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
+#>  4 nati… 2024-04-18T… "\"c… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
+#>  5 nati… 2024-04-18T… "\"2… 1938… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
+#>  6 nati… 2024-04-18T… "\"0… 1938… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
+#>  7 nati… 2024-04-18T… "\"5… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
+#>  8 nati… 2024-04-18T… "\"5… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
+#>  9 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
+#> 10 nati… 2024-04-18T… "\"1… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
+#> # ℹ 990 more rows
+#> # ℹ 1 more variable: base_url <chr>
 ```
 
-Downloading the first file can be done with
-`cms_download_stac(stac_files[1,,drop = FALSE], tempdir())`, where the
-file would be stored in a temporary directory. By default the progress
-is printed as files can be very large and may take some time to
-download.
+Downloading the first file can be done with:
+
+``` r
+cms_download_native(
+  destination   = tempdir(),
+  product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+  layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+  pattern       = "m_20220630"
+)
+```
+
+The file would be stored in the specified destination folder. By default
+the progress is printed as files can be very large and may take some
+time to download.
 
 <h3 id="sec-wmts">
+
 Copernicus Web Map Tile Services (WMTS)
 </h3>
 
@@ -145,9 +175,8 @@ Web Map Tile Services (WMTS) allow to quickly plot pre-rendered images
 onto a map. This may not be useful when you need the data for analyses
 but is handy for quick visualisations, inspection or presentation of
 data. In R it is very easy to add WMTS layers to an interactive map
-using [leaflet](https://rstudio.github.io/leaflet/) widgets. This is
-demonstrated with the example below (note that in the documentation the
-map is only shown statically and is not interactive).
+using [leaflet](https://rstudio.github.io/leaflet/) statically and is
+not interactive).
 
 ``` r
 leaflet::leaflet() |>
@@ -160,7 +189,8 @@ leaflet::leaflet() |>
   )
 ```
 
-![](man/figures/README-leaflet-1.png)<!-- -->
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-c9430a551177879f3c96" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-c9430a551177879f3c96">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[54,3],4,[]],"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addTiles","args":["http://wmts.marine.copernicus.eu/teroWmts/?service=WMTS&version=1.0.0&request=GetTile&tilematrixset=EPSG:3857&style=default&tilematrix={z}&tilerow={y}&tilecol={x}&layer=GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m_202406/thetao",null,null,{"styles":"","format":"image/png","transparent":true,"version":"1.1.1"}]}]},"evals":[],"jsHooks":[]}</script>
 
 ### Citing the data you use
 
@@ -172,15 +202,12 @@ used in this documentation, which can be easily done with the following
 code:
 
 ``` r
-cms_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")
-#>                                                                                                                                                                 doi 
-#> "E.U. Copernicus Marine Service Information; Global Ocean Physics Analysis and Forecast - GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14). DOI:10.48670/moi-00016"
+cms_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")$doi
+#> [1] "E.U. Copernicus Marine Service Information; Global Ocean Physics Analysis and Forecast - GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14). DOI:10.48670/moi-00016"
 ```
 
 ## Resources
 
 - [E.U. Copernicus Marine Service
   Information](https://data.marine.copernicus.eu)
-- [Global Ocean Physics Analysis and Forecast -
-  GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14);
-  DOI:10.48670/moi-00016](https://doi.org/10.48670/moi-00016)
+- 

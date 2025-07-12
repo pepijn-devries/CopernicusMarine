@@ -5,7 +5,7 @@
 \alias{cms_download_stac}
 \alias{cms_list_stac_files}
 \alias{cms_stac_properties}
-\title{List and get STAC files for a Copernicus marine product}
+\title{Deprecated}
 \usage{
 cms_download_stac(
   file_tibble,
@@ -19,14 +19,11 @@ cms_list_stac_files(product, layer)
 cms_stac_properties(product, layer)
 }
 \arguments{
-\item{file_tibble}{A \code{\link[dplyr:reexports]{dplyr::tibble()}} with in each row the files to be downloaded.
-Should be created with \code{\link[=cms_list_stac_files]{cms_list_stac_files()}}.}
+\item{file_tibble}{Ignored}
 
-\item{destination}{A \code{character} string representing the path location where the downloaded
-files should be stored.}
+\item{destination}{Ignored}
 
-\item{show_progress}{A \code{logical} value. When \code{TRUE} (default) the download progress will be shown.
-This can be useful for large files.}
+\item{show_progress}{Ignored}
 
 \item{overwrite}{A \code{logical} value. When \code{FALSE} (default), files at the \code{destination} won't be
 overwritten when the exist. Instead an error will be thrown if this is the case. When set to
@@ -38,38 +35,12 @@ Can be obtained with \code{\link{cms_products_list}}.}
 \item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{cms_product_details}}.}
 }
 \value{
-In case of \code{cms_stac_properties} a \code{\link[dplyr:reexports]{dplyr::tibble()}} is returned with some
-product properties, It is used as precursor for \code{cms_list_stac_files}.
-In case of \code{cms_list_stac_files} a \code{\link[dplyr:reexports]{dplyr::tibble()}} is returned containing
-available URLs (for the specified \code{product} and \code{layer}) and some meta information is returned.
-In case of \code{cms_download_stac} an invisible \code{logical} value is returned, indicating whether
-all requested files are successfully stored at the \code{destination} path. A \code{list} of responses
-(of class \code{\link[httr2:response]{httr2::response()}}) for all requested download links is included as attribute
-to the result.
+returns \code{NULL}, as the API is no longer available
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Full marine data sets can be downloaded using the
-SpatioTemporal Asset Catalogs (STAC). Use these functions to list download locations and get
-the files.
-}
-\examples{
-\dontrun{
-## List some STAC properties for a specific product and layer
-cms_stac_properties(
-  product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-  layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m"
-)
-
-## Get the available files for a specific product and layer:
-file_tibble <-
-  cms_list_stac_files("GLOBAL_ANALYSISFORECAST_PHY_001_024",
-                      "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m")
-
-dest <- tempdir()
-
-## download the first file from the file_tibble to 'dest'
-cms_download_stac(file_tibble[1,, drop = FALSE], dest)
-}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Full marine data sets can be downloaded using the
+SpatioTemporal Asset Catalogs (STAC). The API for interacting with these files is
+no longer operational. Please use \code{cms_download_native()} instead.
 }
 \author{
 Pepijn de Vries

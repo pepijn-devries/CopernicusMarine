@@ -1,45 +1,49 @@
 #' Obtain details for a specific Copernicus marine product
 #'
-#' `r lifecycle::badge('stable')` Obtain details for a specific Copernicus marine product. This can be
-#' narrowed down to specific layers and/or variables within the product.
+#' `r lifecycle::badge('experimental')` Obtain details for a specific Copernicus marine product.
 #' @inheritParams cms_download_subset
-#' @param variant A `character` string indicating the type of details that should be returned.
-#' Should be one of `""` (default), `"detailed-v2"`, or `"detailed-v3"`.
-#' @returns Returns a named `list` with properties of the requested product.
+#' @param layer `r lifecycle::badge('deprecated')` Ignored and deprecated
+#' @param variant `r lifecycle::badge('deprecated')` Ignored and deprecated
+#' @param ... Ignored
+#' @returns Returns a named `list` with product details.
 #' @rdname cms_product_details
 #' @name cms_product_details
 #' @family product-functions
 #' @examples
-#' cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024")
-#' 
-#' cms_product_details(
-#'   product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-#'   layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
-#'   variable = "thetao"
-#' )
+#' if (interactive()) {
+#'   cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+#' }
 #' @author Pepijn de Vries
 #' @export
-cms_product_details <- function(product, layer, variable,
-                                variant = c("", "detailed-v2", "detailed-v3")) {
-  variant <- match.arg(variant)
-  if (missing(layer) && !missing(variable)) stop("Variable specified without layer.")
-  if (missing(product)) product <- ""
+cms_product_details <- function(product, layer, variant, ...) {
+  if (!missing(layer)) {
+    rlang::warn(c("argument 'layer' in `cms_product_details()` is deprecated and ignored.",
+                  i = "Please remove from your call"))
+  }
+  if (!missing(variant)) {
+    rlang::warn(c("argument 'variant' in `cms_product_details()` is deprecated and ignored.",
+                  i = "Please remove from your call"))
+  }
+  clients <- cms_get_client_info()
+  stac_url <- gsub("/$", "", clients$catalogues[[1]]$stacRoot)
+  if (is.null(clients)) return(NULL) else {
+    product_url <- paste(
+      stac_url,
+      product,
+      "product.stac.json",
+      sep = "/"
+    )
+  }
+  
   result <- .try_online({
-    "https://data-be-prd.marine.copernicus.eu/api/dataset/%s?variant=%s" |>
-      sprintf(product, variant) |>
+    product_url |>
       httr2::request() |>
       httr2::req_perform()
-  }, "Copernicus")
+  }, "product-catalogue")
   
-  if (is.null(result)) return (result)
-  result <-
-    result |>
-    httr2::resp_body_json()
-  if (!missing(layer)) {
-    result <- result$layers[names(result$layers) |> startsWith(paste0(layer, "_"))]
+  if (is.null(result)) return(NULL) else {
+    result <- httr2::resp_body_json(result)
+    attr(result, "stac_url") <- stac_url
+    return(result)
   }
-  if (!missing(variable)) {
-    result <- result[names(result) |> endsWith(paste0("/", variable))]
-  }
-  return(result)
 }

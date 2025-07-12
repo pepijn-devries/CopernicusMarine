@@ -4,45 +4,32 @@
 \alias{cms_product_details}
 \title{Obtain details for a specific Copernicus marine product}
 \usage{
-cms_product_details(
-  product,
-  layer,
-  variable,
-  variant = c("", "detailed-v2", "detailed-v3")
-)
+cms_product_details(product, layer, variant, ...)
 }
 \arguments{
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
 Can be obtained with \code{\link{cms_products_list}}.}
 
-\item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{cms_product_details}}.}
+\item{layer}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Ignored and deprecated}
 
-\item{variable}{The name of a desired variable in a specific layer of a product (type \code{character}).
-Can be obtained with \code{\link{cms_product_details}}.}
+\item{variant}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Ignored and deprecated}
 
-\item{variant}{A \code{character} string indicating the type of details that should be returned.
-Should be one of \code{""} (default), \code{"detailed-v2"}, or \code{"detailed-v3"}.}
+\item{...}{Ignored}
 }
 \value{
-Returns a named \code{list} with properties of the requested product.
+Returns a named \code{list} with product details.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Obtain details for a specific Copernicus marine product. This can be
-narrowed down to specific layers and/or variables within the product.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Obtain details for a specific Copernicus marine product.
 }
 \examples{
-cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024")
-
-cms_product_details(
-  product  = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-  layer    = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
-  variable = "thetao"
-)
+if (interactive()) {
+  cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+}
 }
 \seealso{
 Other product-functions: 
 \code{\link{cms_cite_product}()},
-\code{\link{cms_product_metadata}()},
 \code{\link{cms_product_services}()},
 \code{\link{cms_products_list}()}
 }

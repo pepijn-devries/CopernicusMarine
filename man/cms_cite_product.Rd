@@ -24,7 +24,6 @@ cms_cite_product("SST_MED_PHY_SUBSKIN_L4_NRT_010_036")
 \seealso{
 Other product-functions: 
 \code{\link{cms_product_details}()},
-\code{\link{cms_product_metadata}()},
 \code{\link{cms_product_services}()},
 \code{\link{cms_products_list}()}
 }

@@ -2,9 +2,12 @@
 % Please edit documentation in R/cms_products_list.r
 \name{cms_products_list}
 \alias{cms_products_list}
+\alias{cms_products_list2}
 \title{List products available from data.marine.copernicus.eu}
 \usage{
 cms_products_list(..., info_type = c("list", "meta"))
+
+cms_products_list2(...)
 }
 \arguments{
 \item{...}{Allows you to pass (search) query parameters to apply to the list.
@@ -20,7 +23,9 @@ unavailable.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Collect a list of products and some brief
-descriptions for marine products available from Copernicus
+descriptions for marine products available from Copernicus. \code{cms_products_list()}
+does not use a formal API, but provides a more detailed list. \code{cms_products_list2()}
+Does use the formal API, but provides less details
 }
 \examples{
 cms_products_list()
@@ -32,7 +37,6 @@ cms_products_list(freeText = "GLOBAL_ANALYSISFORECAST_PHY_001_024")
 Other product-functions: 
 \code{\link{cms_cite_product}()},
 \code{\link{cms_product_details}()},
-\code{\link{cms_product_metadata}()},
 \code{\link{cms_product_services}()}
 }
 \author{
