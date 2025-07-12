@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.5.0002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,6 @@ listed at Copernicus. Note that the citing formatting does not appear to be stan
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other product-functions:
 <code><a href="cms_product_details.html">cms_product_details</a>()</code>,
-<code><a href="cms_product_metadata.html">cms_product_metadata</a>()</code>,
 <code><a href="cms_product_services.html">cms_product_services</a>()</code>,
 <code><a href="cms_products_list.html">cms_products_list</a>()</code></p></div>
     </div>
@@ -72,8 +71,546 @@ listed at Copernicus. Note that the citing formatting does not appear to be stan
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">cms_cite_product</span><span class="op">(</span><span class="st">"SST_MED_PHY_SUBSKIN_L4_NRT_010_036"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                          doi </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "E.U. Copernicus Marine Service Information; Mediterranean Sea - High Resolution Diurnal Subskin Sea Surface Temperature Analysis - SST_MED_PHY_SUBSKIN_L4_NRT_010_036 (2021-04-23). DOI:10.48670/moi-00170" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $doi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "E.U. Copernicus Marine Service Information; Mediterranean Sea - High Resolution Diurnal Subskin Sea Surface Temperature Analysis - SST_MED_PHY_SUBSKIN_L4_NRT_010_036 (2021-04-23). DOI:10.48670/moi-00170"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SST_MED_PHY_SUBSKIN_L4_NRT_010_036"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Collection"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $stac_version</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1.0.0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $stac_extensions</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $stac_extensions[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $title</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Mediterranean Sea - High Resolution Diurnal Subskin Sea Surface Temperature Analysis"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $description</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "For the Mediterranean Sea - the CNR diurnal sub-skin Sea Surface Temperature (SST) product provides daily gap-free (L4) maps of hourly mean sub-skin SST at 1/16° (0.0625°) horizontal resolution over the CMEMS Mediterranean Sea (MED) domain, by combining infrared satellite and model data (Marullo et al., 2014). The implementation of this product takes advantage of the consolidated operational SST processing chains that provide daily mean SST fields over the same basin (Buongiorno Nardelli et al., 2013). The sub-skin temperature is the temperature at the base of the thermal skin layer and it is equivalent to the foundation SST at night, but during daytime it can be significantly different under favorable (clear sky and low wind) diurnal warming conditions. The sub-skin SST L4 product is created by combining geostationary satellite observations aquired from SEVIRI and model data (used as first-guess) aquired from the CMEMS MED Monitoring Forecasting Center (MFC). This approach takes advantage of geostationary satellite observations as the input signal source to produce hourly gap-free SST fields using model analyses as first-guess. The resulting SST anomaly field (satellite-model) is free, or nearly free, of any diurnal cycle, thus allowing to interpolate SST anomalies using satellite data acquired at different times of the day (Marullo et al., 2014).\n \n[How to cite](https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-or-reference-copernicus-marine-products-and-services)\n\n**DOI (product):**   \nhttps://doi.org/10.48670/moi-00170\n\n**References:**\n\n* Marullo, S., Santoleri, R., Ciani, D., Le Borgne, P., Péré, S., Pinardi, N., ... &amp; Nardone, G. (2014). Combining model and geostationary satellite data to reconstruct hourly SST field over the Mediterranean Sea. Remote sensing of environment, 146, 11-23.\n* Buongiorno Nardelli B., C.Tronconi, A. Pisano, R.Santoleri, 2013: High and Ultra-High resolution processing of satellite Sea Surface Temperature data over Southern European Seas in the framework of MyOcean project, Rem. Sens. Env., 129, 1-16, doi:10.1016/j.rse.2012.10.012.\n"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $license</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "proprietary"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $providers</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $providers[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $providers[[1]]$name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CNR (Italy)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $providers[[1]]$roles</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $providers[[1]]$roles[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "producer"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $providers[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $providers[[2]]$name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Copernicus Marine Service"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $providers[[2]]$roles</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $providers[[2]]$roles[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "host"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $providers[[2]]$roles[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "processor"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $providers[[2]]$url</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://marine.copernicus.eu"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $keywords</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $keywords[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "oceanographic-geographical-features"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $keywords[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "satellite-observation"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $keywords[[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "sea-surface-subskin-temperature"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $keywords[[4]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "near-real-time"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $keywords[[5]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "coastal-marine-environment"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $keywords[[6]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "weather-climate-and-seasonal-forecasting"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $keywords[[7]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "marine-resources"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $keywords[[8]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "marine-safety"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $keywords[[9]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "mediterranean-sea"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $keywords[[10]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "level-4"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[1]]$rel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "root"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[1]]$href</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "../catalog.stac.json"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[1]]$title</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Copernicus Marine Data Store"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[1]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "application/json"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[2]]$rel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "parent"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[2]]$href</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "../catalog.stac.json"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[2]]$title</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Copernicus Marine Data Store"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[2]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "application/json"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[3]]$rel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "item"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[3]]$href</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "cmems_obs-sst_med_phy-sst_nrt_diurnal-oi-0.0625deg_PT1H-m_202105/dataset.stac.json"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[3]]$title</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "All data"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[3]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "application/json"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[4]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[4]]$rel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "license"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[4]]$href</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://marine.copernicus.eu/user-corner/service-commitments-and-licence"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[4]]$title</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Copernicus Marine Service Commitments and Licence"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[4]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "text/html"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[5]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[5]]$rel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "cite-as"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[5]]$href</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://doi.org/10.48670/moi-00170"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[5]]$title</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10.48670/moi-00170"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[5]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "text/html"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[6]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[6]]$rel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "alternative"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[6]]$href</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://data.marine.copernicus.eu/product/SST_MED_PHY_SUBSKIN_L4_NRT_010_036"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[6]]$title</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Product page"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[6]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "text/html"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[7]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[7]]$rel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "describedby"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[7]]$href</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://documentation.marine.copernicus.eu/PUM/CMEMS-SST-PUM-010-035-036.pdf"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[7]]$title</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Product User Manual"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[7]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "application/pdf"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[7]]$ref</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CMEMS-SST-PUM-010-035-036"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[7]]$createdAt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2021-04-23"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[7]]$updatedAt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2024-07-26T13:29:56.843Z"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[8]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[8]]$rel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "describedby"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[8]]$href</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://documentation.marine.copernicus.eu/QUID/CMEMS-SST-QUID-010-035-036.pdf"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[8]]$title</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Quality Information Document"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[8]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "application/pdf"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[8]]$ref</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CMEMS-SST-QUID-010-035-036"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[8]]$createdAt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2021-04-23"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[8]]$updatedAt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2024-07-26T15:52:39.741Z"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[9]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[9]]$rel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "describedby"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[9]]$href</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://documentation.marine.copernicus.eu/SQO/CMEMS-SST-SQO-010-035-036.pdf"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[9]]$title</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Synthesis Quality Overview"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[9]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "application/pdf"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[9]]$ref</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CMEMS-SST-SQO-010-035-036"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[9]]$createdAt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2023-11-30"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $links[[9]]$updatedAt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2024-07-26T13:38:33.707Z"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $extent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $extent$spatial</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $extent$spatial$bbox</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $extent$spatial$bbox[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $extent$spatial$bbox[[1]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -18.125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $extent$spatial$bbox[[1]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 30.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $extent$spatial$bbox[[1]][[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 36.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $extent$spatial$bbox[[1]][[4]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $extent$temporal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $extent$temporal$interval</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $extent$temporal$interval[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $extent$temporal$interval[[1]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2019-01-01T00:00:00Z"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $extent$temporal$interval[[1]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2025-07-11T23:00:00Z"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $assets</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $assets$thumbnail</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $assets$thumbnail$href</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://mdl-metadata.s3.waw3-1.cloudferro.com/metadata/thumbnails/SST_MED_PHY_SUBSKIN_L4_NRT_010_036.jpg"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $assets$thumbnail$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "image/jpeg"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $assets$thumbnail$roles</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $assets$thumbnail$roles[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "thumbnail"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $assets$thumbnail$title</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Mediterranean Sea - High Resolution Diurnal Subskin Sea Surface Temperature Analysis thumbnail"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$altId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "4676ebab-6bdc-4401-bf6f-9cafbdb7f8c8"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$providerMetadata</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$providerMetadata$source</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "cmems"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$providerMetadata$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "csw"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$providerMetadata$url</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://csw.marine.copernicus.eu/geonetwork/csw-MYOCEAN-CORE-PRODUCTS/eng/csw?service=CSW&amp;version=2.0.2&amp;request=GetRecordById&amp;id=4676ebab-6bdc-4401-bf6f-9cafbdb7f8c8&amp;elementsetname=full&amp;outputSchema=http://www.isotc211.org/2005/gmd"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$creationDate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2023-06-18T06:30:18.198Z"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$layerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SST_MED_PHY_SUBSKIN_L4_NRT_010_036/cmems_obs-sst_med_phy-sst_nrt_diurnal-oi-0.0625deg_PT1H-m_202105/analysed_sst"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$time</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.546301e+12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$elevation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$basemapId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "dark"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$overlays</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$overlays$tags</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$overlays$tags[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$overlays$tags[[1]]$name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SST"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$overlays$tags[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$overlays$tags[[2]]$name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Subskin"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$crs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "epsg:4326"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$valueMin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 286.84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$valueMax</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 293.65</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$valueClamp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$logScale</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$style</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "default"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$colormapId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "thermal"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$thumbnailMeta$colormapInvert</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$creationDate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2021-04-23"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$modifiedDate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2023-11-30"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$contacts</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$contacts[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$contacts[[1]]$name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ""</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$contacts[[1]]$organisationName</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SST-CNR-ROMA-IT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$contacts[[1]]$responsiblePartyRole</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "resourceProvider"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$contacts[[1]]$email</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ""</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$projection</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "WGS 84 (EPSG:4326)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$assimilatedData</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$formats</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$formats[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "NetCDF-4"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$updateFrequencies</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$updateFrequencies$daily</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "14:00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$featureTypes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$featureTypes[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Grid"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$indicatorFamilies</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoExtent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoExtent$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "envelope"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoExtent$coordinates</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoExtent$coordinates[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoExtent$coordinates[[1]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -18.12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoExtent$coordinates[[1]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoExtent$coordinates[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoExtent$coordinates[[2]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 36.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoExtent$coordinates[[2]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 30.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoResolution</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoResolution$row</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoResolution$row$magnitude</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.0625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoResolution$row$units</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "degree"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoResolution$column</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoResolution$column$magnitude</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.0625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$geoResolution$column$units</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "degree"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$tempExtentBegin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2019-01-01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$tempResolutions</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$tempResolutions[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Hourly"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$vertExtentMin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$vertExtentMax</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$rank</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$useCases</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$areas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$areas[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Mediterranean Sea"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$times</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$times[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Present"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$times[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Past"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$sources</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$sources[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Satellite observations"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$colors</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$colors[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Blue Ocean"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$communities</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$communities[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Policy &amp; governance"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$communities[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Science &amp; innovation"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$communities[[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Extremes, hazards &amp; safety"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$communities[[4]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Coastal services"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$communities[[5]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Natural resources &amp; energy"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$communities[[6]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Trade &amp; marine navigation"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$processingLevel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Level 4"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$mainVariables</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$mainVariables[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Temperature"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$allVariables</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$allVariables[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Sea surface subskin temperature (T)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$directives</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$crs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "EPSG:4326"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$isStaging</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $properties$admp_updated</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2025-07-12T09:39:46.773438Z"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sci:doi`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10.48670/moi-00170"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -85,7 +622,7 @@ listed at Copernicus. Note that the citing formatting does not appear to be stan
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>

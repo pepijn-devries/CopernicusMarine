@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.5.0002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,15 +47,16 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><blockquote>
-<p><code>CopernicusMarine</code> Easily access information from <a href="https://data.marine.copernicus.eu" class="external-link uri">https://data.marine.copernicus.eu</a></p>
-</blockquote>
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header">
+<img src="logo.svg" class="logo" alt=""><h1 id="copernicusmarine-">CopernicusMarine <a class="anchor" aria-label="anchor" href="#copernicusmarine-"></a>
+</h1>
+</div>
 <!-- badges: start -->
 
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p><a href="https://github.com/pepijn-devries/CopernicusMarine/" class="external-link"><img src="reference/figures/logo.png" alt="CopernicusMarine logo" align="right"></a></p>
 <p><a href="https://marine.copernicus.eu/about" class="external-link">Copernicus Marine Service Information</a> is a programme subsidised by the European Commission. Its mission is to provide free authoritative information on the oceans physical and biogeochemical state. The <code>CopernicusMarine</code> R package is developed apart from this programme and facilitates retrieval of information from <a href="https://data.marine.copernicus.eu" class="external-link uri">https://data.marine.copernicus.eu</a>. With the package you can:</p>
 <ul>
 <li>List available marine data for Copernicus and provide meta-information.</li>
@@ -122,34 +123,43 @@ Downloading a subset
 Downloading a complete Copernicus marine product
 <a class="anchor" aria-label="anchor" href="#usage-2"></a>
 </h3>
-<p>If you don’t want to subset the data and want the complete set, you can use the SpatioTemporal Asset Catalogs (STAC), if these are available for your product. First you can list STAC files available for a specific product (and layer):</p>
+<p>If you don’t want to subset the data and want the complete set, you can download complete native files, if these are available for your product. You can list available files with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">stac_files</span> <span class="op">&lt;-</span></span>
-<span>  <span class="fu"><a href="reference/cms_stac.html">cms_list_stac_files</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">native_files</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="reference/cms_download_native.html">cms_list_native_files</a></span><span class="op">(</span></span>
 <span>    <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span>
 <span>    <span class="st">"cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m"</span><span class="op">)</span></span>
-<span><span class="va">stac_files</span></span>
-<span><span class="co">#&gt; # A tibble: 946 × 8</span></span>
-<span><span class="co">#&gt;    home          native current_path LastModified ETag  Size  StorageClass Type </span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;</span></span>
-<span><span class="co">#&gt;  1 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"4… 1939… STANDARD     Norm…</span></span>
-<span><span class="co">#&gt;  2 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"9… 1939… STANDARD     Norm…</span></span>
-<span><span class="co">#&gt;  3 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"9… 1939… STANDARD     Norm…</span></span>
-<span><span class="co">#&gt;  4 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"c… 1939… STANDARD     Norm…</span></span>
-<span><span class="co">#&gt;  5 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"2… 1938… STANDARD     Norm…</span></span>
-<span><span class="co">#&gt;  6 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"0… 1938… STANDARD     Norm…</span></span>
-<span><span class="co">#&gt;  7 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"5… 1939… STANDARD     Norm…</span></span>
-<span><span class="co">#&gt;  8 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"5… 1939… STANDARD     Norm…</span></span>
-<span><span class="co">#&gt;  9 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"9… 1939… STANDARD     Norm…</span></span>
-<span><span class="co">#&gt; 10 s3.waw3-1.cl… mdl-n… native/GLOB… 2024-04-18T… "\"1… 1939… STANDARD     Norm…</span></span>
-<span><span class="co">#&gt; # ℹ 936 more rows</span></span></code></pre></div>
-<p>Downloading the first file can be done with <code>cms_download_stac(stac_files[1,,drop = FALSE], tempdir())</code>, where the file would be stored in a temporary directory. By default the progress is printed as files can be very large and may take some time to download.</p>
+<span><span class="va">native_files</span></span>
+<span><span class="co">#&gt; # A tibble: 1,000 × 9</span></span>
+<span><span class="co">#&gt;    Key   LastModified ETag  Size  Owner_ID Owner_DisplayName StorageClass Bucket</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;        &lt;chr&gt; </span></span>
+<span><span class="co">#&gt;  1 nati… 2024-04-18T… "\"4… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
+<span><span class="co">#&gt;  2 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
+<span><span class="co">#&gt;  3 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
+<span><span class="co">#&gt;  4 nati… 2024-04-18T… "\"c… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
+<span><span class="co">#&gt;  5 nati… 2024-04-18T… "\"2… 1938… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
+<span><span class="co">#&gt;  6 nati… 2024-04-18T… "\"0… 1938… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
+<span><span class="co">#&gt;  7 nati… 2024-04-18T… "\"5… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
+<span><span class="co">#&gt;  8 nati… 2024-04-18T… "\"5… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
+<span><span class="co">#&gt;  9 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
+<span><span class="co">#&gt; 10 nati… 2024-04-18T… "\"1… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
+<span><span class="co">#&gt; # ℹ 990 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 1 more variable: base_url &lt;chr&gt;</span></span></code></pre></div>
+<p>Downloading the first file can be done with:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/cms_download_native.html">cms_download_native</a></span><span class="op">(</span></span>
+<span>  destination   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  product       <span class="op">=</span> <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span>
+<span>  layer         <span class="op">=</span> <span class="st">"cmems_mod_glo_phy_anfc_0.083deg_PT1H-m"</span>,</span>
+<span>  pattern       <span class="op">=</span> <span class="st">"m_20220630"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>The file would be stored in the specified destination folder. By default the progress is printed as files can be very large and may take some time to download.</p>
 <h3 id="usage-3">
 Copernicus Web Map Tile Services (WMTS)
 <a class="anchor" aria-label="anchor" href="#usage-3"></a>
 </h3>
-<p>Web Map Tile Services (WMTS) allow to quickly plot pre-rendered images onto a map. This may not be useful when you need the data for analyses but is handy for quick visualisations, inspection or presentation of data. In R it is very easy to add WMTS layers to an interactive map using <a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a> widgets. This is demonstrated with the example below (note that in the documentation the map is only shown statically and is not interactive).</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<p>Web Map Tile Services (WMTS) allow to quickly plot pre-rendered images onto a map. This may not be useful when you need the data for analyses but is handy for quick visualisations, inspection or presentation of data. In R it is very easy to add WMTS layers to an interactive map using <a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a> statically and is not interactive).</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/leaflet.html" class="external-link">leaflet</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-methods.html" class="external-link">setView</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="fl">3</span>, lat <span class="op">=</span> <span class="fl">54</span>, zoom <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/addProviderTiles.html" class="external-link">addProviderTiles</a></span><span class="op">(</span><span class="st">"Esri.WorldImagery"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -158,15 +168,16 @@ Copernicus Web Map Tile Services (WMTS)
 <span>    layer       <span class="op">=</span> <span class="st">"cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m"</span>,</span>
 <span>    variable    <span class="op">=</span> <span class="st">"thetao"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-leaflet-1.png"><!-- --></p>
-<div class="section level3">
+<div id="htmlwidget-c9430a551177879f3c96" class="leaflet html-widget html-fill-item" style="width:672px;height:480px;">
+
+</div>
+<script type="application/json" data-for="htmlwidget-c9430a551177879f3c96">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[54,3],4,[]],"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addTiles","args":["http://wmts.marine.copernicus.eu/teroWmts/?service=WMTS&version=1.0.0&request=GetTile&tilematrixset=EPSG:3857&style=default&tilematrix={z}&tilerow={y}&tilecol={x}&layer=GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m_202406/thetao",null,null,{"styles":"","format":"image/png","transparent":true,"version":"1.1.1"}]}]},"evals":[],"jsHooks":[]}</script><div class="section level3">
 <h3 id="citing-the-data-you-use">Citing the data you use<a class="anchor" aria-label="anchor" href="#citing-the-data-you-use"></a>
 </h3>
 <p>A Copernicus account comes with several terms of use. One of these is that you <a href="https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-copernicus-marine-products-and-services" class="external-link">properly cite</a> the data you use in publications. In fact, we also have credit the data used in this documentation, which can be easily done with the following code:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/cms_cite_product.html">cms_cite_product</a></span><span class="op">(</span><span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                                                                                                                                                                 doi </span></span>
-<span><span class="co">#&gt; "E.U. Copernicus Marine Service Information; Global Ocean Physics Analysis and Forecast - GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14). DOI:10.48670/moi-00016"</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/cms_cite_product.html">cms_cite_product</a></span><span class="op">(</span><span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span><span class="op">)</span><span class="op">$</span><span class="va">doi</span></span>
+<span><span class="co">#&gt; [1] "E.U. Copernicus Marine Service Information; Global Ocean Physics Analysis and Forecast - GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14). DOI:10.48670/moi-00016"</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -174,10 +185,11 @@ Copernicus Web Map Tile Services (WMTS)
 </h2>
 <ul>
 <li><a href="https://data.marine.copernicus.eu" class="external-link">E.U. Copernicus Marine Service Information</a></li>
-<li><a href="https://doi.org/10.48670/moi-00016" class="external-link">Global Ocean Physics Analysis and Forecast - GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14); DOI:10.48670/moi-00016</a></li>
+<li>
+</li>
 </ul>
 </div>
-
+</div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -206,7 +218,7 @@ Copernicus Web Map Tile Services (WMTS)
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Pepijn de Vries <br><small class="roles"> Author, maintainer, data contributor </small> <a href="https://orcid.org/0000-0002-7961-6646" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Pepijn de Vries <br><small class="roles"> Author, maintainer, data contributor </small> <a href="https://orcid.org/0000-0002-7961-6646" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
@@ -229,7 +241,7 @@ Copernicus Web Map Tile Services (WMTS)
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
