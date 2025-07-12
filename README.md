@@ -189,8 +189,7 @@ leaflet::leaflet() |>
   )
 ```
 
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-c9430a551177879f3c96" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-c9430a551177879f3c96">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[54,3],4,[]],"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addTiles","args":["http://wmts.marine.copernicus.eu/teroWmts/?service=WMTS&version=1.0.0&request=GetTile&tilematrixset=EPSG:3857&style=default&tilematrix={z}&tilerow={y}&tilecol={x}&layer=GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m_202406/thetao",null,null,{"styles":"","format":"image/png","transparent":true,"version":"1.1.1"}]}]},"evals":[],"jsHooks":[]}</script>
+![](man/figures/README-leaflet-1.png)<!-- -->
 
 ### Citing the data you use
 
@@ -210,4 +209,6 @@ cms_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")$doi
 
 - [E.U. Copernicus Marine Service
   Information](https://data.marine.copernicus.eu)
-- 
+- [Global Ocean Physics Analysis and Forecast -
+  GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14);
+  DOI:10.48670/moi-00016](https://doi.org/10.48670/moi-00016)
