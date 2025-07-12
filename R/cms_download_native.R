@@ -1,47 +1,95 @@
 #' Download raw files as provided to Copernicus Marine
 #' 
-#' `r lifecycle::badge('experimental')` TODO description
+#' `r lifecycle::badge('experimental')` Full marine data sets can be downloaded using the functions
+#' documented here. Use `cms_list_native_files()` to list available files, and
+#' `cms_download_native()` to download specific files. Files are usually organised per product,
+#' layer, year, month and day.
 #' @inheritParams cms_download_subset
-#' @param pattern TODO
-#' @param ... TODO
-#' @returns TODO
+#' @param destination Path where to store the downloaded file(s).
+#' @param pattern A regular expression ([regex](https://en.wikipedia.org/wiki/Regular_expression))
+#' pattern. Only paths that match the pattern will be returned. It can be used
+#' to select specific files. For instance if `pattern = "2022/06/"`, only files for the
+#' year 2022 and the month June will be listed (assuming that the file path is structured as such, see
+#' examples)
+#' @param progress A `logical` value. When `TRUE` a progress bar is shown.
+#' @param ... Ignored
+#' @returns Returns `NULL` invisibly.
 #' @author Pepijn de Vries
 #' @examples
-#' \dontrun{
-#' cms_list_native_files(
-#'   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-#'   layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m"
-#' )
+#' if (interactive()) {
+#'   cms_list_native_files(
+#'     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+#'     layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+#'     pattern       = "2022/06/"
+#'   )
 #' 
-#' cms_download_native(
-#'   destination   = tempdir(),
-#'   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-#'   layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
-#'   pattern       = "m_20220630"
-#' )
+#' ## Use 'pattern' to download a file for a specific day:
+#'   cms_download_native(
+#'     destination   = tempdir(),
+#'     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+#'     layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+#'     pattern       = "m_20220630"
+#'   )
 #' }
 #' @rdname cms_download_native
 #' @export
-cms_download_native <- function(destination, product, layer, pattern, ...) {
+cms_download_native <- function(destination, product, layer, pattern, progress = TRUE, ...) {
   if (missing(pattern)) pattern <- ""
 
   file_list <- cms_list_native_files(product, layer, pattern)
-  if (nrow(file_list)) stop("TODO multiple files download not yet implemented")
-  con <- aws.s3::s3connection(
-    file_list$Key[[1]],
-    region = "",
-    bucket = file_list$Bucket[[1]],
-    base_url = file_list$base_url
-  )
-  ## TODO read from s3 connection and write to local file (and optionally show progress)
-  temp <- readBin(con, "raw", 1024L)
-  close(con)
+  
+  for (i in nrow(file_list)) {
+    path_out <- unlist(strsplit(file_list$Key[[i]], "/"))[-1:-2]
+    file_out <- path_out[length(path_out)]
+    path_out <- do.call(file.path, as.list(utils::head(path_out, -1)))
+    path_out <- file.path(destination, path_out)
+    
+    j <- 0
+    while (!dir.exists(path_out)) {
+      dir.create(path_out, recursive = TRUE)
+      j <- j + 1
+      if (j > 10) stop("Failed to create directory for downloaded file")
+    }
 
+    con_out <- file(file.path(path_out, file_out), "wb")
+    con_in <- aws.s3::s3connection(
+      file_list$Key[[i]],
+      region = "",
+      bucket = file_list$Bucket[[1]],
+      base_url = file_list$base_url
+    )
+    
+    if (progress) cli::cli_inform("Downloading file {i} of {nrow(file_list)}.")
+    if (progress) cli::cli_progress_bar(type = "download", total = as.numeric(file_list$Size))
+    
+    tryCatch({
+      
+      while (TRUE) {
+        chunk <- readBin(con_in, "raw", 10240L)
+        writeBin(chunk, con_out)
+        if (progress) cli::cli_progress_update(length(chunk) |> as.numeric())
+        if (length(chunk) == 0) break
+      }
+      
+    },
+    error = function(e) {
+      stop(e)
+    },
+    finally = {
+      
+      close(con_in)
+      close(con_out)
+      
+    })
+    if (progress) cli::cli_progress_done()
+  }
+  return (invisible())
 }
 
 #' @rdname cms_download_native
 #' @export
 cms_list_native_files <- function(product, layer, pattern, ...) {
+  if (missing(pattern)) pattern <- ""
   s3_info <- .preprocess_native(product, layer)
   
   if (is.null(s3_info)) return(NULL)
@@ -55,7 +103,8 @@ cms_list_native_files <- function(product, layer, pattern, ...) {
     ) |>
       dplyr::filter(grepl(pattern, .data$Key, perl = TRUE)) |>
       dplyr::mutate(base_url = endpoint)
-  })
+  }) |>
+    dplyr::as_tibble()
 }
 
 .preprocess_native <- function(product, layer, ...) {

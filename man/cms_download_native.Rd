@@ -5,41 +5,52 @@
 \alias{cms_list_native_files}
 \title{Download raw files as provided to Copernicus Marine}
 \usage{
-cms_download_native(destination, product, layer, pattern, ...)
+cms_download_native(destination, product, layer, pattern, progress = TRUE, ...)
 
 cms_list_native_files(product, layer, pattern, ...)
 }
 \arguments{
-\item{destination}{File or path where the requested file will be downloaded to.}
+\item{destination}{Path where to store the downloaded file(s).}
 
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
 Can be obtained with \code{\link{cms_products_list}}.}
 
 \item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{cms_product_details}}.}
 
-\item{pattern}{TODO}
+\item{pattern}{A regular expression (\href{https://en.wikipedia.org/wiki/Regular_expression}{regex})
+pattern. Only paths that match the pattern will be returned. It can be used
+to select specific files. For instance if \code{pattern = "2022/06/"}, only files for the
+year 2022 and the month June will be listed (assuming that the file path is structured as such, see
+examples)}
 
-\item{...}{TODO}
+\item{progress}{A \code{logical} value. When \code{TRUE} a progress bar is shown.}
+
+\item{...}{Ignored}
 }
 \value{
-TODO
+Returns \code{NULL} invisibly.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} TODO description
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Full marine data sets can be downloaded using the functions
+documented here. Use \code{cms_list_native_files()} to list available files, and
+\code{cms_download_native()} to download specific files. Files are usually organised per product,
+layer, year, month and day.
 }
 \examples{
-\dontrun{
-cms_list_native_files(
-  product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-  layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m"
-)
+if (interactive()) {
+  cms_list_native_files(
+    product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+    layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+    pattern       = "2022/06/"
+  )
 
-cms_download_native(
-  destination   = tempdir(),
-  product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-  layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
-  pattern       = "m_20220630"
-)
+## Use 'pattern' to download a file for a specific day:
+  cms_download_native(
+    destination   = tempdir(),
+    product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+    layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+    pattern       = "m_20220630"
+  )
 }
 }
 \author{

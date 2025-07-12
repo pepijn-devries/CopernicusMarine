@@ -21,7 +21,9 @@ Copernicus marine \code{product}.
 for a specific marine product.
 }
 \examples{
-cms_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+if (interactive()) {
+  cms_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+}
 }
 \seealso{
 Other product-functions: 

@@ -10,8 +10,8 @@ cms_get_client_info(...)
 \item{...}{Ignored}
 }
 \value{
-In case of success it returns a named \code{list} with information about the Copernicus
-Marine clients.
+In case of success it returns a named \code{list} with information about the available
+Copernicus Marine clients.
 }
 \description{
 This function retrieves the client information from the Copernicus Marine Service.

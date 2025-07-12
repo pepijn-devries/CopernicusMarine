@@ -7,20 +7,25 @@
 cms_product_metadata(product, type, ...)
 }
 \arguments{
-\item{product}{Ignored. TODO}
+\item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
+Can be obtained with \code{\link{cms_products_list}}.}
 
-\item{type}{Deprecated and ignored.}
+\item{type}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Deprecated and ignored.}
 
 \item{...}{Ignored}
 }
 \value{
-TODO
+Returns a \code{data.frame}/\code{tibble} with the metadata. Each row in the \code{data.frame}
+represents a layer available for the product.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}TODO
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Obtain product meta data such as spatio-temporal bounds
+of the data.
 }
 \examples{
-cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+if (interactive()) {
+  cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+}
 }
 \author{
 Pepijn de Vries

@@ -9,7 +9,9 @@
 #' @returns Returns a `tibble` with a list of available services for a
 #' Copernicus marine `product`.
 #' @examples
-#' cms_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+#' if (interactive()) {
+#'   cms_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+#' }
 #' @family product-functions
 #' @author Pepijn de Vries
 #' @export
