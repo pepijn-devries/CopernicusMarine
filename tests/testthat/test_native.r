@@ -1,7 +1,6 @@
 test_that("native download works", {
   skip_if_offline()
   skip_on_cran()
-  on.exit({setTimeLimit(elapse = Inf)})
   expect_true({
     result <- 
       tryCatch({
@@ -17,9 +16,9 @@ test_that("native download works", {
       }, error = function(e) {
         setTimeLimit(elapse = Inf)
         closeAllConnections()
+        print(e$message) ## TODO for debugging
         return(e$message == "reached elapsed time limit")
       })
-    setTimeLimit(elapse = Inf)
     unlink(file.path(tempdir(), "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m"), recursive = TRUE)
     result
   })
