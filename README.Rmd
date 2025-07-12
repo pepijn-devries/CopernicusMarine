@@ -1,6 +1,5 @@
 ---
 output: github_document
-always_allow_html: true
 ---
 
 ```{r, echo = FALSE, message = FALSE}
@@ -133,7 +132,7 @@ you need the data for analyses but is handy for quick visualisations, inspection
 In R it is very easy to add WMTS layers to an interactive map using [leaflet](https://rstudio.github.io/leaflet/)
 statically and is not interactive).
 
-```{r leaflet, eval=TRUE}
+```{r leaflet, eval=TRUE, message=FALSE, warning=FALSE}
 leaflet::leaflet() |>
   leaflet::setView(lng = 3, lat = 54, zoom = 4) |>
   leaflet::addProviderTiles("Esri.WorldImagery") |>
@@ -162,4 +161,4 @@ cop_det <- cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 ```
 
  * [E.U. Copernicus Marine Service Information](https://data.marine.copernicus.eu)
- * `r sprintf("[%s - %s (%s); DOI:%s](https://doi.org/%s)", cop_det$title, cop_det$id, cop_det$creationDate, cop_det$doi, cop_det$doi)`
+ * `r sprintf("[%s - %s (%s); DOI:%s](https://doi.org/%s)", cop_det$title, cop_det$id, cop_det$properties$creationDate, cop_det[["sci:doi"]], cop_det[["sci:doi"]])`
