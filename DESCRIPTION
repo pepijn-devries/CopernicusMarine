@@ -1,7 +1,7 @@
 Package: CopernicusMarine
 Type: Package
 Title: Search Download and Handle Data from Copernicus Marine Service Information
-Version: 0.2.5.0001
+Version: 0.2.5.0003
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre", "dtc"),
     email = "pepijn.devries@outlook.com",
     comment = c(ORCID = "0000-0002-7961-6646")))
@@ -15,7 +15,8 @@ Description: Subset and download data from EU Copernicus Marine
 Depends:
     R (>= 4.1.0)
 Imports:
-    crayon,
+    aws.s3,
+    cli,
     dplyr,
     httr2,
     leaflet,
@@ -36,12 +37,14 @@ BugReports: https://github.com/pepijn-devries/CopernicusMarine/issues
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
 Collate: 
     'CopernicusMarine-package.r'
+    'cms_catalogue_entry.R'
     'cms_cite_product.r'
+    'cms_download_native.R'
     'cms_download_stac.r'
     'cms_login.r'
     'cms_download_subset.r'
@@ -51,6 +54,6 @@ Collate:
     'cms_product_services.r'
     'cms_products_list.r'
     'cms_stac_properties.r'
-    'cms_wmts.r'
     'generics.r'
+    'cms_wmts.r'
     'import.r'

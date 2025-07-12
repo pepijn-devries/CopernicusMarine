@@ -4,11 +4,13 @@
 \alias{cms_product_services}
 \title{Obtain available services for a specific Copernicus marine product}
 \usage{
-cms_product_services(product)
+cms_product_services(product, ...)
 }
 \arguments{
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
 Can be obtained with \code{\link{cms_products_list}}.}
+
+\item{...}{Ignored.}
 }
 \value{
 Returns a \code{tibble} with a list of available services for a
@@ -19,7 +21,9 @@ Copernicus marine \code{product}.
 for a specific marine product.
 }
 \examples{
-cms_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+if (interactive()) {
+  cms_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+}
 }
 \seealso{
 Other product-functions: 

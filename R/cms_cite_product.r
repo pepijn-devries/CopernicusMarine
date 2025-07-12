@@ -16,11 +16,10 @@
 cms_cite_product <- function(product) {
   product_details <- cms_product_details(product)
   if (is.null(product_details)) return(NULL)
-  result <- product_details$refs
   result <- c(
     doi = with(
       product_details,
       sprintf("E.U. Copernicus Marine Service Information; %s - %s (%s). DOI:%s",
-              title, id, creationDate, doi)), result)
+              title, id, properties$creationDate, `sci:doi`)), product_details)
   return(result)
 }
