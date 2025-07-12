@@ -1,6 +1,7 @@
 test_that("native download works", {
   skip_if_offline()
   skip_on_cran()
+  on.exit({setTimeLimit(elapse = Inf)})
   expect_true({
     result <- 
       tryCatch({
