@@ -19,6 +19,7 @@ test_that("native download works", {
         closeAllConnections()
         return(e$message == "reached elapsed time limit")
       })
+    setTimeLimit(elapse = Inf)
     unlink(file.path(tempdir(), "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m"), recursive = TRUE)
     result
   })
