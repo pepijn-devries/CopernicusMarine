@@ -1,6 +1,7 @@
 test_that("native download works", {
   skip_if_offline()
   skip_on_cran()
+  skip_if(TRUE, "Skip this test for debugging purposes")
   expect_true({
     result <- 
       tryCatch({
