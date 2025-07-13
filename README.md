@@ -10,6 +10,8 @@
 checks](https://badges.cranchecks.info/worst/CopernicusMarine.svg)](https://cran.r-project.org/web/checks/check_results_CopernicusMarine.html)
 [![CopernicusMarine status
 badge](https://pepijn-devries.r-universe.dev/badges/CopernicusMarine)](https://pepijn-devries.r-universe.dev/CopernicusMarine)
+[![Codecov test
+coverage](https://codecov.io/gh/pepijn-devries/CopernicusMarine/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pepijn-devries/CopernicusMarine?branch=master)
 <!-- badges: end -->
 
 ## Overview
@@ -38,16 +40,16 @@ third party software, other than packages available from
 
 ## Installation
 
-> Get CRAN version
+Install CRAN release:
 
 ``` r
 install.packages("CopernicusMarine")
 ```
 
-> Get development version on github
+Install latest developmental version from R-Universe:
 
 ``` r
-devtools::install_github('pepijn-devries/CopernicusMarine')
+install.packages("CopernicusMarine", repos = c('https://pepijn-devries.r-universe.dev', 'https://cloud.r-project.org'))
 ```
 
 ## Usage
