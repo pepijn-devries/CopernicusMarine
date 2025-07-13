@@ -48,8 +48,8 @@
 #' @author Pepijn de Vries
 #' @export
 cms_download_subset <- function(
-    username = getOption("CopernicusMarine_uid", ""),
-    password = getOption("CopernicusMarine_pwd", ""),
+    username = cms_get_username(),
+    password = cms_get_password(),
     destination,
     product,
     layer,
