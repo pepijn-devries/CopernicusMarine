@@ -153,7 +153,7 @@ native_files
 #> # ℹ 1 more variable: base_url <chr>
 ```
 
-Downloading the first file can be done with:
+Downloading a specific (or multiple file) can be done with:
 
 ``` r
 cms_download_native(
@@ -164,9 +164,9 @@ cms_download_native(
 )
 ```
 
-The file would be stored in the specified destination folder. By default
-the progress is printed as files can be very large and may take some
-time to download.
+The file, whose file name matches the patter, will be stored in the
+specified destination folder. By default the progress is printed as
+files can be very large and may take some time to download.
 
 <h3 id="sec-wmts">
 

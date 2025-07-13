@@ -47,3 +47,43 @@ test_that("Product details can be obtained", {
       (details$id == "GLOBAL_ANALYSISFORECAST_PHY_001_024")
   })
 })
+
+test_that("Requesting nonexisting product citation details returns NULL", {
+  skip_on_cran()
+  skip_if_offline()
+  expect_null({
+    cms_cite_product("FOOBAR") |> suppressMessages()
+  })
+})
+
+test_that("Requesting nonexisting product services returns NULL", {
+  skip_on_cran()
+  skip_if_offline()
+  expect_null({
+    cms_product_services("FOOBAR") |> suppressMessages()
+  })
+})
+
+test_that("Requesting nonexisting product details returns NULL", {
+  skip_on_cran()
+  skip_if_offline()
+  expect_null({
+    cms_product_details("FOOBAR") |> suppressMessages()
+  })
+})
+
+test_that("Deprecated argument 'variant' raises warning", {
+  skip_on_cran()
+  skip_if_offline()
+  expect_warning({
+    cms_product_details("", variant = "FOOBAR") |> suppressMessages()
+  })
+})
+
+test_that("Deprecated argument 'layer' raises warning", {
+  skip_on_cran()
+  skip_if_offline()
+  expect_warning({
+    cms_product_details("", layer = "FOOBAR") |> suppressMessages()
+  })
+})

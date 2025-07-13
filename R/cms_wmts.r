@@ -75,10 +75,11 @@ addCmsWMTSTiles <- function(
   
   detail <- cms_wmts_details(product, layer, variable)
   detail <- detail$url |> strsplit(",") |> unlist()
-  detail <- detail[startsWith(detail, "layer=")] |> unique()
+
   if (length(detail) == 0) rlang::abort(
     c(x = "Could not find a WMTS URL",
-      i = "Check your parameter settings"))
+      i = "Check your parameter settings")) else
+        detail <- detail[startsWith(detail, "layer=")] |> unique()
   if (length(detail) > 1) rlang::abort(
     c(x = "Found ambiguous WMTS URLs",
       i = "Check your parameter settings"))
