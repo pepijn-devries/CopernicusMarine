@@ -134,8 +134,8 @@ By default the progress is printed as files can be very large and may take some 
 
 Web Map Tile Services (WMTS) allow to quickly plot pre-rendered images onto a map. This may not be useful when
 you need the data for analyses but is handy for quick visualisations, inspection or presentation of data.
-In R it is very easy to add WMTS layers to an interactive map using [leaflet](https://rstudio.github.io/leaflet/)
-statically and is not interactive).
+In R it is very easy to add WMTS layers to an interactive map using [leaflet](https://rstudio.github.io/leaflet/).
+This page is rendered statically and resulting in a non-interactive map.
 
 ```{r leaflet, eval=TRUE, message=FALSE, warning=FALSE}
 leaflet::leaflet() |>
