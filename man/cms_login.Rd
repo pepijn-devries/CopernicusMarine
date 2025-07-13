@@ -4,17 +4,14 @@
 \alias{cms_login}
 \title{Contact Copernicus Marine login page}
 \usage{
-cms_login(
-  username = getOption("CopernicusMarine_uid", ""),
-  password = getOption("CopernicusMarine_pwd", "")
-)
+cms_login(username = cms_get_username(), password = cms_get_password())
 }
 \arguments{
-\item{username}{Your Copernicus marine user name. Can be provided as
-\code{options(CopernicusMarine_uid = "my_user_name")}, or as argument here.}
+\item{username}{Your Copernicus marine user name. Can be provided with
+\code{cms_get_username()} (default), or as argument here.}
 
 \item{password}{Your Copernicus marine password. Can be provided as
-\code{options(CopernicusMarine_pwd = "my_password")}, or as argument here.}
+\code{cms_get_password()} (default), or as argument here.}
 }
 \value{
 Returns a named \code{list} with your account details if successful,
@@ -28,11 +25,8 @@ and check if login is successful.
 This function will return your account details if successful.
 }
 \examples{
-\dontrun{
-## This will return FALSE if you have not set your account details with 'options'.
-## If you have specified your account details and there are no other problems,
-## it will return TRUE.
-cms_login()
+if (interactive()) {
+  cms_login()
 }
 }
 \author{
