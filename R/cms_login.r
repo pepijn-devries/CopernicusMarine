@@ -80,16 +80,16 @@ cms_login <- function(
 #' @rdname account
 #' @export
 cms_get_username <- function() {
-  username <- getOption("CopernicusMarine_uid", "")
-  if (username == "") username <- Sys.getenv("COPERNICUSMARINE_SERVICE_USERNAME")
+  username <- Sys.getenv("COPERNICUSMARINE_SERVICE_USERNAME")
+  if (username == "") username <- getOption("CopernicusMarine_uid", "")
   return (username)
 }
 
 #' @rdname account
 #' @export
 cms_get_password <- function() {
-  password <- getOption("CopernicusMarine_pwd", "")
-  if (password == "") password <- Sys.getenv("COPERNICUSMARINE_SERVICE_PASSWORD")
+  password <- Sys.getenv("COPERNICUSMARINE_SERVICE_PASSWORD")
+  if (password == "") password <- getOption("CopernicusMarine_pwd", "")
   return (password)
 }
 
