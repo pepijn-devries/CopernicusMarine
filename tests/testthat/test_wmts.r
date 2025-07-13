@@ -11,3 +11,14 @@ test_that("Copernicus WMTS tile can be added to a map", {
       )
   })
 })
+
+test_that("Copernicus WMTS capabilities can be obtained", {
+  skip_on_cran()
+  skip_if_offline("data.marine.copernicus.eu")
+  has_gdal_utils()
+  expect_true({
+    cap <- cms_wmts_get_capabilities("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+    inherits(cap, "list") && length(cap) > 0
+  })
+})
+  
