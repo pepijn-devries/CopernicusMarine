@@ -5,8 +5,8 @@
 \title{Subset and download a specific marine product from Copernicus}
 \usage{
 cms_download_subset(
-  username = getOption("CopernicusMarine_uid", ""),
-  password = getOption("CopernicusMarine_pwd", ""),
+  username = cms_get_username(),
+  password = cms_get_password(),
   destination,
   product,
   layer,
@@ -18,11 +18,11 @@ cms_download_subset(
 )
 }
 \arguments{
-\item{username}{Your Copernicus marine user name. Can be provided as
-\code{options(CopernicusMarine_uid = "my_user_name")}, or as argument here.}
+\item{username}{Your Copernicus marine user name. Can be provided with
+\code{cms_get_username()} (default), or as argument here.}
 
 \item{password}{Your Copernicus marine password. Can be provided as
-\code{options(CopernicusMarine_pwd = "my_password")}, or as argument here.}
+\code{cms_get_password()} (default), or as argument here.}
 
 \item{destination}{File or path where the requested file will be downloaded to.}
 
@@ -53,7 +53,7 @@ Returns a \code{logical} value invisibly indicating whether the requested file w
 successfully stored at the \code{destination}.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Subset and download a specific marine product from Copernicus.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#questioning}{\figure{lifecycle-questioning.svg}{options: alt='[Questioning]'}}}{\strong{[Questioning]}} Subset and download a specific marine product from Copernicus.
 You need to register an account
 at \url{https://data.marine.copernicus.eu} before you can use this function.
 }

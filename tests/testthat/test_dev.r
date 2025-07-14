@@ -1,4 +1,9 @@
 test_that("Source code should not have things on TODO list", {
+  skip_on_ci()
+  skip_on_cran()
+  skip_if(length(unclass(packageVersion("CopernicusMarine"))[[1]]) > 3,
+          "Skipping during development")
+            
   expect_false({
     files_to_check <-
       list.files(system.file(package = "CopernicusMarine"),

@@ -30,10 +30,10 @@ cms_product_services <- function(product, ...) {
 
   unnest_names <- names(result)
   for (uname in unnest_names) {
-    result <- tidyr::unnest_wider(result, uname, names_sep = "_")
+    result <- tidyr::unnest_wider(result, dplyr::all_of(uname), names_sep = "_")
   }
   result <- dplyr::bind_cols(
-    meta_data |> dplyr::select(-"assets"),
+    meta_data |> dplyr::select(!dplyr::all_of("assets")),
     result
   )
   return(result)

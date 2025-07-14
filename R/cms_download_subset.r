@@ -1,6 +1,6 @@
 #' Subset and download a specific marine product from Copernicus
 #'
-#' `r lifecycle::badge('stable')` Subset and download a specific marine product from Copernicus.
+#' `r lifecycle::badge('questioning')` Subset and download a specific marine product from Copernicus.
 #' You need to register an account
 #' at <https://data.marine.copernicus.eu> before you can use this function.
 #'
@@ -48,8 +48,8 @@
 #' @author Pepijn de Vries
 #' @export
 cms_download_subset <- function(
-    username = getOption("CopernicusMarine_uid", ""),
-    password = getOption("CopernicusMarine_pwd", ""),
+    username = cms_get_username(),
+    password = cms_get_password(),
     destination,
     product,
     layer,

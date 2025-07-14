@@ -1,5 +1,5 @@
 has_account_details <- function() {
-  if (is.null(getOption("CopernicusMarine_uid")) || is.null(getOption("CopernicusMarine_pwd"))) {
+  if ((cms_get_username() == "") || cms_get_password() == "") {
     skip("No Copernicus account details found")
   }
 }
