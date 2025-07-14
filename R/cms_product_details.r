@@ -2,8 +2,6 @@
 #'
 #' `r lifecycle::badge('experimental')` Obtain details for a specific Copernicus marine product.
 #' @inheritParams cms_download_subset
-#' @param layer `r lifecycle::badge('deprecated')` Ignored and deprecated
-#' @param variant `r lifecycle::badge('deprecated')` Ignored and deprecated
 #' @param ... Ignored
 #' @returns Returns a named `list` with product details.
 #' @rdname cms_product_details
@@ -15,15 +13,7 @@
 #' }
 #' @author Pepijn de Vries
 #' @export
-cms_product_details <- function(product, layer, variant, ...) {
-  if (!missing(layer)) {
-    rlang::warn(c("argument 'layer' in `cms_product_details()` is deprecated and ignored.",
-                  i = "Please remove from your call"))
-  }
-  if (!missing(variant)) {
-    rlang::warn(c("argument 'variant' in `cms_product_details()` is deprecated and ignored.",
-                  i = "Please remove from your call"))
-  }
+cms_product_details <- function(product, ...) {
   clients <- cms_get_client_info()
   stac_url <- gsub("/$", "", clients$catalogues[[1]]$stacRoot)
   if (is.null(clients)) return(NULL) else {

@@ -1,3 +1,8 @@
+CopernicusMarine v0.2.6.0001
+-------------
+
+ * Removed deprecated functions and arguments
+
 CopernicusMarine v0.2.6
 -------------
 
