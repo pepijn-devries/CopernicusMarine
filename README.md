@@ -164,7 +164,7 @@ cms_download_native(
 )
 ```
 
-The file, whose file name matches the patter, will be stored in the
+The file, whose file name matches the pattern, will be stored in the
 specified destination folder. By default the progress is printed as
 files can be very large and may take some time to download.
 

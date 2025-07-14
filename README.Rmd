@@ -127,7 +127,7 @@ cms_download_native(
   pattern       = "m_20220630"
 )
 ```
-The file, whose file name matches the patter, will be stored in the specified destination folder.
+The file, whose file name matches the pattern, will be stored in the specified destination folder.
 By default the progress is printed as files can be very large and may take some time to download.
 
 <h3 id="sec-wmts">Copernicus Web Map Tile Services (WMTS)</h3>
