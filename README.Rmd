@@ -167,3 +167,7 @@ cop_det <- cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 
  * [E.U. Copernicus Marine Service Information](https://data.marine.copernicus.eu)
  * `r sprintf("[%s - %s (%s); DOI:%s](https://doi.org/%s)", cop_det$title, cop_det$id, cop_det$properties$creationDate, cop_det[["sci:doi"]], cop_det[["sci:doi"]])`
+
+## Code of Conduct
+
+Please note that the CopernicusMarine project is released with a [Contributor Code of Conduct](https://pepijn-devries.github.io/CopernicusMarine/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

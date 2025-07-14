@@ -53,7 +53,7 @@ Returns a \code{logical} value invisibly indicating whether the requested file w
 successfully stored at the \code{destination}.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Subset and download a specific marine product from Copernicus.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#questioning}{\figure{lifecycle-questioning.svg}{options: alt='[Questioning]'}}}{\strong{[Questioning]}} Subset and download a specific marine product from Copernicus.
 You need to register an account
 at \url{https://data.marine.copernicus.eu} before you can use this function.
 }
