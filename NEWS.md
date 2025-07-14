@@ -1,4 +1,4 @@
-CopernicusMarine v0.2.5.0006
+CopernicusMarine v0.2.6
 -------------
 
  * Decommissioned STAC functions in order to
