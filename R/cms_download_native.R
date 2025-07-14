@@ -90,6 +90,7 @@ cms_download_native <- function(destination, product, layer, pattern, progress =
 #' @export
 cms_list_native_files <- function(product, layer, pattern, ...) {
   if (missing(pattern)) pattern <- ""
+  if (missing(layer)) layer <- ""
   s3_info <- .preprocess_native(product, layer)
   
   if (is.null(s3_info)) return(NULL)

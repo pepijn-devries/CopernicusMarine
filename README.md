@@ -177,8 +177,8 @@ Web Map Tile Services (WMTS) allow to quickly plot pre-rendered images
 onto a map. This may not be useful when you need the data for analyses
 but is handy for quick visualisations, inspection or presentation of
 data. In R it is very easy to add WMTS layers to an interactive map
-using [leaflet](https://rstudio.github.io/leaflet/) statically and is
-not interactive).
+using [leaflet](https://rstudio.github.io/leaflet/). This page is
+rendered statically and resulting in a non-interactive map.
 
 ``` r
 leaflet::leaflet() |>
@@ -214,3 +214,10 @@ cms_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")$doi
 - [Global Ocean Physics Analysis and Forecast -
   GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14);
   DOI:10.48670/moi-00016](https://doi.org/10.48670/moi-00016)
+
+## Code of Conduct
+
+Please note that the CopernicusMarine project is released with a
+[Contributor Code of
+Conduct](https://pepijn-devries.github.io/CopernicusMarine/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
