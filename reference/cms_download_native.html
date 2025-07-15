@@ -13,7 +13,7 @@ layer, year, month and day."><meta property="og:image" content="https://pepijn-d
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.6.0001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,9 +47,17 @@ layer, year, month and day.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cms_download_native</span><span class="op">(</span><span class="va">destination</span>, <span class="va">product</span>, <span class="va">layer</span>, <span class="va">pattern</span>, progress <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cms_download_native</span><span class="op">(</span></span>
+<span>  <span class="va">destination</span>,</span>
+<span>  <span class="va">product</span>,</span>
+<span>  <span class="va">layer</span>,</span>
+<span>  <span class="va">pattern</span>,</span>
+<span>  <span class="va">prefix</span>,</span>
+<span>  progress <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">cms_list_native_files</span><span class="op">(</span><span class="va">product</span>, <span class="va">layer</span>, <span class="va">pattern</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">cms_list_native_files</span><span class="op">(</span><span class="va">product</span>, <span class="va">layer</span>, <span class="va">pattern</span>, <span class="va">prefix</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -77,6 +85,11 @@ year 2022 and the month June will be listed (assuming that the file path is stru
 examples)</p></dd>
 
 
+<dt id="arg-prefix">prefix<a class="anchor" aria-label="anchor" href="#arg-prefix"></a></dt>
+<dd><p>A <code>character</code> string. A prefix to be added to the search path of the files.
+Only the matching file (info) is downloaded (generally faster then using <code>pattern</code>)</p></dd>
+
+
 <dt id="arg-progress">progress<a class="anchor" aria-label="anchor" href="#arg-progress"></a></dt>
 <dd><p>A <code>logical</code> value. When <code>TRUE</code> a progress bar is shown.</p></dd>
 
@@ -100,7 +113,7 @@ examples)</p></dd>
 <span class="r-in"><span>  <span class="fu">cms_list_native_files</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    product       <span class="op">=</span> <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span></span>
 <span class="r-in"><span>    layer         <span class="op">=</span> <span class="st">"cmems_mod_glo_phy_anfc_0.083deg_PT1H-m"</span>,</span></span>
-<span class="r-in"><span>    pattern       <span class="op">=</span> <span class="st">"2022/06/"</span></span></span>
+<span class="r-in"><span>    prefix        <span class="op">=</span> <span class="st">"2022/06/"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Use 'pattern' to download a file for a specific day:</span></span></span>
@@ -108,6 +121,7 @@ examples)</p></dd>
 <span class="r-in"><span>    destination   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    product       <span class="op">=</span> <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span></span>
 <span class="r-in"><span>    layer         <span class="op">=</span> <span class="st">"cmems_mod_glo_phy_anfc_0.083deg_PT1H-m"</span>,</span></span>
+<span class="r-in"><span>    prefix        <span class="op">=</span> <span class="st">"2022/06/"</span>,</span></span>
 <span class="r-in"><span>    pattern       <span class="op">=</span> <span class="st">"m_20220630"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
