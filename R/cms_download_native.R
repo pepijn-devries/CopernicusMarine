@@ -113,7 +113,6 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
 
   with(s3_info, {
     aws.s3::get_bucket_df(
-      path,
       region = "",
       bucket = bucket,
       base_url = endpoint,
