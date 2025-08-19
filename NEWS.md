@@ -1,3 +1,8 @@
+CopernicusMarine v0.2.6.0001
+-------------
+
+ * Some fixes in native download routines
+
 CopernicusMarine v0.2.6
 -------------
 

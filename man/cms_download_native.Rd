@@ -5,9 +5,17 @@
 \alias{cms_list_native_files}
 \title{Download raw files as provided to Copernicus Marine}
 \usage{
-cms_download_native(destination, product, layer, pattern, progress = TRUE, ...)
+cms_download_native(
+  destination,
+  product,
+  layer,
+  pattern,
+  prefix,
+  progress = TRUE,
+  ...
+)
 
-cms_list_native_files(product, layer, pattern, ...)
+cms_list_native_files(product, layer, pattern, prefix, max = Inf, ...)
 }
 \arguments{
 \item{destination}{Path where to store the downloaded file(s).}
@@ -23,9 +31,14 @@ to select specific files. For instance if \code{pattern = "2022/06/"}, only file
 year 2022 and the month June will be listed (assuming that the file path is structured as such, see
 examples)}
 
+\item{prefix}{A \code{character} string. A prefix to be added to the search path of the files.
+Only the matching file (info) is downloaded (generally faster then using \code{pattern})}
+
 \item{progress}{A \code{logical} value. When \code{TRUE} a progress bar is shown.}
 
 \item{...}{Ignored}
+
+\item{max}{A maximum number of records to be returned.}
 }
 \value{
 Returns \code{NULL} invisibly.
@@ -41,14 +54,26 @@ if (interactive()) {
   cms_list_native_files(
     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
     layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
-    pattern       = "2022/06/"
+    prefix        = "2022/06/"
   )
 
+## If you omit the prefix, you may want to limit the
+## number of results by setting `max`
+  cms_list_native_files(
+    product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+    layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+    max           = 10
+  )
+  
+## Prefix can be omitted when not relevant:
+  cms_list_native_files(product = "SEALEVEL_GLO_PHY_MDT_008_063")
+  
 ## Use 'pattern' to download a file for a specific day:
   cms_download_native(
     destination   = tempdir(),
     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
     layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+    prefix        = "2022/06/",
     pattern       = "m_20220630"
   )
 }
