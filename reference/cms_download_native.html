@@ -57,7 +57,7 @@ layer, year, month and day.</p>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">cms_list_native_files</span><span class="op">(</span><span class="va">product</span>, <span class="va">layer</span>, <span class="va">pattern</span>, <span class="va">prefix</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">cms_list_native_files</span><span class="op">(</span><span class="va">product</span>, <span class="va">layer</span>, <span class="va">pattern</span>, <span class="va">prefix</span>, max <span class="op">=</span> <span class="cn">Inf</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -97,6 +97,10 @@ Only the matching file (info) is downloaded (generally faster then using <code>p
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Ignored</p></dd>
 
+
+<dt id="arg-max">max<a class="anchor" aria-label="anchor" href="#arg-max"></a></dt>
+<dd><p>A maximum number of records to be returned.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -116,6 +120,17 @@ Only the matching file (info) is downloaded (generally faster then using <code>p
 <span class="r-in"><span>    prefix        <span class="op">=</span> <span class="st">"2022/06/"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## If you omit the prefix, you may want to limit the</span></span></span>
+<span class="r-in"><span><span class="co">## number of results by setting `max`</span></span></span>
+<span class="r-in"><span>  <span class="fu">cms_list_native_files</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    product       <span class="op">=</span> <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span></span>
+<span class="r-in"><span>    layer         <span class="op">=</span> <span class="st">"cmems_mod_glo_phy_anfc_0.083deg_PT1H-m"</span>,</span></span>
+<span class="r-in"><span>    max           <span class="op">=</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span><span class="co">## Prefix can be omitted when not relevant:</span></span></span>
+<span class="r-in"><span>  <span class="fu">cms_list_native_files</span><span class="op">(</span>product <span class="op">=</span> <span class="st">"SEALEVEL_GLO_PHY_MDT_008_063"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
 <span class="r-in"><span><span class="co">## Use 'pattern' to download a file for a specific day:</span></span></span>
 <span class="r-in"><span>  <span class="fu">cms_download_native</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    destination   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
