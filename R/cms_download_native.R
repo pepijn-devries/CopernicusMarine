@@ -54,7 +54,7 @@ cms_download_native <- function(destination, product, layer, pattern, prefix, pr
       j <- j + 1
       if (j > 10) stop("Failed to create directory for downloaded file")
     }
-
+    
     con_out <- file(file.path(path_out, file_out), "wb")
     con_in <- aws.s3::s3connection(
       file_list$Key[[i]],
