@@ -58,7 +58,7 @@ cms_download_subset <- function(
     timerange,
     verticalrange,
     overwrite = FALSE) {
-
+  
   message(paste("Subsetting is currently not possible with this package.",
                 "Please check https://github.com/pepijn-devries/CopernicusMarine for the latest news", sep = "\n"))
   return(invisible(TRUE))

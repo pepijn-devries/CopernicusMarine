@@ -16,10 +16,12 @@ Depends:
     R (>= 4.1.0)
 Imports:
     aws.s3,
+    blosc,
     cli,
     dplyr,
     httr2,
     leaflet,
+    lubridate,
     purrr,
     rlang,
     sf,
