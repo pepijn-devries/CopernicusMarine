@@ -71,19 +71,3 @@ test_that("Requesting nonexisting product details returns NULL", {
     cms_product_details("FOOBAR") |> suppressMessages()
   })
 })
-
-test_that("Deprecated argument 'variant' raises warning", {
-  skip_on_cran()
-  skip_if_offline()
-  expect_warning({
-    cms_product_details("", variant = "FOOBAR") |> suppressMessages()
-  })
-})
-
-test_that("Deprecated argument 'layer' raises warning", {
-  skip_on_cran()
-  skip_if_offline()
-  expect_warning({
-    cms_product_details("", layer = "FOOBAR") |> suppressMessages()
-  })
-})
