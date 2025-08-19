@@ -142,17 +142,18 @@ cms_download_subset <- function(
       combi_id = paste(.data$time, .data$elevation, .data$latitude, .data$longitude, sep = ".")
     ) |>
     dplyr::mutate(
-      chunk_data = {
+      chunk_url = {
         cg <- dplyr::cur_group()
         mapply(sprintf, fmt = "%s/%s/%s", service$href, .data$var, .data$combi_id,
                SIMPLIFY = FALSE) |>
           lapply(httr2::request)
       },
       ## TODO checkout and set max request from meta data
-      chunk_data = httr2::req_perform_parallel(.data$chunk_data, progress = progress),
+      chunk_data = httr2::req_perform_parallel(.data$chunk_url, progress = progress),
       chunk_data = lapply(.data$chunk_data, httr2::resp_body_raw)
     )
   if (progress) rlang::inform("Decompressing data")
+  ## TODO time chunk combo id: 1 = time index, 2 = elevation index
   chunk_id <-
     dplyr::left_join(
       chunk_id,
@@ -169,23 +170,28 @@ cms_download_subset <- function(
                                 na_value = .data$fill_value[[i]])
       })
     )
-  browser()
-  temp <-
-    chunk_id |>
-    dplyr::left_join(outer_dimensions, by = "var") |>
-    dplyr::group_by(.data$var) |>
-    dplyr::summarise(
-      chunk_data = list(array(unlist(.data$chunk_data), dim = .data$outer_dimensions[[1]][c(3,2,4,1)])),
-      .groups = "keep"
-    )
-  image(temp$chunk_data[[1]][,,1,1])
-  # temp <- array(
-  #   unlist(chunk_id$chunk_data[1:12]),
-  #   dimnames = as.list(structure(
-  #     outer_dimensions$uo,
-  #     names = outer_dimensions$dim
-  #   )))
-  return(invisible())
+  ## chunk dim
+  chunk_dim <- lapply(dims, \(dm) dplyr::as_tibble(service$viewDims[[dm]]$chunkLen)) |>
+    dplyr::bind_rows()
+  temp <- array(chunk_id$chunk_data[[1]], dim = rev(structure(chunk_dim[[1]], names = dims)))
+  temp <- stars::st_as_stars(temp)
+  ## TODO set all dimensions (also time and elevation)
+  temp <- stars::st_set_dimensions(
+    temp, "longitude",
+    values = service$viewDims$longitude$coords$min +
+      (chunk_id$longitude[[1]] * service$viewDims$longitude$chunkLen$uo
+       + seq_len(service$viewDims$longitude$chunkLen$uo) - 1) *
+      service$viewDims$longitude$coords$step
+  )
+  temp <- stars::st_set_dimensions(
+    temp, "latitude",
+    values = service$viewDims$latitude$coords$min +
+      (chunk_id$latitude[[1]] * service$viewDims$latitude$chunkLen$uo
+       + seq_len(service$viewDims$latitude$chunkLen$uo) - 1) *
+      service$viewDims$latitude$coords$step
+  )
+  sf::st_crs(temp) <- 4326 # TODO get from meta data!
+  return (temp)
 }
 
 .as_bbox <- function(x) {
@@ -253,7 +259,7 @@ cms_download_subset <- function(
   corrected_ranges <-
     lapply(structure(dims, names = dims), function(dim) {
       if (dim %in% c("longitude", "latitude")) {
-        alt_dim <- c("x", "y")[match(dim, dims)]
+        alt_dim <- c("x", "y")[match(dim, c("longitude", "latitude"))]
         req_range <- subset_request$region[paste0(alt_dim, c("min", "max"))] |> unname()
         dim_range <- .dim_range(dim)
       } else {
@@ -269,7 +275,6 @@ cms_download_subset <- function(
           max(c(req_range[[1L]], dim_range[[1L]]), na.rm = TRUE),
           min(c(req_range[[2L]], dim_range[[2L]]), na.rm = TRUE)
         )
-      
       dat <- chunk_info$viewDims[[dim]]$coords
       coord_values <- if(dat$type == "minMaxStep") {
         result <- seq(from = dat$min, to = dat$max, by = dat$step)
