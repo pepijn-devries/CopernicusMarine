@@ -14,6 +14,7 @@
 #' @param prefix A `character` string. A prefix to be added to the search path of the files.
 #' Only the matching file (info) is downloaded (generally faster then using `pattern`)
 #' @param progress A `logical` value. When `TRUE` a progress bar is shown.
+#' @param max A maximum number of records to be returned.
 #' @param ... Ignored
 #' @returns Returns `NULL` invisibly.
 #' @author Pepijn de Vries
@@ -25,6 +26,17 @@
 #'     prefix        = "2022/06/"
 #'   )
 #' 
+#' ## If you omit the prefix, you may want to limit the
+#' ## number of results by setting `max`
+#'   cms_list_native_files(
+#'     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+#'     layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+#'     max           = 10
+#'   )
+#'   
+#' ## Prefix can be omitted when not relevant:
+#'   cms_list_native_files(product = "SEALEVEL_GLO_PHY_MDT_008_063")
+#'   
 #' ## Use 'pattern' to download a file for a specific day:
 #'   cms_download_native(
 #'     destination   = tempdir(),
@@ -92,20 +104,21 @@ cms_download_native <- function(destination, product, layer, pattern, prefix, pr
 
 #' @rdname cms_download_native
 #' @export
-cms_list_native_files <- function(product, layer, pattern, prefix, ...) {
+cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ...) {
   if (missing(pattern)) pattern <- ""
   if (missing(layer)) layer <- ""
+  if (missing(prefix)) prefix <- NULL
   s3_info <- .preprocess_s3(product, layer, "native_href")
   if (is.null(s3_info)) return(NULL)
-  
+
   with(s3_info, {
     aws.s3::get_bucket_df(
       path,
       region = "",
       bucket = bucket,
       base_url = endpoint,
-      prefix = paste0(path, "/", prefix),
-      max = Inf
+      prefix = paste(c(path, prefix), collapse = "/"),
+      max = max
     ) |>
       dplyr::filter(grepl(pattern, .data$Key, perl = TRUE)) |>
       dplyr::mutate(base_url = endpoint)

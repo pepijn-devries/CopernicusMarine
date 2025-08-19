@@ -15,7 +15,7 @@ cms_download_native(
   ...
 )
 
-cms_list_native_files(product, layer, pattern, prefix, ...)
+cms_list_native_files(product, layer, pattern, prefix, max = Inf, ...)
 }
 \arguments{
 \item{destination}{Path where to store the downloaded file(s).}
@@ -37,6 +37,8 @@ Only the matching file (info) is downloaded (generally faster then using \code{p
 \item{progress}{A \code{logical} value. When \code{TRUE} a progress bar is shown.}
 
 \item{...}{Ignored}
+
+\item{max}{A maximum number of records to be returned.}
 }
 \value{
 Returns \code{NULL} invisibly.
@@ -55,6 +57,17 @@ if (interactive()) {
     prefix        = "2022/06/"
   )
 
+## If you omit the prefix, you may want to limit the
+## number of results by setting `max`
+  cms_list_native_files(
+    product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+    layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+    max           = 10
+  )
+  
+## Prefix can be omitted when not relevant:
+  cms_list_native_files(product = "SEALEVEL_GLO_PHY_MDT_008_063")
+  
 ## Use 'pattern' to download a file for a specific day:
   cms_download_native(
     destination   = tempdir(),
