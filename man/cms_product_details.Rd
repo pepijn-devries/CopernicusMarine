@@ -16,7 +16,7 @@ Can be obtained with \code{\link{cms_products_list}}.}
 Returns a named \code{list} with product details.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Obtain details for a specific Copernicus marine product.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Obtain details for a specific Copernicus marine product.
 }
 \examples{
 if (interactive()) {

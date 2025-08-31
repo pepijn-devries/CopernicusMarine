@@ -17,7 +17,7 @@ Returns a \code{tibble} with a list of available services for a
 Copernicus marine \code{product}.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Obtain an overview of services provided by Copernicus
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Obtain an overview of services provided by Copernicus
 for a specific marine product.
 }
 \examples{
