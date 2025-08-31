@@ -2,7 +2,7 @@
 output: github_document
 ---
 
-```{r, echo = FALSE, message = FALSE}
+```{r settings, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -45,13 +45,13 @@ third party software, other than packages available from [CRAN](https://cran.r-p
 
 Install CRAN release:
 
-```{r eval=FALSE}
+```{r install1, eval=FALSE}
 install.packages("CopernicusMarine")
 ```
 
 Install latest developmental version from R-Universe:
 
-``` r
+```{r install2, eval=FALSE}
 install.packages("CopernicusMarine", repos = c('https://pepijn-devries.r-universe.dev', 'https://cloud.r-project.org'))
 ```
 
@@ -70,56 +70,43 @@ Please check the manual for complete documentation of the package.
 
 <h3 id="sec-subset">Downloading a subset</h3>
 
-Unfortunately, downloading subsets is not operational in R due to some
-[technical issues](https://github.com/pepijn-devries/CopernicusMarine/issues/42).
-It seems that it might take some time to get this fixed. In the meantime,
-you could have a look at this
-[work-around](https://github.com/pepijn-devries/CopernicusMarine/issues/42#issuecomment-2079745370).
+The example below demonstrates how to subset a specific layer for a specific product. The subset is constrained by
+the `region`, `timerange` and `verticalrange` arguments. The subset is downloaded to memory
+represented as a [`stars`](https://r-spatial.github.io/stars/) object.
 
-<!-- The code below assumes that you have registered your account details using `options(CopernicusMarine_uid = "my_user_name")` and -->
-<!-- `options(CopernicusMarine_pwd = "my_password")`. If you are comfortable that it is secure enough, you can also store these -->
-<!-- options in your `.Rprofile` such that they will be loaded each session. Otherwise, you can also provide your account details -->
-<!-- as arguments to the functions. -->
+```{r download-subset, eval=TRUE}
+my_data <-
+  cms_download_subset(
+    product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+    layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
+    variable      = c("uo", "vo"),
+    region        = c(-1, 50, 10, 55),
+    timerange     = c("2025-01-01", "2025-01-02"),
+    verticalrange = c(0, -2),
+    progress      = FALSE
+)
 
-<!-- The example below demonstrates how to subset a specific layer for a specific product. The subset is constrained by -->
-<!-- the `region`, `timerange` and `verticalrange` arguments. The subset is downloaded to the temporary -->
-<!-- file specified with `destination` and can be read using the [`{stars}`](https://r-spatial.github.io/stars/) package. -->
-
-<!-- ```{r download-subset, eval=TRUE} -->
-<!-- destination <- tempfile("copernicus", fileext = ".nc") -->
-
-<!-- cms_download_subset( -->
-<!--   destination   = destination, -->
-<!--   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024", -->
-<!--   layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m", -->
-<!--   variable      = "sea_water_velocity", -->
-<!--   region        = c(-1, 50, 10, 55), -->
-<!--   timerange     = c("2021-01-01", "2021-01-02"), -->
-<!--   verticalrange = c(0, -2) -->
-<!-- ) -->
-
-<!-- mydata <- stars::read_stars(destination) -->
-
-<!-- plot(mydata["vo"], col = hcl.colors(100), axes = TRUE) -->
-<!-- ``` -->
+plot(my_data["vo"], col = hcl.colors(100), axes = TRUE)
+```
 
 <h3 id="sec-full">Downloading a complete Copernicus marine product</h3>
 
 If you don't want to subset the data and want the complete set, you can download
 complete native files, if these are available for your product.
-You can list available files with:
+You can list available files with (restricted to first 10 results with `max=10`):
 
-```{r, eval=TRUE}
+```{r native1}
 native_files <-
   cms_list_native_files(
     "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-    "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m")
+    "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
+    max = 10)
 native_files
 ```
 
 Downloading a specific (or multiple file) can be done with:
 
-```{r, eval=FALSE}
+```{r native2, eval=FALSE}
 cms_download_native(
   destination   = tempdir(),
   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -155,7 +142,7 @@ A Copernicus account comes with several terms of use. One of these is that you
 the data you use in publications. In fact, we also have credit the data used in this documentation, which can be easily
 done with the following code:
 
-```{r, eval=TRUE}
+```{r cite, eval=TRUE}
 cms_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")$doi
 ```
 

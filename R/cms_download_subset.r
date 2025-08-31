@@ -73,7 +73,7 @@ cms_download_subset <- function(
     timerange     = if (missing(timerange)) NULL else timerange,
     verticalrange = if (missing(verticalrange)) NULL else verticalrange
   )
-  service               <- .get_best_arco_service_type(subset_request, "")
+  service               <- .get_best_arco_service_type(subset_request, "", progress)
   current_refsys        <- .get_refsys(attributes(service)$dim_properties)
   subset_request$region <- .as_bbox(subset_request$region, current_refsys)
   variable              <- service$viewVariables |> names()
@@ -266,6 +266,12 @@ cms_download_subset <- function(
 }
 
 .download_chunks <- function(dims, service, variable, progress) {
+  if (all(lengths(lapply(attributes(service)$dims, `[[`, "chunk_id")) == 0)) {
+    rlang::abort(
+      c(x = "No data within selected range",
+        i = "Check data extent with `cms_product_metadata()`")
+    )
+  }
   result <-
     lapply(dims, function(dm) attributes(service)$dims[[dm]]$chunk_id) |>
     lapply(dplyr::as_tibble) |>
@@ -388,8 +394,8 @@ cms_download_subset <- function(
   x
 }
 
-.get_best_arco_service_type <- function(subset_request, dataset_version) {
-  rlang::inform("Downloading product meta data")
+.get_best_arco_service_type <- function(subset_request, dataset_version, progress) {
+  if (progress) rlang::inform("Downloading product meta data")
   meta <-
     cms_product_metadata(subset_request$product) |>
     dplyr::filter(startsWith(.data$id, subset_request$layer)) |>
