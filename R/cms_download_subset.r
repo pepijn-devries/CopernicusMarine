@@ -183,7 +183,7 @@ cms_download_subset <- function(
 
   for (dm in dims) {
     if (crop) {
-      chunk_offset <- na.omit(unlist(attr(service, "dims")[[dm]]$chunk_offset))[[1]]
+      chunk_offset <- stats::na.omit(unlist(attr(service, "dims")[[dm]]$chunk_offset))[[1]]
       selection <- attr(service, "dims")[[dm]]$indices - chunk_offset
       is.na(stars::st_get_dimension_values(data, dm))
       data <-
@@ -271,7 +271,7 @@ cms_download_subset <- function(
       dplyr::mutate(
         x,
         .generic = purrr::pmap(dplyr::pick(dplyr::everything()), \(...) {
-          unique(na.omit(c(...)))
+          unique(stats::na.omit(c(...)))
         }) |> unlist(),
         dplyr::across(dplyr::everything(), ~ {
           ifelse(is.na(.), -.data$.generic - 1L, .)
@@ -457,7 +457,7 @@ cms_download_subset <- function(
     dplyr::bind_rows() |>
     dplyr::mutate(
       .generic = purrr::pmap(dplyr::pick(dplyr::everything()), \(...) {
-        unique(na.omit(c(...)))
+        unique(stats::na.omit(c(...)))
       }),
       .check = lengths(.data$.generic) == 1L,
       dim = dims)
