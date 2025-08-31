@@ -134,6 +134,7 @@ cms_download_native(
   destination   = tempdir(),
   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
   layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+  prefix        = "2022/06/",
   pattern       = "m_20220630"
 )
 ```
