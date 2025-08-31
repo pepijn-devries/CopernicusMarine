@@ -25,14 +25,16 @@ Imports:
     purrr,
     rlang,
     sf,
+    stars,
     stringr,
     tibble,
     tidyr,
+    units,
     xml2
 Suggests:
+    cubelyr,
     lifecycle,
     ncmeta,
-    stars,
     testthat (>= 3.0.0)
 URL: https://github.com/pepijn-devries/CopernicusMarine, https://pepijn-devries.github.io/CopernicusMarine/
 BugReports: https://github.com/pepijn-devries/CopernicusMarine/issues

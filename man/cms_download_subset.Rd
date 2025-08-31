@@ -14,7 +14,9 @@ cms_download_subset(
   region,
   timerange,
   verticalrange,
-  overwrite = FALSE
+  overwrite = FALSE,
+  progress = TRUE,
+  crop = TRUE
 )
 }
 \arguments{
@@ -24,7 +26,7 @@ cms_download_subset(
 \item{password}{Your Copernicus marine password. Can be provided as
 \code{cms_get_password()} (default), or as argument here.}
 
-\item{destination}{File or path where the requested file will be downloaded to.}
+\item{destination}{TODO deprecate (data is loaded into memory)}
 
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
 Can be obtained with \code{\link{cms_products_list}}.}
@@ -44,13 +46,17 @@ for a requested time range. The \code{vector} should be coercible to \code{POSIX
 numerical values for the depth of the vertical layers (if any). Note that values below the
 sea surface needs to be specified as negative values.}
 
-\item{overwrite}{A \code{logical} value. When \code{FALSE} (default), files at the \code{destination} won't be
-overwritten when the exist. Instead an error will be thrown if this is the case. When set to
-\code{TRUE}, existing files will be overwritten.}
+\item{overwrite}{TODO deprecate}
+
+\item{progress}{TODO}
+
+\item{crop}{On the server, the data is organised in chunks. The subset
+will download chunks that overlap with the specified ranges, but often
+covers a larger area. When \code{crop = TRUE} (default), the data will be cropped
+to the specified \code{region}. If set to \code{FALSE} all downloaded data will be returned.}
 }
 \value{
-Returns a \code{logical} value invisibly indicating whether the requested file was
-successfully stored at the \code{destination}.
+TODO
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#questioning}{\figure{lifecycle-questioning.svg}{options: alt='[Questioning]'}}}{\strong{[Questioning]}} Subset and download a specific marine product from Copernicus.
@@ -66,9 +72,9 @@ cms_download_subset(
   destination   = destination,
   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
   layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
-  variable      = "sea_water_velocity",
+  variable      = c("uo", "vo"),
   region        = c(-1, 50, 10, 55),
-  timerange     = c("2021-01-01 UTC", "2021-01-02 UTC"),
+  timerange     = c("2025-01-01 UTC", "2025-01-02 UTC"),
   verticalrange = c(0, -2)
 )
 
