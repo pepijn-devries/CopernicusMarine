@@ -1,6 +1,6 @@
 #' Get information about Copernicus Marine clients
 #' 
-#' `r lifecycle::badge('experimental')` This function retrieves the client information
+#' `r lifecycle::badge('stable')` This function retrieves the client information
 #' from the Copernicus Marine Service.
 #' Among others, it lists where to find the catalogues required by this package
 #' @param ... Ignored

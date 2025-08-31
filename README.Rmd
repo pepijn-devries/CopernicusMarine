@@ -74,7 +74,7 @@ The example below demonstrates how to subset a specific layer for a specific pro
 the `region`, `timerange` and `verticalrange` arguments. The subset is downloaded to memory
 represented as a [`stars`](https://r-spatial.github.io/stars/) object.
 
-```{r download-subset, eval=TRUE}
+```{r download-subset, eval=TRUE, fig.alt="Example plots of downloaded subsets"}
 my_data <-
   cms_download_subset(
     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -124,7 +124,7 @@ you need the data for analyses but is handy for quick visualisations, inspection
 In R it is very easy to add WMTS layers to an interactive map using [leaflet](https://rstudio.github.io/leaflet/).
 This page is rendered statically and resulting in a non-interactive map.
 
-```{r leaflet, eval=TRUE, message=FALSE, warning=FALSE}
+```{r leaflet, eval=TRUE, message=FALSE, warning=FALSE, fig.alt="Static example image of a leaflet map"}
 leaflet::leaflet() |>
   leaflet::setView(lng = 3, lat = 54, zoom = 4) |>
   leaflet::addProviderTiles("Esri.WorldImagery") |>

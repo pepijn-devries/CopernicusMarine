@@ -1,11 +1,10 @@
 #' Obtain product meta data
 #'
-#' `r lifecycle::badge('experimental')` Obtain product meta data such as spatio-temporal bounds
+#' `r lifecycle::badge('stable')` Obtain product meta data such as spatio-temporal bounds
 #' of the data. 
 #'
 #' @include cms_download_subset.r
 #' @inheritParams cms_download_subset
-#' @param type `r lifecycle::badge('deprecated')` Deprecated and ignored.
 #' @param ... Ignored
 #' @returns Returns a `data.frame`/`tibble` with the metadata. Each row in the `data.frame`
 #' represents a layer available for the product.
@@ -17,11 +16,7 @@
 #' }
 #' @author Pepijn de Vries
 #' @export
-cms_product_metadata <- function(product, type, ...) {
-  if (!missing(type)) {
-    rlang::warn(c("argument 'type' in `cms_product_metadata()` is deprecated and ignored.",
-                  i = "Please remove from your call"))
-  }
+cms_product_metadata <- function(product, ...) {
   details <- cms_product_details(product)
   if (is.null(details)) return (NULL)
   links     <- lapply(details$links, as.data.frame) |> dplyr::bind_rows()

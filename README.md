@@ -92,7 +92,7 @@ my_data <-
 plot(my_data["vo"], col = hcl.colors(100), axes = TRUE)
 ```
 
-![](man/figures/README-download-subset-1.png)<!-- -->
+<img src="man/figures/README-download-subset-1.png" alt="Example plots of downloaded subsets"  />
 
 <h3 id="sec-full">
 
@@ -165,7 +165,7 @@ leaflet::leaflet() |>
   )
 ```
 
-![](man/figures/README-leaflet-1.png)<!-- -->
+<img src="man/figures/README-leaflet-1.png" alt="Static example image of a leaflet map"  />
 
 ### Citing the data you use
 
