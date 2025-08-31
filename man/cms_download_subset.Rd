@@ -14,7 +14,9 @@ cms_download_subset(
   region,
   timerange,
   verticalrange,
-  overwrite = FALSE
+  overwrite = FALSE,
+  progress = TRUE,
+  crop = TRUE
 )
 }
 \arguments{
@@ -24,7 +26,9 @@ cms_download_subset(
 \item{password}{Your Copernicus marine password. Can be provided as
 \code{cms_get_password()} (default), or as argument here.}
 
-\item{destination}{File or path where the requested file will be downloaded to.}
+\item{destination}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} This argument is deprecated.
+Data is no longer written to a file but loaded as a \code{\link[stars:st_as_stars]{stars::st_as_stars()}} object
+into memory.}
 
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
 Can be obtained with \code{\link{cms_products_list}}.}
@@ -44,37 +48,41 @@ for a requested time range. The \code{vector} should be coercible to \code{POSIX
 numerical values for the depth of the vertical layers (if any). Note that values below the
 sea surface needs to be specified as negative values.}
 
-\item{overwrite}{A \code{logical} value. When \code{FALSE} (default), files at the \code{destination} won't be
-overwritten when the exist. Instead an error will be thrown if this is the case. When set to
-\code{TRUE}, existing files will be overwritten.}
+\item{overwrite}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} This argument is deprecated.
+Data is no longer written to a file but loaded as a \code{\link[stars:st_as_stars]{stars::st_as_stars()}} object
+into memory.}
+
+\item{progress}{A logical value. When \code{TRUE} (default) progress is reported to the console.
+Otherwise, this function will silently proceed.}
+
+\item{crop}{On the server, the data is organised in chunks. The subset
+will download chunks that overlap with the specified ranges, but often
+covers a larger area. When \code{crop = TRUE} (default), the data will be cropped
+to the specified \code{region}. If set to \code{FALSE} all downloaded data will be returned.}
 }
 \value{
-Returns a \code{logical} value invisibly indicating whether the requested file was
-successfully stored at the \code{destination}.
+Returns a \code{\link[stars:st_as_stars]{stars::st_as_stars()}} object.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#questioning}{\figure{lifecycle-questioning.svg}{options: alt='[Questioning]'}}}{\strong{[Questioning]}} Subset and download a specific marine product from Copernicus.
-You need to register an account
-at \url{https://data.marine.copernicus.eu} before you can use this function.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Subset and download a specific marine product
+from Copernicus.
 }
 \examples{
-\dontrun{
-destination <- tempfile("copernicus", fileext = ".nc")
+if (interactive()) {
+  destination <- tempfile("copernicus", fileext = ".nc")
 
-## Assuming that Copernicus account details are provided as `options`
-cms_download_subset(
-  destination   = destination,
-  product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-  layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
-  variable      = "sea_water_velocity",
-  region        = c(-1, 50, 10, 55),
-  timerange     = c("2021-01-01 UTC", "2021-01-02 UTC"),
-  verticalrange = c(0, -2)
-)
+  mydata <- cms_download_subset(
+    destination   = destination,
+    product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+    layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
+    variable      = c("uo", "vo"),
+    region        = c(-1, 50, 10, 55),
+    timerange     = c("2025-01-01 UTC", "2025-01-02 UTC"),
+    verticalrange = c(0, -2)
+  )
 
-mydata <- stars::read_stars(destination)
-
-plot(mydata["vo"])
+  my_data
+  plot(mydata["vo"])
 }
 }
 \author{

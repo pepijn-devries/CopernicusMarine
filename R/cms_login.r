@@ -122,3 +122,4 @@ cms_set_password <- function(password, method = c("option", "sysenv")) {
     })
   return(invisible())
 }
+
