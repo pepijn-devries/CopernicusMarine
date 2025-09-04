@@ -1,2 +1,2 @@
-#' @importFrom rlang `:=` .data
+#' @importFrom rlang `:=` .data .env
 NULL

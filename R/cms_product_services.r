@@ -1,6 +1,6 @@
 #' Obtain available services for a specific Copernicus marine product
 #'
-#' `r lifecycle::badge('experimental')` Obtain an overview of services provided by Copernicus
+#' `r lifecycle::badge('stable')` Obtain an overview of services provided by Copernicus
 #' for a specific marine product.
 #'
 #' @include cms_download_subset.r

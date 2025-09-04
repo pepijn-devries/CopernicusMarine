@@ -44,7 +44,7 @@ Only the matching file (info) is downloaded (generally faster then using \code{p
 Returns \code{NULL} invisibly.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Full marine data sets can be downloaded using the functions
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Full marine data sets can be downloaded using the functions
 documented here. Use \code{cms_list_native_files()} to list available files, and
 \code{cms_download_native()} to download specific files. Files are usually organised per product,
 layer, year, month and day.

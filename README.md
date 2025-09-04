@@ -72,54 +72,27 @@ Please check the manual for complete documentation of the package.
 Downloading a subset
 </h3>
 
-Unfortunately, downloading subsets is not operational in R due to some
-[technical
-issues](https://github.com/pepijn-devries/CopernicusMarine/issues/42).
-It seems that it might take some time to get this fixed. In the
-meantime, you could have a look at this
-[work-around](https://github.com/pepijn-devries/CopernicusMarine/issues/42#issuecomment-2079745370).
+The example below demonstrates how to subset a specific layer for a
+specific product. The subset is constrained by the `region`, `timerange`
+and `verticalrange` arguments. The subset is downloaded to memory
+represented as a [`stars`](https://r-spatial.github.io/stars/) object.
 
-<!-- The code below assumes that you have registered your account details using `options(CopernicusMarine_uid = "my_user_name")` and -->
+``` r
+my_data <-
+  cms_download_subset(
+    product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+    layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
+    variable      = c("uo", "vo"),
+    region        = c(-1, 50, 10, 55),
+    timerange     = c("2025-01-01", "2025-01-02"),
+    verticalrange = c(0, -2),
+    progress      = FALSE
+)
 
-<!-- `options(CopernicusMarine_pwd = "my_password")`. If you are comfortable that it is secure enough, you can also store these -->
+plot(my_data["vo"], col = hcl.colors(100), axes = TRUE)
+```
 
-<!-- options in your `.Rprofile` such that they will be loaded each session. Otherwise, you can also provide your account details -->
-
-<!-- as arguments to the functions. -->
-
-<!-- The example below demonstrates how to subset a specific layer for a specific product. The subset is constrained by -->
-
-<!-- the `region`, `timerange` and `verticalrange` arguments. The subset is downloaded to the temporary -->
-
-<!-- file specified with `destination` and can be read using the [`{stars}`](https://r-spatial.github.io/stars/) package. -->
-
-<!-- ```{r download-subset, eval=TRUE} -->
-
-<!-- destination <- tempfile("copernicus", fileext = ".nc") -->
-
-<!-- cms_download_subset( -->
-
-<!--   destination   = destination, -->
-
-<!--   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024", -->
-
-<!--   layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m", -->
-
-<!--   variable      = "sea_water_velocity", -->
-
-<!--   region        = c(-1, 50, 10, 55), -->
-
-<!--   timerange     = c("2021-01-01", "2021-01-02"), -->
-
-<!--   verticalrange = c(0, -2) -->
-
-<!-- ) -->
-
-<!-- mydata <- stars::read_stars(destination) -->
-
-<!-- plot(mydata["vo"], col = hcl.colors(100), axes = TRUE) -->
-
-<!-- ``` -->
+<img src="man/figures/README-download-subset-1.png" alt="Example plots of downloaded subsets"  />
 
 <h3 id="sec-full">
 
@@ -128,15 +101,17 @@ Downloading a complete Copernicus marine product
 
 If you don’t want to subset the data and want the complete set, you can
 download complete native files, if these are available for your product.
-You can list available files with:
+You can list available files with (restricted to first 10 results with
+`max=10`):
 
 ``` r
 native_files <-
   cms_list_native_files(
     "GLOBAL_ANALYSISFORECAST_PHY_001_024",
-    "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m")
+    "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
+    max = 10)
 native_files
-#> # A tibble: 1,000 × 9
+#> # A tibble: 10 × 9
 #>    Key   LastModified ETag  Size  Owner_ID Owner_DisplayName StorageClass Bucket
 #>    <chr> <chr>        <chr> <chr> <chr>    <chr>             <chr>        <chr> 
 #>  1 nati… 2024-04-18T… "\"4… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
@@ -149,7 +124,6 @@ native_files
 #>  8 nati… 2024-04-18T… "\"5… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
 #>  9 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
 #> 10 nati… 2024-04-18T… "\"1… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
-#> # ℹ 990 more rows
 #> # ℹ 1 more variable: base_url <chr>
 ```
 
@@ -160,6 +134,7 @@ cms_download_native(
   destination   = tempdir(),
   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
   layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+  prefix        = "2022/06/",
   pattern       = "m_20220630"
 )
 ```
@@ -191,7 +166,7 @@ leaflet::leaflet() |>
   )
 ```
 
-![](man/figures/README-leaflet-1.png)<!-- -->
+<img src="man/figures/README-leaflet-1.png" alt="Static example image of a leaflet map"  />
 
 ### Citing the data you use
 

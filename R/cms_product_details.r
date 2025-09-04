@@ -1,6 +1,6 @@
 #' Obtain details for a specific Copernicus marine product
 #'
-#' `r lifecycle::badge('experimental')` Obtain details for a specific Copernicus marine product.
+#' `r lifecycle::badge('stable')` Obtain details for a specific Copernicus marine product.
 #' @inheritParams cms_download_subset
 #' @param ... Ignored
 #' @returns Returns a named `list` with product details.

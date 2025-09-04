@@ -1,6 +1,6 @@
 #' Download raw files as provided to Copernicus Marine
 #' 
-#' `r lifecycle::badge('experimental')` Full marine data sets can be downloaded using the functions
+#' `r lifecycle::badge('stable')` Full marine data sets can be downloaded using the functions
 #' documented here. Use `cms_list_native_files()` to list available files, and
 #' `cms_download_native()` to download specific files. Files are usually organised per product,
 #' layer, year, month and day.
@@ -66,7 +66,7 @@ cms_download_native <- function(destination, product, layer, pattern, prefix, pr
       j <- j + 1
       if (j > 10) stop("Failed to create directory for downloaded file")
     }
-
+    
     con_out <- file(file.path(path_out, file_out), "wb")
     con_in <- aws.s3::s3connection(
       file_list$Key[[i]],
