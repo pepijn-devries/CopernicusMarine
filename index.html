@@ -6,6 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Search Download and Handle Data from Copernicus Marine Service Information • CopernicusMarine</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -23,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.6.0002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.9.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,40 +98,34 @@
 Downloading a subset
 <a class="anchor" aria-label="anchor" href="#usage-1"></a>
 </h3>
-<p>Unfortunately, downloading subsets is not operational in R due to some <a href="https://github.com/pepijn-devries/CopernicusMarine/issues/42" class="external-link">technical issues</a>. It seems that it might take some time to get this fixed. In the meantime, you could have a look at this <a href="https://github.com/pepijn-devries/CopernicusMarine/issues/42#issuecomment-2079745370" class="external-link">work-around</a>.</p>
-<!-- The code below assumes that you have registered your account details using `options(CopernicusMarine_uid = "my_user_name")` and -->
-<!-- `options(CopernicusMarine_pwd = "my_password")`. If you are comfortable that it is secure enough, you can also store these -->
-<!-- options in your `.Rprofile` such that they will be loaded each session. Otherwise, you can also provide your account details -->
-<!-- as arguments to the functions. -->
-<!-- The example below demonstrates how to subset a specific layer for a specific product. The subset is constrained by -->
-<!-- the `region`, `timerange` and `verticalrange` arguments. The subset is downloaded to the temporary -->
-<!-- file specified with `destination` and can be read using the [`{stars}`](https://r-spatial.github.io/stars/) package. -->
-<!-- ```{r download-subset, eval=TRUE} -->
-<!-- destination <- tempfile("copernicus", fileext = ".nc") -->
-<!-- cms_download_subset( -->
-<!--   destination   = destination, -->
-<!--   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024", -->
-<!--   layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m", -->
-<!--   variable      = "sea_water_velocity", -->
-<!--   region        = c(-1, 50, 10, 55), -->
-<!--   timerange     = c("2021-01-01", "2021-01-02"), -->
-<!--   verticalrange = c(0, -2) -->
-<!-- ) -->
-<!-- mydata <- stars::read_stars(destination) -->
-<!-- plot(mydata["vo"], col = hcl.colors(100), axes = TRUE) -->
-<!-- ``` -->
+<p>The example below demonstrates how to subset a specific layer for a specific product. The subset is constrained by the <code>region</code>, <code>timerange</code> and <code>verticalrange</code> arguments. The subset is downloaded to memory represented as a <a href="https://r-spatial.github.io/stars/" class="external-link"><code>stars</code></a> object.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_data</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="reference/cms_download_subset.html">cms_download_subset</a></span><span class="op">(</span></span>
+<span>    product       <span class="op">=</span> <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span>
+<span>    layer         <span class="op">=</span> <span class="st">"cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m"</span>,</span>
+<span>    variable      <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"uo"</span>, <span class="st">"vo"</span><span class="op">)</span>,</span>
+<span>    region        <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">50</span>, <span class="fl">10</span>, <span class="fl">55</span><span class="op">)</span>,</span>
+<span>    timerange     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2025-01-01"</span>, <span class="st">"2025-01-02"</span><span class="op">)</span>,</span>
+<span>    verticalrange <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="op">-</span><span class="fl">2</span><span class="op">)</span>,</span>
+<span>    progress      <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my_data</span><span class="op">[</span><span class="st">"vo"</span><span class="op">]</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, axes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-download-subset-1.png" alt="Example plots of downloaded subsets"></p>
 <h3 id="usage-2">
 Downloading a complete Copernicus marine product
 <a class="anchor" aria-label="anchor" href="#usage-2"></a>
 </h3>
-<p>If you don’t want to subset the data and want the complete set, you can download complete native files, if these are available for your product. You can list available files with:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<p>If you don’t want to subset the data and want the complete set, you can download complete native files, if these are available for your product. You can list available files with (restricted to first 10 results with <code>max=10</code>):</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">native_files</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="reference/cms_download_native.html">cms_list_native_files</a></span><span class="op">(</span></span>
 <span>    <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span>
-<span>    <span class="st">"cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m"</span><span class="op">)</span></span>
+<span>    <span class="st">"cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m"</span>,</span>
+<span>    max <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">native_files</span></span>
-<span><span class="co">#&gt; # A tibble: 1,000 × 9</span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 9</span></span>
 <span><span class="co">#&gt;    Key   LastModified ETag  Size  Owner_ID Owner_DisplayName StorageClass Bucket</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;        &lt;chr&gt; </span></span>
 <span><span class="co">#&gt;  1 nati… 2024-04-18T… "\"4… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
@@ -139,14 +138,14 @@ Downloading a complete Copernicus marine product
 <span><span class="co">#&gt;  8 nati… 2024-04-18T… "\"5… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
 <span><span class="co">#&gt;  9 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
 <span><span class="co">#&gt; 10 nati… 2024-04-18T… "\"1… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
-<span><span class="co">#&gt; # ℹ 990 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 1 more variable: base_url &lt;chr&gt;</span></span></code></pre></div>
 <p>Downloading a specific (or multiple file) can be done with:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/cms_download_native.html">cms_download_native</a></span><span class="op">(</span></span>
 <span>  destination   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  product       <span class="op">=</span> <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span>
 <span>  layer         <span class="op">=</span> <span class="st">"cmems_mod_glo_phy_anfc_0.083deg_PT1H-m"</span>,</span>
+<span>  prefix        <span class="op">=</span> <span class="st">"2022/06/"</span>,</span>
 <span>  pattern       <span class="op">=</span> <span class="st">"m_20220630"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>The file, whose file name matches the pattern, will be stored in the specified destination folder. By default the progress is printed as files can be very large and may take some time to download.</p>
@@ -155,7 +154,7 @@ Copernicus Web Map Tile Services (WMTS)
 <a class="anchor" aria-label="anchor" href="#usage-3"></a>
 </h3>
 <p>Web Map Tile Services (WMTS) allow to quickly plot pre-rendered images onto a map. This may not be useful when you need the data for analyses but is handy for quick visualisations, inspection or presentation of data. In R it is very easy to add WMTS layers to an interactive map using <a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a>. This page is rendered statically and resulting in a non-interactive map.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/leaflet.html" class="external-link">leaflet</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-methods.html" class="external-link">setView</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="fl">3</span>, lat <span class="op">=</span> <span class="fl">54</span>, zoom <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/addProviderTiles.html" class="external-link">addProviderTiles</a></span><span class="op">(</span><span class="st">"Esri.WorldImagery"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -164,12 +163,12 @@ Copernicus Web Map Tile Services (WMTS)
 <span>    layer       <span class="op">=</span> <span class="st">"cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m"</span>,</span>
 <span>    variable    <span class="op">=</span> <span class="st">"thetao"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-leaflet-1.png"><!-- --></p>
+<p><img src="reference/figures/README-leaflet-1.png" alt="Static example image of a leaflet map"></p>
 <div class="section level3">
 <h3 id="citing-the-data-you-use">Citing the data you use<a class="anchor" aria-label="anchor" href="#citing-the-data-you-use"></a>
 </h3>
 <p>A Copernicus account comes with several terms of use. One of these is that you <a href="https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-copernicus-marine-products-and-services" class="external-link">properly cite</a> the data you use in publications. In fact, we also have credit the data used in this documentation, which can be easily done with the following code:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/cms_cite_product.html">cms_cite_product</a></span><span class="op">(</span><span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span><span class="op">)</span><span class="op">$</span><span class="va">doi</span></span>
 <span><span class="co">#&gt; [1] "E.U. Copernicus Marine Service Information; Global Ocean Physics Analysis and Forecast - GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14). DOI:10.48670/moi-00016"</span></span></code></pre></div>
 </div>
