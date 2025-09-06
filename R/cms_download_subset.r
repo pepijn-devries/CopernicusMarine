@@ -75,6 +75,7 @@ cms_download_subset <- function(
     timerange     = if (missing(timerange)) NULL else timerange,
     verticalrange = if (missing(verticalrange)) NULL else verticalrange
   )
+  
   service               <- .get_best_arco_service_type(subset_request, "", progress)
   current_refsys        <- .get_refsys(attributes(service)$dim_properties)
   subset_request$region <- .as_bbox(subset_request$region, current_refsys)
@@ -187,15 +188,16 @@ cms_download_subset <- function(
 
   for (dm in dims) {
     if (crop) {
-      chunk_offset <- stats::na.omit(unlist(attr(service, "dims")[[dm]]$chunk_offset))[[1]]
+      chunk_offset <- stats::na.omit(unlist(attr(service, "dims")[[dm]]$chunk_offset))
+      if (length(chunk_offset) == 0) next else chunk_offset <- chunk_offset[[1]]
       selection <- attr(service, "dims")[[dm]]$indices - chunk_offset
-      is.na(stars::st_get_dimension_values(data, dm))
       data <-
-        dplyr::slice(data, !!dm, selection)
+        dplyr::slice(data, !!dm, selection, drop = FALSE)
     } else {
       data <-
         dplyr::slice(data, !!dm,
-                     which(!is.na(stars::st_get_dimension_values(data, dm))))
+                     which(!is.na(stars::st_get_dimension_values(data, dm))),
+                     drop = FALSE)
     }
   }
   
@@ -268,6 +270,7 @@ cms_download_subset <- function(
 }
 
 .download_chunks <- function(dims, service, variable, progress) {
+
   dims_out_of_range <- lengths(lapply(attributes(service)$dims, `[[`, "chunk_id") |>
                                  lapply(`[[`, 1))
   dims_out_of_range <- names(dims_out_of_range)[dims_out_of_range == 0]
@@ -285,7 +288,8 @@ cms_download_subset <- function(
       dplyr::mutate(
         x,
         .generic = purrr::pmap(dplyr::pick(dplyr::everything()), \(...) {
-          unique(stats::na.omit(c(...)))
+          result <- unique(stats::na.omit(c(...)))
+          if (length(result) == 0) 0L else result
         }) |> unlist(),
         dplyr::across(dplyr::everything(), ~ {
           ifelse(is.na(.), -.data$.generic - 1L, .)
@@ -406,14 +410,15 @@ cms_download_subset <- function(
     cms_product_metadata(subset_request$product) |>
     dplyr::filter(startsWith(.data$id, subset_request$layer)) |>
     dplyr::filter(dplyr::row_number() == 1)
-  
+
   var_properties <- meta$properties[[1]]$`cube:variables`
   dim_properties <- meta$properties[[1]]$`cube:dimensions`
   
   subset_request$region <- .as_bbox(subset_request$region, .get_refsys(dim_properties))
 
   variables <- lapply(meta$properties[[1]]$`cube:variables`,
-                      `[[`, "standardName") |> unlist()
+                      `[[`, "standardName")
+  variables[lengths(variables) == 0] <- NA
   if (length(subset_request$variable) == 0) variables <- names(variables) else {
     variables <- 
       names(variables)[
@@ -491,9 +496,12 @@ cms_download_subset <- function(
       if (!is.null(alt_dim) && alt_dim %in% c("x", "y")) {
         req_range <- subset_request$region[paste0(alt_dim, c("min", "max"))] |> unname()
       } else {
-        req_range <- range(subset_request[[
+        req_range <- subset_request[[
           dims_alt[[which(names(dims_alt) == dim)]]
-        ]], na.rm = TRUE)
+        ]]
+        if (is.null(req_range) || all(is.na(req_range)))
+          req_range <- dim_range else
+            req_range <- range(req_range, na.rm = TRUE)
       }
       
       if (dim_props[[dim]]$type == "temporal") {
