@@ -16,7 +16,8 @@ cms_download_subset(
   verticalrange,
   overwrite = FALSE,
   progress = TRUE,
-  crop = TRUE
+  crop = TRUE,
+  ...
 )
 }
 \arguments{
@@ -59,6 +60,8 @@ Otherwise, this function will silently proceed.}
 will download chunks that overlap with the specified ranges, but often
 covers a larger area. When \code{crop = TRUE} (default), the data will be cropped
 to the specified \code{region}. If set to \code{FALSE} all downloaded data will be returned.}
+
+\item{...}{Ignored (reserved for future features).}
 }
 \value{
 Returns a \code{\link[stars:st_as_stars]{stars::st_as_stars()}} object.

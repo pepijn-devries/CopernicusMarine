@@ -29,6 +29,7 @@
 #' will download chunks that overlap with the specified ranges, but often
 #' covers a larger area. When `crop = TRUE` (default), the data will be cropped
 #' to the specified `region`. If set to `FALSE` all downloaded data will be returned.
+#' @param ... Ignored (reserved for future features).
 #' @returns Returns a [stars::st_as_stars()] object.
 #' @rdname cms_download_subset
 #' @name cms_download_subset
@@ -63,7 +64,8 @@ cms_download_subset <- function(
     verticalrange,
     overwrite = FALSE,
     progress = TRUE,
-    crop = TRUE) {
+    crop = TRUE,
+    ...) {
   
   subset_request <- list(
     product       = product,
@@ -165,7 +167,7 @@ cms_download_subset <- function(
   remaining_dims <- dims
   
   data <-
-    purrr::reduce(dims, \(x, y) tidyr::unnest(x, y), .init = data)
+    purrr::reduce(dims, \(x, y) tidyr::unnest(x, dplyr::any_of(y)), .init = data)
   
   for (dm in rev(dims)) {
     remaining_dims <- setdiff(remaining_dims, dm)
@@ -290,7 +292,7 @@ cms_download_subset <- function(
   result <- dplyr::tibble(result = result, dim = dims) |>
     tidyr::unnest("result") |>
     dplyr::distinct() |>
-    tidyr::pivot_longer(variable, names_to = "var", values_to = "id") |>
+    tidyr::pivot_longer(dplyr::all_of(variable), names_to = "var", values_to = "id") |>
     tidyr::pivot_wider(id_cols = "var", names_from = "dim", values_from = "id",
                        values_fn = list) |>
     tidyr::expand_grid() |>
@@ -405,7 +407,7 @@ cms_download_subset <- function(
   dim_properties <- meta$properties[[1]]$`cube:dimensions`
   
   subset_request$region <- .as_bbox(subset_request$region, .get_refsys(dim_properties))
-  
+
   variables <- lapply(meta$properties[[1]]$`cube:variables`,
                       `[[`, "standardName") |> unlist()
   if (length(subset_request$variable) == 0) variables <- names(variables) else {
@@ -446,9 +448,11 @@ cms_download_subset <- function(
     attributes(result) <- c(attributes(result), list(dims = indices_static))
     
   }
+  result$viewVariables <- result$viewVariables[variables]
   attributes(result) <- c(attributes(result),
                           list(dim_properties = dim_properties),
                           list(var_properties = var_properties))
+  
   return (result)
 }
 
