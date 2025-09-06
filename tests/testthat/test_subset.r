@@ -10,8 +10,7 @@ test_that("Subset download produces expected data", {
         variable      = c("uo"),
         region        = c(-1, 50, 10, 55),
         timerange     = c("2025-01-01", "2025-01-02"),
-        verticalrange = c(0, -2),
-        progress      = FALSE
+        verticalrange = c(0, -2)
       ) |>
       suppressMessages()
     
@@ -34,5 +33,23 @@ test_that("Subset download produces expected data", {
     matching_values <- all(na.omit(c(data_reference["uo",,,1,1][["uo"]])) ==
                             na.omit(c(data_sub["uo",,,1,2][["uo"]])))
     matching_bbox && matching_dimensions && matching_values
+  })
+})
+
+test_that("Subsetting out of range results in error", {
+  skip_on_cran()
+  has_account_details()
+  skip_if_offline("data.marine.copernicus.eu")
+  expect_error({
+    data_sub <-
+      cms_download_subset(
+        product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+        layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
+        variable      = c("uo"),
+        region        = c(-1, 50, 10, 55),
+        timerange     = c("1900-01-01", "1900-01-02"),
+        verticalrange = c(0, -2)
+      ) |>
+      suppressMessages()
   })
 })

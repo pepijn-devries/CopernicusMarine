@@ -85,7 +85,7 @@ cms_download_subset <- function(
   if (!is.null(username) && !is.null(password) &&
       !is.na(username) && !is.na(password) && username != "" && password != "")
     access_token <- .get_access_token(username, password)
-  
+
   if (progress) rlang::inform("Downloading zarr meta information")
   serv_props <- .get_service_properties(service, variable)
 
@@ -268,9 +268,13 @@ cms_download_subset <- function(
 }
 
 .download_chunks <- function(dims, service, variable, progress) {
-  if (all(lengths(lapply(attributes(service)$dims, `[[`, "chunk_id")) == 0)) {
+  dims_out_of_range <- lengths(lapply(attributes(service)$dims, `[[`, "chunk_id") |>
+                                 lapply(`[[`, 1))
+  dims_out_of_range <- names(dims_out_of_range)[dims_out_of_range == 0]
+  if (length(dims_out_of_range) > 0) {
     rlang::abort(
-      c(x = "No data within selected range",
+      c(x = sprintf("No data within selected range (for these dimensions: %s)",
+                    paste(sprintf("'%s'", dims_out_of_range), collapse = ", ")),
         i = "Check data extent with `cms_product_metadata()`")
     )
   }
@@ -532,7 +536,9 @@ cms_download_subset <- function(
         as.list()
 
       chunk_id <- lapply(dim_len, function(dl) floor((indices - 1L)/dl))
-      chunk_offset <- mapply(\(x, y) y*min(x), x = chunk_id, y = dim_len)
+
+      if (any(lengths(chunk_id) == 0)) chunk_offset <- numeric() else
+        chunk_offset <- mapply(\(x, y) y*min(x), x = chunk_id, y = dim_len)
       coord_values <- list(
         values = coord_values,
         indices = indices,
