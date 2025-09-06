@@ -64,7 +64,8 @@ test_that("A static map can be downloaded", {
       layer         = "cmems_mod_glo_phy_anfc_0.083deg_static_202211--ext--coords",
       variable      = c("e1t"),
       region        = c(-1, 50, 10, 55)
-    )
+    ) |>
+      suppressMessages()
   })
 })
 
@@ -73,5 +74,11 @@ test_that("Codes are converted correctly to periods", {
     all((lapply(c("PT1H", "PT5H", "P1D", "P1M"), CopernicusMarine:::.code_to_period) |>
            lapply(as.numeric) |>
            unlist()) == c(3600, 21600, 86400, 2629800))
+  })
+})
+
+test_that("Unknown time code throws error", {
+  expect_error({
+    CopernicusMarine:::.code_to_period("XXX")
   })
 })
