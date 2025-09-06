@@ -9,7 +9,7 @@ from Copernicus."><meta property="og:image" content="https://pepijn-devries.gith
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.9.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.9.9002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,8 @@ from Copernicus.</p>
 <span>  <span class="va">verticalrange</span>,</span>
 <span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  progress <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  crop <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  crop <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -123,6 +124,10 @@ Otherwise, this function will silently proceed.</p></dd>
 will download chunks that overlap with the specified ranges, but often
 covers a larger area. When <code>crop = TRUE</code> (default), the data will be cropped
 to the specified <code>region</code>. If set to <code>FALSE</code> all downloaded data will be returned.</p></dd>
+
+
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>Ignored (reserved for future features).</p></dd>
 
 </dl></div>
     <div class="section level2">
