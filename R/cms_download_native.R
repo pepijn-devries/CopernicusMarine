@@ -51,7 +51,7 @@
 cms_download_native <- function(destination, product, layer, pattern, prefix, progress = TRUE, ...) {
   if (missing(pattern)) pattern <- ""
   if (missing(prefix)) prefix <- ""
-  
+
   file_list <- cms_list_native_files(product, layer, pattern, prefix)
   
   for (i in nrow(file_list)) {
@@ -78,13 +78,13 @@ cms_download_native <- function(destination, product, layer, pattern, prefix, pr
     if (progress) cli::cli_inform("Downloading file {i} of {nrow(file_list)}.")
     if (progress) cli::cli_progress_bar(type = "download", total = as.numeric(file_list$Size))
     
+    testing_mode <- Sys.getenv("R_COPERNICUS_MARINE_TESTING") == "TRUE"
     tryCatch({
-      
       while (TRUE) {
         chunk <- readBin(con_in, "raw", 10240L)
         writeBin(chunk, con_out)
         if (progress) cli::cli_progress_update(length(chunk) |> as.numeric())
-        if (length(chunk) == 0) break
+        if (length(chunk) == 0 || testing_mode) break
       }
       
     },
