@@ -9,8 +9,9 @@ test_that("native download works", {
       layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
       prefix        = "2022/06/",
       pattern       = "m_20220630",
-      progress      = FALSE
-    )
+      progress      = TRUE
+    ) |>
+      suppressMessages()
     Sys.unsetenv("R_COPERNICUS_MARINE_TESTING")
     pt <- file.path(tempdir(),
                     "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m_202406")
