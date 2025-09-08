@@ -35,10 +35,8 @@
 #' @name cms_download_subset
 #' @examples
 #' if (interactive()) {
-#'   destination <- tempfile("copernicus", fileext = ".nc")
 #'
 #'   mydata <- cms_download_subset(
-#'     destination   = destination,
 #'     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
 #'     layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
 #'     variable      = c("uo", "vo"),
@@ -47,7 +45,6 @@
 #'     verticalrange = c(0, -2)
 #'   )
 #'
-#'   my_data
 #'   plot(mydata["vo"])
 #' }
 #' @author Pepijn de Vries
