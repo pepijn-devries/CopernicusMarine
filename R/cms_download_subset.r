@@ -484,6 +484,23 @@ cms_download_subset <- function(
       count_geoc  <- 0
     }
     
+    if (!is.null(time_chunked)) {
+      indices_timec  <- .get_chunk_indices(subset_request, variables,
+                                           time_chunked, dimnames, dim_properties)
+      count_timec    <- .get_chunk_count(indices_timec) |> unlist() |> sum()
+    } else {
+      count_timec <- 0
+      count_geoc  <- 1
+    }
+    if (!is.null(geo_chunked)) {
+      indices_geoc   <- .get_chunk_indices(subset_request, variables,
+                                           geo_chunked, dimnames, dim_properties)
+      count_geoc     <- .get_chunk_count(indices_geoc) |> unlist() |> sum()
+    } else {
+      count_timec <- 1
+      count_geoc  <- 0
+    }
+
     if (count_timec < count_geoc) {
       result <- time_chunked
       attributes(result) <- c(attributes(result), list(dims = indices_timec))
