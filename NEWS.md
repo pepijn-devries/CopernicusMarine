@@ -1,3 +1,12 @@
+CopernicusMarine v0.3.0.0001
+-------------
+
+ * Added support for sub-setting OMI, and downsampled4
+   assets
+ * Some minor fixes
+ * Moved dependency "blosc" to suggests as
+   per CRAN request
+
 CopernicusMarine v0.3.0
 -------------
 
