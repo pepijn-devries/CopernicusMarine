@@ -71,7 +71,7 @@ Returns a \code{\link[stars:st_as_stars]{stars::st_as_stars()}} object.
 from Copernicus.
 }
 \examples{
-if (interactive()) {
+if (interactive() && requireNamespace("blosc")) {
 
   mydata <- cms_download_subset(
     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -83,6 +83,9 @@ if (interactive()) {
   )
 
   plot(mydata["vo"])
+} else {
+  message("Make sure to run this in an interactive environment")
+  message("and that the package 'blosc' is installed")
 }
 }
 \author{

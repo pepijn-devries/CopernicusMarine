@@ -43,7 +43,7 @@
     lapply(
       tidyr::pivot_wider,
       names_from  = "name",
-      values_from = "value")|>
+      values_from = "value") |>
     lapply(function(x) {
       if (nrow(x) == 0) {
         empty_row
@@ -56,7 +56,8 @@
       dplyr::across(
         dplyr::everything(),
         function (x) {
-          if (all(lengths(x) == 1)) unlist(x) else x
+          if (all(lengths(x) == 1) && all(unlist(lapply(x, lengths)) == 1))
+              unlist(x) else x
         }
       )
     )

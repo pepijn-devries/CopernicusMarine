@@ -29,12 +29,13 @@
 #' will download chunks that overlap with the specified ranges, but often
 #' covers a larger area. When `crop = TRUE` (default), the data will be cropped
 #' to the specified `region`. If set to `FALSE` all downloaded data will be returned.
+#' @param asset TODO
 #' @param ... Ignored (reserved for future features).
 #' @returns Returns a [stars::st_as_stars()] object.
 #' @rdname cms_download_subset
 #' @name cms_download_subset
 #' @examples
-#' if (interactive()) {
+#' if (interactive() && requireNamespace("blosc")) {
 #'
 #'   mydata <- cms_download_subset(
 #'     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -46,6 +47,9 @@
 #'   )
 #'
 #'   plot(mydata["vo"])
+#' } else {
+#'   message("Make sure to run this in an interactive environment")
+#'   message("and that the package 'blosc' is installed")
 #' }
 #' @author Pepijn de Vries
 #' @export
@@ -62,7 +66,11 @@ cms_download_subset <- function(
     overwrite = FALSE,
     progress = TRUE,
     crop = TRUE,
+    asset,
     ...) {
+  if (missing(asset)) asset <- NULL
+  if (is.null(asset)) asset <- "default"
+  asset <- match.arg(asset, c("default", "ARCO", "static", "omi", "downsampled4"))
   
   subset_request <- list(
     product       = product,
@@ -73,9 +81,11 @@ cms_download_subset <- function(
     verticalrange = if (missing(verticalrange)) NULL else verticalrange
   )
   
-  service               <- .get_best_arco_service_type(subset_request, "", progress)
+  service               <- .get_best_arco_service_type(subset_request, "", progress,
+                                                       asset)
   current_refsys        <- .get_refsys(attributes(service)$dim_properties)
-  subset_request$region <- .as_bbox(subset_request$region, current_refsys)
+  if (!is.null(current_refsys))
+    subset_request$region <- .as_bbox(subset_request$region, current_refsys)
   variable              <- service$viewVariables |> names()
   dims                  <- names(attributes(service)$dims)
 
@@ -117,13 +127,11 @@ cms_download_subset <- function(
   xy <- .get_xy_axes(attr(service, "dim_properties"))
   dms <- dims
   if (service$id == "timeChunked") {
-    dim_order = match(dms, c("time", xy[[1]], xy[[2]], "elevation"))
-  } else if (service$id == "geoChunked") {
-    dim_order = match(dms, c(xy[[1]], xy[[2]], "elevation", "time"))
-  } else if (service$id == "static") {
-    dim_order = match(dms, c(xy[[1]], xy[[2]], "elevation"))
+    dim_order <- match(dms,
+                       intersect(dms, c("time", xy[[1L]], xy[[2L]], "elevation")))
   } else {
-    stop("Unknown service id")
+    dim_order <- match(dms,
+                       intersect(dms, c(xy[[1L]], xy[[2L]], "elevation", "time")))
   }
   result <- NULL ## avoid global bindings note in CRAN checks
   
@@ -152,7 +160,7 @@ cms_download_subset <- function(
           
           names(result) <- v
           
-          sf::st_crs(result) <- current_refsys
+          if (!is.null(current_refsys)) sf::st_crs(result) <- current_refsys
           result
           
         },
@@ -240,6 +248,9 @@ cms_download_subset <- function(
       chunk_data = lapply(seq_along(.data$chunk_data), \(i) {
         if (.data$compressor[[i]]$id != "blosc") rlang::abort("Unkown compressor '%s'",
                                                               .data$compressor[[i]]$id)
+        if (!requireNamespace("blosc"))
+          rlang::abort(c(x = "Could not find required namespace \"blosc\"",
+                         i = "Install package \"blosc\" and try again"))
         ## If zarr version 3 is used, translate data type
         ## and endianness to dtype code
         blosc::blosc_decompress(x        = .data$chunk_data[[i]],
@@ -340,7 +351,7 @@ cms_download_subset <- function(
     }) |>
     unlist() |>
     unique()
-  if (length(ref_sys) != 1) stop("Axes use mix of reference systems or is missing")
+  if (length(ref_sys) > 1) stop("Axes use mix of reference systems")
   ref_sys
 }
 
@@ -401,8 +412,10 @@ cms_download_subset <- function(
   x
 }
 
-.get_best_arco_service_type <- function(subset_request, dataset_version, progress) {
+.get_best_arco_service_type <- function(subset_request, dataset_version, progress,
+                                        asset) {
   if (progress) rlang::inform("Downloading product meta data")
+  
   meta <-
     cms_product_metadata(subset_request$product) |>
     dplyr::filter(startsWith(.data$id, subset_request$layer)) |>
@@ -411,8 +424,10 @@ cms_download_subset <- function(
   var_properties <- meta$properties[[1]]$`cube:variables`
   dim_properties <- meta$properties[[1]]$`cube:dimensions`
   
-  subset_request$region <- .as_bbox(subset_request$region, .get_refsys(dim_properties))
-
+  if (!is.null(subset_request$region))
+    subset_request$region <-
+    .as_bbox(subset_request$region, .get_refsys(dim_properties))
+  
   variables <- lapply(meta$properties[[1]]$`cube:variables`,
                       `[[`, "standardName")
   variables[lengths(variables) == 0] <- NA
@@ -428,17 +443,43 @@ cms_download_subset <- function(
   time_chunked   <- meta$assets[[1]]$timeChunked
   geo_chunked    <- meta$assets[[1]]$geoChunked
   static         <- meta$assets[[1]]$static
-  
-  if (is.null(static)) { ## Time or geo-chunked
+  omi            <- meta$assets[[1]]$omi
+  ds4            <- meta$assets[[1]]$downsampled4
+
+  if (asset == "default") {
+    if (!is.null(time_chunked) || !is.null(geo_chunked))
+      asset <- "ARCO" else
+        if (!is.null(static)) {
+          result <- static
+          asset <- "static"
+        } else if (!is.null(omi)) {
+          result <- omi
+          asset <- "omi"
+        } else if (!is.null(ds4)) {
+          result <- ds4
+          asset <- "ds4"
+        }
+  }
+
+  if (asset == "ARCO") { ## Time or geo-chunked
     
-    indices_timec  <- .get_chunk_indices(subset_request, variables,
-                                         time_chunked, dimnames, dim_properties)
-    indices_geoc   <- .get_chunk_indices(subset_request, variables,
-                                         geo_chunked, dimnames, dim_properties)
-    
-    count_timec    <- .get_chunk_count(indices_timec) |> unlist() |> sum()
-    count_geoc     <- .get_chunk_count(indices_geoc) |> unlist() |> sum()
-    
+    if (!is.null(time_chunked)) {
+      indices_timec  <- .get_chunk_indices(subset_request, variables,
+                                           time_chunked, dimnames, dim_properties)
+      count_timec    <- .get_chunk_count(indices_timec) |> unlist() |> sum()
+    } else {
+      count_timec <- 0
+      count_geoc  <- 1
+    }
+    if (!is.null(geo_chunked)) {
+      indices_geoc   <- .get_chunk_indices(subset_request, variables,
+                                           geo_chunked, dimnames, dim_properties)
+      count_geoc     <- .get_chunk_count(indices_geoc) |> unlist() |> sum()
+    } else {
+      count_timec <- 1
+      count_geoc  <- 0
+    }
+
     if (count_timec < count_geoc) {
       result <- time_chunked
       attributes(result) <- c(attributes(result), list(dims = indices_timec))
@@ -446,12 +487,10 @@ cms_download_subset <- function(
       result <- geo_chunked
       attributes(result) <- c(attributes(result), list(dims = indices_geoc))
     }
-  } else { ## static
-    
-    result <- static
-    indices_static <- .get_chunk_indices(subset_request, variables,
-                                         static, dimnames, dim_properties)
-    attributes(result) <- c(attributes(result), list(dims = indices_static))
+  } else {
+    indices <- .get_chunk_indices(subset_request, variables,
+                                  result, dimnames, dim_properties)
+    attributes(result) <- c(attributes(result), list(dims = indices))
     
   }
   result$viewVariables <- result$viewVariables[variables]

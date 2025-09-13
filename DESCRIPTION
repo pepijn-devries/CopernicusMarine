@@ -1,7 +1,7 @@
 Package: CopernicusMarine
 Type: Package
 Title: Search Download and Handle Data from Copernicus Marine Service Information
-Version: 0.3.0
+Version: 0.3.0.0001
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre", "dtc"),
     email = "pepijn.devries@outlook.com",
     comment = c(ORCID = "0000-0002-7961-6646")))
@@ -16,7 +16,6 @@ Depends:
     R (>= 4.1.0)
 Imports:
     aws.s3,
-    blosc,
     cli,
     dplyr,
     httr2,
@@ -32,6 +31,7 @@ Imports:
     units,
     xml2
 Suggests:
+    blosc,
     cubelyr,
     lifecycle,
     ncmeta,

@@ -1,5 +1,6 @@
 test_that("Subset download produces expected data", {
   skip_on_cran()
+  skip_if_not_installed("blosc")
   has_account_details()
   skip_if_offline("data.marine.copernicus.eu")
   expect_true({
@@ -38,6 +39,7 @@ test_that("Subset download produces expected data", {
 
 test_that("Subsetting out of range results in error", {
   skip_on_cran()
+  skip_if_not_installed("blosc")
   has_account_details()
   skip_if_offline("data.marine.copernicus.eu")
   expect_error({
@@ -56,6 +58,7 @@ test_that("Subsetting out of range results in error", {
 
 test_that("A static map can be downloaded", {
   skip_on_cran()
+  skip_if_not_installed("blosc")
   has_account_details()
   skip_if_offline("data.marine.copernicus.eu")
   expect_no_error({
