@@ -29,7 +29,11 @@
 #' will download chunks that overlap with the specified ranges, but often
 #' covers a larger area. When `crop = TRUE` (default), the data will be cropped
 #' to the specified `region`. If set to `FALSE` all downloaded data will be returned.
-#' @param asset TODO
+#' @param asset Type of asset to be used when subsetting data. Should be one
+#' of `"default"`, `"ARCO"`, `"static"`, `"omi"`, or `"downsampled4"`.
+#' When missing, set to `NULL` or set to `"default"`, it will use the first
+#' asset available for the requested product and layer, in the order as listed
+#' before.
 #' @param ... Ignored (reserved for future features).
 #' @returns Returns a [stars::st_as_stars()] object.
 #' @rdname cms_download_subset

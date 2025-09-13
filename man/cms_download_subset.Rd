@@ -17,6 +17,7 @@ cms_download_subset(
   overwrite = FALSE,
   progress = TRUE,
   crop = TRUE,
+  asset,
   ...
 )
 }
@@ -60,6 +61,12 @@ Otherwise, this function will silently proceed.}
 will download chunks that overlap with the specified ranges, but often
 covers a larger area. When \code{crop = TRUE} (default), the data will be cropped
 to the specified \code{region}. If set to \code{FALSE} all downloaded data will be returned.}
+
+\item{asset}{Type of asset to be used when subsetting data. Should be one
+of \code{"default"}, \code{"ARCO"}, \code{"static"}, \code{"omi"}, or \code{"downsampled4"}.
+When missing, set to \code{NULL} or set to \code{"default"}, it will use the first
+asset available for the requested product and layer, in the order as listed
+before.}
 
 \item{...}{Ignored (reserved for future features).}
 }
