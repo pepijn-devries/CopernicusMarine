@@ -9,7 +9,7 @@ from Copernicus."><meta property="og:image" content="https://pepijn-devries.gith
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.0001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.0002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,6 +54,7 @@ from Copernicus.</p>
 <span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  progress <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  crop <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">asset</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -124,6 +125,14 @@ Otherwise, this function will silently proceed.</p></dd>
 will download chunks that overlap with the specified ranges, but often
 covers a larger area. When <code>crop = TRUE</code> (default), the data will be cropped
 to the specified <code>region</code>. If set to <code>FALSE</code> all downloaded data will be returned.</p></dd>
+
+
+<dt id="arg-asset">asset<a class="anchor" aria-label="anchor" href="#arg-asset"></a></dt>
+<dd><p>Type of asset to be used when subsetting data. Should be one
+of <code>"default"</code>, <code>"ARCO"</code>, <code>"static"</code>, <code>"omi"</code>, or <code>"downsampled4"</code>.
+When missing, set to <code>NULL</code> or set to <code>"default"</code>, it will use the first
+asset available for the requested product and layer, in the order as listed
+before.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
