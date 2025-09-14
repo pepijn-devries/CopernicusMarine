@@ -450,19 +450,18 @@ cms_download_subset <- function(
   omi            <- meta$assets[[1]]$omi
   ds4            <- meta$assets[[1]]$downsampled4
   
-  if (asset == "default") {
-    if (!is.null(time_chunked) || !is.null(geo_chunked))
-      asset <- "ARCO" else
-        if (!is.null(static)) {
-          result <- static
-          asset <- "static"
-        } else if (!is.null(omi)) {
-          result <- omi
-          asset <- "omi"
-        } else if (!is.null(ds4)) {
-          result <- ds4
-          asset <- "ds4"
-        }
+  if (asset == "default" && (!is.null(time_chunked) || !is.null(geo_chunked)))
+    asset <- "ARCO"
+  
+  if ((!is.null(static) && asset == "default") || asset == "static") {
+    result <- static
+    asset <- "static"
+  } else if ((!is.null(omi) && asset == "default") || asset == "omi") {
+    result <- omi
+    asset <- "omi"
+  } else if ((!is.null(ds4) && asset == "default") || asset == "downsampled4") {
+    result <- ds4
+    asset <- "ds4"
   }
   
   if (asset == "ARCO") { ## Time or geo-chunked
