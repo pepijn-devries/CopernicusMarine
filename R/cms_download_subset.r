@@ -152,7 +152,6 @@ cms_download_subset <- function(
                                           names = dmn[dim_order])) |>
             stars::st_as_stars() |>
             stars::st_set_dimensions(result, xy = xy)
-          
           result <-
             purrr::reduce(
               dmn, \(y, z) {
@@ -160,10 +159,9 @@ cms_download_subset <- function(
               },
               .init = result
             )
-          
+
           names(result) <- v
           
-          if (!is.null(current_refsys)) sf::st_crs(result) <- current_refsys
           result
           
         },
@@ -173,7 +171,6 @@ cms_download_subset <- function(
         dmn  = dms)
       }
     )
-  
   remaining_dims <- dims
   
   data <-
@@ -188,7 +185,8 @@ cms_download_subset <- function(
         chunk_data = {
           if (dplyr::n() == 1) .data$chunk_data else
             list(do.call(c, c(.data$chunk_data, along = dm)))
-        }
+        } |>
+          lapply(sf::st_set_crs, value = current_refsys)
       ) |>
       dplyr::ungroup()
   }
@@ -390,25 +388,15 @@ cms_download_subset <- function(
   } else {
     stop("Unknown dimension type '%s'", tp)
   }
-  if (dim_prop$type == "temporal") {
-    stars::st_dimensions(x)[[d]]$refsys <- class(vals)[[1]]
-    if (is.null(dim_prop$step)) {
-      stars::st_dimensions(x)[[d]]$delta  <- NA_real_
-      stars::st_dimensions(x)[[d]]$offset <- NA_real_
-      stars::st_dimensions(x)[[d]]$values <- vals
-    } else {
-      x <-
-        stars::st_set_dimensions(x, d, NULL, NA_real_, offset = min(vals),
-                                 refsys = class(vals)[[1]],
-                                 delta = .code_to_period(dim_prop$step))
-    }
+  if (dim_prop$type == "temporal" && !is.null(dim_prop$step)) {
+    x <-
+      stars::st_set_dimensions(x, d, NULL, NA_real_, offset = min(vals),
+                               delta = .code_to_period(dim_prop$step))
   } else {
-    stars::st_dimensions(x)[[d]]$delta  <- NA_real_
-    stars::st_dimensions(x)[[d]]$offset <- NA_real_
-    stars::st_dimensions(x)[[d]]$values <- vals
-    if (inherits(vals, "units"))
-      stars::st_dimensions(x)[[d]]$refsys <- "udunits"
+    x <- stars::st_set_dimensions(x, d, values = vals, point = TRUE) |>
+      suppressWarnings()
   }
+  stars::st_dimensions(x)[[d]]$refsys <- class(vals)[[1]]
   x
   
 }
