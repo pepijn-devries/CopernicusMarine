@@ -250,6 +250,7 @@ cms_download_subset <- function(
     ) |>
     dplyr::mutate(
       chunk_data = lapply(seq_along(.data$chunk_data), \(i) {
+        if (is.null(.data$chunk_data[[i]])) return(rep(NA, prod(.data$dims[[i]])))
         if (.data$compressor[[i]]$id != "blosc") rlang::abort("Unkown compressor '%s'",
                                                               .data$compressor[[i]]$id)
         if (!requireNamespace("blosc"))
@@ -339,8 +340,13 @@ cms_download_subset <- function(
           lapply(httr2::request)
       },
       ## Currently uses default max number of requests of 10
-      chunk_data = httr2::req_perform_parallel(.data$chunk_url, progress = progress),
-      chunk_data = lapply(.data$chunk_data, httr2::resp_body_raw)
+      chunk_data = httr2::req_perform_parallel(.data$chunk_url, progress = progress,
+                                               on_error = "continue"),
+      chunk_data = {
+        lapply(.data$chunk_data, function(x) {
+          if (x$status == 403) return (NULL) else return(httr2::resp_body_raw(x))
+        })
+      }
     )
 }
 
