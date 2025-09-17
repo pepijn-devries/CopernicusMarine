@@ -388,14 +388,8 @@ cms_download_subset <- function(
   } else {
     stop("Unknown dimension type '%s'", tp)
   }
-  if (dim_prop$type == "temporal" && !is.null(dim_prop$step)) {
-    x <-
-      stars::st_set_dimensions(x, d, NULL, NA_real_, offset = min(vals),
-                               delta = .code_to_period(dim_prop$step))
-  } else {
-    x <- stars::st_set_dimensions(x, d, values = vals, point = TRUE) |>
-      suppressWarnings()
-  }
+  x <- stars::st_set_dimensions(x, d, values = vals, point = TRUE) |>
+    suppressWarnings()
   stars::st_dimensions(x)[[d]]$refsys <- class(vals)[[1]]
   x
   
