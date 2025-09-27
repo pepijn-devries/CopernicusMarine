@@ -1,4 +1,4 @@
-CopernicusMarine v0.3.0.0006
+CopernicusMarine v0.3.1
 -------------
 
  * Added support for sub-setting OMI, and downsampled4
