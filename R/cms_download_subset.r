@@ -117,26 +117,31 @@ cms_download_subset <- function(
   
   if (progress) rlang::inform("Formatting data")
   
-  result <- .process_data(result, dims, variable, service, crop, current_refsys)
+  result <- .process_data(result, dims, variable, service, serv_props,
+                          crop, current_refsys)
   
   if (progress) rlang::inform("Done")
   return (result)
 }
 
-.process_data <- function(data, dims, variable, service, crop, current_refsys) {
+.process_data <- function(data, dims, variable, service, serv_props,
+                          crop, current_refsys) {
   
   chunk_dim <- lapply(dims, \(dm) dplyr::as_tibble(service$viewDims[[dm]]$chunkLen)) |>
     dplyr::bind_rows()
   
   xy <- .get_xy_axes(attr(service, "dim_properties"))
   dms <- dims
-  if (service$id == "timeChunked") {
-    dim_order <- match(dms,
-                       intersect(c("time", xy[[1L]], xy[[2L]], "elevation"), dms))
-  } else {
-    dim_order <- match(dms,
-                       intersect(c(xy[[1L]], xy[[2L]], "elevation", "time"), dms))
-  }
+  dim_order <- seq_along(dms)
+
+  dim_order_type <- 
+    serv_props |>
+    dplyr::filter(.data$var %in% variable) |>
+    dplyr::pull("order") |>
+    unique()
+  if (length(dim_order_type) != 1) stop("Mixed dimension orders!")
+  if (dim_order_type == "C") dim_order <- rev(dim_order)
+  
   result <- NULL ## avoid global bindings note in CRAN checks
   data <-
     data |>
@@ -635,11 +640,11 @@ cms_download_subset <- function(
       unlist(zarray$chunks),
       names = unlist(zattrs$`_ARRAY_DIMENSIONS`)
     )
-  if (zarray$order == "C") chunk_dimensions <- rev(chunk_dimensions)
   
   list(
     zarray = zarray,
     zattrs = zattrs,
-    dims = chunk_dimensions
+    dims = chunk_dimensions,
+    dim_order = zarray$order
   )
 }
