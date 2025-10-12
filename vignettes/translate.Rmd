@@ -1,0 +1,73 @@
+---
+title: "Translate Request"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Translate Request}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Locating a dataset
+
+You could use the R functions `cms_product_details()` and `cms_product_metadata()`
+to look for Copernicus Marine Service data. If you prefer using a graphical user
+interface, you can use the website to find a suitable dataset: <https://data.marine.copernicus.eu/products>.
+
+Once you have located a suitable dataset on the website, the 'form' link can be used
+to enter a subset of the data. The screen capture video below demonstrates how this
+form can be used to specify a request. It also shows how you can copy this request
+in the form of command line (or Python) code to the clipboard.
+
+![Demonstration of copying request code to clipboard](https://raw.githubusercontent.com/pepijn-devries/CopernicusMarine/refs/heads/master/pkgdown/media/obtain_cli_code.gif)
+
+Once on the clipboard, you can translate the request code to an R named `list` with
+`cms_translate()`.
+
+## Download data with request
+
+The example below demonstrates how the strategy above can be used to download a
+subset of data. It shows how you can translate the command line code obtained
+from the website can be translated into a named `list`.
+
+```{r translate}
+library(CopernicusMarine)
+## Example of command line code
+## copied from website:
+cli_code <-
+"copernicusmarine subset
+  --dataset-id cmems_mod_glo_phy_anfc_0.083deg_PT1H-m
+  --variable uo
+  --variable vo
+  --start-datetime 2025-01-01T00:00:00
+  --end-datetime 2025-01-01T23:00:00
+  --minimum-longitude -2
+  --maximum-longitude 8
+  --minimum-latitude 52
+  --maximum-latitude 59
+  --minimum-depth 0.49402499198913574
+  --maximum-depth 0.49402499198913574"
+
+translated <- cms_translate(cli_code)
+summary(translated)
+```
+
+Note that in the example above, the code is explicitly entered in the code
+and passed as an argument to the `cms_translate()`-call. In most cases it is
+not necessary. When you leave the `text` argument of `cms_translate()` empty,
+it will look for a request on the system clipboard.
+
+Now that you have translated the code, how can you actually download the data?
+You can pass the named `last` as arguments to `cms_download_subset()` using
+`do.call()`. Like this:
+
+```{r download-translation, message=FALSE, fig.width=3, fig.height=3, fig.alt="Data downloaded using translated query code"}
+result <- do.call(cms_download_subset, translated)
+plot(result, col = hcl.colors(100), axes = TRUE)
+```

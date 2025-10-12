@@ -570,7 +570,6 @@ cms_download_subset <- function(
         dat_len <- chunk_info$viewDims[[dim]]$chunkLen[[1]]
         dat_len <- dat_len*ceiling(dat$len/dat_len)
         
-        
         dim_range[[1]] + (seq_len(dat_len) - 1L) * dim_props[[dim]]$step
         
       } else if (dat$type == "explicit") {
@@ -583,7 +582,9 @@ cms_download_subset <- function(
                        i = "Please contact developers with regex"))
       }
       
-      flex <- (coord_values |> diff() |> min())/10
+      if (length(coord_values) == 1) flex <- 1e-6 else {
+        flex <- (coord_values |> diff() |> min())/10
+      }
       indices <- which(coord_values >= (my_range[[1]] - flex) &
                          coord_values <= (my_range[[2]] + flex))
       dim_len <-
