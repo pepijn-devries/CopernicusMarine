@@ -95,6 +95,10 @@ plot(my_data["vo"], col = hcl.colors(100), axes = TRUE)
 
 <img src="man/figures/README-download-subset-1.png" alt="Example plots of downloaded subsets"  />
 
+You can also use the request code from the Copernicus Marine Service
+website to download a subset. For more details see
+`vignette("translate")`
+
 <h3 id="sec-full">
 
 Downloading a complete Copernicus marine product

@@ -22,8 +22,8 @@ interface, you can use the website to find a suitable dataset: <https://data.mar
 
 Once you have located a suitable dataset on the website, the 'form' link can be used
 to enter a subset of the data. The screen capture video below demonstrates how this
-form can be used to specify a request. It also shows how you can copy this request
-in the form of command line (or Python) code to the clipboard.
+form can be used to specify a request. It also shows how you can copy this request,
+in the form of command line (or Python) code, to the clipboard.
 
 ![Demonstration of copying request code to clipboard](https://raw.githubusercontent.com/pepijn-devries/CopernicusMarine/refs/heads/master/pkgdown/media/obtain_cli_code.gif)
 
@@ -33,8 +33,8 @@ Once on the clipboard, you can translate the request code to an R named `list` w
 ## Download data with request
 
 The example below demonstrates how the strategy above can be used to download a
-subset of data. It shows how you can translate the command line code obtained
-from the website can be translated into a named `list`.
+subset of data. It shows how you can translate the command line code, obtained
+from the website, can be translated into a named `list`.
 
 ```{r translate}
 library(CopernicusMarine)

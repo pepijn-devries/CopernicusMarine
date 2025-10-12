@@ -116,7 +116,7 @@ cms_translate <- function(text, ...) {
   vr     <- c("minimum_depth", "maximum_depth")
   args_new[["product"]]       <- cms_products_list2()[[args$dataset_id]]
   args_new[["layer"]]         <- args$dataset_id
-  args_new[["variable"]]      <- c(args$variables, args$variable)
+  args_new[["variable"]]      <- c(args[["variables"]], args[["variable"]])
   args_new[["region"]]        <- args[coords] |> unlist() |> unname() |> as.numeric()
   args_new[["timerange"]]     <- args[tr] |> unlist() |> unname() |> as.POSIXct(tz = "UTC")
   args_new[["verticalrange"]] <- args[vr] |> unlist() |> unname() |> as.numeric()
