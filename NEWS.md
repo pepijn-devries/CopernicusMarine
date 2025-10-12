@@ -1,4 +1,4 @@
-CopernicusMarine v0.3.1.0002
+CopernicusMarine v0.3.1.0001
 -------------
 
  * Fix in dimensioning of Zarr data
