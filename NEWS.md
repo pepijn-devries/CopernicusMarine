@@ -1,6 +1,8 @@
-CopernicusMarine v0.3.1.0002
+CopernicusMarine v0.3.1.0003
 -------------
 
+ * Added `cms_translate()`
+ * Added `vignette("translate")`
  * Fix in dimensioning of Zarr data
 
 CopernicusMarine v0.3.1

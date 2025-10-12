@@ -1,7 +1,7 @@
 Package: CopernicusMarine
 Type: Package
 Title: Search Download and Handle Data from Copernicus Marine Service Information
-Version: 0.3.1.0002
+Version: 0.3.1.0003
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre", "dtc"),
     email = "pepijn.devries@outlook.com",
     comment = c(ORCID = "0000-0002-7961-6646")))
@@ -32,9 +32,12 @@ Imports:
     xml2
 Suggests:
     blosc,
+    clipr,
     cubelyr,
+    knitr,
     lifecycle,
     ncmeta,
+    rmarkdown,
     spelling,
     testthat (>= 3.0.0)
 URL: https://github.com/pepijn-devries/CopernicusMarine, https://pepijn-devries.github.io/CopernicusMarine/
@@ -59,4 +62,6 @@ Collate:
     'generics.r'
     'cms_wmts.r'
     'import.r'
+    'translate.R'
 Language: en-US
+VignetteBuilder: knitr
