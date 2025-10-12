@@ -1,4 +1,4 @@
-CopernicusMarine v0.3.1.0003
+CopernicusMarine v0.3.2
 -------------
 
  * Added `cms_translate()`

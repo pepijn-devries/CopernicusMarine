@@ -18,7 +18,8 @@ on the system clipboard.}
 Returns a named list with arguments for \code{cms_download_subset()}
 }
 \description{
-Use the Copernicus Marine Service website to navigate datasets
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Use the Copernicus Marine Service
+website to navigate datasets
 \url{https://data.marine.copernicus.eu/products}. You can specify
 a query using the website's download form, and copy it's automation
 download code (either command line or Python) to the system's clipboard.
