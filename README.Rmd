@@ -147,6 +147,13 @@ done with the following code:
 cms_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")$doi
 ```
 
+## More of Copernicus
+
+More R packages for exploring other Copernicus data services:
+
+ * [CopernicusClimate](https://github.com/pepijn-devries/CopernicusClimate)
+ Dedicated to climate change datasets
+
 ## Resources
 
 ```{r, eval=TRUE, echo=FALSE}

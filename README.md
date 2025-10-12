@@ -88,6 +88,7 @@ my_data <-
     verticalrange = c(0, -2),
     progress      = FALSE
 )
+#> Loading required namespace: blosc
 
 plot(my_data["vo"], col = hcl.colors(100), axes = TRUE)
 ```
@@ -181,6 +182,13 @@ code:
 cms_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")$doi
 #> [1] "E.U. Copernicus Marine Service Information; Global Ocean Physics Analysis and Forecast - GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14). DOI:10.48670/moi-00016"
 ```
+
+## More of Copernicus
+
+More R packages for exploring other Copernicus data services:
+
+- [CopernicusClimate](https://github.com/pepijn-devries/CopernicusClimate)
+  Dedicated to climate change datasets
 
 ## Resources
 
