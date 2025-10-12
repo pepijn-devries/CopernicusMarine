@@ -89,6 +89,9 @@ my_data <-
 plot(my_data["vo"], col = hcl.colors(100), axes = TRUE)
 ```
 
+You can also use the request code from the Copernicus Marine Service website
+to download a subset. For more details see `vignette("translate")`
+
 <h3 id="sec-full">Downloading a complete Copernicus marine product</h3>
 
 If you don't want to subset the data and want the complete set, you can download
