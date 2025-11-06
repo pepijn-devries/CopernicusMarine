@@ -1,4 +1,4 @@
-CopernicusMarine v0.3.2.0003
+CopernicusMarine v0.3.3
 -------------
 
  * Updated documentation
