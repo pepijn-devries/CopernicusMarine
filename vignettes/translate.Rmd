@@ -64,7 +64,7 @@ not necessary. When you leave the `text` argument of `cms_translate()` empty,
 it will look for a request on the system clipboard.
 
 Now that you have translated the code, how can you actually download the data?
-You can pass the named `last` as arguments to `cms_download_subset()` using
+You can pass the named `list` as arguments to `cms_download_subset()` using
 `do.call()`. Like this:
 
 ```{r download-translation, message=FALSE, fig.width=4, fig.height=4, fig.alt="Data downloaded using translated query code"}

@@ -259,11 +259,23 @@ cms_download_subset <- function(
         if (!requireNamespace("blosc"))
           rlang::abort(c(x = "Could not find required namespace \"blosc\"",
                          i = "Install package \"blosc\" and try again"))
+        scaling <- service_properties$zattrs[[1]]$scale_factor |> suppressWarnings()
+        add_offs <- service_properties$zattrs[[1]]$add_offset |> suppressWarnings()
+        if (is.null(scaling)) {
+          scaling <- 1
+          add_offs <- 0
+        } else {
+          scaling <- scaling[[i]]
+          add_offs <- add_offs[[i]]
+        }
         ## If zarr version 3 is used, translate data type
         ## and endianness to dtype code
-        blosc::blosc_decompress(x        = .data$chunk_data[[i]],
-                                dtype    = .data$dtype[[i]],
-                                na_value = .data$fill_value[[i]])
+        result <-
+          blosc::blosc_decompress(x        = .data$chunk_data[[i]],
+                                  dtype    = .data$dtype[[i]],
+                                  na_value = .data$fill_value[[i]])
+        if (is.numeric(result)) result <- add_offs + scaling * result
+        result
       })
     )
 }
