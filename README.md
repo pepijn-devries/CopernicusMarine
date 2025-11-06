@@ -85,12 +85,12 @@ my_data <-
     variable      = c("uo", "vo"),
     region        = c(-1, 50, 10, 55),
     timerange     = c("2025-01-01", "2025-01-02"),
-    verticalrange = c(0, -2),
+    verticalrange = c(0, -0.5),
     progress      = FALSE
 )
 #> Loading required namespace: blosc
 
-plot(my_data["vo"], col = hcl.colors(100), axes = TRUE)
+plot(my_data["vo", drop = TRUE], col = hcl.colors(100), axes = TRUE)
 ```
 
 <img src="man/figures/README-download-subset-1.png" alt="Example plots of downloaded subsets"  />
