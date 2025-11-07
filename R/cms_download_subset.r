@@ -10,7 +10,7 @@
 #' into memory.
 #' @param product An identifier (type `character`) of the desired Copernicus marine product.
 #' Can be obtained with [`cms_products_list`].
-#' @param layer The name of a desired layer within a product (type `character`). Can be obtained with [`cms_product_details`].
+#' @param layer The name of a desired layer within a product (type `character`). Can be obtained with [`cms_product_services`] (listed as `id` column).
 #' @param variable The name of a desired variable in a specific layer of a product (type `character`).
 #' Can be obtained with [`cms_product_details`].
 #' @param region Specification of the bounding box as a `vector` of `numeric`s WGS84 lat and lon coordinates.

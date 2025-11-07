@@ -24,7 +24,7 @@ cms_wmts_get_capabilities(product, layer, variable, type = c("list", "xml"))
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
 Can be obtained with \code{\link{cms_products_list}}.}
 
-\item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{cms_product_details}}.}
+\item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{cms_product_services}} (listed as \code{id} column).}
 
 \item{variable}{The name of a desired variable in a specific layer of a product (type \code{character}).
 Can be obtained with \code{\link{cms_product_details}}.}

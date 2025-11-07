@@ -23,7 +23,7 @@ cms_list_native_files(product, layer, pattern, prefix, max = Inf, ...)
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
 Can be obtained with \code{\link{cms_products_list}}.}
 
-\item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{cms_product_details}}.}
+\item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{cms_product_services}} (listed as \code{id} column).}
 
 \item{pattern}{A regular expression (\href{https://en.wikipedia.org/wiki/Regular_expression}{regex})
 pattern. Only paths that match the pattern will be returned. It can be used
