@@ -1,0 +1,76 @@
+# Translate Python code or command line request to R list
+
+**\[experimental\]** Use the Copernicus Marine Service website to
+navigate datasets <https://data.marine.copernicus.eu/products>. You can
+specify a query using the website's download form, and copy it's
+automation download code (either command line or Python) to the system's
+clipboard. You can then use this function to translate this code to a
+named list. The list can be used in combination with
+[`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
+to download data. See
+[`vignette("translate")`](https://pepijn-devries.github.io/CopernicusMarine/articles/translate.md)
+for more details.
+
+## Usage
+
+``` r
+cms_translate(text, ...)
+```
+
+## Arguments
+
+- text:
+
+  The query code as copied from the Copernicus Marine Service website.
+  Both Python and command line code are accepted. When this argument is
+  omitted, the function will look for a query on the system clipboard.
+
+- ...:
+
+  Ignored
+
+## Value
+
+Returns a named list with arguments for
+[`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
+
+## Examples
+
+``` r
+python_code <-
+"import copernicusmarine
+
+copernicusmarine.subset(
+  dataset_id=\"cmems_mod_glo_phy_anfc_0.083deg_PT1H-m\",
+  variables=[\"uo\",\"vo\"],
+  minimum_longitude=-2,
+  maximum_longitude=8,
+  minimum_latitude=52,
+  maximum_latitude=59,
+  start_datetime=\"2025-01-01T00:00:00\",
+  end_datetime=\"2025-01-01T23:00:00\",
+  minimum_depth=0.49402499198913574,
+  maximum_depth=0.49402499198913574,
+)"
+
+cli_code <-
+"copernicusmarine subset
+  --dataset-id cmems_mod_glo_phy_anfc_0.083deg_PT1H-m
+  --variable uo
+  --variable vo
+  --start-datetime 2025-01-01T00:00:00
+  --end-datetime 2025-01-01T23:00:00
+  --minimum-longitude -2
+  --maximum-longitude 8
+  --minimum-latitude 52
+  --maximum-latitude 59
+  --minimum-depth 0.49402499198913574
+  --maximum-depth 0.49402499198913574"
+
+if (interactive()) {
+  cms_translate(python_code)
+  cms_translate(cli_code)
+  translated <- cms_translate(cli_code)
+  do.call(cms_download_subset, translated)
+}
+```
