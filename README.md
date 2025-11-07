@@ -17,7 +17,7 @@ coverage](https://codecov.io/gh/pepijn-devries/CopernicusMarine/branch/master/gr
 ## Overview
 
 [Copernicus Marine Service
-Information](https://marine.copernicus.eu/about) is a programme
+Information](https://marine.copernicus.eu/about/) is a programme
 subsidised by the European Commission. Its mission is to provide free
 authoritative information on the oceans physical and biogeochemical
 state. The `CopernicusMarine` R package is developed apart from this
