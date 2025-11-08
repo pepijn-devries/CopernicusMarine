@@ -28,7 +28,7 @@ Returns your account details for the \code{get} variant or nothing in case
 of the \code{set} variant.
 }
 \description{
-Set or get username and password throughout an R session.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Set or get username and password throughout an R session.
 This can be used to obscure your account details in an R script and
 store them as either an R option or system environment variable.
 }

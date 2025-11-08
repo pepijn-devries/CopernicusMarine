@@ -7,14 +7,12 @@
 cms_download_subset(
   username = cms_get_username(),
   password = cms_get_password(),
-  destination,
   product,
   layer,
   variable,
   region,
   timerange,
   verticalrange,
-  overwrite = FALSE,
   progress = TRUE,
   crop = TRUE,
   asset,
@@ -27,10 +25,6 @@ cms_download_subset(
 
 \item{password}{Your Copernicus marine password. Can be provided as
 \code{cms_get_password()} (default), or as argument here.}
-
-\item{destination}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} This argument is deprecated.
-Data is no longer written to a file but loaded as a \code{\link[stars:st_as_stars]{stars::st_as_stars()}} object
-into memory.}
 
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
 Can be obtained with \code{\link{cms_products_list}}.}
@@ -49,10 +43,6 @@ for a requested time range. The \code{vector} should be coercible to \code{POSIX
 \item{verticalrange}{A \code{vector} with two elements (minimum and maximum)
 numerical values for the depth of the vertical layers (if any). Note that values below the
 sea surface needs to be specified as negative values.}
-
-\item{overwrite}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} This argument is deprecated.
-Data is no longer written to a file but loaded as a \code{\link[stars:st_as_stars]{stars::st_as_stars()}} object
-into memory.}
 
 \item{progress}{A logical value. When \code{TRUE} (default) progress is reported to the console.
 Otherwise, this function will silently proceed.}
