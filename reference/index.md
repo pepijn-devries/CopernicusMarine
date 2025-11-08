@@ -6,7 +6,7 @@
   [`cms_get_password()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
   [`cms_set_username()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
   [`cms_set_password()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
-  : Set or get Copernicus account details
+  **\[stable\]** : Set or get Copernicus account details
 - [`cms_cite_product()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_cite_product.md)
   **\[stable\]** : How to cite a Copernicus marine product
 - [`cms_download_native()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_native.md)

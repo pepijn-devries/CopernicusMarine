@@ -9,7 +9,7 @@ from Copernicus."><meta property="og:image" content="https://pepijn-devries.gith
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.5.0001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.5.0002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,14 +48,12 @@ from Copernicus.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cms_download_subset</span><span class="op">(</span></span>
 <span>  username <span class="op">=</span> <span class="fu"><a href="account.html">cms_get_username</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  password <span class="op">=</span> <span class="fu"><a href="account.html">cms_get_password</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  <span class="va">destination</span>,</span>
 <span>  <span class="va">product</span>,</span>
 <span>  <span class="va">layer</span>,</span>
 <span>  <span class="va">variable</span>,</span>
 <span>  <span class="va">region</span>,</span>
 <span>  <span class="va">timerange</span>,</span>
 <span>  <span class="va">verticalrange</span>,</span>
-<span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  progress <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  crop <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  <span class="va">asset</span>,</span>
@@ -75,12 +73,6 @@ from Copernicus.</p>
 <dt id="arg-password">password<a class="anchor" aria-label="anchor" href="#arg-password"></a></dt>
 <dd><p>Your Copernicus marine password. Can be provided as
 <code><a href="account.html">cms_get_password()</a></code> (default), or as argument here.</p></dd>
-
-
-<dt id="arg-destination">destination<a class="anchor" aria-label="anchor" href="#arg-destination"></a></dt>
-<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a> This argument is deprecated.
-Data is no longer written to a file but loaded as a <code><a href="https://r-spatial.github.io/stars/reference/st_as_stars.html" class="external-link">stars::st_as_stars()</a></code> object
-into memory.</p></dd>
 
 
 <dt id="arg-product">product<a class="anchor" aria-label="anchor" href="#arg-product"></a></dt>
@@ -111,12 +103,6 @@ for a requested time range. The <code>vector</code> should be coercible to <code
 <dd><p>A <code>vector</code> with two elements (minimum and maximum)
 numerical values for the depth of the vertical layers (if any). Note that values below the
 sea surface needs to be specified as negative values.</p></dd>
-
-
-<dt id="arg-overwrite">overwrite<a class="anchor" aria-label="anchor" href="#arg-overwrite"></a></dt>
-<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a> This argument is deprecated.
-Data is no longer written to a file but loaded as a <code><a href="https://r-spatial.github.io/stars/reference/st_as_stars.html" class="external-link">stars::st_as_stars()</a></code> object
-into memory.</p></dd>
 
 
 <dt id="arg-progress">progress<a class="anchor" aria-label="anchor" href="#arg-progress"></a></dt>

@@ -1,8 +1,8 @@
 # Set or get Copernicus account details
 
-Set or get username and password throughout an R session. This can be
-used to obscure your account details in an R script and store them as
-either an R option or system environment variable.
+**\[stable\]** Set or get username and password throughout an R session.
+This can be used to obscure your account details in an R script and
+store them as either an R option or system environment variable.
 
 ## Usage
 

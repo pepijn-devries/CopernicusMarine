@@ -9,14 +9,12 @@ Copernicus.
 cms_download_subset(
   username = cms_get_username(),
   password = cms_get_password(),
-  destination,
   product,
   layer,
   variable,
   region,
   timerange,
   verticalrange,
-  overwrite = FALSE,
   progress = TRUE,
   crop = TRUE,
   asset,
@@ -37,13 +35,6 @@ cms_download_subset(
   Your Copernicus marine password. Can be provided as
   [`cms_get_password()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
   (default), or as argument here.
-
-- destination:
-
-  **\[deprecated\]** This argument is deprecated. Data is no longer
-  written to a file but loaded as a
-  [`stars::st_as_stars()`](https://r-spatial.github.io/stars/reference/st_as_stars.html)
-  object into memory.
 
 - product:
 
@@ -80,13 +71,6 @@ cms_download_subset(
   A `vector` with two elements (minimum and maximum) numerical values
   for the depth of the vertical layers (if any). Note that values below
   the sea surface needs to be specified as negative values.
-
-- overwrite:
-
-  **\[deprecated\]** This argument is deprecated. Data is no longer
-  written to a file but loaded as a
-  [`stars::st_as_stars()`](https://r-spatial.github.io/stars/reference/st_as_stars.html)
-  object into memory.
 
 - progress:
 
