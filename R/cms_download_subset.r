@@ -5,9 +5,6 @@
 #'
 #' @include cms_login.r
 #' @inheritParams cms_login
-#' @param destination `r lifecycle::badge("deprecated")` This argument is deprecated.
-#' Data is no longer written to a file but loaded as a [stars::st_as_stars()] object
-#' into memory.
 #' @param product An identifier (type `character`) of the desired Copernicus marine product.
 #' Can be obtained with [`cms_products_list`].
 #' @param layer The name of a desired layer within a product (type `character`). Can be obtained with [`cms_product_services`] (listed as `id` column).
@@ -20,9 +17,6 @@
 #' @param verticalrange A `vector` with two elements (minimum and maximum)
 #' numerical values for the depth of the vertical layers (if any). Note that values below the
 #' sea surface needs to be specified as negative values.
-#' @param overwrite `r lifecycle::badge("deprecated")` This argument is deprecated.
-#' Data is no longer written to a file but loaded as a [stars::st_as_stars()] object
-#' into memory.
 #' @param progress A logical value. When `TRUE` (default) progress is reported to the console.
 #' Otherwise, this function will silently proceed.
 #' @param crop On the server, the data is organised in chunks. The subset
@@ -60,14 +54,12 @@
 cms_download_subset <- function(
     username = cms_get_username(),
     password = cms_get_password(),
-    destination,
     product,
     layer,
     variable,
     region,
     timerange,
     verticalrange,
-    overwrite = FALSE,
     progress = TRUE,
     crop = TRUE,
     asset,

@@ -61,7 +61,7 @@ cms_login <- function(
 
 #' Set or get Copernicus account details
 #' 
-#' Set or get username and password throughout an R session.
+#' `r lifecycle::badge('stable')` Set or get username and password throughout an R session.
 #' This can be used to obscure your account details in an R script and
 #' store them as either an R option or system environment variable.
 #' @param username Your Copernicus Marine username
@@ -122,4 +122,3 @@ cms_set_password <- function(password, method = c("option", "sysenv")) {
     })
   return(invisible())
 }
-
