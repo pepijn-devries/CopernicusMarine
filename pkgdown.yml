@@ -3,7 +3,7 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   translate: translate.html
-last_built: 2025-11-08T10:23Z
+last_built: 2025-11-11T16:47Z
 urls:
   reference: https://pepijn-devries.github.io/CopernicusMarine/reference
   article: https://pepijn-devries.github.io/CopernicusMarine/articles
