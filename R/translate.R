@@ -45,7 +45,7 @@
 #'   --minimum-depth 0.49402499198913574
 #'   --maximum-depth 0.49402499198913574"
 #' 
-#' if (interactive()) {
+#' if (interactive() && requireNamespace("blosc")) {
 #'   cms_translate(python_code)
 #'   cms_translate(cli_code)
 #'   translated <- cms_translate(cli_code)
