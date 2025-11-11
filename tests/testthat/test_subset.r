@@ -1,6 +1,7 @@
 test_that("Subset download produces expected data", {
   skip_on_cran()
   skip_if_not_installed("blosc")
+  skip_if_not_installed("ncmeta")
   has_account_details()
   skip_if_offline("data.marine.copernicus.eu")
   expect_true({
