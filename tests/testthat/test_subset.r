@@ -38,6 +38,25 @@ test_that("Subset download produces expected data", {
   })
 })
 
+test_that("Downloaded subset is scaled correctly", {
+  skip_on_cran()
+  skip_if_not_installed("blosc")
+  has_account_details()
+  skip_if_offline("data.marine.copernicus.eu")
+  expect_true({
+    dat <- cms_download_subset(
+      product       = "GLOBAL_MULTIYEAR_PHY_001_030",
+      layer         = "cmems_mod_glo_phy_my_0.083deg_P1M-m_202311",
+      variable      = "bottomT",
+      region        = c(0, 50, 1, 55),
+      timerange     = c("2020-01-01 UTC", "2025-01-01 UTC"),
+      progress      = FALSE
+    )
+    min(as.numeric(dat[[1]]), na.rm = TRUE) > 3 &&
+      max(as.numeric(dat[[1]]), na.rm = TRUE) < 22
+  })
+})
+
 test_that("Subsetting out of range results in error", {
   skip_on_cran()
   skip_if_not_installed("blosc")

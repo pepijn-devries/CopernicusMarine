@@ -257,8 +257,13 @@ cms_download_subset <- function(
           scaling <- 1
           add_offs <- 0
         } else {
-          scaling <- scaling[[i]]
-          add_offs <- add_offs[[i]]
+          scaling <- unique(stats::na.omit(scaling))
+          add_offs <- unique(stats::na.omit(add_offs))
+          if (length(scaling) != 1L || length(add_offs) != 1L)
+            rlang::abort(c(
+              x = "Inconsistency in scaling factors",
+              i = "Please report at https://github.com/pepijn-devries/CopernicusMarine/issues/"
+            ))
         }
         ## If zarr version 3 is used, translate data type
         ## and endianness to dtype code
