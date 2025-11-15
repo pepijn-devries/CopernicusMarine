@@ -1,6 +1,12 @@
 # Changelog
 
+## CopernicusMarine v0.3.6.0001
+
+- TODO
+
 ## CopernicusMarine v0.3.6
+
+CRAN release: 2025-11-11
 
 - Updated documentation
 - Small fix to pass CRAN checks
