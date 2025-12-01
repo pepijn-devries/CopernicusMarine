@@ -1,7 +1,7 @@
-CopernicusMarine v0.3.6.0001
+CopernicusMarine v0.3.7
 -------------
 
- * TODO
+ * Fix for [issue #111](https://github.com/pepijn-devries/CopernicusMarine/issues/111)
 
 CopernicusMarine v0.3.6
 -------------
