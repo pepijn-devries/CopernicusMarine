@@ -1,7 +1,7 @@
 Package: CopernicusMarine
 Type: Package
 Title: Search Download and Handle Data from Copernicus Marine Service Information
-Version: 0.3.7
+Version: 0.3.7.0001
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre", "dtc"),
     email = "pepijn.devries@outlook.com",
     comment = c(ORCID = "0000-0002-7961-6646")))
@@ -23,15 +23,14 @@ Imports:
     lubridate,
     purrr,
     rlang,
-    sf,
-    stars,
+    sf (>= 1.0-24),
+    stars (>= 0.6-8),
     stringr,
     tibble,
     tidyr,
     units,
     xml2
 Suggests:
-    blosc,
     clipr,
     cubelyr,
     knitr,
