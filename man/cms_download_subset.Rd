@@ -66,6 +66,11 @@ Returns a \code{\link[stars:st_as_stars]{stars::st_as_stars()}} object.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Subset and download a specific marine product
 from Copernicus.
 }
+\details{
+Currently, credentials are ignored. The subsetting service seems to be
+public. You can use this function without using your account. This might
+change in the future.
+}
 \examples{
 if (interactive()) {
 

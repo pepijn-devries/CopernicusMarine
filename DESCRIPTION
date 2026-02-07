@@ -28,7 +28,6 @@ Imports:
     stringr,
     tibble,
     tidyr,
-    units,
     xml2
 Suggests:
     clipr,

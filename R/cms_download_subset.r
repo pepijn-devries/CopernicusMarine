@@ -3,6 +3,9 @@
 #' `r lifecycle::badge('experimental')` Subset and download a specific marine product
 #' from Copernicus.
 #'
+#' Currently, credentials are ignored. The subsetting service seems to be
+#' public. You can use this function without using your account. This might
+#' change in the future.
 #' @include cms_login.r
 #' @inheritParams cms_login
 #' @param product An identifier (type `character`) of the desired Copernicus marine product.
@@ -59,7 +62,7 @@ cms_download_subset <- function(
     timerange,
     verticalrange,
     progress = TRUE,
-    crop, #TODO ignored
+    crop,
     asset,
     ...) {
   if (missing(asset)) asset <- NULL
@@ -69,6 +72,7 @@ cms_download_subset <- function(
   if (!missing(crop))
     rlang::warn("The `crop` argument is deprecated and ignored")
   
+  if (missing(variable) || is.null(variable)) variable <- character(0)
   subset_request <- list(
     product       = product,
     layer         = layer,
@@ -77,14 +81,13 @@ cms_download_subset <- function(
     timerange     = if (missing(timerange)) NULL else timerange,
     verticalrange = if (missing(verticalrange)) NULL else verticalrange
   )
-  
   if (progress)
     cli::cli_progress_step("Obtaining best or specified service")
   service <- .get_best_arco_service_type(
     subset_request, "", progress, asset)
   
   if (progress)
-    cli::cli_progress_step("Contacting service at {service$href}")
+    cli::cli_progress_step("Contacting {.href [service]({service$href}/.zmetadata)}")
   
   muffle_403 <- function(expr) {
     withCallingHandlers({
@@ -98,40 +101,77 @@ cms_download_subset <- function(
   if (progress)
     cli::cli_progress_step("Subsetting and downloading data")
   
+  s3_root <- stringr::str_extract(service$href, "(?<=//)[^/]+")
+  numthr <- Sys.getenv("GDAL_NUM_THREADS")
+  Sys.setenv(GDAL_NUM_THREADS    = "ALL_CPUS")
+  Sys.setenv(GDAL_HTTP_MULTICURL = "YES")
+  check <-
+    Sys.setenv(AWS_S3_ENDPOINT     = s3_root) &&
+    Sys.setenv(AWS_NO_SIGN_REQUEST = "YES") &&
+    Sys.setenv(AWS_VIRTUAL_HOSTING = "FALSE")
+  
+  if (check) {
+    vsi <- service$href |>
+      stringr::str_replace("^https?://[^/]+/([^/]+)/(.*)$",
+                           "/vsis3_streaming/\\1/\\2")
+  } else {
+    if (progress)
+      cli::cli_progress_message("Failed to set GDAL S3 config, trying alternative")
+    vsi <- paste0("/vsicurl/", service)
+  }
+  
+  ## Some requests result in a 403 status response, which trigger a warning.
+  ## Most likely this is the GDAL library trying to get directory listing
+  ## where the server does not allow it. These warnings are harmless and
+  ## do not affect the outcome. I will therefore muffle these warnings to
+  ## not confuse/bother the end-user.
+  ## Maybe this will be fixed in later GDAL releases.
   mdim_proxy <- muffle_403({
     stars::read_mdim(
-      paste0("ZARR::\"/vsicurl/", service$href, "\""),
-      proxy = TRUE
+      sprintf("ZARR::\"%s\"", vsi),
+      proxy = TRUE,
+      variable = variable
     )
   })
 
-  ## TODO generalise subsetting of dimensions
-  idx_time <- stars::st_get_dimension_values(mdim_proxy, "time")
-  idx_time <-
-    idx_time >= lubridate::as_datetime(utils::head(timerange, 1)) &
-    idx_time <= lubridate::as_datetime(utils::tail(timerange, 1))
-  idx_elev <- stars::st_get_dimension_values(mdim_proxy, "elevation") |>
-    as.numeric()
-  idx_elev <-
-    idx_elev <= utils::head(verticalrange, 1) &
-    idx_elev >= utils::tail(verticalrange, 1)
-  
-  #TODO handle cell size
-  idx_lon <- stars::st_get_dimension_values(mdim_proxy, "longitude")
-  idx_lon <-
-    idx_lon >= region[[1]] &
-    idx_lon <= region[[3]]
+  dms <- stars::st_dimensions(mdim_proxy)
+  idx <- lapply(names(dms), \(dm) {
+    idx_start <- stars::st_get_dimension_values(mdim_proxy, dm, where = "start")
+    idx_end   <- stars::st_get_dimension_values(mdim_proxy, dm, where = "end")
+    if (dm != "time") {
+      idx_start <- as.numeric(idx_start)
+      idx_end   <- as.numeric(idx_end)
+    }
+    comparator <-
+      switch(
+        dm,
+        longitude = region[c(1, 3)],
+        latitude = region[c(2, 4)],
+        time = lubridate::as_datetime(timerange),
+        elevation = verticalrange
+      )
+    if (length(comparator) == 1) comparator <- comparator[c(1,1)]
+    comparator <- sort(comparator)
+    idx <- if (length(comparator) == 0) rep(TRUE, length(idx_end)) else {
+      (idx_end > comparator[[1]] & idx_end < comparator[[2]]) |
+      (idx_start >= comparator[[1]] & idx_start <= comparator[[2]]) |
+        (idx_end > comparator[[1]] & idx_start <= comparator[[2]])
 
-  idx_lat <- stars::st_get_dimension_values(mdim_proxy, "latitude")
-  idx_lat <-
-    idx_lat >= region[[2]] &
-    idx_lat <= region[[4]]
-  
-  result <- muffle_403({
-    mdim_proxy[,which(idx_lon), which(idx_lat),
-               which(idx_elev), which(idx_time)] |>
-      stars::st_as_stars()
+    }
+    result <- which(idx)
+    if (length(result) == 0)
+      rlang::abort(sprintf("Dimension '%s' not within selected range", dm))
+    result
   })
+
+  mdim_proxy <- rlang::inject(mdim_proxy[,!!!idx])
+
+  result <- muffle_403({
+    stars::st_as_stars(mdim_proxy)
+  })
+  
+  Sys.setenv(GDAL_NUM_THREADS = numthr)
+
   cli::cli_progress_done()
   result
 }

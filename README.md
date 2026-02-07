@@ -88,7 +88,6 @@ my_data <-
     verticalrange = c(0, -0.5),
     progress      = FALSE
 )
-#> Loading required namespace: blosc
 
 plot(my_data["vo", drop = TRUE], col = hcl.colors(100), axes = TRUE)
 ```
