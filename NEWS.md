@@ -1,3 +1,8 @@
+CopernicusMarine v0.3.7.0001
+-------------
+
+ * `cms_download_subset()` now uses GDAL library with Zarr driver
+
 CopernicusMarine v0.3.7
 -------------
 
