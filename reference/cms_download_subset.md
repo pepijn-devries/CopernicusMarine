@@ -16,7 +16,7 @@ cms_download_subset(
   timerange,
   verticalrange,
   progress = TRUE,
-  crop = TRUE,
+  crop,
   asset,
   ...
 )
@@ -79,11 +79,9 @@ cms_download_subset(
 
 - crop:
 
-  On the server, the data is organised in chunks. The subset will
-  download chunks that overlap with the specified ranges, but often
-  covers a larger area. When `crop = TRUE` (default), the data will be
-  cropped to the specified `region`. If set to `FALSE` all downloaded
-  data will be returned.
+  **\[deprecated\]**. This version now uses the GDAL library to handle
+  the subsetting and downloading of subsets. The `crop` argument is
+  therefore no longer supported.
 
 - asset:
 
@@ -103,6 +101,12 @@ Returns a
 [`stars::st_as_stars()`](https://r-spatial.github.io/stars/reference/st_as_stars.html)
 object.
 
+## Details
+
+Currently, credentials are ignored. The subsetting service seems to be
+public. You can use this function without using your account. This might
+change in the future.
+
 ## Author
 
 Pepijn de Vries
@@ -110,7 +114,7 @@ Pepijn de Vries
 ## Examples
 
 ``` r
-if (interactive() && requireNamespace("blosc")) {
+if (interactive()) {
 
   mydata <- cms_download_subset(
     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -124,8 +128,6 @@ if (interactive() && requireNamespace("blosc")) {
   plot(mydata["vo"])
 } else {
   message("Make sure to run this in an interactive environment")
-  message("and that the package 'blosc' is installed")
 }
 #> Make sure to run this in an interactive environment
-#> and that the package 'blosc' is installed
 ```

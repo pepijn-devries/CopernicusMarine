@@ -49,7 +49,7 @@ Pepijn de Vries
 
 ``` r
 cms_products_list()
-#> # A tibble: 308 × 19
+#> # A tibble: 303 × 19
 #>    product_id        catalogue title thumbnailUrl sources processingLevel areas 
 #>    <chr>             <chr>     <chr> <chr>        <list>  <chr>           <list>
 #>  1 GLOBAL_ANALYSISF… CMEMS     Glob… https://mdl… <list>  Level 4         <list>
@@ -62,7 +62,7 @@ cms_products_list()
 #>  8 GLOBAL_MULTIYEAR… CMEMS     Glob… https://mdl… <list>  Level 4         <list>
 #>  9 ARCTIC_ANALYSISF… CMEMS     Arct… https://mdl… <list>  Level 4         <list>
 #> 10 ARCTIC_ANALYSIS_… CMEMS     Arct… https://mdl… <list>  Level 4         <list>
-#> # ℹ 298 more rows
+#> # ℹ 293 more rows
 #> # ℹ 12 more variables: geoResolution <list>, vertLevels <int>,
 #> #   tempExtentBegin <chr>, tempResolutions <list>, stacOrCswBbox <list>,
 #> #   stacOrCswTbox <list>, mainVariables <list>, `_isViewableOmi` <lgl>,

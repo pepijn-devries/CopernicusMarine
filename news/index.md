@@ -1,5 +1,10 @@
 # Changelog
 
+## CopernicusMarine v0.3.7.0001
+
+- [`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
+  now uses GDAL library with Zarr driver
+
 ## CopernicusMarine v0.3.7
 
 CRAN release: 2025-11-30

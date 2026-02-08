@@ -74,10 +74,8 @@ data? You can pass the named `list` as arguments to
 using [`do.call()`](https://rdrr.io/r/base/do.call.html). Like this:
 
 ``` r
-if (requireNamespace("blosc")) {
-  result <- do.call(cms_download_subset, translated)
-  plot(result, col = hcl.colors(100), axes = TRUE)
-}
+result <- do.call(cms_download_subset, translated)
+plot(result, col = hcl.colors(100), axes = TRUE)
 ```
 
 ![Data downloaded using translated query
