@@ -89,50 +89,18 @@ cms_download_subset <- function(
   if (progress)
     cli::cli_progress_step("Contacting {.href [service]({service$href}/.zmetadata)}")
   
-  muffle_403 <- function(expr) {
-    withCallingHandlers({
-      expr
-    }, warning = function(w) {
-      if (grepl(": 403", conditionMessage(w)))
-        invokeRestart("muffleWarning")
-    })
-  }
+  numthr <- Sys.getenv("GDAL_NUM_THREADS")
+  Sys.setenv(GDAL_NUM_THREADS = "ALL_CPUS")
+  Sys.setenv(GDAL_HTTP_MULTICURL = "YES")
+  Sys.setenv(GDAL_DISABLE_READDIR_ON_OPEN = "EMPTY_DIR")
+  
+  mdim_proxy <-
+    service$href |>
+    .uri_to_vsi(progress) |>
+    .get_stars_proxy(variable)
   
   if (progress)
     cli::cli_progress_step("Subsetting and downloading data")
-  
-  s3_root <- stringr::str_extract(service$href, "(?<=//)[^/]+")
-  numthr <- Sys.getenv("GDAL_NUM_THREADS")
-  Sys.setenv(GDAL_NUM_THREADS    = "ALL_CPUS")
-  Sys.setenv(GDAL_HTTP_MULTICURL = "YES")
-  check <-
-    Sys.setenv(AWS_S3_ENDPOINT     = s3_root) &&
-    Sys.setenv(AWS_NO_SIGN_REQUEST = "YES") &&
-    Sys.setenv(AWS_VIRTUAL_HOSTING = "FALSE")
-  
-  if (check) {
-    vsi <- service$href |>
-      stringr::str_replace("^https?://[^/]+/([^/]+)/(.*)$",
-                           "/vsis3_streaming/\\1/\\2")
-  } else {
-    if (progress)
-      cli::cli_progress_message("Failed to set GDAL S3 config, trying alternative")
-    vsi <- paste0("/vsicurl/", service)
-  }
-  
-  ## Some requests result in a 403 status response, which trigger a warning.
-  ## Most likely this is the GDAL library trying to get directory listing
-  ## where the server does not allow it. These warnings are harmless and
-  ## do not affect the outcome. I will therefore muffle these warnings to
-  ## not confuse/bother the end-user.
-  ## Maybe this will be fixed in later GDAL releases.
-  mdim_proxy <- muffle_403({
-    stars::read_mdim(
-      sprintf("ZARR::\"%s\"", vsi),
-      proxy = TRUE,
-      variable = variable
-    )
-  })
 
   dms <- stars::st_dimensions(mdim_proxy)
   idx <- lapply(names(dms), \(dm) {
@@ -166,7 +134,7 @@ cms_download_subset <- function(
 
   mdim_proxy <- rlang::inject(mdim_proxy[,!!!idx])
 
-  result <- muffle_403({
+  result <- .muffle_403({
     stars::st_as_stars(mdim_proxy)
   })
   
@@ -392,3 +360,44 @@ cms_download_subset <- function(
     stop("Unknown time period '%s'", x)
   )
 }
+
+#' Get a proxy stars object from a Zarr service
+#' 
+#' The advantage of
+#' [`stars_proxy` objects](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects),
+#' is that they do not contain any data. They are therefore fast to handle
+#' and consume only limited memory. You can still manipulate the object
+#' lazily (like selecting slices). These operation are only executed when
+#' calling [stars::st_as_stars()] or `plot()` on the object.
+#' @inheritParams cms_download_subset
+#' @param asset An asset that is available for the `product`.
+#' Should be one of `"native"`, `"wmts"`, `"timeChunked"`, `"downsampled4"`,
+#' or `"geoChunked"`.
+#' @returns A [`stars_proxy` object](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects)
+#' @author Pepijn de Vries
+#' @examples
+#' if (interactive()) {
+#'   myproxy <- cms_zarr_proxy(
+#'     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+#'     layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
+#'     variable      = c("uo", "vo"),
+#'     asset         = "timeChunked")
+#'   plot(myproxy["uo",1:200,1:100,50,1], axes = TRUE)
+#' }
+#' @export
+cms_zarr_proxy <-
+  function(
+    product,
+    layer,
+    variable,
+    asset
+  ) {
+    
+    meta <-
+      cms_product_metadata(product) |>
+      dplyr::filter(startsWith(.data$id, .env$layer)) |>
+      dplyr::filter(dplyr::row_number() == 1)
+    meta$assets[[1]][[asset]]$href |>
+      .uri_to_vsi(FALSE) |>
+      .get_stars_proxy(variable)
+  }

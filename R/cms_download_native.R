@@ -1,3 +1,6 @@
+#' @include generics.r
+NULL
+
 #' Download raw files as provided to Copernicus Marine
 #' 
 #' `r lifecycle::badge('stable')` Full marine data sets can be downloaded using the functions
@@ -155,5 +158,54 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
     bucket       = segments[[2]],
     path         = segments[-1:-2] |> paste(collapse = "/")
   )
+  
+}
+
+#' Get a proxy stars object from a native service
+#' 
+#' The advantage of
+#' [`stars_proxy` objects](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects),
+#' is that they do not contain any data. They are therefore fast to handle
+#' and consume only limited memory. You can still manipulate the object
+#' lazily (like selecting slices). These operation are only executed when
+#' calling [stars::st_as_stars()] or `plot()` on the object.
+#' @inheritParams cms_download_native
+#' @param variable The variable name for which to create the `stars_proxy`.
+#' If omitted it will include all variables in the layer.
+#' @returns A [`stars_proxy` object](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects)
+#' @examples
+#' if (interactive()) {
+#'   native_proxy <-
+#'     cms_native_proxy(
+#'       product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+#'       layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+#'       prefix        = "2022/06/",
+#'       pattern       = "20220621"
+#'     )
+#'   plot(native_proxy["zos", 1:1000, 1:500, 1, 1], axes = TRUE)
+#' }
+#' @author Pepijn de Vries
+#' @export
+cms_native_proxy <- function(product, layer, pattern, prefix, variable, ...) {
+  if (missing(pattern)) pattern <- ""
+  if (missing(prefix)) prefix <- ""
+  if (missing(variable)) variable <- character(0)
+  
+  file_list <- cms_list_native_files(product, layer, pattern, prefix)
+  if (nrow(file_list) > 1)
+    rlang::warn(c(
+      "Argument matches multiple files",
+      i = "Returning the first in the list",
+      i = "Add a specific 'pattern' to reduce the number of matches"
+    ))
+  file_list <- file_list[1,]
+
+  paste0(
+    "https://",
+    file_list$base_url, "/",
+    file_list$Bucket, "/",
+    file_list$Key) |>
+    .uri_to_vsi(FALSE, add_zarr = FALSE, streaming = FALSE) |>
+    .get_stars_proxy(variable = variable)
   
 }

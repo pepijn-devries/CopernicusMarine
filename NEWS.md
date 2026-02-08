@@ -2,6 +2,8 @@ CopernicusMarine v0.3.7.0002
 -------------
 
  * `cms_download_subset()` now uses GDAL library with Zarr driver
+ * Added `cms_zarr_proxy()` and `cms_native_proxy()`. Both can create
+   [`stars_proxy` objects](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects).
  * Let `httr2` handle request errors, it has become a lot better at it
 
 CopernicusMarine v0.3.7
