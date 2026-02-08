@@ -14,7 +14,7 @@ cms_download_subset(
   timerange,
   verticalrange,
   progress = TRUE,
-  crop = TRUE,
+  crop,
   asset,
   ...
 )
@@ -47,10 +47,9 @@ sea surface needs to be specified as negative values.}
 \item{progress}{A logical value. When \code{TRUE} (default) progress is reported to the console.
 Otherwise, this function will silently proceed.}
 
-\item{crop}{On the server, the data is organised in chunks. The subset
-will download chunks that overlap with the specified ranges, but often
-covers a larger area. When \code{crop = TRUE} (default), the data will be cropped
-to the specified \code{region}. If set to \code{FALSE} all downloaded data will be returned.}
+\item{crop}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. This version now
+uses the GDAL library to handle the subsetting and downloading of
+subsets. The \code{crop} argument is therefore no longer supported.}
 
 \item{asset}{Type of asset to be used when subsetting data. Should be one
 of \code{"default"}, \code{"ARCO"}, \code{"static"}, \code{"omi"}, or \code{"downsampled4"}.
@@ -67,8 +66,13 @@ Returns a \code{\link[stars:st_as_stars]{stars::st_as_stars()}} object.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Subset and download a specific marine product
 from Copernicus.
 }
+\details{
+Currently, credentials are ignored. The subsetting service seems to be
+public. You can use this function without using your account. This might
+change in the future.
+}
 \examples{
-if (interactive() && requireNamespace("blosc")) {
+if (interactive()) {
 
   mydata <- cms_download_subset(
     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -82,7 +86,6 @@ if (interactive() && requireNamespace("blosc")) {
   plot(mydata["vo"])
 } else {
   message("Make sure to run this in an interactive environment")
-  message("and that the package 'blosc' is installed")
 }
 }
 \author{
