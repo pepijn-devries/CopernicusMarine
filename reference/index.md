@@ -19,6 +19,8 @@
   **\[stable\]** : Get information about Copernicus Marine clients
 - [`cms_login()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_login.md)
   **\[stable\]** : Contact Copernicus Marine login page
+- [`cms_native_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_proxy.md)
+  : Get a proxy stars object from a native service
 - [`cms_product_details()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_product_details.md)
   **\[stable\]** : Obtain details for a specific Copernicus marine
   product
@@ -39,3 +41,5 @@
   [`cms_wmts_get_capabilities()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_wmts.md)
   **\[stable\]** : Obtain a WMTS entry for specific Copernicus marine
   products and add to a leaflet map
+- [`cms_zarr_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_zarr_proxy.md)
+  : Get a proxy stars object from a Zarr service
