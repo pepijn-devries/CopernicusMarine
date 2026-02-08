@@ -176,15 +176,6 @@ cms_download_subset <- function(
   result
 }
 
-.get_xy_axes <- function(dim_props) {
-  xy <- lapply(dim_props, \(x) {
-    c("x", "y")[match(x$axis, c("x", "y"))]
-  }) |>
-    unlist()
-  lapply(c("x", "y"), \(z) names(xy)[!is.na(xy) & xy == z]) |>
-    unlist()
-}
-
 .as_bbox <- function(x, crs_arg) {
   if (is.numeric(x) && is.null(names(x))) {
     names(x) <- c("xmin", "ymin", "xmax", "ymax")
@@ -294,27 +285,20 @@ cms_download_subset <- function(
 
     if (count_timec < count_geoc) {
       result <- time_chunked
-      attributes(result) <- c(attributes(result), list(dims = indices_timec))
     } else {
       result <- geo_chunked
-      attributes(result) <- c(attributes(result), list(dims = indices_geoc))
     }
   } else {
     indices <- .get_chunk_indices(subset_request, variables,
                                   result, dimnames, dim_properties)
-    attributes(result) <- c(attributes(result), list(dims = indices))
-    
+
   }
-  result$viewVariables <- result$viewVariables[variables]
-  attributes(result) <- c(attributes(result),
-                          list(dim_properties = dim_properties),
-                          list(var_properties = var_properties))
-  
+
   return (result)
 }
 
 .get_chunk_count <- function(indices) {
-  lapply(indices, function(x) lapply(x$chunk_id, function(y) length(unique(y)))) |>
+  lapply(indices, function(x) lapply(x, function(y) length(unique(y)))) |>
     lapply(dplyr::as_tibble) |>
     dplyr::bind_rows() |>
     dplyr::summarise(dplyr::across(dplyr::everything(), prod))
@@ -336,7 +320,7 @@ cms_download_subset <- function(
                    i = "Please report at <https://github.com/pepijn-devries/CopernicusMarine/issues>"))
   
   dims_alt <- c(elevation = "verticalrange", time = "timerange")
-  corrected_ranges <-
+  chunk_ids <-
     lapply(structure(dims, names = dims), function(dim) {
       dim_range <- unlist(dim_props[[dim]]$extent)
       
@@ -380,7 +364,6 @@ cms_download_subset <- function(
         rlang::abort(c(x = sprintf("Dimension type '%s' not implemented", dat$type),
                        i = "Please contact developers with regex"))
       }
-      
       if (length(coord_values) == 1) flex <- 1e-6 else {
         flex <- (coord_values |> diff() |> min())/10
       }
@@ -392,21 +375,11 @@ cms_download_subset <- function(
         dplyr::select(dplyr::any_of(variables)) |>
         as.list()
       
-      chunk_id <- lapply(dim_len, function(dl) floor((indices - 1L)/dl))
+      lapply(dim_len, function(dl) floor((indices - 1L)/dl))
       
-      if (any(lengths(chunk_id) == 0)) chunk_offset <- numeric() else
-        chunk_offset <- mapply(\(x, y) y*min(x), x = chunk_id, y = dim_len)
-      coord_values <- list(
-        values = coord_values,
-        indices = indices,
-        chunk_id = chunk_id,
-        chunk_offset = chunk_offset
-      )
-      
-      c(list(range = my_range), coord_values)
     })
   
-  corrected_ranges
+  chunk_ids
 }
 
 .code_to_period <- function(x) {
@@ -417,34 +390,5 @@ cms_download_subset <- function(
     P1D = lubridate::period(1, "days"),
     P1M = lubridate::period(1, "months"),
     stop("Unknown time period '%s'", x)
-  )
-}
-
-.get_xarray_properties <- function(service, var) {
-  
-  zattrs <-
-    paste(service$href, var, ".zattrs", sep = "/") |>
-    httr2::request() |>
-    httr2::req_perform() |>
-    httr2::resp_body_json(check_type = FALSE)
-  
-  zarray <-
-    paste(service$href, var, ".zarray", sep = "/") |>
-    httr2::request() |>
-    httr2::req_perform() |>
-    httr2::resp_body_json(check_type = FALSE)
-  if (is.null(zarray$fill_value)) zarray$fill_value <- NA_real_
-  
-  chunk_dimensions <-
-    structure(
-      unlist(zarray$chunks),
-      names = unlist(zattrs$`_ARRAY_DIMENSIONS`)
-    )
-  
-  list(
-    zarray = zarray,
-    zattrs = zattrs,
-    dims = chunk_dimensions,
-    dim_order = zarray$order
   )
 }

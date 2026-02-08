@@ -48,26 +48,26 @@ test_that("Product details can be obtained", {
   })
 })
 
-test_that("Requesting nonexisting product citation details returns NULL", {
+test_that("Requesting nonexisting product citation details throws error", {
   skip_on_cran()
   skip_if_offline()
-  expect_null({
+  expect_error({
     cms_cite_product("FOOBAR") |> suppressMessages()
-  })
+  }, "404 Not Found")
 })
 
-test_that("Requesting nonexisting product services returns NULL", {
+test_that("Requesting nonexisting product services throws error", {
   skip_on_cran()
   skip_if_offline()
-  expect_null({
+  expect_error({
     cms_product_services("FOOBAR") |> suppressMessages()
-  })
+  }, "404 Not Found")
 })
 
-test_that("Requesting nonexisting product details returns NULL", {
+test_that("Requesting nonexisting product details throws error", {
   skip_on_cran()
   skip_if_offline()
-  expect_null({
+  expect_error({
     cms_product_details("FOOBAR") |> suppressMessages()
-  })
+  }, "404 Not Found")
 })

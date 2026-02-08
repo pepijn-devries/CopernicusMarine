@@ -110,14 +110,11 @@ cms_wmts_get_capabilities <- function(product, layer, variable, type = c("list",
   set <- c(product, layer, variable) |>
     paste0(collapse = "/")
   result <-
-    .try_online({
-      .wmts_base_url |>
-        paste0(product, "/", .wmts_req, "GetCapabilities&layer=", set) |>
-        httr2::request() |>
-        httr2::req_perform()
-    }, "wmts.marine.copernicus.eu")
-  if (is.null(result)) return(NULL)
-  result <- httr2::resp_body_xml(result)
+    .wmts_base_url |>
+    paste0(product, "/", .wmts_req, "GetCapabilities&layer=", set) |>
+    httr2::request() |>
+    httr2::req_perform() |>
+    httr2::resp_body_xml()
   if (type == "list") result <- xml2::as_list(result)
   return(result)
 }

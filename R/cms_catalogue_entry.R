@@ -13,10 +13,8 @@
 #' }
 #' @export
 cms_get_client_info <- function(...) {
-  ci <- .try_online({
-    "https://stac.marine.copernicus.eu/clients-config-v1" |>
-      httr2::request() |>
-      httr2::req_perform()
-  }, "client-info-page")
-  if (is.null(ci)) return(NULL) else return(httr2::resp_body_json(ci))
+  "https://stac.marine.copernicus.eu/clients-config-v1" |>
+    httr2::request() |>
+    httr2::req_perform() |>
+    httr2::resp_body_json()
 }

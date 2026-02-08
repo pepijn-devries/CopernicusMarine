@@ -27,17 +27,14 @@ cms_products_list <- function(..., info_type = c("list", "meta")) {
   payload     <- .payload_data_list
   payload_mod <- list(...)
   payload[names(payload_mod)] <- payload_mod
-  result <- .try_online({
-    "https://data-be-prd.marine.copernicus.eu/api/datasets" |>
-      httr2::request() |>
-      httr2::req_method("POST") |>
-      httr2::req_body_json(payload) |>
-      httr2::req_perform()
-  }, "Copernicus")
-  if (is.null(result)) return(NULL)
   result <-
-    result |>
+    "https://data-be-prd.marine.copernicus.eu/api/datasets" |>
+    httr2::request() |>
+    httr2::req_method("POST") |>
+    httr2::req_body_json(payload) |>
+    httr2::req_perform() |>
     httr2::resp_body_json()
+  
   switch(
     info_type,
     meta = {
@@ -68,14 +65,10 @@ cms_products_list <- function(..., info_type = c("list", "meta")) {
 cms_products_list2 <- function(...) {
   clients <- cms_get_client_info()
   if (is.null(clients)) return(NULL)
-  map_url <- clients$catalogues[[1]]$idMapping
-  result <- .try_online({
-    map_url |>
-      httr2::request() |>
-      httr2::req_perform()
-  }, "id-mapping-page")
-  if (is.null(result)) return(NULL)
-  return (httr2::resp_body_json(result))
+  clients$catalogues[[1]]$idMapping |>
+    httr2::request() |>
+    httr2::req_perform() |>
+    httr2::resp_body_json()
 }
 
 .payload_data_list <- list(

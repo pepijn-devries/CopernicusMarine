@@ -23,40 +23,30 @@ cms_login <- function(
     password = cms_get_password()) {
 
   token <- .get_access_token(username, password)
-  if (is.null(token)) return(NULL)
-  
-  details <- .try_online({
-    account_details <-
-      "https://auth.marine.copernicus.eu/realms/MIS/protocol/openid-connect/userinfo" |>
-      httr2::request() |>
-      httr2::req_method("POST") |>
-      httr2::req_headers(authorization = paste0("Bearer ", token$access_token)) |>
-      httr2::req_perform()
-  }, "login-page")
-  
-  if (is.null(details)) return(NULL) else
-    return(httr2::resp_body_json(details))
+
+  "https://auth.marine.copernicus.eu/realms/MIS/protocol/openid-connect/userinfo" |>
+    httr2::request() |>
+    httr2::req_method("POST") |>
+    httr2::req_headers(authorization = paste0("Bearer ", token$access_token)) |>
+    httr2::req_perform() |>
+    httr2::resp_body_json()
 }
 
 .get_access_token <- function(
     username = cms_get_username(),
     password = cms_get_password()) {
-  token_request <-
-    .try_online({
-      "https://auth.marine.copernicus.eu/realms/MIS/protocol/openid-connect/token" |>
-        httr2::request() |>
-        httr2::req_method("POST") |>
-        httr2::req_body_form(
-          client_id  = "toolbox",
-          grant_type = "password",
-          username   = username,
-          password   = password,
-          scope      = "openid profile email"
-        ) |>
-        httr2::req_perform()
-    }, "login-page")
-  if (is.null(token_request))
-    return (NULL) else return(httr2::resp_body_json(token_request))
+  "https://auth.marine.copernicus.eu/realms/MIS/protocol/openid-connect/token" |>
+    httr2::request() |>
+    httr2::req_method("POST") |>
+    httr2::req_body_form(
+      client_id  = "toolbox",
+      grant_type = "password",
+      username   = username,
+      password   = password,
+      scope      = "openid profile email"
+    ) |>
+    httr2::req_perform() |>
+    httr2::resp_body_json()
 }
 
 #' Set or get Copernicus account details

@@ -25,15 +25,13 @@ cms_product_details <- function(product, ...) {
     )
   }
   
-  result <- .try_online({
+  result <-
     product_url |>
-      httr2::request() |>
-      httr2::req_perform()
-  }, "product-catalogue")
+    httr2::request() |>
+    httr2::req_perform() |>
+    httr2::resp_body_json()
   
-  if (is.null(result)) return(NULL) else {
-    result <- httr2::resp_body_json(result)
-    attr(result, "stac_url") <- stac_url
-    return(result)
-  }
+  attr(result, "stac_url") <- stac_url
+  
+  return(result)
 }

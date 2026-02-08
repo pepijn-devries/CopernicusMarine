@@ -24,11 +24,8 @@ cms_product_metadata <- function(product, ...) {
   meta_url  <- paste(attr(details, "stac_url"), product, item, sep = "/")
   result <-
     lapply(meta_url, function(u) {
-      .try_online({
-        u |>
-          httr2::request() |>
-          httr2::req_perform()
-      }, "meta-data-page")
+      httr2::request(u) |>
+        httr2::req_perform()
     }) |>
     lapply(function(x) {
       if (is.null(x)) return(NULL) else {
