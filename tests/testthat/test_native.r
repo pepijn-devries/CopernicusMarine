@@ -39,3 +39,18 @@ test_that("Native files can be listed", {
     nrow(file_list) == 5L && all(grepl(pref, file_list$Key, fixed = TRUE))
   })
 })
+
+test_that("A stars proxy object can be created from a native service", {
+  expect_true({
+    my_proxy <-
+      cms_native_proxy(
+        product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+        layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+        prefix        = "2022/06/",
+        pattern       = "20220621"
+      )
+    my_stars <- my_proxy["zos", 1:500, 1:250, 1, 1] |>
+      stars::st_as_stars()
+    all(dim(my_stars) == c(500, 250, 1, 1))
+  })
+})

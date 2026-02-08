@@ -101,3 +101,16 @@ test_that("Unknown time code throws error", {
     CopernicusMarine:::.code_to_period("XXX")
   })
 })
+
+test_that("A proxy object can be created from zarr", {
+  skip_on_cran()
+  expect_true({
+    myproxy <- cms_zarr_proxy(
+      product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+      layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
+      variable      = c("uo", "vo"),
+      asset         = "timeChunked")
+    mystars <- stars::st_as_stars(myproxy["uo",1:200,1:100,50,1])
+    all(dim(mystars) == c(200, 100, 1, 1))
+  })
+})
