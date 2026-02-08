@@ -35,3 +35,11 @@ test_that("Request code can be translated", {
     cms_translate(cli_code)
   }, cms_translate(python_code))
 })
+
+test_that("Jibberish as 'text' argument throws error", {
+  skip_on_cran()
+  skip_if_offline()
+  expect_error({
+    cms_translate("foobar")
+  }, "Code is not recognised")
+})

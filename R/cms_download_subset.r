@@ -176,15 +176,6 @@ cms_download_subset <- function(
   result
 }
 
-.get_xy_axes <- function(dim_props) {
-  xy <- lapply(dim_props, \(x) {
-    c("x", "y")[match(x$axis, c("x", "y"))]
-  }) |>
-    unlist()
-  lapply(c("x", "y"), \(z) names(xy)[!is.na(xy) & xy == z]) |>
-    unlist()
-}
-
 .as_bbox <- function(x, crs_arg) {
   if (is.numeric(x) && is.null(names(x))) {
     names(x) <- c("xmin", "ymin", "xmax", "ymax")
@@ -294,22 +285,15 @@ cms_download_subset <- function(
 
     if (count_timec < count_geoc) {
       result <- time_chunked
-      attributes(result) <- c(attributes(result), list(dims = indices_timec))
     } else {
       result <- geo_chunked
-      attributes(result) <- c(attributes(result), list(dims = indices_geoc))
     }
   } else {
     indices <- .get_chunk_indices(subset_request, variables,
                                   result, dimnames, dim_properties)
-    attributes(result) <- c(attributes(result), list(dims = indices))
-    
+
   }
-  result$viewVariables <- result$viewVariables[variables]
-  attributes(result) <- c(attributes(result),
-                          list(dim_properties = dim_properties),
-                          list(var_properties = var_properties))
-  
+
   return (result)
 }
 
@@ -417,34 +401,5 @@ cms_download_subset <- function(
     P1D = lubridate::period(1, "days"),
     P1M = lubridate::period(1, "months"),
     stop("Unknown time period '%s'", x)
-  )
-}
-
-.get_xarray_properties <- function(service, var) {
-  
-  zattrs <-
-    paste(service$href, var, ".zattrs", sep = "/") |>
-    httr2::request() |>
-    httr2::req_perform() |>
-    httr2::resp_body_json(check_type = FALSE)
-  
-  zarray <-
-    paste(service$href, var, ".zarray", sep = "/") |>
-    httr2::request() |>
-    httr2::req_perform() |>
-    httr2::resp_body_json(check_type = FALSE)
-  if (is.null(zarray$fill_value)) zarray$fill_value <- NA_real_
-  
-  chunk_dimensions <-
-    structure(
-      unlist(zarray$chunks),
-      names = unlist(zattrs$`_ARRAY_DIMENSIONS`)
-    )
-  
-  list(
-    zarray = zarray,
-    zattrs = zattrs,
-    dims = chunk_dimensions,
-    dim_order = zarray$order
   )
 }
