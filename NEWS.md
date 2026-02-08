@@ -1,7 +1,8 @@
-CopernicusMarine v0.3.7.0001
+CopernicusMarine v0.3.7.0002
 -------------
 
  * `cms_download_subset()` now uses GDAL library with Zarr driver
+ * Let `httr2` handle request errors, it has become a lot better at it
 
 CopernicusMarine v0.3.7
 -------------

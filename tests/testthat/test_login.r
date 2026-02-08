@@ -25,13 +25,13 @@ test_that("Setting password works", {
   })
 })
 
-test_that("Using dummy account details returns NULL", {
+test_that("Using dummy account details throws error", {
   skip_on_cran()
-  expect_null({
+  expect_error({
     cms_set_username("henk", "option")
     cms_set_username("henk", "sysenv")
     cms_set_password("foobar", "option")
     cms_set_password("foobar", "sysenv")
     cms_login() |> suppressMessages()
-  })
+  }, "401 Unauthorized")
 })

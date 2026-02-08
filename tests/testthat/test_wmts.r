@@ -22,13 +22,13 @@ test_that("Copernicus WMTS capabilities can be obtained", {
   })
 })
 
-test_that("WMTS capabilities are NULL for non-existing product", {
+test_that("WMTS capabilities throws error for non-existing product", {
   skip_on_cran()
   skip_if_offline("data.marine.copernicus.eu")
   has_gdal_utils()
-  expect_null({
+  expect_error({
     cms_wmts_get_capabilities("FOOBAR") |> suppressMessages()
-  })
+  }, "500 Internal Server Error")
 })
 
 test_that("WMTS tiles cannot be added when there are multiple layers and non selected", {
