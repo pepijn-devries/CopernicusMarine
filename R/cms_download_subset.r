@@ -298,7 +298,7 @@ cms_download_subset <- function(
 }
 
 .get_chunk_count <- function(indices) {
-  lapply(indices, function(x) lapply(x$chunk_id, function(y) length(unique(y)))) |>
+  lapply(indices, function(x) lapply(x, function(y) length(unique(y)))) |>
     lapply(dplyr::as_tibble) |>
     dplyr::bind_rows() |>
     dplyr::summarise(dplyr::across(dplyr::everything(), prod))
@@ -320,7 +320,7 @@ cms_download_subset <- function(
                    i = "Please report at <https://github.com/pepijn-devries/CopernicusMarine/issues>"))
   
   dims_alt <- c(elevation = "verticalrange", time = "timerange")
-  corrected_ranges <-
+  chunk_ids <-
     lapply(structure(dims, names = dims), function(dim) {
       dim_range <- unlist(dim_props[[dim]]$extent)
       
@@ -364,7 +364,6 @@ cms_download_subset <- function(
         rlang::abort(c(x = sprintf("Dimension type '%s' not implemented", dat$type),
                        i = "Please contact developers with regex"))
       }
-      
       if (length(coord_values) == 1) flex <- 1e-6 else {
         flex <- (coord_values |> diff() |> min())/10
       }
@@ -376,21 +375,11 @@ cms_download_subset <- function(
         dplyr::select(dplyr::any_of(variables)) |>
         as.list()
       
-      chunk_id <- lapply(dim_len, function(dl) floor((indices - 1L)/dl))
+      lapply(dim_len, function(dl) floor((indices - 1L)/dl))
       
-      if (any(lengths(chunk_id) == 0)) chunk_offset <- numeric() else
-        chunk_offset <- mapply(\(x, y) y*min(x), x = chunk_id, y = dim_len)
-      coord_values <- list(
-        values = coord_values,
-        indices = indices,
-        chunk_id = chunk_id,
-        chunk_offset = chunk_offset
-      )
-      
-      c(list(range = my_range), coord_values)
     })
   
-  corrected_ranges
+  chunk_ids
 }
 
 .code_to_period <- function(x) {
