@@ -1,9 +1,11 @@
 # Changelog
 
-## CopernicusMarine v0.3.7.0002
+## CopernicusMarine v0.3.7.0003
 
 - [`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
-  now uses GDAL library with Zarr driver
+  now uses GDAL library with Zarr driver. Advantages:
+  - Simpler code, easier to maintain
+  - Smaller dependency footprint
 - Added
   [`cms_zarr_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_zarr_proxy.md)
   and
