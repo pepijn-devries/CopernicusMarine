@@ -11,7 +11,7 @@ checks](https://badges.cranchecks.info/worst/CopernicusMarine.svg)](https://cran
 [![CopernicusMarine status
 badge](https://pepijn-devries.r-universe.dev/badges/CopernicusMarine)](https://pepijn-devries.r-universe.dev/CopernicusMarine)
 [![Codecov test
-coverage](https://codecov.io/gh/pepijn-devries/CopernicusMarine/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pepijn-devries/CopernicusMarine?branch=master)
+coverage](https://codecov.io/gh/pepijn-devries/CopernicusMarine/graph/badge.svg)](https://app.codecov.io/gh/pepijn-devries/CopernicusMarine)
 <!-- badges: end -->
 
 ## Overview
