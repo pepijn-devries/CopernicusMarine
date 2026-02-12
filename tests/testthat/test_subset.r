@@ -108,7 +108,7 @@ test_that("A proxy object can be created from zarr", {
     myproxy <- cms_zarr_proxy(
       product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
       layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
-      variable      = c("uo", "vo"),
+      variable      = NULL,
       asset         = "timeChunked")
     mystars <- stars::st_as_stars(myproxy["uo",1:200,1:100,50,1])
     all(dim(mystars) == c(200, 100, 1, 1))

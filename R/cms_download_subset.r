@@ -392,7 +392,7 @@ cms_zarr_proxy <-
     variable,
     asset
   ) {
-    
+    if (missing(variable) || is.null(variable)) variable <- character(0)
     meta <-
       cms_product_metadata(product) |>
       dplyr::filter(startsWith(.data$id, .env$layer)) |>

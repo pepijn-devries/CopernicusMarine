@@ -16,15 +16,13 @@
 cms_product_details <- function(product, ...) {
   clients <- cms_get_client_info()
   stac_url <- gsub("/$", "", clients$catalogues[[1]]$stacRoot)
-  if (is.null(clients)) return(NULL) else {
-    product_url <- paste(
-      stac_url,
-      product,
-      "product.stac.json",
-      sep = "/"
-    )
-  }
-  
+  product_url <- paste(
+    stac_url,
+    product,
+    "product.stac.json",
+    sep = "/"
+  )
+
   result <-
     product_url |>
     httr2::request() |>

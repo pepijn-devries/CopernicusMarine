@@ -17,7 +17,6 @@
 #' @export
 cms_product_services <- function(product, ...) {
   meta_data <- cms_product_metadata(product)
-  if (is.null(meta_data)) return(NULL)
   result <-
     meta_data$assets |>
     .simplify() |>
