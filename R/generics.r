@@ -1,3 +1,11 @@
+`%>=%` <- function(x, y) {
+  (x > y) | lapply(x, \(z) isTRUE(all.equal(z, y))) |> unlist()
+}
+
+`%<=%` <- function(x, y) {
+  (x < y) | lapply(x, \(z) isTRUE(all.equal(z, y))) |> unlist()
+}
+
 .simplify <- function(data) {
   empty_row <- data.frame(a = NA)[,-1]
   result <-
