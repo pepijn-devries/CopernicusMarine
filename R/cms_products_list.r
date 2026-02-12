@@ -64,7 +64,6 @@ cms_products_list <- function(..., info_type = c("list", "meta")) {
 #' @export
 cms_products_list2 <- function(...) {
   clients <- cms_get_client_info()
-  if (is.null(clients)) return(NULL)
   clients$catalogues[[1]]$idMapping |>
     httr2::request() |>
     httr2::req_perform() |>

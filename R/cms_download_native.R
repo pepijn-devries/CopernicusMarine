@@ -112,7 +112,6 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
   if (missing(layer)) layer <- ""
   if (missing(prefix)) prefix <- NULL
   s3_info <- .preprocess_s3(product, layer, "native_href")
-  if (is.null(s3_info)) return(NULL)
 
   with(s3_info, {
     aws.s3::get_bucket_df(
@@ -131,7 +130,6 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
 .preprocess_s3 <- function(product, layer, what, ...) {
   services <-
     cms_product_services(product)
-  if (is.null(services)) return(NULL)
   services <-
     services |>
     dplyr::filter(startsWith(.data$id, layer))
@@ -189,7 +187,7 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
 cms_native_proxy <- function(product, layer, pattern, prefix, variable, ...) {
   if (missing(pattern)) pattern <- ""
   if (missing(prefix)) prefix <- ""
-  if (missing(variable)) variable <- character(0)
+  if (missing(variable) || is.null(variable)) variable <- character(0)
   
   file_list <- cms_list_native_files(product, layer, pattern, prefix)
   if (nrow(file_list) > 1)
@@ -200,12 +198,17 @@ cms_native_proxy <- function(product, layer, pattern, prefix, variable, ...) {
     ))
   file_list <- file_list[1,]
 
+  if (grepl("\\.nc$|\\.ncf$|\\.ncdf$|\\.netcdf$|\\.h5$", file_list$Key) &
+      sf::st_drivers("raster", "^HDF5$")$vsi)
+    fmt <- "HDF5:%s" else fmt <- "%s"
+  
   paste0(
     "https://",
     file_list$base_url, "/",
     file_list$Bucket, "/",
     file_list$Key) |>
     .uri_to_vsi(FALSE, add_zarr = FALSE, streaming = FALSE) |>
+    sprintf(fmt = fmt) |>
     .get_stars_proxy(variable = variable)
   
 }

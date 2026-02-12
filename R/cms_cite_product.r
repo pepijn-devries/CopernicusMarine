@@ -15,7 +15,6 @@
 #' @export
 cms_cite_product <- function(product) {
   product_details <- cms_product_details(product)
-  if (is.null(product_details)) return(NULL)
   result <- c(
     doi = with(
       product_details,

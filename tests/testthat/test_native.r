@@ -41,6 +41,8 @@ test_that("Native files can be listed", {
 })
 
 test_that("A stars proxy object can be created from a native service", {
+  skip_if_offline()
+  skip_on_cran()
   expect_true({
     my_proxy <-
       cms_native_proxy(
