@@ -128,7 +128,7 @@ cms_download_subset <- function(
     }
     result <- which(idx)
     if (length(result) == 0)
-      rlang::abort(sprintf("Dimension '%s' [%s-%s] not within selected range",
+      rlang::abort(sprintf("Dimension '%s' [%s - %s] not within selected range",
                            dm, comparator[[1]], comparator[[2]]))
     result
   })

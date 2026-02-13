@@ -1,9 +1,9 @@
 `%>=%` <- function(x, y) {
-  (x > y) | lapply(x, \(z) isTRUE(all.equal(z, y))) |> unlist()
+  x >= (y - .Machine$double.eps^.5)
 }
 
 `%<=%` <- function(x, y) {
-  (x < y) | lapply(x, \(z) isTRUE(all.equal(z, y))) |> unlist()
+  x <= (y + .Machine$double.eps^.5)
 }
 
 .simplify <- function(data) {
