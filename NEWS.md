@@ -1,3 +1,10 @@
+CopernicusMarine v0.4.0.0001
+-------------
+
+ * Added safeguards to vignette
+ * Improved handling of comparing floating point numbers
+   when slicing stars_proxy objects.
+
 CopernicusMarine v0.4.0
 -------------
 

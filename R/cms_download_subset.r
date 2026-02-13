@@ -122,13 +122,14 @@ cms_download_subset <- function(
     comparator <- sort(comparator)
     idx <- if (length(comparator) == 0) rep(TRUE, length(idx_end)) else {
       (idx_end > comparator[[1]] & idx_end < comparator[[2]]) |
-      (idx_start >= comparator[[1]] & idx_start <= comparator[[2]]) |
-        (idx_end > comparator[[1]] & idx_start <= comparator[[2]])
+      (idx_start %>=% comparator[[1]] & idx_start %<=% comparator[[2]]) |
+        (idx_end > comparator[[1]] & idx_start %<=% comparator[[2]])
 
     }
     result <- which(idx)
     if (length(result) == 0)
-      rlang::abort(sprintf("Dimension '%s' not within selected range", dm))
+      rlang::abort(sprintf("Dimension '%s' [%s - %s] not within selected range",
+                           dm, comparator[[1]], comparator[[2]]))
     result
   })
 

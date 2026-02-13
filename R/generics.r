@@ -1,3 +1,11 @@
+`%>=%` <- function(x, y) {
+  x >= (y - .Machine$double.eps^.5)
+}
+
+`%<=%` <- function(x, y) {
+  x <= (y + .Machine$double.eps^.5)
+}
+
 .simplify <- function(data) {
   empty_row <- data.frame(a = NA)[,-1]
   result <-
