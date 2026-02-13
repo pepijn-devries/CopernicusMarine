@@ -36,7 +36,7 @@ The example below demonstrates how the strategy above can be used to download a
 subset of data. It shows how you can translate the command line code, obtained
 from the website, can be translated into a named `list`.
 
-```{r translate}
+```{r translate, eval=curl::has_internet()}
 library(CopernicusMarine)
 ## Example of command line code
 ## copied from website:
@@ -54,10 +54,8 @@ cli_code <-
   --minimum-depth 0.49402499198913574
   --maximum-depth 0.49402499198913574"
 
-if (curl::has_internet()) {
-  translated <- cms_translate(cli_code)
-  summary(translated)
-}
+translated <- cms_translate(cli_code)
+summary(translated)
 ```
 
 Note that in the example above, the code is explicitly entered in the code
@@ -69,9 +67,7 @@ Now that you have translated the code, how can you actually download the data?
 You can pass the named `list` as arguments to `cms_download_subset()` using
 `do.call()`. Like this:
 
-```{r download-translation, message=FALSE, fig.width=4, fig.height=4, fig.alt="Data downloaded using translated query code"}
-if (curl::has_internet()) {
-  result <- do.call(cms_download_subset, translated)
-  plot(result, col = hcl.colors(100), axes = TRUE)
-}
+```{r download-translation, eval=curl::has_internet(), message=FALSE, fig.width=4, fig.height=4, fig.alt="Data downloaded using translated query code"}
+result <- do.call(cms_download_subset, translated)
+plot(result, col = hcl.colors(100), axes = TRUE)
 ```
