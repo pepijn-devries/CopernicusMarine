@@ -70,10 +70,10 @@ which is simply not available on most devices.
 Fortunately, the proxy object can easily be sliced, by selecting index values with
 the bracket operator (`[`). The first index represents the band (attribute),
 and we skip it, next are the `x` and `y` coordinate, followed by the elevation.
-The last dimension is time, were we select the first five hundred records.
+The last dimension is time, were we select the first four hundred records.
 
 ```{r slice_time, eval=curl::has_internet()}
-time_slice <- my_proxy_gc[,2000, 1000, 48, 1:500]
+time_slice <- my_proxy_gc[,2000, 1000, 48, 1:400]
 show(time_slice)
 ```
 
@@ -94,6 +94,6 @@ We can also select a specific area, for which we will use the time chunked
 proxy.
 
 ```{r slice_area, eval=curl::has_internet()}
-geo_slice <- my_proxy_tc[,2000:2500, 1500:1750, c(45, 50), 500]
+geo_slice <- my_proxy_tc[,2000:2500, 1500:1750, 50, 500]
 plot(geo_slice, col = hcl.colors(10))
 ```
