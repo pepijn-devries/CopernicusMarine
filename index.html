@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.0001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.0002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,6 +121,7 @@ Downloading a subset
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my_data</span><span class="op">[</span><span class="st">"vo"</span>, drop <span class="op">=</span> <span class="cn">TRUE</span><span class="op">]</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, axes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-download-subset-1.png" alt="Example plots of downloaded subsets"></p>
 <p>You can also use the request code from the Copernicus Marine Service website to download a subset. For more details see <code><a href="articles/translate.html">vignette("translate")</a></code></p>
+<p>In addition it is also possible to subset data with <code>stars_proxy</code> objects, using either <code><a href="reference/cms_zarr_proxy.html">cms_zarr_proxy()</a></code> or <code><a href="reference/cms_native_proxy.html">cms_native_proxy()</a></code>. This is explained in more detail in <code><a href="articles/proxy.html">vignette("proxy")</a></code>.</p>
 <h3 id="usage-2">
 Downloading a complete Copernicus marine product
 <a class="anchor" aria-label="anchor" href="#usage-2"></a>

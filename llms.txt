@@ -82,6 +82,14 @@ You can also use the request code from the Copernicus Marine Service
 website to download a subset. For more details see
 [`vignette("translate")`](https://pepijn-devries.github.io/CopernicusMarine/articles/translate.md)
 
+In addition it is also possible to subset data with `stars_proxy`
+objects, using either
+[`cms_zarr_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_zarr_proxy.md)
+or
+[`cms_native_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_proxy.md).
+This is explained in more detail in
+[`vignette("proxy")`](https://pepijn-devries.github.io/CopernicusMarine/articles/proxy.md).
+
 ### Downloading a complete Copernicus marine product
 
 If you don’t want to subset the data and want the complete set, you can

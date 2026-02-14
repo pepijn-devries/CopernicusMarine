@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.0001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.0002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,7 +115,7 @@ entire layer in a product.</p>
 <span><span class="co">#&gt; longitude    1 4320         NA     NA      NA</span></span>
 <span><span class="co">#&gt; latitude     1 2041         NA     NA      NA</span></span>
 <span><span class="co">#&gt; elevation    1   50         NA     NA udunits</span></span>
-<span><span class="co">#&gt; time         1 1363 2022-06-01 1 days    Date</span></span>
+<span><span class="co">#&gt; time         1 1364 2022-06-01 1 days    Date</span></span>
 <span><span class="co">#&gt;                                                            values x/y</span></span>
 <span><span class="co">#&gt; longitude            [-180.0417,-179.9583),...,[179.875,179.9584) [x]</span></span>
 <span><span class="co">#&gt; latitude            [-80.04167,-79.95833),...,[89.95834,90.04166) [y]</span></span>
@@ -148,10 +148,10 @@ of memory which is simply not available on most devices.</p>
 index values with the bracket operator (<code>[</code>). The first index
 represents the band (attribute), and we skip it, next are the
 <code>x</code> and <code>y</code> coordinate, followed by the elevation.
-The last dimension is time, were we select the first five hundred
+The last dimension is time, were we select the first four hundred
 records.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">time_slice</span> <span class="op">&lt;-</span> <span class="va">my_proxy_gc</span><span class="op">[</span>,<span class="fl">2000</span>, <span class="fl">1000</span>, <span class="fl">48</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">500</span><span class="op">]</span></span>
+<code class="sourceCode R"><span><span class="va">time_slice</span> <span class="op">&lt;-</span> <span class="va">my_proxy_gc</span><span class="op">[</span>,<span class="fl">2000</span>, <span class="fl">1000</span>, <span class="fl">48</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">400</span><span class="op">]</span></span>
 <span><span class="fu">show</span><span class="op">(</span><span class="va">time_slice</span><span class="op">)</span></span>
 <span><span class="co">#&gt; stars_proxy object with 1 attribute in 1 file(s):</span></span>
 <span><span class="co">#&gt; $thetao</span></span>
@@ -162,7 +162,7 @@ records.</p>
 <span><span class="co">#&gt; longitude 2000 2000         NA     NA      NA     [-13.46,-13.37) [x]</span></span>
 <span><span class="co">#&gt; latitude  1000 1000         NA     NA      NA       [3.208,3.292) [y]</span></span>
 <span><span class="co">#&gt; elevation   48   48         NA     NA udunits [-2.646,-1.541) [m]    </span></span>
-<span><span class="co">#&gt; time         1  500 2022-06-01 1 days    Date                NULL</span></span></code></pre></div>
+<span><span class="co">#&gt; time         1  400 2022-06-01 1 days    Date                NULL</span></span></code></pre></div>
 <p>As you can notice, this slicing is super fast. This is because no
 actual data is transfered yet. It isn’t until <code><a href="https://r-spatial.github.io/stars/reference/st_as_stars.html" class="external-link">st_as_stars()</a></code>
 is called when the data is downloaded. Since in this particular case we
@@ -177,9 +177,8 @@ series.</p>
 <p>We can also select a specific area, for which we will use the time
 chunked proxy.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">geo_slice</span> <span class="op">&lt;-</span> <span class="va">my_proxy_tc</span><span class="op">[</span>,<span class="fl">2000</span><span class="op">:</span><span class="fl">2500</span>, <span class="fl">1500</span><span class="op">:</span><span class="fl">1750</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">45</span>, <span class="fl">50</span><span class="op">)</span>, <span class="fl">500</span><span class="op">]</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">geo_slice</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; downsample set to 1</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">geo_slice</span> <span class="op">&lt;-</span> <span class="va">my_proxy_tc</span><span class="op">[</span>,<span class="fl">2000</span><span class="op">:</span><span class="fl">2500</span>, <span class="fl">1500</span><span class="op">:</span><span class="fl">1750</span>, <span class="fl">50</span>, <span class="fl">500</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">geo_slice</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="proxy_files/figure-html/slice_area-1.png" class="r-plt" alt="" width="700"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

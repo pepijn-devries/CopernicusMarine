@@ -60,6 +60,11 @@ cms_native_proxy(product, layer, pattern, prefix, variable, ...)
 A [`stars_proxy`
 object](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects)
 
+## Details
+
+For more details see
+[`vignette("proxy")`](https://pepijn-devries.github.io/CopernicusMarine/articles/proxy.md).
+
 ## Author
 
 Pepijn de Vries

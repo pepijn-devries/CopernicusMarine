@@ -49,7 +49,7 @@ print(my_proxy_tc)
 #> longitude    1 4320         NA     NA      NA
 #> latitude     1 2041         NA     NA      NA
 #> elevation    1   50         NA     NA udunits
-#> time         1 1363 2022-06-01 1 days    Date
+#> time         1 1364 2022-06-01 1 days    Date
 #>                                                            values x/y
 #> longitude            [-180.0417,-179.9583),...,[179.875,179.9584) [x]
 #> latitude            [-80.04167,-79.95833),...,[89.95834,90.04166) [y]
@@ -83,10 +83,10 @@ Fortunately, the proxy object can easily be sliced, by selecting index
 values with the bracket operator (`[`). The first index represents the
 band (attribute), and we skip it, next are the `x` and `y` coordinate,
 followed by the elevation. The last dimension is time, were we select
-the first five hundred records.
+the first four hundred records.
 
 ``` r
-time_slice <- my_proxy_gc[,2000, 1000, 48, 1:500]
+time_slice <- my_proxy_gc[,2000, 1000, 48, 1:400]
 show(time_slice)
 #> stars_proxy object with 1 attribute in 1 file(s):
 #> $thetao
@@ -97,7 +97,7 @@ show(time_slice)
 #> longitude 2000 2000         NA     NA      NA     [-13.46,-13.37) [x]
 #> latitude  1000 1000         NA     NA      NA       [3.208,3.292) [y]
 #> elevation   48   48         NA     NA udunits [-2.646,-1.541) [m]    
-#> time         1  500 2022-06-01 1 days    Date                NULL
+#> time         1  400 2022-06-01 1 days    Date                NULL
 ```
 
 As you can notice, this slicing is super fast. This is because no actual
@@ -119,9 +119,8 @@ We can also select a specific area, for which we will use the time
 chunked proxy.
 
 ``` r
-geo_slice <- my_proxy_tc[,2000:2500, 1500:1750, c(45, 50), 500]
+geo_slice <- my_proxy_tc[,2000:2500, 1500:1750, 50, 500]
 plot(geo_slice, col = hcl.colors(10))
-#> downsample set to 1
 ```
 
 ![](proxy_files/figure-html/slice_area-1.png)
