@@ -370,6 +370,8 @@ cms_download_subset <- function(
 #' and consume only limited memory. You can still manipulate the object
 #' lazily (like selecting slices). These operation are only executed when
 #' calling [stars::st_as_stars()] or `plot()` on the object.
+#' 
+#' For more details see `vignette("proxy")`.
 #' @inheritParams cms_download_subset
 #' @param asset An asset that is available for the `product`.
 #' Should be one of `"native"`, `"wmts"`, `"timeChunked"`, `"downsampled4"`,

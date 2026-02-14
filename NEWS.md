@@ -1,9 +1,11 @@
-CopernicusMarine v0.4.0.0001
+CopernicusMarine v0.4.0.0002
 -------------
 
- * Added safeguards to vignette
- * Improved handling of comparing floating point numbers
-   when slicing stars_proxy objects.
+ * Added `vignette("proxy")`
+ * In order to pass CRAN checks:
+   * Added safeguards to vignette
+   * Improved handling of comparing floating point numbers
+     when slicing stars_proxy objects.
 
 CopernicusMarine v0.4.0
 -------------

@@ -98,6 +98,10 @@ You can also use the request code from the Copernicus Marine Service
 website to download a subset. For more details see
 `vignette("translate")`
 
+In addition it is also possible to subset data with `stars_proxy`
+objects, using either `cms_zarr_proxy()` or `cms_native_proxy()`. This
+is explained in more detail in `vignette("proxy")`.
+
 <h3 id="sec-full">
 
 Downloading a complete Copernicus marine product

@@ -30,6 +30,9 @@ and consume only limited memory. You can still manipulate the object
 lazily (like selecting slices). These operation are only executed when
 calling \code{\link[stars:st_as_stars]{stars::st_as_stars()}} or \code{plot()} on the object.
 }
+\details{
+For more details see \code{vignette("proxy")}.
+}
 \examples{
 if (interactive()) {
   myproxy <- cms_zarr_proxy(

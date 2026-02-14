@@ -167,6 +167,8 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
 #' and consume only limited memory. You can still manipulate the object
 #' lazily (like selecting slices). These operation are only executed when
 #' calling [stars::st_as_stars()] or `plot()` on the object.
+#' 
+#' For more details see `vignette("proxy")`.
 #' @inheritParams cms_download_native
 #' @param variable The variable name for which to create the `stars_proxy`.
 #' If omitted it will include all variables in the layer.
