@@ -85,8 +85,8 @@ it makes sense to cast the object to a `data.frame`. We can then plot the
 time series.
 
 ```{r plot_time_slice, eval=curl::has_internet()}
-time_slice <- st_as_stars(time_slice) |> as.data.frame()
-plot(time_slice$time, time_slice$thetao,
+time_slice <- st_as_stars(time_slice)
+plot(st_get_dimension_values(time_slice, "time"), time_slice$thetao,
      xlab = "date", ylab = "temperature", type = "l")
 ```
 

@@ -51,9 +51,12 @@ NULL
 #' }
 #' @rdname cms_download_native
 #' @export
-cms_download_native <- function(destination, product, layer, pattern, prefix, progress = TRUE, ...) {
+cms_download_native <- function(destination, product, layer, pattern, prefix, progress = TRUE, ...,
+                                username = cms_get_username(),
+                                password = cms_get_password()) {
   if (missing(pattern)) pattern <- ""
   if (missing(prefix)) prefix <- ""
+  .try_login(username, password)
 
   file_list <- cms_list_native_files(product, layer, pattern, prefix)
   
@@ -186,11 +189,14 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
 #' }
 #' @author Pepijn de Vries
 #' @export
-cms_native_proxy <- function(product, layer, pattern, prefix, variable, ...) {
+cms_native_proxy <- function(product, layer, pattern, prefix, variable, ...,
+                             username = cms_get_username(),
+                             password = cms_get_password()) {
   if (missing(pattern)) pattern <- ""
   if (missing(prefix)) prefix <- ""
+  .try_login(username, password)
   if (missing(variable) || is.null(variable)) variable <- character(0)
-  
+
   file_list <- cms_list_native_files(product, layer, pattern, prefix)
   if (nrow(file_list) > 1)
     rlang::warn(c(

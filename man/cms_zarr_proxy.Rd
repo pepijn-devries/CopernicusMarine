@@ -4,7 +4,15 @@
 \alias{cms_zarr_proxy}
 \title{Get a proxy stars object from a Zarr service}
 \usage{
-cms_zarr_proxy(product, layer, variable, asset)
+cms_zarr_proxy(
+  product,
+  layer,
+  variable,
+  asset,
+  ...,
+  username = cms_get_username(),
+  password = cms_get_password()
+)
 }
 \arguments{
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
@@ -18,6 +26,14 @@ Can be obtained with \code{\link{cms_product_details}}.}
 \item{asset}{An asset that is available for the \code{product}.
 Should be one of \code{"native"}, \code{"wmts"}, \code{"timeChunked"}, \code{"downsampled4"},
 or \code{"geoChunked"}.}
+
+\item{...}{Ignored (reserved for future features).}
+
+\item{username}{Your Copernicus marine user name. Can be provided with
+\code{cms_get_username()} (default), or as argument here.}
+
+\item{password}{Your Copernicus marine password. Can be provided as
+\code{cms_get_password()} (default), or as argument here.}
 }
 \value{
 A \href{https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects}{\code{stars_proxy} object}

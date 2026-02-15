@@ -4,7 +4,16 @@
 \alias{cms_native_proxy}
 \title{Get a proxy stars object from a native service}
 \usage{
-cms_native_proxy(product, layer, pattern, prefix, variable, ...)
+cms_native_proxy(
+  product,
+  layer,
+  pattern,
+  prefix,
+  variable,
+  ...,
+  username = cms_get_username(),
+  password = cms_get_password()
+)
 }
 \arguments{
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
@@ -25,6 +34,12 @@ Only the matching file (info) is downloaded (generally faster then using \code{p
 If omitted it will include all variables in the layer.}
 
 \item{...}{Ignored}
+
+\item{username}{Your Copernicus marine user name. Can be provided with
+\code{cms_get_username()} (default), or as argument here.}
+
+\item{password}{Your Copernicus marine password. Can be provided as
+\code{cms_get_password()} (default), or as argument here.}
 }
 \value{
 A \href{https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects}{\code{stars_proxy} object}

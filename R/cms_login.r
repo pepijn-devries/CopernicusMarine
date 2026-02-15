@@ -22,6 +22,10 @@ cms_login <- function(
     username = cms_get_username(),
     password = cms_get_password()) {
 
+  if (password == "" || username == "") rlang::abort(c(
+    x = "Failed to log in",
+    i = "Check your credentials"
+  ))
   token <- .get_access_token(username, password)
 
   "https://auth.marine.copernicus.eu/realms/MIS/protocol/openid-connect/userinfo" |>
@@ -47,6 +51,18 @@ cms_login <- function(
     ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()
+}
+
+.try_login <- function(username, password) {
+  success <- tryCatch({
+    cms_login(username, password)
+    TRUE
+  }, error = function(e) FALSE)
+  if (!success) rlang::warn(c(
+    "Failed to log in",
+    i = "Trying to proceed without credentials"
+  ))
+  invisible()
 }
 
 #' Set or get Copernicus account details
