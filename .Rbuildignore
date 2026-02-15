@@ -10,3 +10,5 @@ man-roxygen
 ^CODE_OF_CONDUCT\.md$
 ^data-raw$
 ^codecov\.yml$
+^vignettes\.*\.html$
+^vignettes\.*\.R$
