@@ -5,8 +5,6 @@
 \title{Subset and download a specific marine product from Copernicus}
 \usage{
 cms_download_subset(
-  username = cms_get_username(),
-  password = cms_get_password(),
   product,
   layer,
   variable,
@@ -16,16 +14,12 @@ cms_download_subset(
   progress = TRUE,
   crop,
   asset,
-  ...
+  ...,
+  username = cms_get_username(),
+  password = cms_get_password()
 )
 }
 \arguments{
-\item{username}{Your Copernicus marine user name. Can be provided with
-\code{cms_get_username()} (default), or as argument here.}
-
-\item{password}{Your Copernicus marine password. Can be provided as
-\code{cms_get_password()} (default), or as argument here.}
-
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
 Can be obtained with \code{\link{cms_products_list}}.}
 
@@ -58,6 +52,12 @@ asset available for the requested product and layer, in the order as listed
 before.}
 
 \item{...}{Ignored (reserved for future features).}
+
+\item{username}{Your Copernicus marine user name. Can be provided with
+\code{cms_get_username()} (default), or as argument here.}
+
+\item{password}{Your Copernicus marine password. Can be provided as
+\code{cms_get_password()} (default), or as argument here.}
 }
 \value{
 Returns a \code{\link[stars:st_as_stars]{stars::st_as_stars()}} object.
@@ -65,11 +65,6 @@ Returns a \code{\link[stars:st_as_stars]{stars::st_as_stars()}} object.
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Subset and download a specific marine product
 from Copernicus.
-}
-\details{
-Currently, credentials are ignored. The subsetting service seems to be
-public. You can use this function without using your account. This might
-change in the future.
 }
 \examples{
 if (interactive()) {

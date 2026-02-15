@@ -2,12 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')` Subset and download a specific marine product
 #' from Copernicus.
-#'
-#' Currently, credentials are ignored. The subsetting service seems to be
-#' public. You can use this function without using your account. This might
-#' change in the future.
 #' @include cms_login.r
-#' @inheritParams cms_login
 #' @param product An identifier (type `character`) of the desired Copernicus marine product.
 #' Can be obtained with [`cms_products_list`].
 #' @param layer The name of a desired layer within a product (type `character`). Can be obtained with [`cms_product_services`] (listed as `id` column).
@@ -31,6 +26,7 @@
 #' asset available for the requested product and layer, in the order as listed
 #' before.
 #' @param ... Ignored (reserved for future features).
+#' @inheritParams cms_login
 #' @returns Returns a [stars::st_as_stars()] object.
 #' @rdname cms_download_subset
 #' @name cms_download_subset
@@ -53,8 +49,6 @@
 #' @author Pepijn de Vries
 #' @export
 cms_download_subset <- function(
-    username = cms_get_username(),
-    password = cms_get_password(),
     product,
     layer,
     variable,
@@ -64,7 +58,9 @@ cms_download_subset <- function(
     progress = TRUE,
     crop,
     asset,
-    ...) {
+    ...,
+    username = cms_get_username(),
+    password = cms_get_password()) {
   if (missing(asset)) asset <- NULL
   if (is.null(asset)) asset <- "default"
   asset <- match.arg(asset, c("default", "ARCO", "static", "omi", "downsampled4"))
@@ -81,6 +77,10 @@ cms_download_subset <- function(
     timerange     = if (missing(timerange)) NULL else timerange,
     verticalrange = if (missing(verticalrange)) NULL else verticalrange
   )
+  if (progress) cli::cli_progress_step("Checking credentials")
+  
+  .try_login(username, password)
+  
   if (progress)
     cli::cli_progress_step("Obtaining best or specified service")
   service <- .get_best_arco_service_type(
@@ -393,9 +393,15 @@ cms_zarr_proxy <-
     product,
     layer,
     variable,
-    asset
+    asset,
+    ...,
+    username = cms_get_username(),
+    password = cms_get_password()
   ) {
     if (missing(variable) || is.null(variable)) variable <- character(0)
+
+    .try_login(username, password)
+
     meta <-
       cms_product_metadata(product) |>
       dplyr::filter(startsWith(.data$id, .env$layer)) |>

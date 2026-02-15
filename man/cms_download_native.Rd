@@ -12,7 +12,9 @@ cms_download_native(
   pattern,
   prefix,
   progress = TRUE,
-  ...
+  ...,
+  username = cms_get_username(),
+  password = cms_get_password()
 )
 
 cms_list_native_files(product, layer, pattern, prefix, max = Inf, ...)
@@ -37,6 +39,12 @@ Only the matching file (info) is downloaded (generally faster then using \code{p
 \item{progress}{A \code{logical} value. When \code{TRUE} a progress bar is shown.}
 
 \item{...}{Ignored}
+
+\item{username}{Your Copernicus marine user name. Can be provided with
+\code{cms_get_username()} (default), or as argument here.}
+
+\item{password}{Your Copernicus marine password. Can be provided as
+\code{cms_get_password()} (default), or as argument here.}
 
 \item{max}{A maximum number of records to be returned.}
 }
