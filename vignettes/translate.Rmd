@@ -1,6 +1,8 @@
 ---
 title: "Translate Request"
-output: rmarkdown::html_vignette
+output:
+  rmarkdown::html_vignette:
+    self_contained: false
 vignette: >
   %\VignetteIndexEntry{Translate Request}
   %\VignetteEngine{knitr::rmarkdown}
