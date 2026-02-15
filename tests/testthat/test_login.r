@@ -1,10 +1,27 @@
 test_that("Login works", {
   skip_on_cran()
+  skip_if_offline()
   has_account_details()
   expect_true({
     login <- cms_login()
     login$preferred_username == cms_get_username()
   })
+})
+
+test_that("Warn when trying to log in with invalid credentials", {
+  skip_on_cran()
+  skip_if_offline()
+  expect_warning({
+    CopernicusMarine:::.try_login("", "")
+  }, "Failed to log in")
+})
+
+test_that("Error when logging in with invalid credentials", {
+  skip_on_cran()
+  skip_if_offline()
+  expect_error({
+    cms_login("", "")
+  }, "Failed to log in")
 })
 
 test_that("Setting username works", {
