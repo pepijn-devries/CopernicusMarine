@@ -13,7 +13,16 @@ object.
 ## Usage
 
 ``` r
-cms_native_proxy(product, layer, pattern, prefix, variable, ...)
+cms_native_proxy(
+  product,
+  layer,
+  pattern,
+  prefix,
+  variable,
+  ...,
+  username = cms_get_username(),
+  password = cms_get_password()
+)
 ```
 
 ## Arguments
@@ -54,6 +63,18 @@ cms_native_proxy(product, layer, pattern, prefix, variable, ...)
 - ...:
 
   Ignored
+
+- username:
+
+  Your Copernicus marine user name. Can be provided with
+  [`cms_get_username()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
+  (default), or as argument here.
+
+- password:
+
+  Your Copernicus marine password. Can be provided as
+  [`cms_get_password()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
+  (default), or as argument here.
 
 ## Value
 

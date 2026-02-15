@@ -7,8 +7,6 @@ Copernicus.
 
 ``` r
 cms_download_subset(
-  username = cms_get_username(),
-  password = cms_get_password(),
   product,
   layer,
   variable,
@@ -18,23 +16,13 @@ cms_download_subset(
   progress = TRUE,
   crop,
   asset,
-  ...
+  ...,
+  username = cms_get_username(),
+  password = cms_get_password()
 )
 ```
 
 ## Arguments
-
-- username:
-
-  Your Copernicus marine user name. Can be provided with
-  [`cms_get_username()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
-  (default), or as argument here.
-
-- password:
-
-  Your Copernicus marine password. Can be provided as
-  [`cms_get_password()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
-  (default), or as argument here.
 
 - product:
 
@@ -95,17 +83,23 @@ cms_download_subset(
 
   Ignored (reserved for future features).
 
+- username:
+
+  Your Copernicus marine user name. Can be provided with
+  [`cms_get_username()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
+  (default), or as argument here.
+
+- password:
+
+  Your Copernicus marine password. Can be provided as
+  [`cms_get_password()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
+  (default), or as argument here.
+
 ## Value
 
 Returns a
 [`stars::st_as_stars()`](https://r-spatial.github.io/stars/reference/st_as_stars.html)
 object.
-
-## Details
-
-Currently, credentials are ignored. The subsetting service seems to be
-public. You can use this function without using your account. This might
-change in the future.
 
 ## Author
 

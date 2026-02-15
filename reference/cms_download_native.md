@@ -15,7 +15,9 @@ cms_download_native(
   pattern,
   prefix,
   progress = TRUE,
-  ...
+  ...,
+  username = cms_get_username(),
+  password = cms_get_password()
 )
 
 cms_list_native_files(product, layer, pattern, prefix, max = Inf, ...)
@@ -62,6 +64,18 @@ cms_list_native_files(product, layer, pattern, prefix, max = Inf, ...)
 - ...:
 
   Ignored
+
+- username:
+
+  Your Copernicus marine user name. Can be provided with
+  [`cms_get_username()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
+  (default), or as argument here.
+
+- password:
+
+  Your Copernicus marine password. Can be provided as
+  [`cms_get_password()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
+  (default), or as argument here.
 
 - max:
 

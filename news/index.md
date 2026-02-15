@@ -1,6 +1,6 @@
 # Changelog
 
-## CopernicusMarine v0.4.0.0002
+## CopernicusMarine v0.4.0.0003
 
 - Added
   [`vignette("proxy")`](https://pepijn-devries.github.io/CopernicusMarine/articles/proxy.md)
@@ -8,6 +8,7 @@
   - Added safeguards to vignette
   - Improved handling of comparing floating point numbers when slicing
     stars_proxy objects.
+- Added credentials check to all functions downloading from S3 storage.
 
 ## CopernicusMarine v0.4.0
 

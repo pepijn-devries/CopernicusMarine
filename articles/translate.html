@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.0002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.0003</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -134,6 +134,8 @@ the data? You can pass the named <code>list</code> as arguments to
 this:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">cms_download_subset</span>, <span class="va">translated</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Failed to log in</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Trying to proceed without credentials</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">result</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, axes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="translate_files/figure-html/download-translation-1.png" class="r-plt" alt="Data downloaded using translated query code" width="384"></p>
 </div>

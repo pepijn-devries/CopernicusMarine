@@ -13,7 +13,15 @@ object.
 ## Usage
 
 ``` r
-cms_zarr_proxy(product, layer, variable, asset)
+cms_zarr_proxy(
+  product,
+  layer,
+  variable,
+  asset,
+  ...,
+  username = cms_get_username(),
+  password = cms_get_password()
+)
 ```
 
 ## Arguments
@@ -42,6 +50,22 @@ cms_zarr_proxy(product, layer, variable, asset)
   An asset that is available for the `product`. Should be one of
   `"native"`, `"wmts"`, `"timeChunked"`, `"downsampled4"`, or
   `"geoChunked"`.
+
+- ...:
+
+  Ignored (reserved for future features).
+
+- username:
+
+  Your Copernicus marine user name. Can be provided with
+  [`cms_get_username()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
+  (default), or as argument here.
+
+- password:
+
+  Your Copernicus marine password. Can be provided as
+  [`cms_get_password()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
+  (default), or as argument here.
 
 ## Value
 

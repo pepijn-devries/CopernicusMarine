@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.0002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.0003</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,11 +99,15 @@ entire layer in a product.</p>
 <span>  product       <span class="op">=</span> <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span>
 <span>  layer         <span class="op">=</span> <span class="st">"cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m"</span>,</span>
 <span>  asset         <span class="op">=</span> <span class="st">"geoChunked"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Failed to log in</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Trying to proceed without credentials</span></span>
 <span></span>
 <span><span class="va">my_proxy_tc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cms_zarr_proxy.html">cms_zarr_proxy</a></span><span class="op">(</span></span>
 <span>  product       <span class="op">=</span> <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span>
 <span>  layer         <span class="op">=</span> <span class="st">"cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m"</span>,</span>
 <span>  asset         <span class="op">=</span> <span class="st">"timeChunked"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Failed to log in</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Trying to proceed without credentials</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">my_proxy_tc</span><span class="op">)</span></span>
 <span><span class="co">#&gt; stars_proxy object with 1 attribute in 1 file(s):</span></span>
@@ -115,7 +119,7 @@ entire layer in a product.</p>
 <span><span class="co">#&gt; longitude    1 4320         NA     NA      NA</span></span>
 <span><span class="co">#&gt; latitude     1 2041         NA     NA      NA</span></span>
 <span><span class="co">#&gt; elevation    1   50         NA     NA udunits</span></span>
-<span><span class="co">#&gt; time         1 1364 2022-06-01 1 days    Date</span></span>
+<span><span class="co">#&gt; time         1 1365 2022-06-01 1 days    Date</span></span>
 <span><span class="co">#&gt;                                                            values x/y</span></span>
 <span><span class="co">#&gt; longitude            [-180.0417,-179.9583),...,[179.875,179.9584) [x]</span></span>
 <span><span class="co">#&gt; latitude            [-80.04167,-79.95833),...,[89.95834,90.04166) [y]</span></span>
@@ -170,8 +174,8 @@ have only selected a single raster cell, it makes sense to cast the
 object to a <code>data.frame</code>. We can then plot the time
 series.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">time_slice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_as_stars.html" class="external-link">st_as_stars</a></span><span class="op">(</span><span class="va">time_slice</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">time_slice</span><span class="op">$</span><span class="va">time</span>, <span class="va">time_slice</span><span class="op">$</span><span class="va">thetao</span>,</span>
+<code class="sourceCode R"><span><span class="va">time_slice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_as_stars.html" class="external-link">st_as_stars</a></span><span class="op">(</span><span class="va">time_slice</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_dimensions.html" class="external-link">st_get_dimension_values</a></span><span class="op">(</span><span class="va">time_slice</span>, <span class="st">"time"</span><span class="op">)</span>, <span class="va">time_slice</span><span class="op">$</span><span class="va">thetao</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"date"</span>, ylab <span class="op">=</span> <span class="st">"temperature"</span>, type <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="proxy_files/figure-html/plot_time_slice-1.png" class="r-plt" alt="" width="700"></p>
 <p>We can also select a specific area, for which we will use the time

@@ -17,7 +17,7 @@ calling stars::st_as_stars() or plot() on the object."><meta property="og:image"
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.0002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.0003</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,15 @@ calling <code><a href="https://r-spatial.github.io/stars/reference/st_as_stars.h
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cms_zarr_proxy</span><span class="op">(</span><span class="va">product</span>, <span class="va">layer</span>, <span class="va">variable</span>, <span class="va">asset</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cms_zarr_proxy</span><span class="op">(</span></span>
+<span>  <span class="va">product</span>,</span>
+<span>  <span class="va">layer</span>,</span>
+<span>  <span class="va">variable</span>,</span>
+<span>  <span class="va">asset</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  username <span class="op">=</span> <span class="fu"><a href="account.html">cms_get_username</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  password <span class="op">=</span> <span class="fu"><a href="account.html">cms_get_password</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -83,6 +91,20 @@ Can be obtained with <code><a href="cms_product_details.html">cms_product_detail
 <dd><p>An asset that is available for the <code>product</code>.
 Should be one of <code>"native"</code>, <code>"wmts"</code>, <code>"timeChunked"</code>, <code>"downsampled4"</code>,
 or <code>"geoChunked"</code>.</p></dd>
+
+
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>Ignored (reserved for future features).</p></dd>
+
+
+<dt id="arg-username">username<a class="anchor" aria-label="anchor" href="#arg-username"></a></dt>
+<dd><p>Your Copernicus marine user name. Can be provided with
+<code><a href="account.html">cms_get_username()</a></code> (default), or as argument here.</p></dd>
+
+
+<dt id="arg-password">password<a class="anchor" aria-label="anchor" href="#arg-password"></a></dt>
+<dd><p>Your Copernicus marine password. Can be provided as
+<code><a href="account.html">cms_get_password()</a></code> (default), or as argument here.</p></dd>
 
 </dl></div>
     <div class="section level2">
