@@ -88,7 +88,7 @@ Since in this particular case we have only selected a single raster cell,
 it makes sense to cast the object to a `data.frame`. We can then plot the
 time series.
 
-```{r plot_time_slice, eval=curl::has_internet()}
+```{r plot_time_slice, eval=eval_chunks}
 time_slice <- st_as_stars(time_slice)
 plot(st_get_dimension_values(time_slice, "time"), time_slice$thetao,
      xlab = "date", ylab = "temperature", type = "l")
@@ -97,7 +97,7 @@ plot(st_get_dimension_values(time_slice, "time"), time_slice$thetao,
 We can also select a specific area, for which we will use the time chunked
 proxy.
 
-```{r slice_area, eval=curl::has_internet()}
+```{r slice_area, eval=eval_chunks}
 geo_slice <- my_proxy_tc[,2000:2500, 1500:1750, 50, 500]
 plot(geo_slice, col = hcl.colors(10))
 ```
