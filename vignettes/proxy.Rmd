@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 eval_chunks <-
   curl::has_internet() &&
-  cms_get_password() != "" &&
+  CopernicusMarine::cms_get_password() != "" &&
   sf::st_drivers("raster", "^HDF5$")$vsi
 ```
 
