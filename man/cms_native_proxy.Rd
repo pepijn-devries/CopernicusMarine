@@ -45,7 +45,7 @@ If omitted it will include all variables in the layer.}
 A \href{https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects}{\code{stars_proxy} object}
 }
 \description{
-The advantage of
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} The advantage of
 \href{https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects}{\code{stars_proxy} objects},
 is that they do not contain any data. They are therefore fast to handle
 and consume only limited memory. You can still manipulate the object
