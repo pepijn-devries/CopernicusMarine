@@ -33,15 +33,11 @@ my_proxy_gc <- cms_zarr_proxy(
   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
   layer         = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
   asset         = "geoChunked")
-#> Warning: Failed to log in
-#> ℹ Trying to proceed without credentials
 
 my_proxy_tc <- cms_zarr_proxy(
   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
   layer         = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
   asset         = "timeChunked")
-#> Warning: Failed to log in
-#> ℹ Trying to proceed without credentials
 
 print(my_proxy_tc)
 #> stars_proxy object with 1 attribute in 1 file(s):
@@ -53,7 +49,7 @@ print(my_proxy_tc)
 #> longitude    1 4320         NA     NA      NA
 #> latitude     1 2041         NA     NA      NA
 #> elevation    1   50         NA     NA udunits
-#> time         1 1365 2022-06-01 1 days    Date
+#> time         1 1366 2022-06-01 1 days    Date
 #>                                                            values x/y
 #> longitude            [-180.0417,-179.9583),...,[179.875,179.9584) [x]
 #> latitude            [-80.04167,-79.95833),...,[89.95834,90.04166) [y]

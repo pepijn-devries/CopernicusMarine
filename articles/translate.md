@@ -75,8 +75,6 @@ using [`do.call()`](https://rdrr.io/r/base/do.call.html). Like this:
 
 ``` r
 result <- do.call(cms_download_subset, translated)
-#> Warning: Failed to log in
-#> ℹ Trying to proceed without credentials
 plot(result, col = hcl.colors(100), axes = TRUE)
 ```
 

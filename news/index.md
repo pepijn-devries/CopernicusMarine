@@ -1,6 +1,6 @@
 # Changelog
 
-## CopernicusMarine v0.4.1
+## CopernicusMarine v0.4.1.0001
 
 - Added
   [`vignette("proxy")`](https://pepijn-devries.github.io/CopernicusMarine/articles/proxy.md)
@@ -11,6 +11,8 @@
 - Added credentials check to all functions downloading from S3 storage.
 
 ## CopernicusMarine v0.4.0
+
+CRAN release: 2026-02-12
 
 - [`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
   now uses GDAL library with Zarr driver. Advantages:
