@@ -93,7 +93,6 @@ cms_download_subset <- function(
   Sys.setenv(GDAL_NUM_THREADS = "ALL_CPUS")
   Sys.setenv(GDAL_HTTP_MULTICURL = "YES")
   Sys.setenv(GDAL_DISABLE_READDIR_ON_OPEN = "EMPTY_DIR")
-  
   mdim_proxy <-
     service$href |>
     .uri_to_vsi(progress) |>

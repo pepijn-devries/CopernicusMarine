@@ -209,7 +209,6 @@ cms_native_proxy <- function(product, layer, pattern, prefix, variable, ...,
   if (grepl("\\.nc$|\\.ncf$|\\.ncdf$|\\.netcdf$|\\.h5$", file_list$Key) &
       sf::st_drivers("raster", "^HDF5$")$vsi)
     fmt <- "HDF5:%s" else fmt <- "%s"
-  
   paste0(
     "https://",
     file_list$base_url, "/",
@@ -217,6 +216,6 @@ cms_native_proxy <- function(product, layer, pattern, prefix, variable, ...,
     file_list$Key) |>
     .uri_to_vsi(FALSE, add_zarr = FALSE, streaming = FALSE) |>
     sprintf(fmt = fmt) |>
-    .get_stars_proxy(variable = variable)
+    .get_stars_proxy(variable)
   
 }
