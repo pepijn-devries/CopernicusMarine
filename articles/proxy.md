@@ -49,7 +49,7 @@ print(my_proxy_tc)
 #> longitude    1 4320         NA     NA      NA
 #> latitude     1 2041         NA     NA      NA
 #> elevation    1   50         NA     NA udunits
-#> time         1 1366 2022-06-01 1 days    Date
+#> time         1 1367 2022-06-01 1 days    Date
 #>                                                            values x/y
 #> longitude            [-180.0417,-179.9583),...,[179.875,179.9584) [x]
 #> latitude            [-80.04167,-79.95833),...,[89.95834,90.04166) [y]
