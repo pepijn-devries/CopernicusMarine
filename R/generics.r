@@ -71,6 +71,14 @@
 }
 
 .get_stars_proxy <- function(vsi, variable) {
+  if (length(variable) == 0) {
+    mdiminfo <- 
+      jsonlite::fromJSON(sf::gdal_utils("mdiminfo", source = vsi, quiet = TRUE))
+    variable <- mdiminfo$arrays |> names()
+    variable <-
+      variable[!variable %in% c("depth", "elevation", "time",
+                                "longitude", "latitude")]
+  }
   mdim_proxy <- .muffle_403({
     stars::read_mdim(
       vsi,
