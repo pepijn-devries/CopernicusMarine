@@ -12,6 +12,10 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+eval_chunks <-
+  curl::has_internet() &&
+  CopernicusMarine::cms_get_password() != "" &&
+  sf::st_drivers("raster", "^HDF5$")$vsi
 ```
 
 Using [`stars_proxy` objects](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects)
@@ -32,7 +36,7 @@ data is already structured in chunked files and the added value of proxy objects
 is not that obvious. Therefore, in this vignette, we will focus on objects created
 with `cms_zarr_proxy()`. It will connect with an entire layer in a product.
 
-```{r create_proxy, eval=curl::has_internet()}
+```{r create_proxy, eval=eval_chunks}
 library(CopernicusMarine)
 library(stars, quietly = TRUE)
 
@@ -72,7 +76,7 @@ the bracket operator (`[`). The first index represents the band (attribute),
 and we skip it, next are the `x` and `y` coordinate, followed by the elevation.
 The last dimension is time, were we select the first four hundred records.
 
-```{r slice_time, eval=curl::has_internet()}
+```{r slice_time, eval=eval_chunks}
 time_slice <- my_proxy_gc[,2000, 1000, 48, 1:400]
 show(time_slice)
 ```
@@ -84,7 +88,7 @@ Since in this particular case we have only selected a single raster cell,
 it makes sense to cast the object to a `data.frame`. We can then plot the
 time series.
 
-```{r plot_time_slice, eval=curl::has_internet()}
+```{r plot_time_slice, eval=eval_chunks}
 time_slice <- st_as_stars(time_slice)
 plot(st_get_dimension_values(time_slice, "time"), time_slice$thetao,
      xlab = "date", ylab = "temperature", type = "l")
@@ -93,7 +97,7 @@ plot(st_get_dimension_values(time_slice, "time"), time_slice$thetao,
 We can also select a specific area, for which we will use the time chunked
 proxy.
 
-```{r slice_area, eval=curl::has_internet()}
+```{r slice_area, eval=eval_chunks}
 geo_slice <- my_proxy_tc[,2000:2500, 1500:1750, 50, 500]
 plot(geo_slice, col = hcl.colors(10))
 ```
