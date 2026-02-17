@@ -1,6 +1,6 @@
 # Changelog
 
-## CopernicusMarine v0.4.2
+## CopernicusMarine v0.4.2.0001
 
 - Added
   [`vignette("proxy")`](https://pepijn-devries.github.io/CopernicusMarine/articles/proxy.md)
