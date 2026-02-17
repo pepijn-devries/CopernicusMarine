@@ -164,7 +164,7 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
 
 #' Get a proxy stars object from a native service
 #' 
-#' The advantage of
+#' `r lifecycle::badge('experimental')` The advantage of
 #' [`stars_proxy` objects](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects),
 #' is that they do not contain any data. They are therefore fast to handle
 #' and consume only limited memory. You can still manipulate the object
