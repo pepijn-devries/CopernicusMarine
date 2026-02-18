@@ -1,0 +1,53 @@
+# BLOSC Support
+
+Functions that access Copernicus Marine raster files stored in the [ZARR
+format](https://zarr.dev/) generally require [BLOSC
+decompression](https://github.com/Blosc/c-blosc). This package uses the
+features provided by the GDAL library as ported by the [sf
+package](https://r-spatial.github.io/sf/).
+
+Not all `sf` builds come with BLOSC support. If you receive a warning
+about missing BLOSC support, you need to reinstall `sf` with BLOSC.
+Below you will find instructions to get BLOSC support on your OS.
+
+## Windows
+
+The tool chain for building R packages on Windows includes BLOSC support
+by default. You just need to install the latest version of [sf from
+CRAN](https://cran.r-project.org/package=sf). If this doesn’t work, you
+can build sf from source with RTools \>= 4.5.
+
+## MacOS
+
+On MacOS you can build the `sf` package from source, but ensure that you
+have the GDAL library installed first using the homebrew formula (which
+contains BLOSC support)
+
+``` bash
+brew install pkg-config
+brew install gdal
+```
+
+``` r
+install.packages("sf", type = "source", configure.args = "--with-proj-lib=$(brew --prefix)/lib/")
+```
+
+## Debian (and alike)
+
+First run:
+
+``` bash
+sudo apt-get install libblosc-dev
+```
+
+Then reinstall `sf` to make sure it compiles with BLOSC support
+
+## Fedora (and alike)
+
+First run:
+
+``` bash
+sudo yum install blosc-devel
+```
+
+Then reinstall `sf` to make sure it compiles with BLOSC support

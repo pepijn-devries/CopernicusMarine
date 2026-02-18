@@ -34,6 +34,7 @@ line code, obtained from the website, can be translated into a named
 
 ``` r
 library(CopernicusMarine)
+#> Your installation supports BLOSC. You are good to go!
 ## Example of command line code
 ## copied from website:
 cli_code <-
