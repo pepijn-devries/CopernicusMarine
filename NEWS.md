@@ -7,6 +7,7 @@ CopernicusMarine v0.4.2.0002
    * Added safeguards to vignette
    * Improved handling of comparing floating point numbers
      when slicing stars_proxy objects.
+   * Added more rigorous checking of availability of required dependencies
  * Added credentials check to all functions downloading
    from S3 storage.
 
