@@ -1,9 +1,38 @@
+#' @include init.R
+NULL
+
 `%>=%` <- function(x, y) {
   x >= (y - .Machine$double.eps^.5)
 }
 
 `%<=%` <- function(x, y) {
   x <= (y + .Machine$double.eps^.5)
+}
+
+.check_vsi <- function(vsi, href) {
+  is_zarr <- grepl("\\.zarr$", href, ignore.case = TRUE)
+  if (is_zarr && !has_blosc) {
+    info <- sf::gdal_utils("mdiminfo", vsi, quiet = TRUE)
+    if (length(info) > 0 && grepl("blosc", info))
+      cli::cli_abort(c(
+        x = "Required BLOSC decompressor not available.",
+        i = "Ensure to install `sf` with blosc support.",
+        i = "See {.href [`vignette(\"blosc\")`](https://pepijn-devries.github.io/CopernicusMarine/articles/blosc.html)}"
+      ))
+  }
+  warned <- FALSE
+  withCallingHandlers({
+    stars::detect.driver(href)
+  }, warning = function(w) {
+    if (grepl("is unknown", conditionMessage(w))) {
+      warned <<- TRUE
+      invokeRestart("muffleWarning")
+    }
+  })
+  if (warned) cli::cli_abort(c(
+    x = "No driver found for requested raster",
+    i = "Please {.href [submit a bug report](https://github.com/pepijn-devries/CopernicusMarine/issues)} with reproducible example"
+  ))
 }
 
 .simplify <- function(data) {
@@ -66,8 +95,9 @@
       cli::cli_progress_message("Failed to set GDAL S3 config, trying alternative")
     vsi <- paste0("/vsicurl/", href)
   }
-  if (!add_zarr) return (vsi)
-  sprintf("ZARR::\"%s\"", vsi)
+  result <- if (!add_zarr) vsi else sprintf("ZARR::\"%s\"", vsi)
+  .check_vsi(result, href)
+  result
 }
 
 .get_stars_proxy <- function(vsi, variable) {

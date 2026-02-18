@@ -64,7 +64,7 @@ cms_download_subset <- function(
   if (missing(asset)) asset <- NULL
   if (is.null(asset)) asset <- "default"
   asset <- match.arg(asset, c("default", "ARCO", "static", "omi", "downsampled4"))
-  
+
   if (!missing(crop))
     rlang::warn("The `crop` argument is deprecated and ignored")
   
@@ -94,8 +94,7 @@ cms_download_subset <- function(
   Sys.setenv(GDAL_HTTP_MULTICURL = "YES")
   Sys.setenv(GDAL_DISABLE_READDIR_ON_OPEN = "EMPTY_DIR")
   mdim_proxy <-
-    service$href |>
-    .uri_to_vsi(progress) |>
+    .uri_to_vsi(service$href, progress) |>
     .get_stars_proxy(variable)
   
   if (progress)
@@ -405,7 +404,6 @@ cms_zarr_proxy <-
       cms_product_metadata(product) |>
       dplyr::filter(startsWith(.data$id, .env$layer)) |>
       dplyr::filter(dplyr::row_number() == 1)
-    meta$assets[[1]][[asset]]$href |>
-      .uri_to_vsi(FALSE) |>
+    .uri_to_vsi(meta$assets[[1]][[asset]]$href, FALSE) |>
       .get_stars_proxy(variable)
   }
