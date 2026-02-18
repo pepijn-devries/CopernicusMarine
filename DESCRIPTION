@@ -1,7 +1,7 @@
 Package: CopernicusMarine
 Type: Package
 Title: Search Download and Handle Data from Copernicus Marine Service Information
-Version: 0.4.2.0001
+Version: 0.4.2.0002
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre", "dtc"),
     email = "pepijn.devries@outlook.com",
     comment = c(ORCID = "0000-0002-7961-6646")))
@@ -51,6 +51,7 @@ Collate:
     'CopernicusMarine-package.r'
     'cms_catalogue_entry.R'
     'cms_cite_product.r'
+    'init.R'
     'generics.r'
     'cms_download_native.R'
     'cms_login.r'

@@ -1,7 +1,8 @@
-CopernicusMarine v0.4.2.0001
+CopernicusMarine v0.4.2.0002
 -------------
 
  * Added `vignette("proxy")`
+ * Added `vignette("blosc")`
  * In order to pass CRAN checks:
    * Added safeguards to vignette
    * Improved handling of comparing floating point numbers
