@@ -15,7 +15,8 @@ knitr::opts_chunk$set(
 ```
 
 Functions that access Copernicus Marine raster files stored in the
-[ZARR format](https://zarr.dev/) generally require
+[ZARR format](https://zarr.dev/) (`cms_download_subset()` and
+`cms_zarr_proxy()`) generally require
 [BLOSC decompression](https://github.com/Blosc/c-blosc).
 This package uses the features provided by the GDAL library as ported
 by the [sf package](https://r-spatial.github.io/sf/).
