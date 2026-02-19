@@ -9,9 +9,9 @@ NULL
   x <= (y + .Machine$double.eps^.5)
 }
 
-.check_vsi <- function(vsi, href) {
+.check_vsi <- function(vsi, href, with_blosc) {
   is_zarr <- grepl("\\.zarr$", href, ignore.case = TRUE)
-  if (is_zarr && !has_blosc) {
+  if (is_zarr && !with_blosc) {
     info <- sf::gdal_utils("mdiminfo", vsi, quiet = TRUE)
     if (length(info) > 0 && grepl("blosc", info))
       cli::cli_abort(c(
@@ -96,7 +96,7 @@ NULL
     vsi <- paste0("/vsicurl/", href)
   }
   result <- if (!add_zarr) vsi else sprintf("ZARR::\"%s\"", vsi)
-  .check_vsi(result, href)
+  .check_vsi(result, href, has_blosc)
   result
 }
 

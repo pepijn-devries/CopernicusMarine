@@ -24,3 +24,22 @@ test_that("Source code should not have things on TODO list", {
     )
   })
 })
+
+test_that("Missing blosc support throws error", {
+  skip_if(!has_blosc)
+  skip_on_cran()
+
+  expect_error({
+    fn <- tempfile("blosc", fileext = ".zarr")
+    stars::write_stars(stars::st_as_stars(matrix(0, 10, 10)), fn, driver = "Zarr",
+                       options = c("COMPRESS=BLOSC", "BLOSC_CNAME=zstd"))
+    on.exit({unlink(fn, TRUE)})
+    CopernicusMarine:::.check_vsi(fn, fn, FALSE)
+  }, "Required BLOSC decompressor not available")
+})
+
+test_that("Unsupported formats throw error", {
+  expect_error({
+    CopernicusMarine:::.check_vsi(".foobar", ".foobar", FALSE)
+  }, "No driver found")
+})
