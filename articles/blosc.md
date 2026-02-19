@@ -1,7 +1,11 @@
 # BLOSC Support
 
 Functions that access Copernicus Marine raster files stored in the [ZARR
-format](https://zarr.dev/) generally require [BLOSC
+format](https://zarr.dev/)
+([`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
+and
+[`cms_zarr_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_zarr_proxy.md))
+generally require [BLOSC
 decompression](https://github.com/Blosc/c-blosc). This package uses the
 features provided by the GDAL library as ported by the [sf
 package](https://r-spatial.github.io/sf/).

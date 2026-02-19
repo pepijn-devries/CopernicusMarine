@@ -1,10 +1,10 @@
 # Changelog
 
-## CopernicusMarine v0.4.2.0002
+## CopernicusMarine v0.4.3
 
 - Added
   [`vignette("proxy")`](https://pepijn-devries.github.io/CopernicusMarine/articles/proxy.md)
-- Added
+  and
   [`vignette("blosc")`](https://pepijn-devries.github.io/CopernicusMarine/articles/blosc.md)
 - In order to pass CRAN checks:
   - Added safeguards to vignette

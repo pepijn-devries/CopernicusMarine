@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.2.0002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,9 +71,12 @@
 
     
     
-<p>Functions that access Copernicus Marine raster files stored in the <a href="https://zarr.dev/" class="external-link">ZARR format</a> generally require <a href="https://github.com/Blosc/c-blosc" class="external-link">BLOSC decompression</a>. This
-package uses the features provided by the GDAL library as ported by the
-<a href="https://r-spatial.github.io/sf/" class="external-link">sf package</a>.</p>
+<p>Functions that access Copernicus Marine raster files stored in the <a href="https://zarr.dev/" class="external-link">ZARR format</a>
+(<code><a href="../reference/cms_download_subset.html">cms_download_subset()</a></code> and <code><a href="../reference/cms_zarr_proxy.html">cms_zarr_proxy()</a></code>)
+generally require <a href="https://github.com/Blosc/c-blosc" class="external-link">BLOSC
+decompression</a>. This package uses the features provided by the GDAL
+library as ported by the <a href="https://r-spatial.github.io/sf/" class="external-link">sf
+package</a>.</p>
 <p>Not all <code>sf</code> builds come with BLOSC support. If you
 receive a warning about missing BLOSC support, you need to reinstall
 <code>sf</code> with BLOSC. Below you will find instructions to get

@@ -11,13 +11,13 @@ Source:
 [`DESCRIPTION`](https://github.com/pepijn-devries/CopernicusMarine/blob/master/DESCRIPTION)
 
 de Vries P (2026). *CopernicusMarine: Search Download and Handle Data
-from Copernicus Marine Service Information*. R package version
-0.4.2.0002, <https://github.com/pepijn-devries/CopernicusMarine>.
+from Copernicus Marine Service Information*. R package version 0.4.3,
+<https://github.com/pepijn-devries/CopernicusMarine>.
 
     @Manual{,
       title = {CopernicusMarine: Search Download and Handle Data from Copernicus Marine Service Information},
       author = {Pepijn {de Vries}},
       year = {2026},
-      note = {R package version 0.4.2.0002},
+      note = {R package version 0.4.3},
       url = {https://github.com/pepijn-devries/CopernicusMarine},
     }
