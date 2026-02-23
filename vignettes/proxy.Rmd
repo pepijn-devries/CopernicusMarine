@@ -32,7 +32,7 @@ downloaded when you need it.
 ## Setting Up a Proxy Object
 
 You can either set up a proxy object by calling `cms_native_proxy()` or
-`cms_zarr_prox()`. The first uses the 'native' service. In this case the
+`cms_zarr_proxy()`. The first uses the 'native' service. In this case the
 data is already structured in chunked files and the added value of proxy objects
 is not that obvious. Therefore, in this vignette, we will focus on objects created
 with `cms_zarr_proxy()`. It will connect with an entire layer in a product.
