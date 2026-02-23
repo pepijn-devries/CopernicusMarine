@@ -17,15 +17,18 @@ it.
 
 You can either set up a proxy object by calling
 [`cms_native_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_proxy.md)
-or `cms_zarr_prox()`. The first uses the ‘native’ service. In this case
-the data is already structured in chunked files and the added value of
-proxy objects is not that obvious. Therefore, in this vignette, we will
-focus on objects created with
+or
+[`cms_zarr_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_zarr_proxy.md).
+The first uses the ‘native’ service. In this case the data is already
+structured in chunked files and the added value of proxy objects is not
+that obvious. Therefore, in this vignette, we will focus on objects
+created with
 [`cms_zarr_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_zarr_proxy.md).
 It will connect with an entire layer in a product.
 
 ``` r
 library(CopernicusMarine)
+#> 
 library(stars, quietly = TRUE)
 #> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
 
@@ -33,15 +36,11 @@ my_proxy_gc <- cms_zarr_proxy(
   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
   layer         = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
   asset         = "geoChunked")
-#> Warning: Failed to log in
-#> ℹ Trying to proceed without credentials
 
 my_proxy_tc <- cms_zarr_proxy(
   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
   layer         = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
   asset         = "timeChunked")
-#> Warning: Failed to log in
-#> ℹ Trying to proceed without credentials
 
 print(my_proxy_tc)
 #> stars_proxy object with 1 attribute in 1 file(s):
@@ -53,7 +52,7 @@ print(my_proxy_tc)
 #> longitude    1 4320         NA     NA      NA
 #> latitude     1 2041         NA     NA      NA
 #> elevation    1   50         NA     NA udunits
-#> time         1 1369 2022-06-01 1 days    Date
+#> time         1 1373 2022-06-01 1 days    Date
 #>                                                            values x/y
 #> longitude            [-180.0417,-179.9583),...,[179.875,179.9584) [x]
 #> latitude            [-80.04167,-79.95833),...,[89.95834,90.04166) [y]

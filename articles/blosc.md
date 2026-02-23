@@ -10,7 +10,7 @@ decompression](https://github.com/Blosc/c-blosc). This package uses the
 features provided by the GDAL library as ported by the [sf
 package](https://r-spatial.github.io/sf/).
 
-Not all `sf` builds come with BLOSC support. If you receive a warning
+Not all `sf` builds come with BLOSC support. If you receive an error
 about missing BLOSC support, you need to reinstall `sf` with BLOSC.
 Below you will find instructions to get BLOSC support on your OS.
 
