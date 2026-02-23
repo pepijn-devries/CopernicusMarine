@@ -1,4 +1,4 @@
-CopernicusMarine v0.4.3.0001
+CopernicusMarine v0.4.4
 -------------
 
  * Added `vignette("proxy")` and `vignette("blosc")`
