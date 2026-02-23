@@ -12,3 +12,14 @@ has_blosc <-
                        options = c("COMPRESS=BLOSC", "BLOSC_CNAME=zstd"))
     TRUE
   }, error = function(e) FALSE)
+
+.onAttach <- function(libname, pkgname) {
+  packageStartupMessage({
+    if (sf::sf_extSoftVersion()["GDAL"] < "3.11") {
+      paste(
+        "Your GDAL version is <3.11 and may not support all CopernicusMarine features,",
+        "see `vigette(\"blosc\")` for more info and how to fix", sep = "\n"
+      )
+    }
+  })
+}
