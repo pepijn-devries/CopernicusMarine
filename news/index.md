@@ -1,6 +1,13 @@
 # Changelog
 
+## CopernicusMarine v0.4.4.0001
+
+- Fix for [issue
+  143](https://github.com/pepijn-devries/CopernicusMarine/issues/143)
+
 ## CopernicusMarine v0.4.4
+
+CRAN release: 2026-02-26
 
 - Added
   [`vignette("proxy")`](https://pepijn-devries.github.io/CopernicusMarine/articles/proxy.md)
