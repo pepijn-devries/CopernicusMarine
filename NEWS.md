@@ -1,7 +1,7 @@
 CopernicusMarine v0.4.4.0001
 -------------
 
- * TODO
+ * Fix for [issue 143](https://github.com/pepijn-devries/CopernicusMarine/issues/143)
 
 CopernicusMarine v0.4.4
 -------------
