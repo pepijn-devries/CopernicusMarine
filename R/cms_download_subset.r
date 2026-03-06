@@ -127,8 +127,8 @@ cms_download_subset <- function(
     }
     result <- which(idx)
     if (length(result) == 0)
-      rlang::abort(sprintf("Dimension '%s' [%s - %s] not within selected range",
-                           dm, comparator[[1]], comparator[[2]]))
+      rlang::abort(sprintf("Dimension '%s' not within available range [%s - %s]",
+                           dm, min(idx_start), max(idx_end)))
     result
   })
 
@@ -170,7 +170,6 @@ cms_download_subset <- function(
 
 .get_best_arco_service_type <- function(subset_request, dataset_version, progress,
                                         asset) {
-
   meta <-
     cms_product_metadata(subset_request$product) |>
     dplyr::filter(startsWith(.data$id, subset_request$layer)) |>
