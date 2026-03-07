@@ -98,8 +98,7 @@ opar <- par(mar = c(3, 3, 0.5, 0.5), mgp = c(2, .8, 0))
 ```{r plot_time_slice, eval=eval_chunks}
 time_slice <- st_as_stars(time_slice)
 plot(st_get_dimension_values(time_slice, "time"), time_slice$thetao,
-     xlab = "date", ylab = "temperature", type = "l", xaxt = "n")
-axis.POSIXct(1)
+     xlab = "date", ylab = "temperature", type = "l")
 ```
 
 ```{r reset_par, results='hide', echo=FALSE}
