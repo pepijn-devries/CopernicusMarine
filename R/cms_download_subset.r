@@ -103,8 +103,9 @@ cms_download_subset <- function(
 
   dms <- stars::st_dimensions(mdim_proxy)
   idx <- lapply(names(dms), \(dm) {
-    idx_start <- stars::st_get_dimension_values(mdim_proxy, dm, where = "start")
-    idx_end   <- stars::st_get_dimension_values(mdim_proxy, dm, where = "end")
+    idx_start  <- stars::st_get_dimension_values(mdim_proxy, dm, where = "start")
+    idx_end    <- stars::st_get_dimension_values(mdim_proxy, dm, where = "end")
+    idx_center <- stars::st_get_dimension_values(mdim_proxy, dm, where = "center")
     if (dm != "time") {
       idx_start <- as.numeric(idx_start)
       idx_end   <- as.numeric(idx_end)
@@ -126,9 +127,20 @@ cms_download_subset <- function(
 
     }
     result <- which(idx)
+    report_range <- range(c(idx_start, idx_end))
+    if (dm %in% c("longitude", "latitude")) report_range <- range(idx_center)
     if (length(result) == 0)
-      rlang::abort(sprintf("Dimension '%s' not within available range [%s - %s]",
-                           dm, min(idx_start), max(idx_end)))
+      rlang::abort(sprintf("Dimension '%s' not within available range [%s; %s]",
+                           dm, report_range[[1]], report_range[[2]]))
+    threshold <-
+      (max(as.numeric(comparator)) - max(as.numeric(idx_end))) /
+      max(c(diff(as.numeric(idx_start)), diff(as.numeric(idx_end)))) > 0.05 ||
+      (min(as.numeric(comparator)) - min(as.numeric(idx_start))) /
+      max(c(diff(as.numeric(idx_start)), diff(as.numeric(idx_end)))) < -0.05
+    if (threshold) {
+      rlang::warn(sprintf("Requested range '%s' well beyond available range [%s; %s]",
+                           dm, report_range[[1]], report_range[[2]]))
+    }
     result
   })
 
