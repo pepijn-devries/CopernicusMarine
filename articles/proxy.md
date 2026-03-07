@@ -111,8 +111,7 @@ series.
 ``` r
 time_slice <- st_as_stars(time_slice)
 plot(st_get_dimension_values(time_slice, "time"), time_slice$thetao,
-     xlab = "date", ylab = "temperature", type = "l", xaxt = "n")
-axis.POSIXct(1)
+     xlab = "date", ylab = "temperature", type = "l")
 ```
 
 ![](proxy_files/figure-html/plot_time_slice-1.png)
