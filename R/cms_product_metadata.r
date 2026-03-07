@@ -3,6 +3,7 @@
 #' `r lifecycle::badge('stable')` Obtain product meta data such as spatio-temporal bounds
 #' of the data. 
 #'
+#' See `vignette("product-info")` for more details
 #' @include cms_download_subset.r
 #' @inheritParams cms_download_subset
 #' @param ... Ignored

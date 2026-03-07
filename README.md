@@ -65,7 +65,9 @@ from Copernicus:
 - [Downloading a full dataset](#sec-full)
 - [Using the WMTS server](#sec-wtms)
 
-Please check the manual for complete documentation of the package.
+If you want to explore the available products and their layers, you
+should consult `vignette("product-info")`. Please check the manual for
+complete documentation of the package.
 
 <h3 id="sec-subset">
 
@@ -88,6 +90,7 @@ my_data <-
     verticalrange = c(0, -0.5),
     progress      = FALSE
 )
+#> DEBUG: detect.driver returned: ZARR (length: 1)
 
 plot(my_data["vo", drop = TRUE], col = hcl.colors(100), axes = TRUE)
 ```

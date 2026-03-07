@@ -1,0 +1,115 @@
+---
+title: "Product Information"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Product Information}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Before you start downloading data, you first need to know which
+data you need and for which purpose. And not unimportant: you need to know
+where to find it. Although data discovery is not the primary objective of
+this package, it provides several instruments to obtain product information.
+
+## The Web Browser
+
+Perhaps the easiest way to find products and layers is via the
+[online catalogue](https://data.marine.copernicus.eu/products). To
+streamline your workflow using the web browser, you should check
+`vignette("translate")`. That vignette explains how you can copy a
+request from the catalogue and use it in R.
+
+## Listing Products
+
+To get a complete overview of all available products, you can list them with
+either `cms_products_list()` or `cms_products_list2()`:
+
+```{r listing-products, message=FALSE}
+library(CopernicusMarine)
+
+cms_products_list() |> head(3)
+
+cms_products_list2() |> head(3)
+```
+
+The first returns a `data.frame` complete with al sorts of meta information
+about the type of variables in the product, the spatio-temporal coverage,
+number of vertical layers, etc. You can use this `data.frame` to narrow your
+search by applying a `dplyr::filter()` on it.
+
+You can even pass arguments that er used to search the online catalogue.
+These are not well documented. The example below shows how to search for
+free text and filter on area and variables:
+
+```{r searching-products, message=FALSE}
+cms_products_list(freeText = "wave",
+                  facetValues = list(areas             = list("Europe"),
+                                     specificVariables = list("Velocity")))
+```
+
+The reason this is poorly documented is because this function does not
+use the formal API. Instead it uses the web-form used by the online catalogue.
+Users should therefore not rely on it too much as it may get discontinued or
+altered at any time.
+
+Instead, users can use `cms_products_list2()` which produces a list of products,
+by using the official API. Unfortunately, this list does not contain any additional
+information. For this purpose users can refer to `cms_product_metadata()`,
+`cms_product_details()`, or `cms_product_services()` as described below.
+
+## Product Details
+
+With `cms_product_details()` you will get some descriptive information about your
+product. Nothing too fancy, but it will help you understand what the product
+is all about.
+
+```{r product-details}
+cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024") |> summary()
+```
+
+## Product Metadata
+
+When subsetting  a dataset with `cms_download_subset()`, the most
+tricky thing is discovering what the available ranges are for its dimensions.
+You can use `cms_product_metadata()` for this purpose. It returns a named list.
+
+```{r product-metadata}
+meta_info <- cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+
+## Get the dimension properties for the first layer in this product
+meta_info$properties[[1]]$`cube:dimensions` |> summary()
+```
+
+Another way to get the dimension ranges is by setting up a stars proxy
+object (see `vignette("proxy")`) and call `st_dimensions()` on it:
+
+```{r product-proxy, warning=FALSE}
+library(stars) |> suppressMessages()
+
+myproxy <- cms_zarr_proxy(
+    product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+    layer         = "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
+    asset         = "timeChunked")
+st_dimensions(myproxy)
+```
+
+## Product Services
+
+If you want a more raw access point to your data, you can use `cms_product_services()`.
+It will present a `data.frame` for your product with all services provided by
+Copernicus. You can use any of the columns with the `"_href"` suffix to get an
+URL of a specific service. If you want to access those directly, you are on your
+own. It is easier to use any of the wrappers provided by this package to access
+the data.
+
+```{r services}
+cms_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")
+```

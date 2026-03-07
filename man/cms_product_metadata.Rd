@@ -20,6 +20,9 @@ represents a layer available for the product.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Obtain product meta data such as spatio-temporal bounds
 of the data.
 }
+\details{
+See \code{vignette("product-info")} for more details
+}
 \examples{
 if (interactive()) {
   cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")

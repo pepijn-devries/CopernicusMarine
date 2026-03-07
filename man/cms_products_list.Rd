@@ -27,6 +27,9 @@ descriptions for marine products available from Copernicus. \code{cms_products_l
 does not use a formal API, but provides a more detailed list. \code{cms_products_list2()}
 Does use the formal API, but provides less details
 }
+\details{
+See \code{vignette("product-info")} for more details
+}
 \examples{
 cms_products_list()
 
