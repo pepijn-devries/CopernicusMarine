@@ -23,7 +23,7 @@ NULL
   warned <- FALSE
   withCallingHandlers({
     dr <- stars::detect.driver(href)
-    if (is.null(dr) || is.na(dr)) warned <<- TRUE
+    if (lentgh(dr) == 0 || is.na(dr) || dr == "") warned <<- TRUE
   }, warning = function(w) {
     if (grepl("is unknown", conditionMessage(w))) {
       warned <<- TRUE
