@@ -20,6 +20,9 @@ Copernicus marine \code{product}.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Obtain an overview of services provided by Copernicus
 for a specific marine product.
 }
+\details{
+See \code{vignette("product-info")} for more details
+}
 \examples{
 if (interactive()) {
   cms_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")

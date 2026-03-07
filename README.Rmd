@@ -66,6 +66,8 @@ briefly shows three different ways of obtaining data from Copernicus:
  * [Downloading a full dataset](#sec-full)
  * [Using the WMTS server](#sec-wtms)
 
+If you want to explore the available products and their layers, you
+should consult `vignette("product-info")`.
 Please check the manual for complete documentation of the package.
 
 <h3 id="sec-subset">Downloading a subset</h3>

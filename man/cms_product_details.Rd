@@ -18,6 +18,9 @@ Returns a named \code{list} with product details.
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Obtain details for a specific Copernicus marine product.
 }
+\details{
+See \code{vignette("product-info")} for more details
+}
 \examples{
 if (interactive()) {
   cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024")
