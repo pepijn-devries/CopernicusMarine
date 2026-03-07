@@ -1,9 +1,10 @@
-CopernicusMarine v0.4.4.0002
+CopernicusMarine v0.4.4.0003
 -------------
 
  * Fix for [issue 143](https://github.com/pepijn-devries/CopernicusMarine/issues/143)
  * Added warnings for mismatch between requested and available
-   dimension ranges for `cms_download_subset()`.
+   dimension ranges for `cms_download_subset()`
+ * Added tests
  * Updated documentation
 
 CopernicusMarine v0.4.4
@@ -13,7 +14,7 @@ CopernicusMarine v0.4.4
  * In order to pass CRAN checks:
    * Added safeguards to vignette
    * Improved handling of comparing floating point numbers
-     when slicing stars_proxy objects.
+     when slicing stars_proxy objects
    * Added more rigorous checking of availability of required dependencies
  * Added credentials check to all functions downloading
    from S3 storage.
