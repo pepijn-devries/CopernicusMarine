@@ -104,6 +104,7 @@ test_that("Unknown time code throws error", {
 
 test_that("A proxy object can be created from zarr", {
   skip_on_cran()
+  skip_if_offline("data.marine.copernicus.eu")
   expect_true({
     myproxy <- cms_zarr_proxy(
       product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -113,4 +114,36 @@ test_that("A proxy object can be created from zarr", {
     mystars <- stars::st_as_stars(myproxy["uo",1:200,1:100,50,1])
     all(dim(mystars) == c(200, 100, 1, 1))
   })
+})
+
+test_that("Object with a fifth indexing dimension can be subsetted", {
+  skip_on_cran()
+  has_account_details()
+  skip_if_offline("data.marine.copernicus.eu")
+  expect_no_error({
+    cms_download_subset(
+      product   = "MEDSEA_MULTIYEAR_PHY_006_004",
+      layer     = "cmems_mod_med_phy_my_4.2km-climatology_P1M-m",
+      variable  = "bottomT_avg",
+      region    = c(xmin = 3, ymin = 41, xmax = 7, ymax = 44),
+      timerange = c("1993-01-01", "1993-01-31"),
+      progress  = FALSE
+    )
+  })
+})
+
+test_that("Requests beyond available range produces warning", {
+  skip_on_cran()
+  has_account_details()
+  skip_if_offline("data.marine.copernicus.eu")
+  expect_warning({
+    cms_download_subset(
+      product   = "GLOBAL_MULTIYEAR_PHY_001_030",
+      layer     = "cmems_mod_glo_phy_my_0.083deg_P1D-m",
+      variable  = "mlotst",
+      region    = c(179, 10, 220, 30),
+      timerange = c("1993-01-01 UTC", "1993-01-01 UTC"),
+      progress  = FALSE
+    )
+  }, "'longitude' well beyond available range")
 })

@@ -1,7 +1,10 @@
-CopernicusMarine v0.4.4.0001
+CopernicusMarine v0.4.4.0002
 -------------
 
  * Fix for [issue 143](https://github.com/pepijn-devries/CopernicusMarine/issues/143)
+ * Added warnings for mismatch between requested and available
+   dimension ranges for `cms_download_subset()`.
+ * Updated documentation
 
 CopernicusMarine v0.4.4
 -------------
