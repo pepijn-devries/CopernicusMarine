@@ -56,3 +56,16 @@ test_that("A stars proxy object can be created from a native service", {
     all(dim(my_stars) == c(500, 250, 1, 1))
   })
 })
+
+test_that("Warn when native proxy request matches multiple files", {
+  skip_if_offline()
+  skip_on_cran()
+  expect_warning({
+    cms_native_proxy(
+      product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+      layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
+      prefix        = "2022/06/"
+    )
+
+  }, "Arguments match multiple files")
+})

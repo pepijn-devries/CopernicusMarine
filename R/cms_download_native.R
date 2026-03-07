@@ -200,15 +200,15 @@ cms_native_proxy <- function(product, layer, pattern, prefix, variable, ...,
   file_list <- cms_list_native_files(product, layer, pattern, prefix)
   if (nrow(file_list) > 1)
     rlang::warn(c(
-      "Argument matches multiple files",
+      "Arguments match multiple files",
       i = "Returning the first in the list",
       i = "Add a specific 'pattern' to reduce the number of matches"
     ))
   file_list <- file_list[1,]
 
-  if (grepl("\\.nc$|\\.ncf$|\\.ncdf$|\\.netcdf$|\\.h5$", file_list$Key) &
+  fmt <- if (grepl("\\.nc$|\\.ncf$|\\.ncdf$|\\.netcdf$|\\.h5$", file_list$Key) &
       sf::st_drivers("raster", "^HDF5$")$vsi)
-    fmt <- "HDF5:%s" else fmt <- "%s"
+    "HDF5:%s" else "%s"
   paste0(
     "https://",
     file_list$base_url, "/",
