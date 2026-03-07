@@ -26,6 +26,12 @@ cms_product_metadata(product, ...)
 Returns a `data.frame`/`tibble` with the metadata. Each row in the
 `data.frame` represents a layer available for the product.
 
+## Details
+
+See
+[`vignette("product-info")`](https://pepijn-devries.github.io/CopernicusMarine/articles/product-info.md)
+for more details
+
 ## Author
 
 Pepijn de Vries

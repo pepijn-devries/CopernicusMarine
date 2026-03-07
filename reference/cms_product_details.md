@@ -24,6 +24,12 @@ cms_product_details(product, ...)
 
 Returns a named `list` with product details.
 
+## Details
+
+See
+[`vignette("product-info")`](https://pepijn-devries.github.io/CopernicusMarine/articles/product-info.md)
+for more details
+
 ## See also
 
 Other product-functions:

@@ -1,7 +1,9 @@
 # Changelog
 
-## CopernicusMarine v0.4.4.0009
+## CopernicusMarine v0.4.4.0010
 
+- Added
+  [`vignette("product-info")`](https://pepijn-devries.github.io/CopernicusMarine/articles/product-info.md)
 - Fix for [issue
   143](https://github.com/pepijn-devries/CopernicusMarine/issues/143)
 - Added warnings for mismatch between requested and available dimension

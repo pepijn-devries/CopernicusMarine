@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.4.0009</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.4.0010</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +42,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="articles/blosc.html">BLOSC Support</a></li>
+    <li><a class="dropdown-item" href="articles/product-info.html">Product Information</a></li>
     <li><a class="dropdown-item" href="articles/proxy.html">Using stars_proxy Objects</a></li>
     <li><a class="dropdown-item" href="articles/translate.html">Translate Request</a></li>
   </ul>
@@ -101,7 +102,7 @@
 <li><a href="#sec-full">Downloading a full dataset</a></li>
 <li><a href="#sec-wtms">Using the WMTS server</a></li>
 </ul>
-<p>Please check the manual for complete documentation of the package.</p>
+<p>If you want to explore the available products and their layers, you should consult <code><a href="articles/product-info.html">vignette("product-info")</a></code>. Please check the manual for complete documentation of the package.</p>
 <h3 id="usage-1">
 Downloading a subset
 <a class="anchor" aria-label="anchor" href="#usage-1"></a>
@@ -118,6 +119,7 @@ Downloading a subset
 <span>    verticalrange <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="op">-</span><span class="fl">0.5</span><span class="op">)</span>,</span>
 <span>    progress      <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
+<span><span class="co">#&gt; DEBUG: detect.driver returned: ZARR (length: 1)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my_data</span><span class="op">[</span><span class="st">"vo"</span>, drop <span class="op">=</span> <span class="cn">TRUE</span><span class="op">]</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, axes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-download-subset-1.png" alt="Example plots of downloaded subsets"></p>

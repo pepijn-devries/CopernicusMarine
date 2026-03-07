@@ -26,6 +26,12 @@ cms_product_services(product, ...)
 Returns a `tibble` with a list of available services for a Copernicus
 marine `product`.
 
+## Details
+
+See
+[`vignette("product-info")`](https://pepijn-devries.github.io/CopernicusMarine/articles/product-info.md)
+for more details
+
 ## See also
 
 Other product-functions:

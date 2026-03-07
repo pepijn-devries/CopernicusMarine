@@ -51,6 +51,9 @@ from Copernicus:
 - [Downloading a full dataset](#sec-full)
 - [Using the WMTS server](#sec-wtms)
 
+If you want to explore the available products and their layers, you
+should consult
+[`vignette("product-info")`](https://pepijn-devries.github.io/CopernicusMarine/articles/product-info.md).
 Please check the manual for complete documentation of the package.
 
 ### Downloading a subset
@@ -71,6 +74,7 @@ my_data <-
     verticalrange = c(0, -0.5),
     progress      = FALSE
 )
+#> DEBUG: detect.driver returned: ZARR (length: 1)
 
 plot(my_data["vo", drop = TRUE], col = hcl.colors(100), axes = TRUE)
 ```

@@ -34,6 +34,12 @@ Returns a `tibble` of products available from
 `info_type = "meta"`. Returns `NULL` in case on-line services are
 unavailable.
 
+## Details
+
+See
+[`vignette("product-info")`](https://pepijn-devries.github.io/CopernicusMarine/articles/product-info.md)
+for more details
+
 ## See also
 
 Other product-functions:
