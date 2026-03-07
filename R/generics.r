@@ -23,6 +23,7 @@ NULL
   warned <- FALSE
   withCallingHandlers({
     dr <- stars::detect.driver(href)
+    message("DEBUG: detect.driver returned: ", paste(dr, collapse=", "), " (length: ", length(dr), ")") #TODO temp debug message
     if (length(dr) == 0 || is.na(dr) || dr == "") warned <<- TRUE
   }, warning = function(w) {
     if (grepl("is unknown", conditionMessage(w))) {
