@@ -12,6 +12,10 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+tryCatch({
+  Sys.setlocale("LC_ALL", "English")
+})
+par(mar = c(3, 3, 0.5, 0.5), mgp = c(2, .8, 0))
 eval_chunks <-
   CopernicusMarine:::has_blosc &&
   curl::has_internet() &&
@@ -38,8 +42,8 @@ is not that obvious. Therefore, in this vignette, we will focus on objects creat
 with `cms_zarr_proxy()`. It will connect with an entire layer in a product.
 
 ```{r create_proxy, eval=eval_chunks}
-library(CopernicusMarine)
-library(stars, quietly = TRUE)
+library(CopernicusMarine) |> suppressMessages()
+library(stars) |> suppressMessages()
 
 my_proxy_gc <- cms_zarr_proxy(
   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -86,8 +90,7 @@ As you can notice, this slicing is super fast. This is because no actual data
 is transfered yet.
 It isn't until `st_as_stars()` is called when the data is downloaded.
 Since in this particular case we have only selected a single raster cell,
-it makes sense to cast the object to a `data.frame`. We can then plot the
-time series.
+we can then plot the time series.
 
 ```{r plot_time_slice, eval=eval_chunks}
 time_slice <- st_as_stars(time_slice)
