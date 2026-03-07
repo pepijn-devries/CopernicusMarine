@@ -106,10 +106,6 @@ axis.POSIXct(1)
 par(opar)
 ```
 
-```{r reset_par, results='hide', echo=FALSE}
-par(opar)
-```
-
 We can also select a specific area, for which we will use the time chunked
 proxy.
 
