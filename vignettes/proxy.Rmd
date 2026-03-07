@@ -101,6 +101,10 @@ plot(st_get_dimension_values(time_slice, "time"), time_slice$thetao,
      xlab = "date", ylab = "temperature", type = "l")
 ```
 
+```{r reset_par, results='hide', echo=FALSE}
+par(opar)
+```
+
 We can also select a specific area, for which we will use the time chunked
 proxy.
 

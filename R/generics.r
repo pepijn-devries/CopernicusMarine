@@ -25,10 +25,8 @@ NULL
     dr <- stars::detect.driver(href)
     if (length(dr) == 0 || is.na(dr) || dr == "") warned <<- TRUE
   }, warning = function(w) {
-    if (grepl("is unknown", conditionMessage(w))) {
-      warned <<- TRUE
-      invokeRestart("muffleWarning")
-    }
+    warned <<- TRUE
+    invokeRestart("muffleWarning")
   })
   if (warned) cli::cli_abort(c(
     x = "No driver found for requested raster",
