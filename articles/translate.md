@@ -76,6 +76,10 @@ using [`do.call()`](https://rdrr.io/r/base/do.call.html). Like this:
 
 ``` r
 result <- do.call(cms_download_subset, translated)
+#> Warning in max(c(diff(as.numeric(idx_start)), diff(as.numeric(idx_end)))): no
+#> non-missing arguments to max; returning -Inf
+#> Warning in max(c(diff(as.numeric(idx_start)), diff(as.numeric(idx_end)))): no
+#> non-missing arguments to max; returning -Inf
 plot(result, col = hcl.colors(100), axes = TRUE)
 ```
 
