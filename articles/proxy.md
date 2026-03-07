@@ -27,10 +27,8 @@ created with
 It will connect with an entire layer in a product.
 
 ``` r
-library(CopernicusMarine)
-#> 
-library(stars, quietly = TRUE)
-#> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
+library(CopernicusMarine) |> suppressMessages()
+library(stars) |> suppressMessages()
 
 my_proxy_gc <- cms_zarr_proxy(
   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -107,8 +105,8 @@ As you can notice, this slicing is super fast. This is because no actual
 data is transfered yet. It isn’t until
 [`st_as_stars()`](https://r-spatial.github.io/stars/reference/st_as_stars.html)
 is called when the data is downloaded. Since in this particular case we
-have only selected a single raster cell, it makes sense to cast the
-object to a `data.frame`. We can then plot the time series.
+have only selected a single raster cell, we can then plot the time
+series.
 
 ``` r
 time_slice <- st_as_stars(time_slice)
