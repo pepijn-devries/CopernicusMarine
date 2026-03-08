@@ -27,7 +27,7 @@ Can be obtained with \code{\link{cms_products_list}}.}
 \item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{cms_product_services}} (listed as \code{id} column).}
 
 \item{variable}{The name of a desired variable in a specific layer of a product (type \code{character}).
-Can be obtained with \code{\link{cms_product_details}}.}
+Can be obtained with \code{\link{cms_product_details}}. When omitted, all variables are selected.}
 
 \item{map}{A map widget object created from \code{\link[leaflet:leaflet]{leaflet::leaflet()}}}
 

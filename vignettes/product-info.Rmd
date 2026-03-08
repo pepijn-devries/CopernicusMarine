@@ -12,6 +12,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+eval_chunks <- curl::has_internet()
 ```
 
 Before you start downloading data, you first need to know which
@@ -32,7 +33,7 @@ request from the catalogue and use it in R.
 To get a complete overview of all available products, you can list them with
 either `cms_products_list()` or `cms_products_list2()`:
 
-```{r listing-products, message=FALSE}
+```{r listing-products, message=FALSE, eval=eval_chunks}
 library(CopernicusMarine)
 
 cms_products_list() |> head(3)
@@ -49,7 +50,7 @@ You can even pass arguments that er used to search the online catalogue.
 These are not well documented. The example below shows how to search for
 free text and filter on area and variables:
 
-```{r searching-products, message=FALSE}
+```{r searching-products, message=FALSE, eval=eval_chunks}
 cms_products_list(freeText = "wave",
                   facetValues = list(areas             = list("Europe"),
                                      specificVariables = list("Velocity")))
@@ -71,7 +72,7 @@ With `cms_product_details()` you will get some descriptive information about you
 product. Nothing too fancy, but it will help you understand what the product
 is all about.
 
-```{r product-details}
+```{r product-details, eval=eval_chunks}
 cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024") |> summary()
 ```
 
@@ -81,7 +82,7 @@ When subsetting  a dataset with `cms_download_subset()`, the most
 tricky thing is discovering what the available ranges are for its dimensions.
 You can use `cms_product_metadata()` for this purpose. It returns a named list.
 
-```{r product-metadata}
+```{r product-metadata, eval=eval_chunks}
 meta_info <- cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 
 ## Get the dimension properties for the first layer in this product
@@ -91,7 +92,7 @@ meta_info$properties[[1]]$`cube:dimensions` |> summary()
 Another way to get the dimension ranges is by setting up a stars proxy
 object (see `vignette("proxy")`) and call `st_dimensions()` on it:
 
-```{r product-proxy, warning=FALSE}
+```{r product-proxy, warning=FALSE, eval=eval_chunks}
 library(stars) |> suppressMessages()
 
 myproxy <- cms_zarr_proxy(
@@ -110,6 +111,6 @@ URL of a specific service. If you want to access those directly, you are on your
 own. It is easier to use any of the wrappers provided by this package to access
 the data.
 
-```{r services}
+```{r services, eval=eval_chunks}
 cms_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 ```

@@ -7,19 +7,19 @@
 #' Can be obtained with [`cms_products_list`].
 #' @param layer The name of a desired layer within a product (type `character`). Can be obtained with [`cms_product_services`] (listed as `id` column).
 #' @param variable The name of a desired variable in a specific layer of a product (type `character`).
-#' Can be obtained with [`cms_product_details`].
+#' Can be obtained with [`cms_product_details`]. When omitted, all variables are selected.
 #' @param region Specification of the bounding box as a `vector` of `numeric`s WGS84 lat and lon coordinates.
 #' Should be in the order of: xmin, ymin, xmax, ymax.
+#' When omitted, the entire available region is selected.
 #' @param timerange A `vector` with two elements (lower and upper value)
 #' for a requested time range. The `vector` should be coercible to `POSIXct`.
+#' When omitted, the full available time range is selected.
 #' @param verticalrange A `vector` with two elements (minimum and maximum)
 #' numerical values for the depth of the vertical layers (if any). Note that values below the
 #' sea surface needs to be specified as negative values.
+#' When omitted, the entire available vertical range is selected.
 #' @param progress A logical value. When `TRUE` (default) progress is reported to the console.
 #' Otherwise, this function will silently proceed.
-#' @param crop `r lifecycle::badge('deprecated')`. This version now
-#' uses the GDAL library to handle the subsetting and downloading of
-#' subsets. The `crop` argument is therefore no longer supported.
 #' @param asset Type of asset to be used when subsetting data. Should be one
 #' of `"default"`, `"ARCO"`, `"static"`, `"omi"`, or `"downsampled4"`.
 #' When missing, set to `NULL` or set to `"default"`, it will use the first
@@ -56,7 +56,6 @@ cms_download_subset <- function(
     timerange,
     verticalrange,
     progress = TRUE,
-    crop,
     asset,
     ...,
     username = cms_get_username(),
@@ -65,17 +64,17 @@ cms_download_subset <- function(
   if (is.null(asset)) asset <- "default"
   asset <- match.arg(asset, c("default", "ARCO", "static", "omi", "downsampled4"))
 
-  if (!missing(crop))
-    rlang::warn("The `crop` argument is deprecated and ignored")
-  
   if (missing(variable) || is.null(variable)) variable <- character(0)
+  region        <- if (missing(region)) NULL else region
+  timerange     <- if (missing(timerange)) NULL else timerange
+  verticalrange <- if (missing(verticalrange)) NULL else verticalrange
   subset_request <- list(
     product       = product,
     layer         = layer,
     variable      = variable,
-    region        = if (missing(region)) NULL else region,
-    timerange     = if (missing(timerange)) NULL else timerange,
-    verticalrange = if (missing(verticalrange)) NULL else verticalrange
+    region        = region,
+    timerange     = timerange,
+    verticalrange = verticalrange
   )
   if (progress) cli::cli_progress_step("Checking credentials")
   
@@ -113,11 +112,12 @@ cms_download_subset <- function(
     comparator <-
       switch(
         dm,
-        longitude = region[c(1, 3)],
-        latitude = region[c(2, 4)],
-        time = lubridate::as_datetime(timerange),
-        elevation = verticalrange
+        longitude = if (is.null(region)) NULL else region[c(1, 3)],
+        latitude = if (is.null(region)) NULL else region[c(2, 4)],
+        time = if (is.null(timerange)) NULL else lubridate::as_datetime(timerange),
+        elevation = if (is.null(verticalrange)) NULL else verticalrange
       )
+    if (length(comparator) == 0) return(rep(TRUE, length(idx_center)))
     if (length(comparator) == 1) comparator <- comparator[c(1,1)]
     comparator <- sort(comparator)
     idx <- if (length(comparator) == 0) rep(TRUE, length(idx_end)) else {

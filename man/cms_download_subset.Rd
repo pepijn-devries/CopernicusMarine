@@ -12,7 +12,6 @@ cms_download_subset(
   timerange,
   verticalrange,
   progress = TRUE,
-  crop,
   asset,
   ...,
   username = cms_get_username(),
@@ -26,24 +25,23 @@ Can be obtained with \code{\link{cms_products_list}}.}
 \item{layer}{The name of a desired layer within a product (type \code{character}). Can be obtained with \code{\link{cms_product_services}} (listed as \code{id} column).}
 
 \item{variable}{The name of a desired variable in a specific layer of a product (type \code{character}).
-Can be obtained with \code{\link{cms_product_details}}.}
+Can be obtained with \code{\link{cms_product_details}}. When omitted, all variables are selected.}
 
 \item{region}{Specification of the bounding box as a \code{vector} of \code{numeric}s WGS84 lat and lon coordinates.
-Should be in the order of: xmin, ymin, xmax, ymax.}
+Should be in the order of: xmin, ymin, xmax, ymax.
+When omitted, the entire available region is selected.}
 
 \item{timerange}{A \code{vector} with two elements (lower and upper value)
-for a requested time range. The \code{vector} should be coercible to \code{POSIXct}.}
+for a requested time range. The \code{vector} should be coercible to \code{POSIXct}.
+When omitted, the full available time range is selected.}
 
 \item{verticalrange}{A \code{vector} with two elements (minimum and maximum)
 numerical values for the depth of the vertical layers (if any). Note that values below the
-sea surface needs to be specified as negative values.}
+sea surface needs to be specified as negative values.
+When omitted, the entire available vertical range is selected.}
 
 \item{progress}{A logical value. When \code{TRUE} (default) progress is reported to the console.
 Otherwise, this function will silently proceed.}
-
-\item{crop}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. This version now
-uses the GDAL library to handle the subsetting and downloading of
-subsets. The \code{crop} argument is therefore no longer supported.}
 
 \item{asset}{Type of asset to be used when subsetting data. Should be one
 of \code{"default"}, \code{"ARCO"}, \code{"static"}, \code{"omi"}, or \code{"downsampled4"}.
