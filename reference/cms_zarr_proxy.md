@@ -44,6 +44,7 @@ cms_zarr_proxy(
   The name of a desired variable in a specific layer of a product (type
   `character`). Can be obtained with
   [`cms_product_details`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_product_details.md).
+  When omitted, all variables are selected.
 
 - asset:
 

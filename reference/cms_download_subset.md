@@ -14,7 +14,6 @@ cms_download_subset(
   timerange,
   verticalrange,
   progress = TRUE,
-  crop,
   asset,
   ...,
   username = cms_get_username(),
@@ -42,34 +41,31 @@ cms_download_subset(
   The name of a desired variable in a specific layer of a product (type
   `character`). Can be obtained with
   [`cms_product_details`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_product_details.md).
+  When omitted, all variables are selected.
 
 - region:
 
   Specification of the bounding box as a `vector` of `numeric`s WGS84
   lat and lon coordinates. Should be in the order of: xmin, ymin, xmax,
-  ymax.
+  ymax. When omitted, the entire available region is selected.
 
 - timerange:
 
   A `vector` with two elements (lower and upper value) for a requested
-  time range. The `vector` should be coercible to `POSIXct`.
+  time range. The `vector` should be coercible to `POSIXct`. When
+  omitted, the full available time range is selected.
 
 - verticalrange:
 
   A `vector` with two elements (minimum and maximum) numerical values
   for the depth of the vertical layers (if any). Note that values below
-  the sea surface needs to be specified as negative values.
+  the sea surface needs to be specified as negative values. When
+  omitted, the entire available vertical range is selected.
 
 - progress:
 
   A logical value. When `TRUE` (default) progress is reported to the
   console. Otherwise, this function will silently proceed.
-
-- crop:
-
-  **\[deprecated\]**. This version now uses the GDAL library to handle
-  the subsetting and downloading of subsets. The `crop` argument is
-  therefore no longer supported.
 
 - asset:
 

@@ -1,14 +1,19 @@
 # Changelog
 
-## CopernicusMarine v0.4.4.0010
+## CopernicusMarine v0.4.4.0011
 
 - Added
   [`vignette("product-info")`](https://pepijn-devries.github.io/CopernicusMarine/articles/product-info.md)
-- Fix for [issue
-  143](https://github.com/pepijn-devries/CopernicusMarine/issues/143)
+- Omitting subset-arguments in
+  [`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
+  calls is now allowed
+- Removed deprecated argument ‘crop’ in
+  [`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
 - Added warnings for mismatch between requested and available dimension
   ranges for
   [`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
+- Fix for [issue
+  143](https://github.com/pepijn-devries/CopernicusMarine/issues/143)
 - Added tests
 - Updated documentation
 
