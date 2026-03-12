@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.4.0011</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,7 +83,7 @@ information.</p>
 <p>Perhaps the easiest way to find products and layers is via the <a href="https://data.marine.copernicus.eu/products" class="external-link">online catalogue</a>.
 To streamline your workflow using the web browser, you should check
 <code><a href="../articles/translate.html">vignette("translate")</a></code>. That vignette explains how you can
-copy a request from the catalogue and use it in R.</p>
+copy a request from the web browser catalogue and use it in R.</p>
 </div>
 <div class="section level2">
 <h2 id="listing-products">Listing Products<a class="anchor" aria-label="anchor" href="#listing-products"></a>
@@ -121,7 +121,7 @@ meta information about the type of variables in the product, the
 spatio-temporal coverage, number of vertical layers, etc. You can use
 this <code>data.frame</code> to narrow your search by applying a
 <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">dplyr::filter()</a></code> on it.</p>
-<p>You can even pass arguments that er used to search the online
+<p>You can even pass arguments that are used to search the online
 catalogue. These are not well documented. The example below shows how to
 search for free text and filter on area and variables:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -186,7 +186,13 @@ purpose. It returns a named list.</p>
 <span><span class="co">#&gt;           Length Class  Mode</span></span>
 <span><span class="co">#&gt; latitude  5      -none- list</span></span>
 <span><span class="co">#&gt; longitude 5      -none- list</span></span>
-<span><span class="co">#&gt; elevation 5      -none- list</span></span></code></pre></div>
+<span><span class="co">#&gt; elevation 5      -none- list</span></span>
+<span><span class="co">## Get the variable properties for the first layer in this product</span></span>
+<span><span class="va">meta_info</span><span class="op">$</span><span class="va">properties</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">`cube:variables`</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     Length Class  Mode</span></span>
+<span><span class="co">#&gt; e1t 23     -none- list</span></span>
+<span><span class="co">#&gt; e2t 23     -none- list</span></span>
+<span><span class="co">#&gt; e3t 23     -none- list</span></span></code></pre></div>
 <p>Another way to get the dimension ranges is by setting up a stars
 proxy object (see <code><a href="../articles/proxy.html">vignette("proxy")</a></code>) and call
 <code><a href="https://r-spatial.github.io/stars/reference/st_dimensions.html" class="external-link">st_dimensions()</a></code> on it:</p>
@@ -202,7 +208,7 @@ proxy object (see <code><a href="../articles/proxy.html">vignette("proxy")</a></
 <span><span class="co">#&gt; longitude    1 4320         NA     NA      NA</span></span>
 <span><span class="co">#&gt; latitude     1 2041         NA     NA      NA</span></span>
 <span><span class="co">#&gt; elevation    1   50         NA     NA udunits</span></span>
-<span><span class="co">#&gt; time         1 1386 2022-06-01 1 days    Date</span></span>
+<span><span class="co">#&gt; time         1 1390 2022-06-01 1 days    Date</span></span>
 <span><span class="co">#&gt;                                                            values x/y</span></span>
 <span><span class="co">#&gt; longitude            [-180.0417,-179.9583),...,[179.875,179.9584) [x]</span></span>
 <span><span class="co">#&gt; latitude            [-80.04167,-79.95833),...,[89.95834,90.04166) [y]</span></span>

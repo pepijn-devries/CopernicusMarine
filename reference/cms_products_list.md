@@ -4,7 +4,7 @@
 for marine products available from Copernicus. `cms_products_list()`
 does not use a formal API, but provides a more detailed list.
 `cms_products_list2()` Does use the formal API, but provides less
-details
+details.
 
 ## Usage
 
@@ -38,7 +38,7 @@ unavailable.
 
 See
 [`vignette("product-info")`](https://pepijn-devries.github.io/CopernicusMarine/articles/product-info.md)
-for more details
+for more details.
 
 ## See also
 

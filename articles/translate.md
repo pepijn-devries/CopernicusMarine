@@ -34,7 +34,6 @@ line code, obtained from the website, can be translated into a named
 
 ``` r
 library(CopernicusMarine)
-#> 
 ## Example of command line code
 ## copied from website:
 cli_code <-

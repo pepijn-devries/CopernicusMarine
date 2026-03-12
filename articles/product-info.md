@@ -11,8 +11,8 @@ Perhaps the easiest way to find products and layers is via the [online
 catalogue](https://data.marine.copernicus.eu/products). To streamline
 your workflow using the web browser, you should check
 [`vignette("translate")`](https://pepijn-devries.github.io/CopernicusMarine/articles/translate.md).
-That vignette explains how you can copy a request from the catalogue and
-use it in R.
+That vignette explains how you can copy a request from the web browser
+catalogue and use it in R.
 
 ## Listing Products
 
@@ -56,9 +56,9 @@ this `data.frame` to narrow your search by applying a
 [`dplyr::filter()`](https://dplyr.tidyverse.org/reference/filter.html)
 on it.
 
-You can even pass arguments that er used to search the online catalogue.
-These are not well documented. The example below shows how to search for
-free text and filter on area and variables:
+You can even pass arguments that are used to search the online
+catalogue. These are not well documented. The example below shows how to
+search for free text and filter on area and variables:
 
 ``` r
 cms_products_list(freeText = "wave",
@@ -135,6 +135,12 @@ meta_info$properties[[1]]$`cube:dimensions` |> summary()
 #> latitude  5      -none- list
 #> longitude 5      -none- list
 #> elevation 5      -none- list
+## Get the variable properties for the first layer in this product
+meta_info$properties[[1]]$`cube:variables` |> summary()
+#>     Length Class  Mode
+#> e1t 23     -none- list
+#> e2t 23     -none- list
+#> e3t 23     -none- list
 ```
 
 Another way to get the dimension ranges is by setting up a stars proxy
@@ -156,7 +162,7 @@ st_dimensions(myproxy)
 #> longitude    1 4320         NA     NA      NA
 #> latitude     1 2041         NA     NA      NA
 #> elevation    1   50         NA     NA udunits
-#> time         1 1386 2022-06-01 1 days    Date
+#> time         1 1390 2022-06-01 1 days    Date
 #>                                                            values x/y
 #> longitude            [-180.0417,-179.9583),...,[179.875,179.9584) [x]
 #> latitude            [-80.04167,-79.95833),...,[89.95834,90.04166) [y]

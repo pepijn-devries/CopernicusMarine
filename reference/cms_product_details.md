@@ -28,7 +28,7 @@ Returns a named `list` with product details.
 
 See
 [`vignette("product-info")`](https://pepijn-devries.github.io/CopernicusMarine/articles/product-info.md)
-for more details
+for more details.
 
 ## See also
 
