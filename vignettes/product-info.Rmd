@@ -26,7 +26,7 @@ Perhaps the easiest way to find products and layers is via the
 [online catalogue](https://data.marine.copernicus.eu/products). To
 streamline your workflow using the web browser, you should check
 `vignette("translate")`. That vignette explains how you can copy a
-request from the catalogue and use it in R.
+request from the web browser catalogue and use it in R.
 
 ## Listing Products
 
@@ -46,7 +46,7 @@ about the type of variables in the product, the spatio-temporal coverage,
 number of vertical layers, etc. You can use this `data.frame` to narrow your
 search by applying a `dplyr::filter()` on it.
 
-You can even pass arguments that er used to search the online catalogue.
+You can even pass arguments that are used to search the online catalogue.
 These are not well documented. The example below shows how to search for
 free text and filter on area and variables:
 
@@ -87,6 +87,8 @@ meta_info <- cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 
 ## Get the dimension properties for the first layer in this product
 meta_info$properties[[1]]$`cube:dimensions` |> summary()
+## Get the variable properties for the first layer in this product
+meta_info$properties[[1]]$`cube:variables` |> summary()
 ```
 
 Another way to get the dimension ranges is by setting up a stars proxy

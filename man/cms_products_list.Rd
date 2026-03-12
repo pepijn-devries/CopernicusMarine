@@ -25,10 +25,10 @@ unavailable.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Collect a list of products and some brief
 descriptions for marine products available from Copernicus. \code{cms_products_list()}
 does not use a formal API, but provides a more detailed list. \code{cms_products_list2()}
-Does use the formal API, but provides less details
+Does use the formal API, but provides less details.
 }
 \details{
-See \code{vignette("product-info")} for more details
+See \code{vignette("product-info")} for more details.
 }
 \examples{
 cms_products_list()

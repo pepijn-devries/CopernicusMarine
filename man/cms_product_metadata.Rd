@@ -21,7 +21,7 @@ represents a layer available for the product.
 of the data.
 }
 \details{
-See \code{vignette("product-info")} for more details
+See \code{vignette("product-info")} for more details.
 }
 \examples{
 if (interactive()) {

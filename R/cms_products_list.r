@@ -3,9 +3,9 @@
 #' `r lifecycle::badge('stable')` Collect a list of products and some brief
 #' descriptions for marine products available from Copernicus. `cms_products_list()`
 #' does not use a formal API, but provides a more detailed list. `cms_products_list2()`
-#' Does use the formal API, but provides less details
+#' Does use the formal API, but provides less details.
 #'
-#' See `vignette("product-info")` for more details
+#' See `vignette("product-info")` for more details.
 #' @param ... Allows you to pass (search) query parameters to apply to the list.
 #' When omitted, the full list of products is returned.
 #' @param info_type One of `"list"` (default) or `"meta"`. `"list"` returns the actual list

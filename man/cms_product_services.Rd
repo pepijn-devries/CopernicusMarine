@@ -21,7 +21,7 @@ Copernicus marine \code{product}.
 for a specific marine product.
 }
 \details{
-See \code{vignette("product-info")} for more details
+See \code{vignette("product-info")} for more details.
 }
 \examples{
 if (interactive()) {

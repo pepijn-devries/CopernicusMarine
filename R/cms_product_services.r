@@ -3,7 +3,7 @@
 #' `r lifecycle::badge('stable')` Obtain an overview of services provided by Copernicus
 #' for a specific marine product.
 #'
-#' See `vignette("product-info")` for more details
+#' See `vignette("product-info")` for more details.
 #' @include cms_download_subset.r
 #' @inheritParams cms_download_subset
 #' @param ... Ignored.
