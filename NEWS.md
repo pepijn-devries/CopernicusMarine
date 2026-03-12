@@ -1,4 +1,4 @@
-CopernicusMarine v0.4.4.0011
+CopernicusMarine v0.4.5
 -------------
 
  * Added `vignette("product-info")`
