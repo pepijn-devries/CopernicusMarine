@@ -94,7 +94,7 @@ meta_info$properties[[1]]$`cube:variables` |> summary()
 Another way to get the dimension ranges is by setting up a stars proxy
 object (see `vignette("proxy")`) and call `st_dimensions()` on it:
 
-```{r product-proxy, warning=FALSE, eval=eval_chunks}
+```{r product-proxy, warning=FALSE, eval=eval_chunks&&CopernicusMarine:::has_blosc}
 library(stars) |> suppressMessages()
 
 myproxy <- cms_zarr_proxy(
