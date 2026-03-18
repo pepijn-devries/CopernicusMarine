@@ -1,3 +1,8 @@
+CopernicusMarine v0.4.5.0001
+-------------
+
+ * Added more safeguards to vignette to pass CRAN checks
+
 CopernicusMarine v0.4.5
 -------------
 
