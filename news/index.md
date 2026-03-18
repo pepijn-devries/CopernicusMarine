@@ -1,6 +1,12 @@
 # Changelog
 
+## CopernicusMarine v0.4.5.0001
+
+- Added more safeguards to vignette to pass CRAN checks
+
 ## CopernicusMarine v0.4.5
+
+CRAN release: 2026-03-12
 
 - Added
   [`vignette("product-info")`](https://pepijn-devries.github.io/CopernicusMarine/articles/product-info.md)

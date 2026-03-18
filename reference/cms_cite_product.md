@@ -306,7 +306,7 @@ cms_cite_product("SST_MED_PHY_SUBSKIN_L4_NRT_010_036")
 #> [1] "2019-01-01T00:00:00Z"
 #> 
 #> $extent$temporal$interval[[1]][[2]]
-#> [1] "2026-03-09T23:00:00Z"
+#> [1] "2026-03-16T23:00:00Z"
 #> 
 #> 
 #> 
@@ -573,7 +573,7 @@ cms_cite_product("SST_MED_PHY_SUBSKIN_L4_NRT_010_036")
 #> [1] FALSE
 #> 
 #> $properties$admp_updated
-#> [1] "2026-03-10T13:22:02.176338Z"
+#> [1] "2026-03-17T11:38:10.602295Z"
 #> 
 #> 
 #> $`sci:doi`
