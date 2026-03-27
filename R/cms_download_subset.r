@@ -108,6 +108,9 @@ cms_download_subset <- function(
     if (dm != "time") {
       idx_start <- as.numeric(idx_start)
       idx_end   <- as.numeric(idx_end)
+    } else {
+      idx_start <- as.POSIXct(idx_start, tz = "UTC", origin = "1970-01-01 UTC")
+      idx_end   <- as.POSIXct(idx_end, tz = "UTC", origin = "1970-01-01 UTC")
     }
     comparator <-
       switch(
