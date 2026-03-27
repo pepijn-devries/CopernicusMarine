@@ -147,3 +147,19 @@ test_that("Requests beyond available range produces warning", {
     )
   }, "'longitude' well beyond available range")
 })
+
+test_that("Subsetting time range can handle udunits", {
+  skip_on_cran()
+  has_account_details()
+  skip_if_offline("data.marine.copernicus.eu")
+  expect_no_error({
+    result <- cms_download_subset(
+      product   = "MEDSEA_MULTIYEAR_PHY_006_004",
+      layer     = "cmems_mod_med_phy-tem_my_4.2km_P1Y-m",
+      variable  = "bottomT",
+      region    = c(xmin = 3, ymin = 42.5, xmax = 7, ymax = 44),
+      timerange = c("1998-01-01", "1999-01-01"),
+      progress  = FALSE
+    )
+  })
+})

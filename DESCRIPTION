@@ -1,7 +1,7 @@
 Package: CopernicusMarine
 Type: Package
 Title: Search Download and Handle Data from Copernicus Marine Service Information
-Version: 0.4.5.0001
+Version: 0.4.5.0003
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre", "dtc"),
     email = "pepijn.devries@outlook.com",
     comment = c(ORCID = "0000-0002-7961-6646")))
@@ -25,7 +25,7 @@ Imports:
     purrr,
     rlang,
     sf (>= 1.0-24),
-    stars (>= 0.6-8),
+    stars (>= 0.7-1),
     stringr,
     tibble,
     tidyr,
@@ -38,7 +38,8 @@ Suggests:
     lifecycle,
     ncmeta,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    CFtime (>= 1.7.1)
 SystemRequirements: Requires GDAL >= 3.11 with BLOSC support
     See <https://pepijn-devries.github.io/CopernicusMarine/articles/blosc.html>
 URL: https://github.com/pepijn-devries/CopernicusMarine, https://pepijn-devries.github.io/CopernicusMarine/

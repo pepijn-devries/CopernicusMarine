@@ -108,6 +108,9 @@ cms_download_subset <- function(
     if (dm != "time") {
       idx_start <- as.numeric(idx_start)
       idx_end   <- as.numeric(idx_end)
+    } else {
+      idx_start <- as.POSIXct(idx_start, tz = "UTC", origin = "1970-01-01 UTC")
+      idx_end   <- as.POSIXct(idx_end, tz = "UTC", origin = "1970-01-01 UTC")
     }
     comparator <-
       switch(
@@ -132,11 +135,12 @@ cms_download_subset <- function(
     if (length(result) == 0)
       rlang::abort(sprintf("Dimension '%s' not within available range [%s; %s]",
                            dm, report_range[[1]], report_range[[2]]))
-    threshold <-
+    threshold <- {
       (max(as.numeric(comparator)) - max(as.numeric(idx_end))) /
-      max(c(diff(as.numeric(idx_start)), diff(as.numeric(idx_end)))) > 0.05 ||
-      (min(as.numeric(comparator)) - min(as.numeric(idx_start))) /
-      max(c(diff(as.numeric(idx_start)), diff(as.numeric(idx_end)))) < -0.05
+        max(c(diff(as.numeric(idx_start)), diff(as.numeric(idx_end)))) > 0.05 ||
+        (min(as.numeric(comparator)) - min(as.numeric(idx_start))) /
+        max(c(diff(as.numeric(idx_start)), diff(as.numeric(idx_end)))) < -0.05
+    } |> suppressWarnings()
     if (threshold) {
       rlang::warn(sprintf("Requested range '%s' well beyond available range [%s; %s]",
                            dm, report_range[[1]], report_range[[2]]))
@@ -144,11 +148,20 @@ cms_download_subset <- function(
     result
   })
 
-  mdim_proxy <- rlang::inject(mdim_proxy[,!!!idx])
+  mdim_proxy_sub <- rlang::inject(mdim_proxy[,!!!idx])
 
   result <- .muffle_403({
-    stars::st_as_stars(mdim_proxy)
+    stars::st_as_stars(mdim_proxy_sub)
   })
+  ## restore dimension properties (they sometimes seem to get lost)
+  for (i in seq_along(dms)) {
+    cur_vals <- stars::st_get_dimension_values(result, i)
+    old_vals <- stars::st_get_dimension_values(mdim_proxy, i)
+    if (length(intersect(class(cur_vals), class(old_vals))) == 0) {
+      result <-
+        stars::st_set_dimensions(result, i, values = old_vals[idx[[i]]])
+    }
+  }
   
   Sys.setenv(GDAL_NUM_THREADS = numthr)
 
