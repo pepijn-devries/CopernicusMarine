@@ -1,8 +1,11 @@
 # Changelog
 
-## CopernicusMarine v0.4.5.0001
+## CopernicusMarine v0.4.5.0003
 
 - Added more safeguards to vignette to pass CRAN checks
+- Added more tests
+- Fixed issue
+  [164](https://github.com/pepijn-devries/CopernicusMarine/issues/164)
 
 ## CopernicusMarine v0.4.5
 

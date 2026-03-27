@@ -74,7 +74,6 @@ my_data <-
     verticalrange = c(0, -0.5),
     progress      = FALSE
 )
-#> DEBUG: detect.driver returned: ZARR (length: 1)
 
 plot(my_data["vo", drop = TRUE], col = hcl.colors(100), axes = TRUE)
 ```

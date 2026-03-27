@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.5.0001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.5.0003</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -116,7 +116,7 @@ entire layer in a product.</p>
 <span><span class="co">#&gt; longitude    1 4320         NA     NA      NA</span></span>
 <span><span class="co">#&gt; latitude     1 2041         NA     NA      NA</span></span>
 <span><span class="co">#&gt; elevation    1   50         NA     NA udunits</span></span>
-<span><span class="co">#&gt; time         1 1396 2022-06-01 1 days    Date</span></span>
+<span><span class="co">#&gt; time         1 1405 2022-06-01 1 days    Date</span></span>
 <span><span class="co">#&gt;                                                            values x/y</span></span>
 <span><span class="co">#&gt; longitude            [-180.0417,-179.9583),...,[179.875,179.9584) [x]</span></span>
 <span><span class="co">#&gt; latitude            [-80.04167,-79.95833),...,[89.95834,90.04166) [y]</span></span>
@@ -170,8 +170,9 @@ is called when the data is downloaded. Since in this particular case we
 have only selected a single raster cell, we can then plot the time
 series.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">time_slice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_as_stars.html" class="external-link">st_as_stars</a></span><span class="op">(</span><span class="va">time_slice</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_dimensions.html" class="external-link">st_get_dimension_values</a></span><span class="op">(</span><span class="va">time_slice</span>, <span class="st">"time"</span><span class="op">)</span>, <span class="va">time_slice</span><span class="op">$</span><span class="va">thetao</span>,</span>
+<code class="sourceCode R"><span><span class="va">time_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_dimensions.html" class="external-link">st_get_dimension_values</a></span><span class="op">(</span><span class="va">time_slice</span>, <span class="st">"time"</span><span class="op">)</span></span>
+<span><span class="va">time_slice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_as_stars.html" class="external-link">st_as_stars</a></span><span class="op">(</span><span class="va">time_slice</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">time_vals</span>, <span class="va">time_slice</span><span class="op">$</span><span class="va">thetao</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"date"</span>, ylab <span class="op">=</span> <span class="st">"temperature"</span>, type <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="proxy_files/figure-html/plot_time_slice-1.png" class="r-plt" alt="" width="700"></p>
 <p>We can also select a specific area, for which we will use the time
