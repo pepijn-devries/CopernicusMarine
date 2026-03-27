@@ -147,11 +147,20 @@ cms_download_subset <- function(
     result
   })
 
-  mdim_proxy <- rlang::inject(mdim_proxy[,!!!idx])
+  mdim_proxy_sub <- rlang::inject(mdim_proxy[,!!!idx])
 
   result <- .muffle_403({
-    stars::st_as_stars(mdim_proxy)
+    stars::st_as_stars(mdim_proxy_sub)
   })
+  ## restore dimension properties (they sometimes seem to get lost)
+  for (i in seq_along(dms)) {
+    cur_vals <- stars::st_get_dimension_values(result, i)
+    old_vals <- stars::st_get_dimension_values(mdim_proxy, i)
+    if (class(cur_vals) != class(old_vals)) {
+      result <-
+        stars::st_set_dimensions(result, i, values = old_vals[idx[[i]]])
+    }
+  }
   
   Sys.setenv(GDAL_NUM_THREADS = numthr)
 
