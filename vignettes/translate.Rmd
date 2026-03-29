@@ -14,6 +14,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+knitr::opts_knit$set(upload.fun = identity)
 eval_chunks <-
   CopernicusMarine:::has_blosc &&
   curl::has_internet() &&
@@ -32,7 +33,9 @@ to enter a subset of the data. The screen capture video below demonstrates how t
 form can be used to specify a request. It also shows how you can copy this request,
 in the form of command line (or Python) code, to the clipboard.
 
-![Demonstration of copying request code to clipboard](https://raw.githubusercontent.com/pepijn-devries/CopernicusMarine/refs/heads/master/pkgdown/media/obtain_cli_code.gif)
+<img src="https://raw.githubusercontent.com/pepijn-devries/CopernicusMarine/refs/heads/master/pkgdown/media/obtain_cli_code.gif"
+  alt="Demonstration of copying request code to clipboard"
+  data-external="1" width="942">
 
 Once on the clipboard, you can translate the request code to an R named `list` with
 `cms_translate()`.
