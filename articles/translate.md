@@ -19,8 +19,6 @@ also shows how you can copy this request, in the form of command line
 ![Demonstration of copying request code to
 clipboard](https://raw.githubusercontent.com/pepijn-devries/CopernicusMarine/refs/heads/master/pkgdown/media/obtain_cli_code.gif)
 
-Demonstration of copying request code to clipboard
-
 Once on the clipboard, you can translate the request code to an R named
 `list` with
 [`cms_translate()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_translate.md).
