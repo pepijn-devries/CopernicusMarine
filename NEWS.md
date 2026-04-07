@@ -1,6 +1,10 @@
-CopernicusMarine v0.4.5.0004
+CopernicusMarine v0.4.5.0005
 -------------
 
+ * Added `time` and `depth` arguments to `addCmsWMTSTiles()`
+ * Fixed some issues in `addCmsWMTSTiles()`
+ * Added `vignette("glossary")` and `cms_glossary()`
+ * Updated README.md
  * Added more safeguards to vignette to pass CRAN checks
  * Added more tests
  * Fixed [issue 164](https://github.com/pepijn-devries/CopernicusMarine/issues/164)

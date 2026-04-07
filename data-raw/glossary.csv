@@ -1,0 +1,11 @@
+Term,Meaning,Details,Example/Reference
+4D Datacube,"Multi-dimensional arrays with longitude, latitude, depth, and time",,[Spatiotemporal Arrays: Raster and Vector Datacubes](https://r-spatial.github.io/stars/)
+ARCO,"Analysis-Ready, Cloud-Optimized data",,[Introduction to the ARCO format](https://help.marine.copernicus.eu/en/articles/12332770-introduction-to-the-arco-format)
+Client,"A user or system that accesses, downloads, or uses the free and open marine data provided by the service",,
+Layer,A specific temporal resolution or subset in a product,,[cmems_mod_med_phy-temp_my_4.2km_P1M-m](https://data.marine.copernicus.eu/product/MEDSEA_MULTIYEAR_PHY_006_004/files?subdataset=cmems_mod_med_phy-tem_my_4.2km_P1Y-m_202211)
+Native files,Original storage format used by the producer before it is converted into something else,,
+Product,A dataset with a unique ID,,[MEDSEA_MULTIYEAR_PHY_006_004](https://doi.org/10.25423/CMCC/MEDSEA_MULTIYEAR_PHY_006_004_E3R1)
+STAC,SpatioTemporal Asset Catalog,"Confusingly, Copernicus Marine also uses this acronym for the Scientific And Technical Advisory Committee. In the current context the we always mean SpatioTemporal Asset Catalog. It is a convention to describe geotemporal data.",[stacspec.org](https://stacspec.org/)
+Variables,Physical quantities stored in the array,,"bottomT, thetao"
+WMTS,Web Map Tile Service,"The Web Map Tile Service (WMTS) is an international standard developed by the Open Geospatial Consortium (OGC) for serving digital map data using a cache of pre-rendered image tiles. Within the context of the package, WMTS is primarily used for rapid data visualization and inspection rather than for direct numerical analysis.",[How to use WMTS](https://help.marine.copernicus.eu/en/articles/6478168-how-to-use-wmts-to-visualize-data)
+Zarr,"Open-source specification and data format used to store large, multidimensional arrays and associated metadata","Unlike traditional monolithic files, Zarr is built specifically for object storage (like [Amazon S3](https://aws.amazon.com/s3/)). It stores data in a directory-like structure where metadata and data chunks are separate, allowing for high-speed remote access without downloading entire files.",[zarr.dev](https://zarr.dev)

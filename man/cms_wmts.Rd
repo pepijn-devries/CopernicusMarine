@@ -14,11 +14,18 @@ addCmsWMTSTiles(
   layer,
   variable,
   tilematrixset = "EPSG:3857",
+  time,
+  elevation,
   options = leaflet::WMSTileOptions(format = "image/png", transparent = TRUE),
   ...
 )
 
-cms_wmts_get_capabilities(product, layer, variable, type = c("list", "xml"))
+cms_wmts_get_capabilities(
+  product,
+  layer,
+  variable,
+  type = c("data.frame", "xml")
+)
 }
 \arguments{
 \item{product}{An identifier (type \code{character}) of the desired Copernicus marine product.
@@ -35,16 +42,21 @@ Can be obtained with \code{\link{cms_product_details}}. When omitted, all variab
 many cases \code{"EPSG:3857"} (Pseudo-Mercator) or \code{"EPSG:4326"} (World Geodetic System 1984)
 are available, but should be checked with \code{cms_wmts_details}.}
 
+\item{elevation, time}{Elevation or time dimension value for which to add
+the tiles to the map. When missing; or not matching exactly with the values
+specified by \code{cms_wmts_get_capabilities()}; the default dimension value
+will be used.}
+
 \item{options}{Passed on to \code{\link[leaflet:map-layers]{leaflet::addWMSTiles()}}.}
 
 \item{...}{Passed on to \code{\link[leaflet:map-layers]{leaflet::addWMSTiles()}}.}
 
 \item{type}{A \code{character} string indicating whether the capabilities should be returned
-as \code{"list"} (default) or \code{"xml"} (\code{\link[xml2:xml_new_document]{xml2::xml_new_document()}}).}
+as \code{"data.frame"} (default) or \code{"xml"} (\code{\link[xml2:xml_new_document]{xml2::xml_new_document()}}).}
 }
 \value{
-\code{cms_wmts_details} returns a tibble with detains on the WMTS service.
-\code{cms_wmts_getcapabilities} returns either a \code{list} or \code{xml_document} depending on the value
+\code{cms_wmts_details} returns a tibble with details on the WMTS service.
+\code{cms_wmts_get_capabilities} returns either a \code{data.frame} or \code{xml_document} depending on the value
 of \code{type}. \code{AddCmsWMTSTiles} returns a \code{leaflet} \code{map} updated with the requested tiles.
 }
 \description{
