@@ -1,0 +1,55 @@
+---
+title: "CopernicusMarine Glossary"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{CopernicusMarine Glossary}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Copernicus Marine Service organises its data in both NetCDF and Zarr
+(a cloud-native array format) and discovered through a
+[STAC (SpatioTemporal Asset Catalog) catalogue](https://stacspec.org/).
+In order to handle the data efficiently it can be useful to understand
+the terminology used by the data portal (adopted in the package).
+Fortunately, the package tackles most technical challenges for you,
+so you don't have to know all technical aspects.
+
+However, since jargon can vary among data portals, I've put together
+a glossary of terms used by Copernicus Marine. It is based on the
+excellent [tutorial](https://r-rse.github.io/emodnet-bio-r-geo-tutorials/tutorials/tutorial-04.html)
+by [Anna Krystalli](https://github.com/annakrystalli). This
+tutorial also highlights some contrasts with other data portals.
+The table below lists some important definitions and their background.
+
+```{r glossary, echo=FALSE}
+library(CopernicusMarine)
+glossary <- cms_glossary()
+glossary[] <- lapply(glossary, \(x) {
+  x <- gsub("\\[(.*?)\\]\\((.*?)\\)", "<a href='\\2'>\\1</a>", x)
+  x[is.na(x)] <- "-"
+  x
+})
+
+DT::datatable(
+  glossary,
+  filter  = "top",
+  escape  = FALSE,
+  options = list(
+    pageLength = 5,
+    rownames   = FALSE,
+    autoWidth  = TRUE,
+    dom        = "tpi",
+    columnDefs = list(
+      list(targets = 0, visible = FALSE)
+    )
+  )
+)
+```

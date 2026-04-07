@@ -18,7 +18,7 @@ test_that("Copernicus WMTS capabilities can be obtained", {
   has_gdal_utils()
   expect_true({
     cap <- cms_wmts_get_capabilities("GLOBAL_ANALYSISFORECAST_PHY_001_024")
-    inherits(cap, "list") && length(cap) > 0
+    inherits(cap, "data.frame") && nrow(cap) > 0
   })
 })
 

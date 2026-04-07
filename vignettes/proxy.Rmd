@@ -86,7 +86,7 @@ show(time_slice)
 ```
 
 As you can notice, this slicing is super fast. This is because no actual data
-is transfered yet.
+is transferred yet.
 It isn't until `st_as_stars()` is called when the data is downloaded.
 Since in this particular case we have only selected a single raster cell,
 we can then plot the time series.
