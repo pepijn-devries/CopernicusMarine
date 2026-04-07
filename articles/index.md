@@ -4,6 +4,8 @@
 
 - [BLOSC
   Support](https://pepijn-devries.github.io/CopernicusMarine/articles/blosc.md):
+- [CopernicusMarine
+  Glossary](https://pepijn-devries.github.io/CopernicusMarine/articles/glossary.md):
 - [Product
   Information](https://pepijn-devries.github.io/CopernicusMarine/articles/product-info.md):
 - [Using stars_proxy

@@ -9,7 +9,7 @@ specific products, layers and variables and add them to a leaflet map."><meta pr
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.5.0004</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,6 +21,7 @@ specific products, layers and variables and add them to a leaflet map."><meta pr
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/blosc.html">BLOSC Support</a></li>
+    <li><a class="dropdown-item" href="../articles/glossary.html">CopernicusMarine Glossary</a></li>
     <li><a class="dropdown-item" href="../articles/product-info.html">Product Information</a></li>
     <li><a class="dropdown-item" href="../articles/proxy.html">Using stars_proxy Objects</a></li>
     <li><a class="dropdown-item" href="../articles/translate.html">Translate Request</a></li>
@@ -56,11 +57,18 @@ specific products, layers and variables and add them to a <code>leaflet</code> m
 <span>  <span class="va">layer</span>,</span>
 <span>  <span class="va">variable</span>,</span>
 <span>  tilematrixset <span class="op">=</span> <span class="st">"EPSG:3857"</span>,</span>
+<span>  <span class="va">time</span>,</span>
+<span>  <span class="va">elevation</span>,</span>
 <span>  options <span class="op">=</span> <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-options.html" class="external-link">WMSTileOptions</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"image/png"</span>, transparent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">cms_wmts_get_capabilities</span><span class="op">(</span><span class="va">product</span>, <span class="va">layer</span>, <span class="va">variable</span>, type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"list"</span>, <span class="st">"xml"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">cms_wmts_get_capabilities</span><span class="op">(</span></span>
+<span>  <span class="va">product</span>,</span>
+<span>  <span class="va">layer</span>,</span>
+<span>  <span class="va">variable</span>,</span>
+<span>  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"data.frame"</span>, <span class="st">"xml"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -91,6 +99,13 @@ many cases <code>"EPSG:3857"</code> (Pseudo-Mercator) or <code>"EPSG:4326"</code
 are available, but should be checked with <code>cms_wmts_details</code>.</p></dd>
 
 
+<dt id="arg-elevation-time">elevation, time<a class="anchor" aria-label="anchor" href="#arg-elevation-time"></a></dt>
+<dd><p>Elevation or time dimension value for which to add
+the tiles to the map. When missing; or not matching exactly with the values
+specified by <code>cms_wmts_get_capabilities()</code>; the default dimension value
+will be used.</p></dd>
+
+
 <dt id="arg-options">options<a class="anchor" aria-label="anchor" href="#arg-options"></a></dt>
 <dd><p>Passed on to <code><a href="https://rstudio.github.io/leaflet/reference/map-layers.html" class="external-link">leaflet::addWMSTiles()</a></code>.</p></dd>
 
@@ -101,13 +116,13 @@ are available, but should be checked with <code>cms_wmts_details</code>.</p></dd
 
 <dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>
 <dd><p>A <code>character</code> string indicating whether the capabilities should be returned
-as <code>"list"</code> (default) or <code>"xml"</code> (<code><a href="http://xml2.r-lib.org/reference/xml_new_document.html" class="external-link">xml2::xml_new_document()</a></code>).</p></dd>
+as <code>"data.frame"</code> (default) or <code>"xml"</code> (<code><a href="http://xml2.r-lib.org/reference/xml_new_document.html" class="external-link">xml2::xml_new_document()</a></code>).</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p><code>cms_wmts_details</code> returns a tibble with detains on the WMTS service.
-<code>cms_wmts_getcapabilities</code> returns either a <code>list</code> or <code>xml_document</code> depending on the value
+    <p><code>cms_wmts_details</code> returns a tibble with details on the WMTS service.
+<code>cms_wmts_get_capabilities</code> returns either a <code>data.frame</code> or <code>xml_document</code> depending on the value
 of <code>type</code>. <code>AddCmsWMTSTiles</code> returns a <code>leaflet</code> <code>map</code> updated with the requested tiles.</p>
     </div>
     <div class="section level2">

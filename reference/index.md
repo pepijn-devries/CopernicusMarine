@@ -17,6 +17,8 @@
   from Copernicus
 - [`cms_get_client_info()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_get_client_info.md)
   **\[stable\]** : Get information about Copernicus Marine clients
+- [`cms_glossary()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_glossary.md)
+  : Get Copernicus Marine Terminology Glossary
 - [`cms_login()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_login.md)
   **\[stable\]** : Contact Copernicus Marine login page
 - [`cms_native_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_proxy.md)

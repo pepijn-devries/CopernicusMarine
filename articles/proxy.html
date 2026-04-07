@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.5.0004</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +39,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/blosc.html">BLOSC Support</a></li>
+    <li><a class="dropdown-item" href="../articles/glossary.html">CopernicusMarine Glossary</a></li>
     <li><a class="dropdown-item" href="../articles/product-info.html">Product Information</a></li>
     <li><a class="dropdown-item" href="../articles/proxy.html">Using stars_proxy Objects</a></li>
     <li><a class="dropdown-item" href="../articles/translate.html">Translate Request</a></li>
@@ -116,7 +117,7 @@ entire layer in a product.</p>
 <span><span class="co">#&gt; longitude    1 4320         NA     NA      NA</span></span>
 <span><span class="co">#&gt; latitude     1 2041         NA     NA      NA</span></span>
 <span><span class="co">#&gt; elevation    1   50         NA     NA udunits</span></span>
-<span><span class="co">#&gt; time         1 1407 2022-06-01 1 days    Date</span></span>
+<span><span class="co">#&gt; time         1 1416 2022-06-01 1 days    Date</span></span>
 <span><span class="co">#&gt;                                                            values x/y</span></span>
 <span><span class="co">#&gt; longitude            [-180.0417,-179.9583),...,[179.875,179.9584) [x]</span></span>
 <span><span class="co">#&gt; latitude            [-80.04167,-79.95833),...,[89.95834,90.04166) [y]</span></span>
@@ -165,10 +166,10 @@ records.</p>
 <span><span class="co">#&gt; elevation   48   48         NA     NA udunits [-2.646,-1.541) [m]    </span></span>
 <span><span class="co">#&gt; time         1  400 2022-06-01 1 days    Date                NULL</span></span></code></pre></div>
 <p>As you can notice, this slicing is super fast. This is because no
-actual data is transfered yet. It isn’t until <code><a href="https://r-spatial.github.io/stars/reference/st_as_stars.html" class="external-link">st_as_stars()</a></code>
-is called when the data is downloaded. Since in this particular case we
-have only selected a single raster cell, we can then plot the time
-series.</p>
+actual data is transferred yet. It isn’t until
+<code><a href="https://r-spatial.github.io/stars/reference/st_as_stars.html" class="external-link">st_as_stars()</a></code> is called when the data is downloaded. Since
+in this particular case we have only selected a single raster cell, we
+can then plot the time series.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">time_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_dimensions.html" class="external-link">st_get_dimension_values</a></span><span class="op">(</span><span class="va">time_slice</span>, <span class="st">"time"</span><span class="op">)</span></span>
 <span><span class="va">time_slice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_as_stars.html" class="external-link">st_as_stars</a></span><span class="op">(</span><span class="va">time_slice</span><span class="op">)</span></span>

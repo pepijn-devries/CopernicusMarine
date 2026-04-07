@@ -56,6 +56,12 @@ should consult
 [`vignette("product-info")`](https://pepijn-devries.github.io/CopernicusMarine/articles/product-info.md).
 Please check the manual for complete documentation of the package.
 
+For an excellent tutorial showing how to combine multiple spatial
+datasets from different sources (amongst which is CopernicusMarine),
+check out: [EMODnet Biology Geospatial R Tutorials (Tutorial
+4)](https://r-rse.github.io/emodnet-bio-r-geo-tutorials/tutorials/tutorial-04.html)
+by [Anna Krystalli](https://github.com/annakrystalli)
+
 ### Downloading a subset
 
 The example below demonstrates how to subset a specific layer for a
@@ -155,7 +161,9 @@ leaflet::leaflet() |>
   addCmsWMTSTiles(
     product     = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
     layer       = "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
-    variable    = "thetao"
+    variable    = "thetao",
+    time        = "2026-01-01 UTC",
+    elevation   = -1.5413750410079956
   )
 ```
 

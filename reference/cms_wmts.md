@@ -15,11 +15,18 @@ addCmsWMTSTiles(
   layer,
   variable,
   tilematrixset = "EPSG:3857",
+  time,
+  elevation,
   options = leaflet::WMSTileOptions(format = "image/png", transparent = TRUE),
   ...
 )
 
-cms_wmts_get_capabilities(product, layer, variable, type = c("list", "xml"))
+cms_wmts_get_capabilities(
+  product,
+  layer,
+  variable,
+  type = c("data.frame", "xml")
+)
 ```
 
 ## Arguments
@@ -56,6 +63,13 @@ cms_wmts_get_capabilities(product, layer, variable, type = c("list", "xml"))
   Geodetic System 1984) are available, but should be checked with
   `cms_wmts_details`.
 
+- elevation, time:
+
+  Elevation or time dimension value for which to add the tiles to the
+  map. When missing; or not matching exactly with the values specified
+  by `cms_wmts_get_capabilities()`; the default dimension value will be
+  used.
+
 - options:
 
   Passed on to
@@ -69,15 +83,15 @@ cms_wmts_get_capabilities(product, layer, variable, type = c("list", "xml"))
 - type:
 
   A `character` string indicating whether the capabilities should be
-  returned as `"list"` (default) or `"xml"`
+  returned as `"data.frame"` (default) or `"xml"`
   ([`xml2::xml_new_document()`](http://xml2.r-lib.org/reference/xml_new_document.md)).
 
 ## Value
 
-`cms_wmts_details` returns a tibble with detains on the WMTS service.
-`cms_wmts_getcapabilities` returns either a `list` or `xml_document`
-depending on the value of `type`. `AddCmsWMTSTiles` returns a `leaflet`
-`map` updated with the requested tiles.
+`cms_wmts_details` returns a tibble with details on the WMTS service.
+`cms_wmts_get_capabilities` returns either a `data.frame` or
+`xml_document` depending on the value of `type`. `AddCmsWMTSTiles`
+returns a `leaflet` `map` updated with the requested tiles.
 
 ## Author
 

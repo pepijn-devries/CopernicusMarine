@@ -109,7 +109,7 @@ cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024") |> summary()
 #> description      1     -none- character
 #> license          1     -none- character
 #> providers        2     -none- list     
-#> keywords        52     -none- list     
+#> keywords        39     -none- list     
 #> links           30     -none- list     
 #> extent           2     -none- list     
 #> assets           1     -none- list     
@@ -162,7 +162,7 @@ st_dimensions(myproxy)
 #> longitude    1 4320         NA     NA      NA
 #> latitude     1 2041         NA     NA      NA
 #> elevation    1   50         NA     NA udunits
-#> time         1 1407 2022-06-01 1 days    Date
+#> time         1 1416 2022-06-01 1 days    Date
 #>                                                            values x/y
 #> longitude            [-180.0417,-179.9583),...,[179.875,179.9584) [x]
 #> latitude            [-80.04167,-79.95833),...,[89.95834,90.04166) [y]

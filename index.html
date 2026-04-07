@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.5.0004</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +42,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="articles/blosc.html">BLOSC Support</a></li>
+    <li><a class="dropdown-item" href="articles/glossary.html">CopernicusMarine Glossary</a></li>
     <li><a class="dropdown-item" href="articles/product-info.html">Product Information</a></li>
     <li><a class="dropdown-item" href="articles/proxy.html">Using stars_proxy Objects</a></li>
     <li><a class="dropdown-item" href="articles/translate.html">Translate Request</a></li>
@@ -103,6 +104,7 @@
 <li><a href="#sec-wtms">Using the WMTS server</a></li>
 </ul>
 <p>If you want to explore the available products and their layers, you should consult <code><a href="articles/product-info.html">vignette("product-info")</a></code>. Please check the manual for complete documentation of the package.</p>
+<p>For an excellent tutorial showing how to combine multiple spatial datasets from different sources (amongst which is CopernicusMarine), check out: <a href="https://r-rse.github.io/emodnet-bio-r-geo-tutorials/tutorials/tutorial-04.html" class="external-link">EMODnet Biology Geospatial R Tutorials (Tutorial 4)</a> by <a href="https://github.com/annakrystalli" class="external-link">Anna Krystalli</a></p>
 <h3 id="usage-1">
 Downloading a subset
 <a class="anchor" aria-label="anchor" href="#usage-1"></a>
@@ -172,7 +174,9 @@ Copernicus Web Map Tile Services (WMTS)
 <span>  <span class="fu"><a href="reference/cms_wmts.html">addCmsWMTSTiles</a></span><span class="op">(</span></span>
 <span>    product     <span class="op">=</span> <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span>,</span>
 <span>    layer       <span class="op">=</span> <span class="st">"cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m"</span>,</span>
-<span>    variable    <span class="op">=</span> <span class="st">"thetao"</span></span>
+<span>    variable    <span class="op">=</span> <span class="st">"thetao"</span>,</span>
+<span>    time        <span class="op">=</span> <span class="st">"2026-01-01 UTC"</span>,</span>
+<span>    elevation   <span class="op">=</span> <span class="op">-</span><span class="fl">1.5413750410079956</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-leaflet-1.png" alt="Static example image of a leaflet map"></p>
 <div class="section level3">
