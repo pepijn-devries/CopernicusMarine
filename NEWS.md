@@ -1,4 +1,4 @@
-CopernicusMarine v0.4.5.0005
+CopernicusMarine v0.4.6
 -------------
 
  * Added `time` and `depth` arguments to `addCmsWMTSTiles()`
