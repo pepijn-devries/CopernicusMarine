@@ -5,3 +5,10 @@ test_that("Glossary is retrieved succesfully", {
     result
   }, "data.frame")
 })
+
+test_that("Glossary can be filtered", {
+  expect_true({
+    result <- cms_glossary("Variable")
+    nrow(result) == 1
+  })
+})

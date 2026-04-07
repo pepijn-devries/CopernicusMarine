@@ -41,21 +41,6 @@
 
 }
 
-.parse_themes <- function(node) {
-  node <-  xml2::xml_ns_strip(node)
-  child_themes <- xml2::xml_find_all(node, "./Theme")
-  
-  if (length(child_themes) > 0) {
-    return(lapply(child_themes, .parse_themes))
-  } else {
-    return(list(
-      Title      = xml2::xml_text(xml2::xml_find_first(node, ".//Title")),
-      Identifier = xml2::xml_text(xml2::xml_find_first(node, ".//Identifier")),
-      LayerRef   = xml2::xml_text(xml2::xml_find_all(  node, "./LayerRef"))
-    ))
-  }
-}
-
 #' Obtain a WMTS entry for specific Copernicus marine products and add to a leaflet map
 #'
 #' `r lifecycle::badge('stable')` Functions for retrieving Web Map Tile Services information for
