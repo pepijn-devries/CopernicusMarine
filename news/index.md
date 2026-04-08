@@ -1,6 +1,12 @@
 # Changelog
 
+## CopernicusMarine v0.4.6.0001
+
+- Fixed tests
+
 ## CopernicusMarine v0.4.6
+
+CRAN release: 2026-04-07
 
 - Added `time` and `depth` arguments to
   [`addCmsWMTSTiles()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_wmts.md)
