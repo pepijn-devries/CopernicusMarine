@@ -1,5 +1,6 @@
 test_that("native download works", {
   skip_if_offline()
+  has_account_details()
   skip_on_cran()
   expect_true({
     Sys.setenv(R_COPERNICUS_MARINE_TESTING = TRUE)
@@ -26,6 +27,7 @@ test_that("native download works", {
 
 test_that("Native files can be listed", {
   skip_if_offline()
+  has_account_details()
   skip_on_cran()
   expect_true({
     pref <- "2025/06/"
@@ -42,6 +44,7 @@ test_that("Native files can be listed", {
 
 test_that("A stars proxy object can be created from a native service", {
   skip_if_offline()
+  has_account_details()
   skip_on_cran()
   expect_true({
     my_proxy <-
@@ -59,6 +62,7 @@ test_that("A stars proxy object can be created from a native service", {
 
 test_that("Warn when native proxy request matches multiple files", {
   skip_if_offline()
+  has_account_details()
   skip_on_cran()
   expect_warning({
     cms_native_proxy(
