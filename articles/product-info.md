@@ -23,6 +23,7 @@ or
 [`cms_products_list2()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_products_list.md):
 
 ``` r
+
 library(CopernicusMarine)
 
 cms_products_list() |> head(3)
@@ -61,6 +62,7 @@ catalogue. These are not well documented. The example below shows how to
 search for free text and filter on area and variables:
 
 ``` r
+
 cms_products_list(freeText = "wave",
                   facetValues = list(areas             = list("Europe"),
                                      specificVariables = list("Velocity")))
@@ -99,6 +101,7 @@ too fancy, but it will help you understand what the product is all
 about.
 
 ``` r
+
 cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024") |> summary()
 #>                 Length Class  Mode     
 #> id               1     -none- character
@@ -127,6 +130,7 @@ its dimensions. You can use
 for this purpose. It returns a named list.
 
 ``` r
+
 meta_info <- cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 
 ## Get the dimension properties for the first layer in this product
@@ -151,6 +155,7 @@ and call
 on it:
 
 ``` r
+
 library(stars) |> suppressMessages()
 
 myproxy <- cms_zarr_proxy(
@@ -162,7 +167,7 @@ st_dimensions(myproxy)
 #> longitude    1 4320         NA     NA      NA
 #> latitude     1 2041         NA     NA      NA
 #> elevation    1   50         NA     NA udunits
-#> time         1 1417 2022-06-01 1 days    Date
+#> time         1 1445 2022-06-01 1 days    Date
 #>                                                            values x/y
 #> longitude            [-180.0417,-179.9583),...,[179.875,179.9584) [x]
 #> latitude            [-80.04167,-79.95833),...,[89.95834,90.04166) [y]
@@ -181,6 +186,7 @@ access those directly, you are on your own. It is easier to use any of
 the wrappers provided by this package to access the data.
 
 ``` r
+
 cms_product_services("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 #> # A tibble: 22 × 61
 #>    id        type  stac_version stac_extensions geometry     bbox   properties  

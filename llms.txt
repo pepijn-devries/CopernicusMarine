@@ -29,12 +29,14 @@ third party software, other than packages available from
 Install CRAN release:
 
 ``` r
+
 install.packages("CopernicusMarine")
 ```
 
 Install latest developmental version from R-Universe:
 
 ``` r
+
 install.packages("CopernicusMarine", repos = c('https://pepijn-devries.r-universe.dev', 'https://cloud.r-project.org'))
 ```
 
@@ -59,7 +61,7 @@ Please check the manual for complete documentation of the package.
 For an excellent tutorial showing how to combine multiple spatial
 datasets from different sources (amongst which is CopernicusMarine),
 check out: [EMODnet Biology Geospatial R Tutorials (Tutorial
-4)](https://r-rse.github.io/emodnet-bio-r-geo-tutorials/tutorials/tutorial-04.html)
+4)](https://emodnet.github.io/emodnet-bio-r-geo-tutorials/tutorials/tutorial-04.html)
 by [Anna Krystalli](https://github.com/annakrystalli)
 
 ### Downloading a subset
@@ -70,6 +72,7 @@ and `verticalrange` arguments. The subset is downloaded to memory
 represented as a [`stars`](https://r-spatial.github.io/stars/) object.
 
 ``` r
+
 my_data <-
   cms_download_subset(
     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -107,6 +110,7 @@ You can list available files with (restricted to first 10 results with
 `max=10`):
 
 ``` r
+
 native_files <-
   cms_list_native_files(
     "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -132,6 +136,7 @@ native_files
 Downloading a specific (or multiple file) can be done with:
 
 ``` r
+
 cms_download_native(
   destination   = tempdir(),
   product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
@@ -155,6 +160,7 @@ using [leaflet](https://rstudio.github.io/leaflet/). This page is
 rendered statically and resulting in a non-interactive map.
 
 ``` r
+
 leaflet::leaflet() |>
   leaflet::setView(lng = 3, lat = 54, zoom = 4) |>
   leaflet::addProviderTiles("Esri.WorldImagery") |>
@@ -180,6 +186,7 @@ used in this documentation, which can be easily done with the following
 code:
 
 ``` r
+
 cms_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")$doi
 #> [1] "E.U. Copernicus Marine Service Information; Global Ocean Physics Analysis and Forecast - GLOBAL_ANALYSISFORECAST_PHY_001_024 (2016-10-14). DOI:10.48670/moi-00016"
 ```

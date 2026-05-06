@@ -33,6 +33,7 @@ brew install gdal
 ```
 
 ``` r
+
 install.packages("sf", type = "source", configure.args = "--with-proj-lib=$(brew --prefix)/lib/")
 ```
 

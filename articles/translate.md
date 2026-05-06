@@ -31,6 +31,7 @@ line code, obtained from the website, can be translated into a named
 `list`.
 
 ``` r
+
 library(CopernicusMarine)
 ## Example of command line code
 ## copied from website:
@@ -72,6 +73,7 @@ data? You can pass the named `list` as arguments to
 using [`do.call()`](https://rdrr.io/r/base/do.call.html). Like this:
 
 ``` r
+
 result <- do.call(cms_download_subset, translated)
 plot(result, col = hcl.colors(100), axes = TRUE)
 ```

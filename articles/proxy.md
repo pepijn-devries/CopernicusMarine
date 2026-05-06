@@ -27,6 +27,7 @@ created with
 It will connect with an entire layer in a product.
 
 ``` r
+
 library(CopernicusMarine) |> suppressMessages()
 library(stars) |> suppressMessages()
 
@@ -50,7 +51,7 @@ print(my_proxy_tc)
 #> longitude    1 4320         NA     NA      NA
 #> latitude     1 2041         NA     NA      NA
 #> elevation    1   50         NA     NA udunits
-#> time         1 1417 2022-06-01 1 days    Date
+#> time         1 1445 2022-06-01 1 days    Date
 #>                                                            values x/y
 #> longitude            [-180.0417,-179.9583),...,[179.875,179.9584) [x]
 #> latitude            [-80.04167,-79.95833),...,[89.95834,90.04166) [y]
@@ -87,6 +88,7 @@ followed by the elevation. The last dimension is time, were we select
 the first four hundred records.
 
 ``` r
+
 time_slice <- my_proxy_gc[,2000, 1000, 48, 1:400]
 show(time_slice)
 #> stars_proxy object with 1 attribute in 1 file(s):
@@ -109,6 +111,7 @@ have only selected a single raster cell, we can then plot the time
 series.
 
 ``` r
+
 time_vals <- st_get_dimension_values(time_slice, "time")
 time_slice <- st_as_stars(time_slice)
 plot(time_vals, time_slice$thetao,
@@ -121,6 +124,7 @@ We can also select a specific area, for which we will use the time
 chunked proxy.
 
 ``` r
+
 geo_slice <- my_proxy_tc[,2000:2500, 1500:1750, 50, 500]
 plot(geo_slice, col = hcl.colors(10))
 ```

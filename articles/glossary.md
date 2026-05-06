@@ -11,7 +11,7 @@ you don’t have to know all technical aspects.
 However, since jargon can vary among data portals, I’ve put together a
 glossary of terms used by Copernicus Marine. It is based on the
 excellent
-[tutorial](https://r-rse.github.io/emodnet-bio-r-geo-tutorials/tutorials/tutorial-04.html)
+[tutorial](https://emodnet.github.io/emodnet-bio-r-geo-tutorials/tutorials/tutorial-04.html)
 by [Anna Krystalli](https://github.com/annakrystalli). This tutorial
 also highlights some contrasts with other data portals. The table below
 lists some important definitions and their background.
