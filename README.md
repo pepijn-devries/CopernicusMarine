@@ -72,7 +72,7 @@ complete documentation of the package.
 For an excellent tutorial showing how to combine multiple spatial
 datasets from different sources (amongst which is CopernicusMarine),
 check out: [EMODnet Biology Geospatial R Tutorials (Tutorial
-4)](https://r-rse.github.io/emodnet-bio-r-geo-tutorials/tutorials/tutorial-04.html)
+4)](https://emodnet.github.io/emodnet-bio-r-geo-tutorials/tutorials/tutorial-04.html)
 by [Anna Krystalli](https://github.com/annakrystalli)
 
 <h3 id="sec-subset">
