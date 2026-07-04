@@ -20,3 +20,8 @@ Useful links:
 
 **Maintainer**: Pepijn de Vries <pepijn.devries@outlook.com>
 ([ORCID](https://orcid.org/0000-0002-7961-6646)) \[data contributor\]
+
+Authors:
+
+- Pepijn de Vries <pepijn.devries@outlook.com>
+  ([ORCID](https://orcid.org/0000-0002-7961-6646)) \[data contributor\]

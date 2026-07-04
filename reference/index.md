@@ -23,6 +23,9 @@
   **\[stable\]** : Contact Copernicus Marine login page
 - [`cms_native_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_proxy.md)
   **\[experimental\]** : Get a proxy stars object from a native service
+- [`cms_native_s3()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_s3.md)
+  **\[experimental\]** : Navigate through CopernicusMarine native file
+  via S3
 - [`cms_product_details()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_product_details.md)
   **\[stable\]** : Obtain details for a specific Copernicus marine
   product
