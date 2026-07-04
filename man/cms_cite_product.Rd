@@ -22,10 +22,10 @@ listed at Copernicus. Note that the citing formatting does not appear to be stan
 cms_cite_product("SST_MED_PHY_SUBSKIN_L4_NRT_010_036")
 }
 \seealso{
-Other product-functions: 
-\code{\link{cms_product_details}()},
-\code{\link{cms_product_services}()},
-\code{\link{cms_products_list}()}
+Other product-functions:
+\code{\link[=cms_product_details]{cms_product_details()}},
+\code{\link[=cms_product_services]{cms_product_services()}},
+\code{\link[=cms_products_list]{cms_products_list()}}
 }
 \author{
 Pepijn de Vries

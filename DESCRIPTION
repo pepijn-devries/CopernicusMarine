@@ -1,7 +1,7 @@
 Package: CopernicusMarine
 Type: Package
 Title: Search Download and Handle Data from Copernicus Marine Service Information
-Version: 0.4.6.0002
+Version: 0.4.6.0003
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre", "dtc"),
     email = "pepijn.devries@outlook.com",
     comment = c(ORCID = "0000-0002-7961-6646")))
@@ -15,13 +15,13 @@ Description: Subset and download data from EU Copernicus Marine
 Depends:
     R (>= 4.1.0)
 Imports:
-    aws.s3,
     cli,
     dplyr,
     httr2 (>= 1.1.0),
     jsonlite,
     leaflet,
     lubridate,
+    paws,
     purrr,
     rlang,
     sf (>= 1.0-24),
@@ -48,7 +48,6 @@ BugReports: https://github.com/pepijn-devries/CopernicusMarine/issues
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.2
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
 Collate: 
@@ -70,3 +69,4 @@ Collate:
     'translate.R'
 Language: en-GB
 VignetteBuilder: knitr
+Config/roxygen2/version: 8.0.0

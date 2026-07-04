@@ -47,9 +47,9 @@ the tiles to the map. When missing; or not matching exactly with the values
 specified by \code{cms_wmts_get_capabilities()}; the default dimension value
 will be used.}
 
-\item{options}{Passed on to \code{\link[leaflet:map-layers]{leaflet::addWMSTiles()}}.}
+\item{options}{Passed on to \code{\link[leaflet:addWMSTiles]{leaflet::addWMSTiles()}}.}
 
-\item{...}{Passed on to \code{\link[leaflet:map-layers]{leaflet::addWMSTiles()}}.}
+\item{...}{Passed on to \code{\link[leaflet:addWMSTiles]{leaflet::addWMSTiles()}}.}
 
 \item{type}{A \code{character} string indicating whether the capabilities should be returned
 as \code{"data.frame"} (default) or \code{"xml"} (\code{\link[xml2:xml_new_document]{xml2::xml_new_document()}}).}
