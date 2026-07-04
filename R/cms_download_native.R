@@ -19,6 +19,10 @@ NULL
 #' @returns Returns a [paws::s3()] object, specifically representing
 #' the service that hosts Copernicus Marine native data.
 #' @examples
+#' if (interactive()) {
+#'   my_s3 <- cms_native_s3()
+#'   my_s3$list_objects_v2("mdl-native-14", MaxKeys = 5)
+#' }
 #' # TODO
 #' @family download
 #' @export
