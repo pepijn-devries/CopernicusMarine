@@ -15,7 +15,7 @@
 #' unavailable.
 #' @rdname cms_products_list
 #' @name cms_products_list
-#' @family product-functions
+#' @family product
 #' @examples
 #' cms_products_list()
 #' 

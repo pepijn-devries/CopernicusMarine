@@ -8,7 +8,7 @@
 #' @returns Returns a named `list` with product details.
 #' @rdname cms_product_details
 #' @name cms_product_details
-#' @family product-functions
+#' @family product
 #' @examples
 #' if (interactive()) {
 #'   cms_product_details("GLOBAL_ANALYSISFORECAST_PHY_001_024")
