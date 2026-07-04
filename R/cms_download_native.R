@@ -19,7 +19,11 @@ NULL
 #' @returns Returns a [paws::s3()] object, specifically representing
 #' the service that hosts Copernicus Marine native data.
 #' @examples
-#' # TODO
+#' if (interactive()) {
+#'   my_s3 <- cms_native_s3()
+#'   my_s3$list_objects_v2("mdl-native-14", MaxKeys = 5)
+#' }
+#' @family download
 #' @export
 cms_native_s3 <- function(
     config      = list(),
@@ -85,6 +89,7 @@ cms_native_s3 <- function(
 #'   )
 #' }
 #' @rdname cms_download_native
+#' @family download
 #' @export
 cms_download_native <- function(destination, product, layer, pattern, prefix, progress = TRUE, ...,
                                 username = cms_get_username(),
@@ -148,6 +153,7 @@ cms_download_native <- function(destination, product, layer, pattern, prefix, pr
 }
 
 #' @rdname cms_download_native
+#' @family product
 #' @export
 cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ...) {
   if (missing(pattern)) pattern <- ""
@@ -218,7 +224,7 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
 
 #' Get a proxy stars object from a native service
 #' 
-#' `r lifecycle::badge('experimental')` The advantage of
+#' `r lifecycle::badge('stable')` The advantage of
 #' [`stars_proxy` objects](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects),
 #' is that they do not contain any data. They are therefore fast to handle
 #' and consume only limited memory. You can still manipulate the object
@@ -242,6 +248,7 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
 #'   plot(native_proxy["zos", 1:1000, 1:500, 1, 1], axes = TRUE)
 #' }
 #' @author Pepijn de Vries
+#' @family download
 #' @export
 cms_native_proxy <- function(product, layer, pattern, prefix, variable, ...,
                              username = cms_get_username(),

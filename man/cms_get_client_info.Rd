@@ -23,6 +23,12 @@ if (interactive()) {
   cms_get_client_info()
 }
 }
+\seealso{
+Other supporting:
+\code{\link[=cms_glossary]{cms_glossary()}},
+\code{\link[=cms_translate]{cms_translate()}}
+}
 \author{
 Pepijn de Vries
 }
+\concept{supporting}

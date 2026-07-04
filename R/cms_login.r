@@ -17,6 +17,7 @@
 #' }
 #' @name cms_login
 #' @rdname cms_login
+#' @family authentication
 #' @export
 cms_login <- function(
     username = cms_get_username(),
@@ -84,6 +85,7 @@ cms_login <- function(
 #' }
 #' @author Pepijn de Vries
 #' @rdname account
+#' @family authentication
 #' @export
 cms_get_username <- function() {
   username <- Sys.getenv("COPERNICUSMARINE_SERVICE_USERNAME")
@@ -92,6 +94,7 @@ cms_get_username <- function() {
 }
 
 #' @rdname account
+#' @family authentication
 #' @export
 cms_get_password <- function() {
   password <- Sys.getenv("COPERNICUSMARINE_SERVICE_PASSWORD")
@@ -100,6 +103,7 @@ cms_get_password <- function() {
 }
 
 #' @rdname account
+#' @family authentication
 #' @export
 cms_set_username <- function(username, method = c("option", "sysenv")) {
   method <- match.arg(method)
@@ -115,6 +119,7 @@ cms_set_username <- function(username, method = c("option", "sysenv")) {
 }
 
 #' @rdname account
+#' @family authentication
 #' @export
 cms_set_password <- function(password, method = c("option", "sysenv")) {
   method <- match.arg(method)

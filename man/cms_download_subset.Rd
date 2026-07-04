@@ -61,7 +61,7 @@ before.}
 Returns a \code{\link[stars:st_as_stars]{stars::st_as_stars()}} object.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Subset and download a specific marine product
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Subset and download a specific marine product
 from Copernicus.
 }
 \examples{
@@ -81,6 +81,14 @@ if (interactive()) {
   message("Make sure to run this in an interactive environment")
 }
 }
+\seealso{
+Other download:
+\code{\link[=cms_download_native]{cms_download_native()}},
+\code{\link[=cms_native_proxy]{cms_native_proxy()}},
+\code{\link[=cms_native_s3]{cms_native_s3()}},
+\code{\link[=cms_zarr_proxy]{cms_zarr_proxy()}}
+}
 \author{
 Pepijn de Vries
 }
+\concept{download}

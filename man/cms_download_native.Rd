@@ -86,6 +86,22 @@ if (interactive()) {
   )
 }
 }
+\seealso{
+Other download:
+\code{\link[=cms_download_subset]{cms_download_subset()}},
+\code{\link[=cms_native_proxy]{cms_native_proxy()}},
+\code{\link[=cms_native_s3]{cms_native_s3()}},
+\code{\link[=cms_zarr_proxy]{cms_zarr_proxy()}}
+
+Other product:
+\code{\link[=cms_cite_product]{cms_cite_product()}},
+\code{\link[=cms_product_details]{cms_product_details()}},
+\code{\link[=cms_product_metadata]{cms_product_metadata()}},
+\code{\link[=cms_product_services]{cms_product_services()}},
+\code{\link[=cms_products_list]{cms_products_list()}}
+}
 \author{
 Pepijn de Vries
 }
+\concept{download}
+\concept{product}

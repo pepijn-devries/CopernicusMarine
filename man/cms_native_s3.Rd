@@ -70,5 +70,16 @@ convenient routes:
 }
 }
 \examples{
-# TODO
+if (interactive()) {
+  my_s3 <- cms_native_s3()
+  my_s3$list_objects_v2("mdl-native-14", MaxKeys = 5)
 }
+}
+\seealso{
+Other download:
+\code{\link[=cms_download_native]{cms_download_native()}},
+\code{\link[=cms_download_subset]{cms_download_subset()}},
+\code{\link[=cms_native_proxy]{cms_native_proxy()}},
+\code{\link[=cms_zarr_proxy]{cms_zarr_proxy()}}
+}
+\concept{download}

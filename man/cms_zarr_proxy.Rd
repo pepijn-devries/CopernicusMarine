@@ -39,7 +39,7 @@ or \code{"geoChunked"}.}
 A \href{https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects}{\code{stars_proxy} object}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} The advantage of
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} The advantage of
 \href{https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects}{\code{stars_proxy} objects},
 is that they do not contain any data. They are therefore fast to handle
 and consume only limited memory. You can still manipulate the object
@@ -59,6 +59,14 @@ if (interactive()) {
   plot(myproxy["uo",1:200,1:100,50,1], axes = TRUE)
 }
 }
+\seealso{
+Other download:
+\code{\link[=cms_download_native]{cms_download_native()}},
+\code{\link[=cms_download_subset]{cms_download_subset()}},
+\code{\link[=cms_native_proxy]{cms_native_proxy()}},
+\code{\link[=cms_native_s3]{cms_native_s3()}}
+}
 \author{
 Pepijn de Vries
 }
+\concept{download}

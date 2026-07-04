@@ -1,6 +1,6 @@
 #' Translate Python code or command line request to R list
 #' 
-#' `r lifecycle::badge('experimental')` Use the Copernicus Marine Service
+#' `r lifecycle::badge('stable')` Use the Copernicus Marine Service
 #' website to navigate datasets
 #' <https://data.marine.copernicus.eu/products>. You can specify
 #' a query using the website's download form, and copy it's automation
@@ -51,6 +51,7 @@
 #'   translated <- cms_translate(cli_code)
 #'   do.call(cms_download_subset, translated)
 #' }
+#' @family supporting
 #' @export
 cms_translate <- function(text, ...) {
   if (missing(text)) {

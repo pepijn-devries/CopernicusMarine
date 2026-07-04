@@ -1,6 +1,6 @@
 #' Subset and download a specific marine product from Copernicus
 #'
-#' `r lifecycle::badge('experimental')` Subset and download a specific marine product
+#' `r lifecycle::badge('stable')` Subset and download a specific marine product
 #' from Copernicus.
 #' @include cms_login.r
 #' @param product An identifier (type `character`) of the desired Copernicus marine product.
@@ -47,6 +47,7 @@
 #'   message("Make sure to run this in an interactive environment")
 #' }
 #' @author Pepijn de Vries
+#' @family download
 #' @export
 cms_download_subset <- function(
     product,
@@ -397,7 +398,7 @@ cms_download_subset <- function(
 
 #' Get a proxy stars object from a Zarr service
 #' 
-#' `r lifecycle::badge('experimental')` The advantage of
+#' `r lifecycle::badge('stable')` The advantage of
 #' [`stars_proxy` objects](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects),
 #' is that they do not contain any data. They are therefore fast to handle
 #' and consume only limited memory. You can still manipulate the object
@@ -420,6 +421,7 @@ cms_download_subset <- function(
 #'     asset         = "timeChunked")
 #'   plot(myproxy["uo",1:200,1:100,50,1], axes = TRUE)
 #' }
+#' @family download
 #' @export
 cms_zarr_proxy <-
   function(

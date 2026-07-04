@@ -22,6 +22,7 @@
 #' ## Query a specific product:
 #' cms_products_list(freeText = "GLOBAL_ANALYSISFORECAST_PHY_001_024")
 #' @author Pepijn de Vries
+#' @family product
 #' @export
 cms_products_list <- function(..., info_type = c("list", "meta")) {
   info_type   <- match.arg(info_type)
@@ -62,6 +63,7 @@ cms_products_list <- function(..., info_type = c("list", "meta")) {
 
 #' @rdname cms_products_list
 #' @name cms_products_list
+#' @family product
 #' @export
 cms_products_list2 <- function(...) {
   clients <- cms_get_client_info()

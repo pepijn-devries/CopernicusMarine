@@ -18,7 +18,7 @@ on the system clipboard.}
 Returns a named list with arguments for \code{cms_download_subset()}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Use the Copernicus Marine Service
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Use the Copernicus Marine Service
 website to navigate datasets
 \url{https://data.marine.copernicus.eu/products}. You can specify
 a query using the website's download form, and copy it's automation
@@ -65,3 +65,9 @@ if (interactive()) {
   do.call(cms_download_subset, translated)
 }
 }
+\seealso{
+Other supporting:
+\code{\link[=cms_get_client_info]{cms_get_client_info()}},
+\code{\link[=cms_glossary]{cms_glossary()}}
+}
+\concept{supporting}
