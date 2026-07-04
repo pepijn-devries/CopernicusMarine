@@ -4,6 +4,7 @@ CopernicusMarine v0.4.6.0004
  * Fixed tests
  * Updated documentation
  * Switched from `aws.s3` to `paws` dependency.
+ * Promoted previously 'experimental' functions to 'stable'
 
 CopernicusMarine v0.4.6
 -------------
