@@ -29,10 +29,10 @@ if (interactive()) {
 }
 }
 \seealso{
-Other product-functions: 
-\code{\link{cms_cite_product}()},
-\code{\link{cms_product_details}()},
-\code{\link{cms_products_list}()}
+Other product-functions:
+\code{\link[=cms_cite_product]{cms_cite_product()}},
+\code{\link[=cms_product_details]{cms_product_details()}},
+\code{\link[=cms_products_list]{cms_products_list()}}
 }
 \author{
 Pepijn de Vries

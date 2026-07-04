@@ -1,6 +1,41 @@
 #' @include generics.r
 NULL
 
+#' Navigate through CopernicusMarine native file via S3
+#' 
+#' `r lifecycle::badge('experimental')`
+#' Native files (i.e. files as provided by suppliers) are hosted with the
+#' [Amazon Simple Storage Service (s3)](https://aws.amazon.com/s3/).
+#' This function generates a [paws::s3()] object, that can be
+#' used to navigate and download these files.
+#' 
+#' Note that alternative functions in this package provide more
+#' convenient routes:
+#'  * [cms_list_native_files()]
+#'  * [cms_download_native()]
+#'  * [cms_native_proxy()]
+#' @inheritParams paws::s3
+#' @param ... Ignored
+#' @returns Returns a [paws::s3()] object, specifically representing
+#' the service that hosts Copernicus Marine native data.
+#' @examples
+#' # TODO
+#' @export
+cms_native_s3 <- function(
+    config      = list(),
+    credentials = list( anonymous = TRUE ),
+    endpoint    = "https://s3.waw3-1.cloudferro.com",
+    region      = "us-east-1",
+    ...) {
+
+  paws::s3(
+    config      = config,
+    credentials = credentials,
+    endpoint    = endpoint,
+    region      = region
+  )
+}
+
 #' Download raw files as provided to Copernicus Marine
 #' 
 #' `r lifecycle::badge('stable')` Full marine data sets can be downloaded using the functions
@@ -59,7 +94,7 @@ cms_download_native <- function(destination, product, layer, pattern, prefix, pr
   .try_login(username, password)
 
   file_list <- cms_list_native_files(product, layer, pattern, prefix)
-  
+
   for (i in nrow(file_list)) {
     path_out <- unlist(strsplit(file_list$Key[[i]], "/"))[-1:-2]
     file_out <- path_out[length(path_out)]
@@ -72,22 +107,26 @@ cms_download_native <- function(destination, product, layer, pattern, prefix, pr
       j <- j + 1
       if (j > 10) stop("Failed to create directory for downloaded file")
     }
-    
     con_out <- file(file.path(path_out, file_out), "wb")
-    con_in <- aws.s3::s3connection(
-      file_list$Key[[i]],
-      region = "",
-      bucket = file_list$Bucket[[1]],
-      base_url = file_list$base_url
-    )
-    
+    cms_s3 <- cms_native_s3(
+      endpoint = paste0("https://", file_list$base_url[[1]]))
+    url <-
+      cms_s3$generate_presigned_url(
+        "get_object",
+        params = list(Bucket = file_list$Bucket[[1]],
+                      Key = file_list$Key[[1]])
+      )
+    con_in <-
+      httr2::request(url) |>
+      httr2::req_perform_connection()
+
     if (progress) cli::cli_inform("Downloading file {i} of {nrow(file_list)}.")
     if (progress) cli::cli_progress_bar(type = "download", total = as.numeric(file_list$Size))
     
     testing_mode <- Sys.getenv("R_COPERNICUS_MARINE_TESTING") == "TRUE"
     tryCatch({
       while (TRUE) {
-        chunk <- readBin(con_in, "raw", 10240L)
+        chunk <- httr2::resp_stream_raw(con_in)
         writeBin(chunk, con_out)
         if (progress) cli::cli_progress_update(length(chunk) |> as.numeric())
         if (length(chunk) == 0 || testing_mode) break
@@ -115,19 +154,34 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
   if (missing(layer)) layer <- ""
   if (missing(prefix)) prefix <- NULL
   s3_info <- .preprocess_s3(product, layer, "native_href")
+  if (!is.finite(max)) max <- NULL
+  cms_s3 <- cms_native_s3(endpoint = s3_info$endpoint_url)
+  
+  result <- list()
+  token <- NULL
+  repeat {
+    chunk <-
+      cms_s3$list_objects_v2(
+        s3_info$bucket,
+        Prefix  = paste(c(s3_info$path, prefix), collapse = "/"),
+        MaxKeys = max,
+        ContinuationToken = token
+      )
+    
+    result <- c(result, chunk$Contents)
+    token <- chunk$NextContinuationToken
+    if (length(token) == 0 ||
+        length(result) >= ifelse(is.null(max), Inf, max)) break
+  }
 
-  with(s3_info, {
-    aws.s3::get_bucket_df(
-      region = "",
-      bucket = bucket,
-      base_url = endpoint,
-      prefix = paste(c(path, prefix), collapse = "/"),
-      max = max
-    ) |>
-      dplyr::filter(grepl(pattern, .data$Key, perl = TRUE)) |>
-      dplyr::mutate(base_url = endpoint)
+  result |> lapply(function(x) {
+    x[lengths(x) == 1] |> as.data.frame()
   }) |>
-    dplyr::as_tibble()
+    dplyr::bind_rows() |>
+    dplyr::filter(grepl(pattern, .data$Key, perl = TRUE)) |>
+    dplyr::mutate(
+      Bucket   = s3_info$bucket,
+      base_url = s3_info$endpoint)
 }
 
 .preprocess_s3 <- function(product, layer, what, ...) {

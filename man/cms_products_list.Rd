@@ -37,10 +37,10 @@ cms_products_list()
 cms_products_list(freeText = "GLOBAL_ANALYSISFORECAST_PHY_001_024")
 }
 \seealso{
-Other product-functions: 
-\code{\link{cms_cite_product}()},
-\code{\link{cms_product_details}()},
-\code{\link{cms_product_services}()}
+Other product-functions:
+\code{\link[=cms_cite_product]{cms_cite_product()}},
+\code{\link[=cms_product_details]{cms_product_details()}},
+\code{\link[=cms_product_services]{cms_product_services()}}
 }
 \author{
 Pepijn de Vries
