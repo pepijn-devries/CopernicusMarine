@@ -11,6 +11,7 @@
 #' if (interactive()) {
 #'   cms_get_client_info()
 #' }
+#' @family supporting
 #' @export
 cms_get_client_info <- function(...) {
   "https://stac.marine.copernicus.eu/clients-config-v1" |>

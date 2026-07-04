@@ -88,6 +88,7 @@
 #'   }
 #' }
 #' @author Pepijn de Vries
+#' @family leaflet
 #' @export
 cms_wmts_details <- function(product, layer, variable) {
   copwmtsinfo <-
@@ -116,6 +117,7 @@ cms_wmts_details <- function(product, layer, variable) {
 
 #' @rdname cms_wmts
 #' @name addCmsWMTSTiles
+#' @family leaflet
 #' @export
 addCmsWMTSTiles <- function(
     map, product, layer, variable,
@@ -168,6 +170,7 @@ addCmsWMTSTiles <- function(
 
 #' @rdname cms_wmts
 #' @name cms_wmts_get_capabilities
+#' @family leaflet
 #' @export
 cms_wmts_get_capabilities <- function(product, layer, variable, type = c("data.frame", "xml")) {
   type <- match.arg(type)

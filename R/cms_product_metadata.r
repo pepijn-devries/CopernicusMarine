@@ -16,6 +16,7 @@
 #'   cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 #' }
 #' @author Pepijn de Vries
+#' @family product
 #' @export
 cms_product_metadata <- function(product, ...) {
   details <- cms_product_details(product)

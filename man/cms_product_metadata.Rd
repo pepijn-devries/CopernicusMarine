@@ -28,6 +28,15 @@ if (interactive()) {
   cms_product_metadata("GLOBAL_ANALYSISFORECAST_PHY_001_024")
 }
 }
+\seealso{
+Other product:
+\code{\link[=cms_cite_product]{cms_cite_product()}},
+\code{\link[=cms_download_native]{cms_download_native()}},
+\code{\link[=cms_product_details]{cms_product_details()}},
+\code{\link[=cms_product_services]{cms_product_services()}},
+\code{\link[=cms_products_list]{cms_products_list()}}
+}
 \author{
 Pepijn de Vries
 }
+\concept{product}

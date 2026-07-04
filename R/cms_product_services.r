@@ -15,6 +15,7 @@
 #' }
 #' @family product-functions
 #' @author Pepijn de Vries
+#' @family product
 #' @export
 cms_product_services <- function(product, ...) {
   meta_data <- cms_product_metadata(product)

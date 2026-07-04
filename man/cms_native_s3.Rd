@@ -72,3 +72,11 @@ convenient routes:
 \examples{
 # TODO
 }
+\seealso{
+Other download:
+\code{\link[=cms_download_native]{cms_download_native()}},
+\code{\link[=cms_download_subset]{cms_download_subset()}},
+\code{\link[=cms_native_proxy]{cms_native_proxy()}},
+\code{\link[=cms_zarr_proxy]{cms_zarr_proxy()}}
+}
+\concept{download}

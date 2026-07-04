@@ -51,6 +51,7 @@
 #'   translated <- cms_translate(cli_code)
 #'   do.call(cms_download_subset, translated)
 #' }
+#' @family supporting
 #' @export
 cms_translate <- function(text, ...) {
   if (missing(text)) {

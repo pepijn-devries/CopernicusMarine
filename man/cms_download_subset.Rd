@@ -81,6 +81,14 @@ if (interactive()) {
   message("Make sure to run this in an interactive environment")
 }
 }
+\seealso{
+Other download:
+\code{\link[=cms_download_native]{cms_download_native()}},
+\code{\link[=cms_native_proxy]{cms_native_proxy()}},
+\code{\link[=cms_native_s3]{cms_native_s3()}},
+\code{\link[=cms_zarr_proxy]{cms_zarr_proxy()}}
+}
 \author{
 Pepijn de Vries
 }
+\concept{download}

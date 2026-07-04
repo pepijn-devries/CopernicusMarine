@@ -15,6 +15,7 @@
 #' @returns Returns a `data.frame` with glossary info.
 #' @examples
 #' cms_glossary("variable", ignore.case = TRUE)
+#' @family supporting
 #' @export
 cms_glossary <- function(search, match_fun = agrep, ...) {
   glossary <- NULL

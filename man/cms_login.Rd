@@ -29,6 +29,11 @@ if (interactive()) {
   cms_login()
 }
 }
+\seealso{
+Other authentication:
+\code{\link[=cms_get_username]{cms_get_username()}}
+}
 \author{
 Pepijn de Vries
 }
+\concept{authentication}

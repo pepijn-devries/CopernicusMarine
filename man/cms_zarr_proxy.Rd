@@ -59,6 +59,14 @@ if (interactive()) {
   plot(myproxy["uo",1:200,1:100,50,1], axes = TRUE)
 }
 }
+\seealso{
+Other download:
+\code{\link[=cms_download_native]{cms_download_native()}},
+\code{\link[=cms_download_subset]{cms_download_subset()}},
+\code{\link[=cms_native_proxy]{cms_native_proxy()}},
+\code{\link[=cms_native_s3]{cms_native_s3()}}
+}
 \author{
 Pepijn de Vries
 }
+\concept{download}

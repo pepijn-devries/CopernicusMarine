@@ -31,8 +31,16 @@ Other product-functions:
 \code{\link[=cms_cite_product]{cms_cite_product()}},
 \code{\link[=cms_product_services]{cms_product_services()}},
 \code{\link[=cms_products_list]{cms_products_list()}}
+
+Other product:
+\code{\link[=cms_cite_product]{cms_cite_product()}},
+\code{\link[=cms_download_native]{cms_download_native()}},
+\code{\link[=cms_product_metadata]{cms_product_metadata()}},
+\code{\link[=cms_product_services]{cms_product_services()}},
+\code{\link[=cms_products_list]{cms_products_list()}}
 }
 \author{
 Pepijn de Vries
 }
+\concept{product}
 \concept{product-functions}

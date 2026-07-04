@@ -30,3 +30,9 @@ that is used to render \code{vignette("glossary")}.
 \examples{
 cms_glossary("variable", ignore.case = TRUE)
 }
+\seealso{
+Other supporting:
+\code{\link[=cms_get_client_info]{cms_get_client_info()}},
+\code{\link[=cms_translate]{cms_translate()}}
+}
+\concept{supporting}

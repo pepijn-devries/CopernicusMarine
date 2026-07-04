@@ -20,6 +20,7 @@ NULL
 #' the service that hosts Copernicus Marine native data.
 #' @examples
 #' # TODO
+#' @family download
 #' @export
 cms_native_s3 <- function(
     config      = list(),
@@ -85,6 +86,7 @@ cms_native_s3 <- function(
 #'   )
 #' }
 #' @rdname cms_download_native
+#' @family download
 #' @export
 cms_download_native <- function(destination, product, layer, pattern, prefix, progress = TRUE, ...,
                                 username = cms_get_username(),
@@ -148,6 +150,7 @@ cms_download_native <- function(destination, product, layer, pattern, prefix, pr
 }
 
 #' @rdname cms_download_native
+#' @family product
 #' @export
 cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ...) {
   if (missing(pattern)) pattern <- ""
@@ -242,6 +245,7 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
 #'   plot(native_proxy["zos", 1:1000, 1:500, 1, 1], axes = TRUE)
 #' }
 #' @author Pepijn de Vries
+#' @family download
 #' @export
 cms_native_proxy <- function(product, layer, pattern, prefix, variable, ...,
                              username = cms_get_username(),

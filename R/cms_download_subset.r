@@ -47,6 +47,7 @@
 #'   message("Make sure to run this in an interactive environment")
 #' }
 #' @author Pepijn de Vries
+#' @family download
 #' @export
 cms_download_subset <- function(
     product,
@@ -420,6 +421,7 @@ cms_download_subset <- function(
 #'     asset         = "timeChunked")
 #'   plot(myproxy["uo",1:200,1:100,50,1], axes = TRUE)
 #' }
+#' @family download
 #' @export
 cms_zarr_proxy <-
   function(

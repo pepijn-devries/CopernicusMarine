@@ -65,3 +65,9 @@ if (interactive()) {
   do.call(cms_download_subset, translated)
 }
 }
+\seealso{
+Other supporting:
+\code{\link[=cms_get_client_info]{cms_get_client_info()}},
+\code{\link[=cms_glossary]{cms_glossary()}}
+}
+\concept{supporting}

@@ -67,6 +67,14 @@ if (interactive()) {
   plot(native_proxy["zos", 1:1000, 1:500, 1, 1], axes = TRUE)
 }
 }
+\seealso{
+Other download:
+\code{\link[=cms_download_native]{cms_download_native()}},
+\code{\link[=cms_download_subset]{cms_download_subset()}},
+\code{\link[=cms_native_s3]{cms_native_s3()}},
+\code{\link[=cms_zarr_proxy]{cms_zarr_proxy()}}
+}
 \author{
 Pepijn de Vries
 }
+\concept{download}

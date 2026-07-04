@@ -39,6 +39,11 @@ if (interactive()) {
   cms_get_password()
 }
 }
+\seealso{
+Other authentication:
+\code{\link[=cms_login]{cms_login()}}
+}
 \author{
 Pepijn de Vries
 }
+\concept{authentication}
