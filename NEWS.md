@@ -1,4 +1,4 @@
-CopernicusMarine v0.4.6.0005
+CopernicusMarine v0.4.6.0006
 -------------
 
  * Fixed tests

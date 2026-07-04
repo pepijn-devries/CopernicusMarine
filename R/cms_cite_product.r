@@ -8,7 +8,7 @@
 #' listed at Copernicus. Note that the citing formatting does not appear to be standardised.
 #' @rdname cms_cite_product
 #' @name cms_cite_product
-#' @family product-functions
+#' @family product
 #' @examples
 #' cms_cite_product("SST_MED_PHY_SUBSKIN_L4_NRT_010_036")
 #' @author Pepijn de Vries
