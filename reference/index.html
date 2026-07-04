@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.6.0005</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.6.0007</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,9 +39,9 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="authentication-functions">Authentication Functions<a class="anchor" aria-label="anchor" href="#authentication-functions"></a></h2>
 
-
+      <div class="section-desc"><p>Functions related to Copernicus Marine authentication</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -57,6 +57,22 @@
 
         <dt>
 
+          <code><a href="cms_login.html">cms_login()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
+        </dt>
+        <dd>Contact Copernicus Marine login page</dd>
+      </dl></div><div class="section level2">
+      <h2 id="product-functions">Product Functions<a class="anchor" aria-label="anchor" href="#product-functions"></a></h2>
+
+      <div class="section-desc"><p>Functions retrieving information about Copernicus Marine products</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
           <code><a href="cms_cite_product.html">cms_cite_product()</a></code>
           <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
@@ -68,48 +84,6 @@
           <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
         <dd>Download raw files as provided to Copernicus Marine</dd>
-
-        <dt>
-
-          <code><a href="cms_download_subset.html">cms_download_subset()</a></code>
-          <span class="badge lifecycle lifecycle-stable">stable</span>
-        </dt>
-        <dd>Subset and download a specific marine product from Copernicus</dd>
-
-        <dt>
-
-          <code><a href="cms_get_client_info.html">cms_get_client_info()</a></code>
-          <span class="badge lifecycle lifecycle-stable">stable</span>
-        </dt>
-        <dd>Get information about Copernicus Marine clients</dd>
-
-        <dt>
-
-          <code><a href="cms_glossary.html">cms_glossary()</a></code>
-
-        </dt>
-        <dd>Get Copernicus Marine Terminology Glossary</dd>
-
-        <dt>
-
-          <code><a href="cms_login.html">cms_login()</a></code>
-          <span class="badge lifecycle lifecycle-stable">stable</span>
-        </dt>
-        <dd>Contact Copernicus Marine login page</dd>
-
-        <dt>
-
-          <code><a href="cms_native_proxy.html">cms_native_proxy()</a></code>
-          <span class="badge lifecycle lifecycle-stable">stable</span>
-        </dt>
-        <dd>Get a proxy stars object from a native service</dd>
-
-        <dt>
-
-          <code><a href="cms_native_s3.html">cms_native_s3()</a></code>
-          <span class="badge lifecycle lifecycle-experimental">experimental</span>
-        </dt>
-        <dd>Navigate through CopernicusMarine native file via S3</dd>
 
         <dt>
 
@@ -138,20 +112,43 @@
           <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
         <dd>List products available from data.marine.copernicus.eu</dd>
+      </dl></div><div class="section level2">
+      <h2 id="download-functions">Download Functions<a class="anchor" aria-label="anchor" href="#download-functions"></a></h2>
+
+      <div class="section-desc"><p>Functions for downloading data from Copernicus Marine services</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="cms_download_native.html">cms_download_native()</a></code> <code><a href="cms_download_native.html">cms_list_native_files()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
+        </dt>
+        <dd>Download raw files as provided to Copernicus Marine</dd>
 
         <dt>
 
-          <code><a href="cms_translate.html">cms_translate()</a></code>
+          <code><a href="cms_download_subset.html">cms_download_subset()</a></code>
           <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
-        <dd>Translate Python code or command line request to R list</dd>
+        <dd>Subset and download a specific marine product from Copernicus</dd>
 
         <dt>
 
-          <code><a href="cms_wmts.html">cms_wmts_details()</a></code> <code><a href="cms_wmts.html">addCmsWMTSTiles()</a></code> <code><a href="cms_wmts.html">cms_wmts_get_capabilities()</a></code>
+          <code><a href="cms_native_proxy.html">cms_native_proxy()</a></code>
           <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
-        <dd>Obtain a WMTS entry for specific Copernicus marine products and add to a leaflet map</dd>
+        <dd>Get a proxy stars object from a native service</dd>
+
+        <dt>
+
+          <code><a href="cms_native_s3.html">cms_native_s3()</a></code>
+          <span class="badge lifecycle lifecycle-experimental">experimental</span>
+        </dt>
+        <dd>Navigate through CopernicusMarine native file via S3</dd>
 
         <dt>
 
@@ -159,8 +156,55 @@
           <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
         <dd>Get a proxy stars object from a Zarr service</dd>
+      </dl></div><div class="section level2">
+      <h2 id="leaflet-functions">Leaflet Functions<a class="anchor" aria-label="anchor" href="#leaflet-functions"></a></h2>
+
+      <div class="section-desc"><p>Functions that can be used with interactive maps using leaflet</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="cms_wmts.html">cms_wmts_details()</a></code> <code><a href="cms_wmts.html">addCmsWMTSTiles()</a></code> <code><a href="cms_wmts.html">cms_wmts_get_capabilities()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
+        </dt>
+        <dd>Obtain a WMTS entry for specific Copernicus marine products and add to a leaflet map</dd>
+      </dl></div><div class="section level2">
+      <h2 id="support-functions">Support Functions<a class="anchor" aria-label="anchor" href="#support-functions"></a></h2>
+
+      <div class="section-desc"><p>Supporting functions for Copernicus Marine</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="cms_get_client_info.html">cms_get_client_info()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
+        </dt>
+        <dd>Get information about Copernicus Marine clients</dd>
+
+        <dt>
+
+          <code><a href="cms_glossary.html">cms_glossary()</a></code>
+
+        </dt>
+        <dd>Get Copernicus Marine Terminology Glossary</dd>
+
+        <dt>
+
+          <code><a href="cms_translate.html">cms_translate()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
+        </dt>
+        <dd>Translate Python code or command line request to R list</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">

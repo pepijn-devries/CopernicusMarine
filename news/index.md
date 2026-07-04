@@ -1,6 +1,6 @@
 # Changelog
 
-## CopernicusMarine v0.4.6.0005
+## CopernicusMarine v0.4.6.0007
 
 - Fixed tests
 - Updated documentation
