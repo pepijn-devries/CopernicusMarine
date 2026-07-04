@@ -17,7 +17,7 @@ reference:
   - title: "Leaflet Functions"
     desc: "Functions that can be used with interactive maps using leaflet"
     contents:
-      - has_concept("supporting")
+      - has_concept("leaflet")
   - title: "Support Functions"
     desc: "Supporting functions for Copernicus Marine"
     contents:
