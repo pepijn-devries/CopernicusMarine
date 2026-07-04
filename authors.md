@@ -12,12 +12,12 @@ Source:
 
 de Vries P (2026). *CopernicusMarine: Search Download and Handle Data
 from Copernicus Marine Service Information*. R package version
-0.4.6.0003, <https://github.com/pepijn-devries/CopernicusMarine>.
+0.4.6.0005, <https://github.com/pepijn-devries/CopernicusMarine>.
 
     @Manual{,
       title = {CopernicusMarine: Search Download and Handle Data from Copernicus Marine Service Information},
       author = {Pepijn {de Vries}},
       year = {2026},
-      note = {R package version 0.4.6.0003},
+      note = {R package version 0.4.6.0005},
       url = {https://github.com/pepijn-devries/CopernicusMarine},
     }

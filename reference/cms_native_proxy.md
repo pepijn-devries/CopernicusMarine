@@ -1,6 +1,6 @@
 # Get a proxy stars object from a native service
 
-**\[experimental\]** The advantage of [`stars_proxy`
+**\[stable\]** The advantage of [`stars_proxy`
 objects](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects),
 is that they do not contain any data. They are therefore fast to handle
 and consume only limited memory. You can still manipulate the object
@@ -85,6 +85,14 @@ object](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objec
 
 For more details see
 [`vignette("proxy")`](https://pepijn-devries.github.io/CopernicusMarine/articles/proxy.md).
+
+## See also
+
+Other download:
+[`cms_download_native()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_native.md),
+[`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md),
+[`cms_native_s3()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_s3.md),
+[`cms_zarr_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_zarr_proxy.md)
 
 ## Author
 

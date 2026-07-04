@@ -103,8 +103,19 @@ routes:
 
 - [`cms_native_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_proxy.md)
 
+## See also
+
+Other download:
+[`cms_download_native()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_native.md),
+[`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md),
+[`cms_native_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_proxy.md),
+[`cms_zarr_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_zarr_proxy.md)
+
 ## Examples
 
 ``` r
-# TODO
+if (interactive()) {
+  my_s3 <- cms_native_s3()
+  my_s3$list_objects_v2("mdl-native-14", MaxKeys = 5)
+}
 ```

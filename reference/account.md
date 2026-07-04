@@ -36,6 +36,11 @@ cms_set_password(password, method = c("option", "sysenv"))
 Returns your account details for the `get` variant or nothing in case of
 the `set` variant.
 
+## See also
+
+Other authentication:
+[`cms_login()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_login.md)
+
 ## Author
 
 Pepijn de Vries

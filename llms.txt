@@ -228,8 +228,8 @@ By contributing to this project, you agree to abide by its terms.
   [`cms_list_native_files()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_native.md)
   **\[stable\]** : Download raw files as provided to Copernicus Marine
 - [`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
-  **\[experimental\]** : Subset and download a specific marine product
-  from Copernicus
+  **\[stable\]** : Subset and download a specific marine product from
+  Copernicus
 - [`cms_get_client_info()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_get_client_info.md)
   **\[stable\]** : Get information about Copernicus Marine clients
 - [`cms_glossary()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_glossary.md)
@@ -237,7 +237,7 @@ By contributing to this project, you agree to abide by its terms.
 - [`cms_login()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_login.md)
   **\[stable\]** : Contact Copernicus Marine login page
 - [`cms_native_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_proxy.md)
-  **\[experimental\]** : Get a proxy stars object from a native service
+  **\[stable\]** : Get a proxy stars object from a native service
 - [`cms_native_s3()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_s3.md)
   **\[experimental\]** : Navigate through CopernicusMarine native file
   via S3
@@ -254,15 +254,15 @@ By contributing to this project, you agree to abide by its terms.
   **\[stable\]** : List products available from
   data.marine.copernicus.eu
 - [`cms_translate()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_translate.md)
-  **\[experimental\]** : Translate Python code or command line request
-  to R list
+  **\[stable\]** : Translate Python code or command line request to R
+  list
 - [`cms_wmts_details()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_wmts.md)
   [`addCmsWMTSTiles()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_wmts.md)
   [`cms_wmts_get_capabilities()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_wmts.md)
   **\[stable\]** : Obtain a WMTS entry for specific Copernicus marine
   products and add to a leaflet map
 - [`cms_zarr_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_zarr_proxy.md)
-  **\[experimental\]** : Get a proxy stars object from a Zarr service
+  **\[stable\]** : Get a proxy stars object from a Zarr service
 
 # Articles
 

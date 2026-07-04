@@ -1,11 +1,11 @@
 # Translate Python code or command line request to R list
 
-**\[experimental\]** Use the Copernicus Marine Service website to
-navigate datasets <https://data.marine.copernicus.eu/products>. You can
-specify a query using the website's download form, and copy it's
-automation download code (either command line or Python) to the system's
-clipboard. You can then use this function to translate this code to a
-named list. The list can be used in combination with
+**\[stable\]** Use the Copernicus Marine Service website to navigate
+datasets <https://data.marine.copernicus.eu/products>. You can specify a
+query using the website's download form, and copy it's automation
+download code (either command line or Python) to the system's clipboard.
+You can then use this function to translate this code to a named list.
+The list can be used in combination with
 [`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
 to download data. See
 [`vignette("translate")`](https://pepijn-devries.github.io/CopernicusMarine/articles/translate.md)
@@ -33,6 +33,12 @@ cms_translate(text, ...)
 
 Returns a named list with arguments for
 [`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
+
+## See also
+
+Other supporting:
+[`cms_get_client_info()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_get_client_info.md),
+[`cms_glossary()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_glossary.md)
 
 ## Examples
 

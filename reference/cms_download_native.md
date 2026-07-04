@@ -85,6 +85,21 @@ cms_list_native_files(product, layer, pattern, prefix, max = Inf, ...)
 
 Returns `NULL` invisibly.
 
+## See also
+
+Other download:
+[`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md),
+[`cms_native_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_proxy.md),
+[`cms_native_s3()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_s3.md),
+[`cms_zarr_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_zarr_proxy.md)
+
+Other product:
+[`cms_cite_product()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_cite_product.md),
+[`cms_product_details()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_product_details.md),
+[`cms_product_metadata()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_product_metadata.md),
+[`cms_product_services()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_product_services.md),
+[`cms_products_list()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_products_list.md)
+
 ## Author
 
 Pepijn de Vries

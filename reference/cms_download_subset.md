@@ -1,6 +1,6 @@
 # Subset and download a specific marine product from Copernicus
 
-**\[experimental\]** Subset and download a specific marine product from
+**\[stable\]** Subset and download a specific marine product from
 Copernicus.
 
 ## Usage
@@ -96,6 +96,14 @@ cms_download_subset(
 Returns a
 [`stars::st_as_stars()`](https://r-spatial.github.io/stars/reference/st_as_stars.html)
 object.
+
+## See also
+
+Other download:
+[`cms_download_native()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_native.md),
+[`cms_native_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_proxy.md),
+[`cms_native_s3()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_native_s3.md),
+[`cms_zarr_proxy()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_zarr_proxy.md)
 
 ## Author
 

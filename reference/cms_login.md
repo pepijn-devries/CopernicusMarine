@@ -32,6 +32,11 @@ Returns a named `list` with your account details if successful, returns
 
 This function will return your account details if successful.
 
+## See also
+
+Other authentication:
+[`cms_get_username()`](https://pepijn-devries.github.io/CopernicusMarine/reference/account.md)
+
 ## Author
 
 Pepijn de Vries

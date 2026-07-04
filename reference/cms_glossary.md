@@ -35,6 +35,12 @@ cms_glossary(search, match_fun = agrep, ...)
 
 Returns a `data.frame` with glossary info.
 
+## See also
+
+Other supporting:
+[`cms_get_client_info()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_get_client_info.md),
+[`cms_translate()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_translate.md)
+
 ## Examples
 
 ``` r

@@ -21,6 +21,12 @@ cms_get_client_info(...)
 In case of success it returns a named `list` with information about the
 available Copernicus Marine clients.
 
+## See also
+
+Other supporting:
+[`cms_glossary()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_glossary.md),
+[`cms_translate()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_translate.md)
+
 ## Author
 
 Pepijn de Vries

@@ -1,10 +1,12 @@
 # Changelog
 
-## CopernicusMarine v0.4.6.0003
+## CopernicusMarine v0.4.6.0005
 
 - Fixed tests
 - Updated documentation
-- Switched from `aws.s3` to `paws` dependency.
+- Switched from `aws.s3` to `paws` dependency
+- Promoted previously ‘experimental’ functions to ‘stable’
+- Updated glossary
 
 ## CopernicusMarine v0.4.6
 
