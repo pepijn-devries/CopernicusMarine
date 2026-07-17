@@ -70,7 +70,7 @@ convenient routes:
 }
 }
 \examples{
-if (interactive()) {
+if (interactive() && requireNamespace("paws")) {
   my_s3 <- cms_native_s3()
   my_s3$list_objects_v2("mdl-native-14", MaxKeys = 5)
 }
