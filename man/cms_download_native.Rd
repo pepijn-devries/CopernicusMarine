@@ -58,7 +58,7 @@ documented here. Use \code{cms_list_native_files()} to list available files, and
 layer, year, month and day.
 }
 \examples{
-if (interactive()) {
+if (interactive() && requireNamespace("paws")) {
   cms_list_native_files(
     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
     layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",

@@ -19,7 +19,7 @@ NULL
 #' @returns Returns a [paws::s3()] object, specifically representing
 #' the service that hosts Copernicus Marine native data.
 #' @examples
-#' if (interactive()) {
+#' if (interactive() && requireNamespace("paws")) {
 #'   my_s3 <- cms_native_s3()
 #'   my_s3$list_objects_v2("mdl-native-14", MaxKeys = 5)
 #' }
@@ -32,12 +32,19 @@ cms_native_s3 <- function(
     region      = "us-east-1",
     ...) {
 
-  paws::s3(
-    config      = config,
-    credentials = credentials,
-    endpoint    = endpoint,
-    region      = region
-  )
+  if (requireNamespace("paws")) {
+    paws::s3(
+      config      = config,
+      credentials = credentials,
+      endpoint    = endpoint,
+      region      = region
+    )
+  } else {
+    rlang::abort(c(
+      x = "This function needs package 'paws'",
+      i = "Please install and try again"
+    ))
+  }
 }
 
 #' Download raw files as provided to Copernicus Marine
@@ -61,7 +68,7 @@ cms_native_s3 <- function(
 #' @returns Returns `NULL` invisibly.
 #' @author Pepijn de Vries
 #' @examples
-#' if (interactive()) {
+#' if (interactive() && requireNamespace("paws")) {
 #'   cms_list_native_files(
 #'     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
 #'     layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
@@ -237,7 +244,7 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
 #' If omitted it will include all variables in the layer.
 #' @returns A [`stars_proxy` object](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects)
 #' @examples
-#' if (interactive()) {
+#' if (interactive() && requireNamespace("paws")) {
 #'   native_proxy <-
 #'     cms_native_proxy(
 #'       product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",

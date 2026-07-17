@@ -56,7 +56,7 @@ calling \code{\link[stars:st_as_stars]{stars::st_as_stars()}} or \code{plot()} o
 For more details see \code{vignette("proxy")}.
 }
 \examples{
-if (interactive()) {
+if (interactive() && requireNamespace("paws")) {
   native_proxy <-
     cms_native_proxy(
       product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",

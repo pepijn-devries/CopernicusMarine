@@ -109,7 +109,7 @@ If you don't want to subset the data and want the complete set, you can download
 complete native files, if these are available for your product.
 You can list available files with (restricted to first 10 results with `max=10`):
 
-```{r native1}
+```{r native1, eval=requireNamespace("paws")}
 native_files <-
   cms_list_native_files(
     "GLOBAL_ANALYSISFORECAST_PHY_001_024",
