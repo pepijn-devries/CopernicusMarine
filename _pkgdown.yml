@@ -25,5 +25,4 @@ reference:
 authors:
   Pepijn de Vries:
     href: https://github.com/pepijn-devries/
-    html: <img src="https://avatars.githubusercontent.com/u/13707449" width="62px" alt="Pepijn de Vries"/>
-      Pepijn de Vries
+    html: '<img src="https://avatars.githubusercontent.com/u/13707449" class="d-inline-block align-middle me-2" style="width: 62px; height: 62px; border-radius: 50%" alt="Pepijn de Vries"/> Pepijn de Vries'
