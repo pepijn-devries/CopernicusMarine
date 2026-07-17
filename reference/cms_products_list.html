@@ -13,7 +13,7 @@ Does use the formal API, but provides less details."><meta property="og:image" c
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.7.0001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,37 +100,12 @@ unavailable.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">cms_products_list</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 306 × 19</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    product_id        catalogue title thumbnailUrl sources processingLevel areas </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;list&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> GLOBAL_ANALYSISF… CMEMS     Glob… https://mdl… <span style="color: #949494;">&lt;list&gt;</span>  Level 4         <span style="color: #949494;">&lt;list&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> GLOBAL_ANALYSISF… CMEMS     Glob… https://mdl… <span style="color: #949494;">&lt;list&gt;</span>  Level 4         <span style="color: #949494;">&lt;list&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> GLOBAL_ANALYSISF… CMEMS     Glob… https://mdl… <span style="color: #949494;">&lt;list&gt;</span>  Level 4         <span style="color: #949494;">&lt;list&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> GLOBAL_MULTIYEAR… CMEMS     Glob… https://mdl… <span style="color: #949494;">&lt;list&gt;</span>  Level 4         <span style="color: #949494;">&lt;list&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> GLOBAL_MULTIYEAR… CMEMS     Glob… https://mdl… <span style="color: #949494;">&lt;list&gt;</span>  Level 4         <span style="color: #949494;">&lt;list&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> GLOBAL_MULTIYEAR… CMEMS     Glob… https://mdl… <span style="color: #949494;">&lt;list&gt;</span>  Level 4         <span style="color: #949494;">&lt;list&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> GLOBAL_MULTIYEAR… CMEMS     Glob… https://mdl… <span style="color: #949494;">&lt;list&gt;</span>  Level 4         <span style="color: #949494;">&lt;list&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> GLOBAL_MULTIYEAR… CMEMS     Glob… https://mdl… <span style="color: #949494;">&lt;list&gt;</span>  Level 4         <span style="color: #949494;">&lt;list&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ARCTIC_ANALYSISF… CMEMS     Arct… https://mdl… <span style="color: #949494;">&lt;list&gt;</span>  Level 4         <span style="color: #949494;">&lt;list&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ARCTIC_ANALYSIS_… CMEMS     Arct… https://mdl… <span style="color: #949494;">&lt;list&gt;</span>  Level 4         <span style="color: #949494;">&lt;list&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 296 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 12 more variables: geoResolution &lt;list&gt;, vertLevels &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   tempExtentBegin &lt;chr&gt;, tempResolutions &lt;list&gt;, stacOrCswBbox &lt;list&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   stacOrCswTbox &lt;list&gt;, mainVariables &lt;list&gt;, `_isViewableOmi` &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   numLayers &lt;int&gt;, thumbnailMeta &lt;list&gt;, tempExtentEnd &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   omiFigureUrl &lt;chr&gt;</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu">cms_products_list</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Query a specific product:</span></span></span>
-<span class="r-in"><span><span class="fu">cms_products_list</span><span class="op">(</span>freeText <span class="op">=</span> <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 17</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   product_id          catalogue title thumbnailUrl sources processingLevel areas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> GLOBAL_ANALYSISFOR… CMEMS     Glob… https://mdl… Numeri… Level 4         Glob…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 10 more variables: geoResolution &lt;list&gt;, vertLevels &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   tempExtentBegin &lt;chr&gt;, tempResolutions &lt;list&gt;, stacOrCswBbox &lt;list&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   stacOrCswTbox &lt;list&gt;, mainVariables &lt;list&gt;, `_isViewableOmi` &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   numLayers &lt;int&gt;, thumbnailMeta &lt;list&gt;</span></span>
+<span class="r-in"><span>  <span class="fu">cms_products_list</span><span class="op">(</span>freeText <span class="op">=</span> <span class="st">"GLOBAL_ANALYSISFORECAST_PHY_001_024"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -138,11 +113,11 @@ unavailable.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Pepijn de Vries.</p>
+  <p>Developed by <a href="https://github.com/pepijn-devries/" class="external-link"><img src="https://avatars.githubusercontent.com/u/13707449" width="62px" alt="Pepijn de Vries"> Pepijn de Vries</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

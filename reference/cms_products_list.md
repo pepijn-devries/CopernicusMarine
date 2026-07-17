@@ -56,35 +56,10 @@ Pepijn de Vries
 ## Examples
 
 ``` r
-cms_products_list()
-#> # A tibble: 306 × 19
-#>    product_id        catalogue title thumbnailUrl sources processingLevel areas 
-#>    <chr>             <chr>     <chr> <chr>        <list>  <chr>           <list>
-#>  1 GLOBAL_ANALYSISF… CMEMS     Glob… https://mdl… <list>  Level 4         <list>
-#>  2 GLOBAL_ANALYSISF… CMEMS     Glob… https://mdl… <list>  Level 4         <list>
-#>  3 GLOBAL_ANALYSISF… CMEMS     Glob… https://mdl… <list>  Level 4         <list>
-#>  4 GLOBAL_MULTIYEAR… CMEMS     Glob… https://mdl… <list>  Level 4         <list>
-#>  5 GLOBAL_MULTIYEAR… CMEMS     Glob… https://mdl… <list>  Level 4         <list>
-#>  6 GLOBAL_MULTIYEAR… CMEMS     Glob… https://mdl… <list>  Level 4         <list>
-#>  7 GLOBAL_MULTIYEAR… CMEMS     Glob… https://mdl… <list>  Level 4         <list>
-#>  8 GLOBAL_MULTIYEAR… CMEMS     Glob… https://mdl… <list>  Level 4         <list>
-#>  9 ARCTIC_ANALYSISF… CMEMS     Arct… https://mdl… <list>  Level 4         <list>
-#> 10 ARCTIC_ANALYSIS_… CMEMS     Arct… https://mdl… <list>  Level 4         <list>
-#> # ℹ 296 more rows
-#> # ℹ 12 more variables: geoResolution <list>, vertLevels <int>,
-#> #   tempExtentBegin <chr>, tempResolutions <list>, stacOrCswBbox <list>,
-#> #   stacOrCswTbox <list>, mainVariables <list>, `_isViewableOmi` <lgl>,
-#> #   numLayers <int>, thumbnailMeta <list>, tempExtentEnd <chr>,
-#> #   omiFigureUrl <chr>
+if (interactive()) {
+  cms_products_list()
 
 ## Query a specific product:
-cms_products_list(freeText = "GLOBAL_ANALYSISFORECAST_PHY_001_024")
-#> # A tibble: 1 × 17
-#>   product_id          catalogue title thumbnailUrl sources processingLevel areas
-#>   <chr>               <chr>     <chr> <chr>        <chr>   <chr>           <chr>
-#> 1 GLOBAL_ANALYSISFOR… CMEMS     Glob… https://mdl… Numeri… Level 4         Glob…
-#> # ℹ 10 more variables: geoResolution <list>, vertLevels <int>,
-#> #   tempExtentBegin <chr>, tempResolutions <list>, stacOrCswBbox <list>,
-#> #   stacOrCswTbox <list>, mainVariables <list>, `_isViewableOmi` <lgl>,
-#> #   numLayers <int>, thumbnailMeta <list>
+  cms_products_list(freeText = "GLOBAL_ANALYSISFORECAST_PHY_001_024")
+}
 ```
