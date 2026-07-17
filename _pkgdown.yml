@@ -22,3 +22,8 @@ reference:
     desc: "Supporting functions for Copernicus Marine"
     contents:
       - has_concept("supporting")
+authors:
+  Pepijn de Vries:
+    href: https://github.com/pepijn-devries/
+    html: <img src="https://avatars.githubusercontent.com/u/13707449" width="62px" alt="Pepijn de Vries"/>
+      Pepijn de Vries

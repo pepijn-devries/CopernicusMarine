@@ -19,7 +19,9 @@ listed at Copernicus. Note that the citing formatting does not appear to be stan
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Get details for properly citing a Copernicus product.
 }
 \examples{
-cms_cite_product("SST_MED_PHY_SUBSKIN_L4_NRT_010_036")
+if (interactive()) {
+  cms_cite_product("SST_MED_PHY_SUBSKIN_L4_NRT_010_036")
+}
 }
 \seealso{
 Other product:

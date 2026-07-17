@@ -1,3 +1,10 @@
+CopernicusMarine v0.4.7.0001
+-------------
+
+ * Updated documentation
+ * Wrapped all examples accessing online resources
+   in `if (interactive()) {}`
+
 CopernicusMarine v0.4.7
 -------------
 
