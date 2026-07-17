@@ -17,10 +17,12 @@
 #' @name cms_products_list
 #' @family product
 #' @examples
-#' cms_products_list()
+#' if (interactive()) {
+#'   cms_products_list()
 #' 
 #' ## Query a specific product:
-#' cms_products_list(freeText = "GLOBAL_ANALYSISFORECAST_PHY_001_024")
+#'   cms_products_list(freeText = "GLOBAL_ANALYSISFORECAST_PHY_001_024")
+#' }
 #' @author Pepijn de Vries
 #' @family product
 #' @export
