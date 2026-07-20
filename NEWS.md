@@ -1,4 +1,4 @@
-CopernicusMarine v0.4.7.0003
+CopernicusMarine v0.4.8
 -------------
 
  * Moved `paws` dependency from `Imports` to `Suggests`.
