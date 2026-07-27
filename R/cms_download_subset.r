@@ -94,13 +94,55 @@ cms_download_subset <- function(
   Sys.setenv(GDAL_HTTP_MULTICURL = "YES")
   Sys.setenv(GDAL_DISABLE_READDIR_ON_OPEN = "EMPTY_DIR")
 
-  mdim_proxy <-
-    .uri_to_vsi(service$href, progress) |>
-    .get_stars_proxy(variable)
+  if (length(variable) == 0) variable <- names(service$viewVariables)
+  mdim_proxy <- .uri_to_vsi(service$href, progress)
+  mdim_proxy <- lapply(variable, .get_stars_proxy, vsi = mdim_proxy)
+  names(mdim_proxy) <- variable
   
   if (progress)
     cli::cli_progress_step("Subsetting and downloading data")
 
+  result <- lapply(variable, \(var) {
+    .subset_proxy(mdim_proxy[[var]],
+                  region = region,
+                  timerange = timerange,
+                  verticalrange = verticalrange)
+  })
+  all_dims <- lapply(result, dimnames) |> unlist() |> unique()
+  missing_dims <- lapply(result, \(x) {
+    setdiff(all_dims, dimnames(x))
+  }) |> unlist() |> unique()
+  if (length(missing_dims) > 0) {
+    dim_vals <- lapply(missing_dims, \(x) {
+      for (i in length(result)) {
+        dv <- stars::st_dimensions(result[[i]])[[x]]
+        if (length(dv) > 0) break
+      }
+      dv
+    }) |> stats::setNames(missing_dims)
+    result <- lapply(result, \(x) {
+      for (dm in names(dim_vals)) {
+        current_length <- stars::st_get_dimension_values(x, dm) |> length()
+        if (current_length > 0) next
+        val <- dim_vals[[dm]]
+        new_length <- new_length <- val |> seq() |> length()
+        x <- replicate(new_length, x, simplify = FALSE)
+        x <- do.call(c, c(x, along = dm))
+        dms <- stars::st_dimensions(x)
+        dms[[dm]] <- val
+        stars::st_dimensions(x) <- dms
+      }
+      x
+    })
+  }
+  result <- do.call(c, result)
+  Sys.setenv(GDAL_NUM_THREADS = numthr)
+
+  cli::cli_progress_done()
+  result
+}
+
+.subset_proxy <- function(mdim_proxy, region, timerange, verticalrange) {
   dms <- stars::st_dimensions(mdim_proxy)
   idx <- lapply(names(dms), \(dm) {
     idx_start  <- stars::st_get_dimension_values(mdim_proxy, dm, where = "start")
@@ -126,9 +168,9 @@ cms_download_subset <- function(
     comparator <- sort(comparator)
     idx <- if (length(comparator) == 0) rep(TRUE, length(idx_end)) else {
       (idx_end > comparator[[1]] & idx_end < comparator[[2]]) |
-      (idx_start %>=% comparator[[1]] & idx_start %<=% comparator[[2]]) |
+        (idx_start %>=% comparator[[1]] & idx_start %<=% comparator[[2]]) |
         (idx_end > comparator[[1]] & idx_start %<=% comparator[[2]])
-
+      
     }
     result <- which(idx)
     report_range <- range(c(idx_start, idx_end))
@@ -144,13 +186,13 @@ cms_download_subset <- function(
     } |> suppressWarnings()
     if (threshold) {
       rlang::warn(sprintf("Requested range '%s' well beyond available range [%s; %s]",
-                           dm, report_range[[1]], report_range[[2]]))
+                          dm, report_range[[1]], report_range[[2]]))
     }
     result
   })
-
+  
   mdim_proxy_sub <- rlang::inject(mdim_proxy[,!!!idx])
-
+  
   result <- .muffle_403({
     stars::st_as_stars(mdim_proxy_sub)
   })
@@ -164,9 +206,6 @@ cms_download_subset <- function(
     }
   }
   
-  Sys.setenv(GDAL_NUM_THREADS = numthr)
-
-  cli::cli_progress_done()
   result
 }
 

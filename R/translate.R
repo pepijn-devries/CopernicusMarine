@@ -70,7 +70,7 @@ cms_translate <- function(text, ...) {
         )
       }
     }
-  }
+  } # nocov
   ## collapse + strip spaces and tabs:
   text <- gsub("^[ \t]", "", paste(text, collapse = "\n"))
 
