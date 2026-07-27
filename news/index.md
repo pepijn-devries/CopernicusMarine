@@ -1,6 +1,13 @@
 # Changelog
 
+## CopernicusMarine v0.4.8.0001
+
+- Fix for issue
+  [186](https://github.com/pepijn-devries/CopernicusMarine/issues/186)
+
 ## CopernicusMarine v0.4.8
+
+CRAN release: 2026-07-20
 
 - Moved `paws` dependency from `Imports` to `Suggests`.
 - Redesigned logo
