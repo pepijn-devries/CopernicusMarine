@@ -163,3 +163,22 @@ test_that("Subsetting time range can handle udunits", {
     )
   })
 })
+
+test_that("Expect no problems with variables with different number of dimensions", {
+  skip_on_cran()
+  has_account_details()
+  skip_if_offline("data.marine.copernicus.eu")
+  expect_true({
+    result <-
+      cms_download_subset(
+        "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+        "cmems_mod_glo_phy_anfc_0.083deg_static_202211--ext--coords",
+        asset = "static",
+        variable = c("e2t", "e3t"),
+        verticalrange = c(-2,  -0.48),
+        region = c(3, 53, 13, 58),
+        progress = FALSE
+      )
+    all(dim(result) == c(121, 61, 3))
+  })
+})
