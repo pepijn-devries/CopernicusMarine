@@ -1,7 +1,8 @@
-CopernicusMarine v0.4.8.0001
+CopernicusMarine v0.4.8.0002
 -------------
 
  * Fix for issue [186](https://github.com/pepijn-devries/CopernicusMarine/issues/186)
+ * Improved test coverage
 
 CopernicusMarine v0.4.8
 -------------
