@@ -40,10 +40,12 @@ cms_native_s3 <- function(
       region      = region
     )
   } else {
+    # nocov start
     rlang::abort(c(
       x = "This function needs package 'paws'",
       i = "Please install and try again"
-    )) # nocov
+    ))
+    # nocov end
   }
 }
 

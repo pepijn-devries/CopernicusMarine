@@ -54,6 +54,7 @@
 #' @family supporting
 #' @export
 cms_translate <- function(text, ...) {
+  # nocov start
   if (missing(text)) {
     if (requireNamespace("clipr")) {
       text <- clipr::read_clip()
@@ -70,7 +71,8 @@ cms_translate <- function(text, ...) {
         )
       }
     }
-  } # nocov
+  }
+  # nocov end
   ## collapse + strip spaces and tabs:
   text <- gsub("^[ \t]", "", paste(text, collapse = "\n"))
 
