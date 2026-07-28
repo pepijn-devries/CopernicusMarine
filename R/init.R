@@ -15,11 +15,13 @@ has_blosc <-
 
 .onAttach <- function(libname, pkgname) {
   if (sf::sf_extSoftVersion()["GDAL"] < "3.11") {
+    # nocov start
     packageStartupMessage({
       paste(
         "Your GDAL version is <3.11 and may not support all CopernicusMarine features,",
         "see `vigette(\"blosc\")` for more info and how to fix", sep = "\n"
       )
-    }) # nocov
+    })
+    # nocov end
   }
 }
