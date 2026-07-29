@@ -6,7 +6,7 @@ NULL
 #' `r lifecycle::badge('experimental')`
 #' Native files (i.e. files as provided by suppliers) are hosted with the
 #' [Amazon Simple Storage Service (s3)](https://aws.amazon.com/s3/).
-#' This function generates a [paws::s3()] object, that can be
+#' This function generates a [paws.storage::s3()] object, that can be
 #' used to navigate and download these files.
 #' 
 #' Note that alternative functions in this package provide more
@@ -14,12 +14,12 @@ NULL
 #'  * [cms_list_native_files()]
 #'  * [cms_download_native()]
 #'  * [cms_native_proxy()]
-#' @inheritParams paws::s3
+#' @inheritParams paws.storage::s3
 #' @param ... Ignored
-#' @returns Returns a [paws::s3()] object, specifically representing
+#' @returns Returns a [paws.storage::s3()] object, specifically representing
 #' the service that hosts Copernicus Marine native data.
 #' @examples
-#' if (interactive() && requireNamespace("paws")) {
+#' if (interactive() && requireNamespace("paws.storage")) {
 #'   my_s3 <- cms_native_s3()
 #'   my_s3$list_objects_v2("mdl-native-14", MaxKeys = 5)
 #' }
@@ -32,8 +32,8 @@ cms_native_s3 <- function(
     region      = "us-east-1",
     ...) {
 
-  if (requireNamespace("paws")) {
-    paws::s3(
+  if (requireNamespace("paws.storage")) {
+    paws.storage::s3(
       config      = config,
       credentials = credentials,
       endpoint    = endpoint,
@@ -42,7 +42,7 @@ cms_native_s3 <- function(
   } else {
     # nocov start
     rlang::abort(c(
-      x = "This function needs package 'paws'",
+      x = "This function needs package 'paws.storage'",
       i = "Please install and try again"
     ))
     # nocov end
@@ -70,7 +70,7 @@ cms_native_s3 <- function(
 #' @returns Returns `NULL` invisibly.
 #' @author Pepijn de Vries
 #' @examples
-#' if (interactive() && requireNamespace("paws")) {
+#' if (interactive() && requireNamespace("paws.storage")) {
 #'   cms_list_native_files(
 #'     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
 #'     layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",
@@ -246,7 +246,7 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
 #' If omitted it will include all variables in the layer.
 #' @returns A [`stars_proxy` object](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects)
 #' @examples
-#' if (interactive() && requireNamespace("paws")) {
+#' if (interactive() && requireNamespace("paws.storage")) {
 #'   native_proxy <-
 #'     cms_native_proxy(
 #'       product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
