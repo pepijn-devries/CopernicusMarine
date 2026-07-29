@@ -1,10 +1,12 @@
 # Changelog
 
-## CopernicusMarine v0.4.8.0002
+## CopernicusMarine v0.4.8.0003
 
 - Fix for issue
   [186](https://github.com/pepijn-devries/CopernicusMarine/issues/186)
 - Improved test coverage
+- Switched from using `paws` to `paws.storage`, this reduces dependency
+  footprint considerably
 
 ## CopernicusMarine v0.4.8
 

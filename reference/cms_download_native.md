@@ -107,7 +107,7 @@ Pepijn de Vries
 ## Examples
 
 ``` r
-if (interactive() && requireNamespace("paws")) {
+if (interactive() && requireNamespace("paws.storage")) {
   cms_list_native_files(
     product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
     layer         = "cmems_mod_glo_phy_anfc_0.083deg_PT1H-m",

@@ -3,7 +3,7 @@
 **\[experimental\]** Native files (i.e. files as provided by suppliers)
 are hosted with the [Amazon Simple Storage Service
 (s3)](https://aws.amazon.com/s3/). This function generates a
-[`paws::s3()`](https://paws-r.r-universe.dev/paws/reference/s3.html)
+[`paws.storage::s3()`](https://paws-r.r-universe.dev/paws.storage/reference/s3.html)
 object, that can be used to navigate and download these files.
 
 ## Usage
@@ -88,7 +88,7 @@ cms_native_s3(
 ## Value
 
 Returns a
-[`paws::s3()`](https://paws-r.r-universe.dev/paws/reference/s3.html)
+[`paws.storage::s3()`](https://paws-r.r-universe.dev/paws.storage/reference/s3.html)
 object, specifically representing the service that hosts Copernicus
 Marine native data.
 
@@ -114,7 +114,7 @@ Other download:
 ## Examples
 
 ``` r
-if (interactive() && requireNamespace("paws")) {
+if (interactive() && requireNamespace("paws.storage")) {
   my_s3 <- cms_native_s3()
   my_s3$list_objects_v2("mdl-native-14", MaxKeys = 5)
 }

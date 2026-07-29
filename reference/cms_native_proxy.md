@@ -101,7 +101,7 @@ Pepijn de Vries
 ## Examples
 
 ``` r
-if (interactive() && requireNamespace("paws")) {
+if (interactive() && requireNamespace("paws.storage")) {
   native_proxy <-
     cms_native_proxy(
       product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
