@@ -50,14 +50,14 @@ cms_native_s3(
 \item{...}{Ignored}
 }
 \value{
-Returns a \code{\link[paws:s3]{paws::s3()}} object, specifically representing
+Returns a \code{\link[paws.storage:s3]{paws.storage::s3()}} object, specifically representing
 the service that hosts Copernicus Marine native data.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 Native files (i.e. files as provided by suppliers) are hosted with the
 \href{https://aws.amazon.com/s3/}{Amazon Simple Storage Service (s3)}.
-This function generates a \code{\link[paws:s3]{paws::s3()}} object, that can be
+This function generates a \code{\link[paws.storage:s3]{paws.storage::s3()}} object, that can be
 used to navigate and download these files.
 }
 \details{
@@ -70,7 +70,7 @@ convenient routes:
 }
 }
 \examples{
-if (interactive() && requireNamespace("paws")) {
+if (interactive() && requireNamespace("paws.storage")) {
   my_s3 <- cms_native_s3()
   my_s3$list_objects_v2("mdl-native-14", MaxKeys = 5)
 }

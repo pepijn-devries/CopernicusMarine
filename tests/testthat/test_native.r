@@ -1,5 +1,5 @@
 test_that("native download works", {
-  skip_if_not_installed("paws")
+  skip_if_not_installed("paws.storage")
   skip_if_offline()
   has_account_details()
   skip_on_cran()
@@ -27,7 +27,7 @@ test_that("native download works", {
 })
 
 test_that("Native files can be listed", {
-  skip_if_not_installed("paws")
+  skip_if_not_installed("paws.storage")
   skip_if_offline()
   has_account_details()
   skip_on_cran()
