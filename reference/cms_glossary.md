@@ -39,7 +39,8 @@ Returns a `data.frame` with glossary info.
 
 Other supporting:
 [`cms_get_client_info()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_get_client_info.md),
-[`cms_translate()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_translate.md)
+[`cms_translate()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_translate.md),
+[`cms_write_ncdf()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_write_ncdf.md)
 
 ## Examples
 

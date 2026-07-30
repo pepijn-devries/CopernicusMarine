@@ -1,7 +1,9 @@
 # Changelog
 
-## CopernicusMarine v0.4.8.0003
+## CopernicusMarine v0.4.8.0004
 
+- Added
+  [`cms_write_ncdf()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_write_ncdf.md)
 - Fix for issue
   [186](https://github.com/pepijn-devries/CopernicusMarine/issues/186)
 - Improved test coverage

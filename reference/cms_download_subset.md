@@ -95,7 +95,8 @@ cms_download_subset(
 
 Returns a
 [`stars::st_as_stars()`](https://r-spatial.github.io/stars/reference/st_as_stars.html)
-object.
+object. You can save it to a file with
+[`cms_write_ncdf()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_write_ncdf.md)
 
 ## See also
 

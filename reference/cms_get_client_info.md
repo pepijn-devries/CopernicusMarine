@@ -25,7 +25,8 @@ available Copernicus Marine clients.
 
 Other supporting:
 [`cms_glossary()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_glossary.md),
-[`cms_translate()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_translate.md)
+[`cms_translate()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_translate.md),
+[`cms_write_ncdf()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_write_ncdf.md)
 
 ## Author
 

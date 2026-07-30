@@ -73,3 +73,5 @@ Supporting functions for Copernicus Marine
 - [`cms_translate()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_translate.md)
   **\[stable\]** : Translate Python code or command line request to R
   list
+- [`cms_write_ncdf()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_write_ncdf.md)
+  : Store Typical Copernicus Marine Rasters Objects as NCDF

@@ -38,7 +38,8 @@ Returns a named list with arguments for
 
 Other supporting:
 [`cms_get_client_info()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_get_client_info.md),
-[`cms_glossary()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_glossary.md)
+[`cms_glossary()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_glossary.md),
+[`cms_write_ncdf()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_write_ncdf.md)
 
 ## Examples
 
