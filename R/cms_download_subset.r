@@ -28,6 +28,7 @@
 #' @param ... Ignored (reserved for future features).
 #' @inheritParams cms_login
 #' @returns Returns a [stars::st_as_stars()] object.
+#' You can save it to a file with [cms_write_ncdf()]
 #' @rdname cms_download_subset
 #' @name cms_download_subset
 #' @examples

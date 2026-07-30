@@ -1,6 +1,5 @@
 test_that("Subset download produces expected data", {
   skip_on_cran()
-  skip_if_not_installed("ncmeta")
   has_account_details()
   skip_if_offline("data.marine.copernicus.eu")
   expect_true({
@@ -180,5 +179,34 @@ test_that("Expect no problems with variables with different number of dimensions
         progress = FALSE
       )
     all(dim(result) == c(121, 61, 3))
+  })
+})
+
+test_that("Subset can be written correctly to ncdf", {
+  skip_on_cran()
+  has_account_details()
+  skip_if_offline("data.marine.copernicus.eu")
+  expect_true({
+    dat <- cms_download_subset(
+      product       = "GLOBAL_MULTIYEAR_PHY_001_030",
+      layer         = "cmems_mod_glo_phy_my_0.083deg_P1M-m_202311",
+      variable      = "bottomT",
+      region        = c(0, 50, 1, 55),
+      timerange     = c("2020-01-01 UTC", "2025-01-01 UTC"),
+      progress      = FALSE)
+    fl <- tempfile(fileext = ".nc")
+    cms_write_ncdf(dat, fl)
+    datnc <- stars::read_mdim(
+      fl,
+      bounds = c(
+        longitude = "longitude_bnds",
+        latitude  = "latitude_bnds")
+      )
+    all(
+      stars::st_get_dimension_values(datnc, "time") |>
+        as.POSIXct() ==
+        stars::st_get_dimension_values(dat, "time")
+    ) &&
+      all(is.na(datnc$bottomT) | datnc$bottomT == dat$bottomT)
   })
 })

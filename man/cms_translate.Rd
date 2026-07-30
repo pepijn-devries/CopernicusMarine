@@ -68,6 +68,7 @@ if (interactive()) {
 \seealso{
 Other supporting:
 \code{\link[=cms_get_client_info]{cms_get_client_info()}},
-\code{\link[=cms_glossary]{cms_glossary()}}
+\code{\link[=cms_glossary]{cms_glossary()}},
+\code{\link[=cms_write_ncdf]{cms_write_ncdf()}}
 }
 \concept{supporting}

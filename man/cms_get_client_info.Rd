@@ -26,7 +26,8 @@ if (interactive()) {
 \seealso{
 Other supporting:
 \code{\link[=cms_glossary]{cms_glossary()}},
-\code{\link[=cms_translate]{cms_translate()}}
+\code{\link[=cms_translate]{cms_translate()}},
+\code{\link[=cms_write_ncdf]{cms_write_ncdf()}}
 }
 \author{
 Pepijn de Vries
