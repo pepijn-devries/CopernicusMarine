@@ -59,6 +59,7 @@ before.}
 }
 \value{
 Returns a \code{\link[stars:st_as_stars]{stars::st_as_stars()}} object.
+You can save it to a file with \code{\link[=cms_write_ncdf]{cms_write_ncdf()}}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}} Subset and download a specific marine product

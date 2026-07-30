@@ -1,6 +1,7 @@
-CopernicusMarine v0.4.8.0003
+CopernicusMarine v0.4.8.0004
 -------------
 
+ * Added `cms_write_ncdf()`
  * Fix for issue [186](https://github.com/pepijn-devries/CopernicusMarine/issues/186)
  * Improved test coverage
  * Switched from using `paws` to `paws.storage`,
