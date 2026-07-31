@@ -4,7 +4,7 @@
 \alias{cms_wmts_details}
 \alias{addCmsWMTSTiles}
 \alias{cms_wmts_get_capabilities}
-\title{Obtain a WMTS entry for specific Copernicus marine products and add to a leaflet map}
+\title{Obtain a WMTS Entry for Specific Copernicus Marine Products and add to a Leaflet Map}
 \usage{
 cms_wmts_details(product, layer, variable)
 

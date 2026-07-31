@@ -1,4 +1,4 @@
-#' Get information about Copernicus Marine clients
+#' Get Information About Copernicus Marine Clients
 #' 
 #' `r lifecycle::badge('stable')` This function retrieves the client information
 #' from the Copernicus Marine Service.

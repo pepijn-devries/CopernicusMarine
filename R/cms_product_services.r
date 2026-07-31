@@ -1,4 +1,4 @@
-#' Obtain available services for a specific Copernicus marine product
+#' Obtain Available Services for a Specific Copernicus Marine Product
 #'
 #' `r lifecycle::badge('stable')` Obtain an overview of services provided by Copernicus
 #' for a specific marine product.

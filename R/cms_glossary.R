@@ -1,6 +1,6 @@
 #' Get Copernicus Marine Terminology Glossary
 #' 
-#' Function that returns a `data.frame` with a glossary of terminology
+#' `r lifecycle::badge('stable')` Function that returns a `data.frame` with a glossary of terminology
 #' used by the Copernicus Marine Data Service. It is the same `data.frame`
 #' that is used to render `vignette("glossary")`.
 #' @param search Search terms to look for in the glossary `data.frame`.

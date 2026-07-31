@@ -2,7 +2,7 @@
 % Please edit documentation in R/cms_download_native.R
 \name{cms_native_proxy}
 \alias{cms_native_proxy}
-\title{Get a proxy stars object from a native service}
+\title{Get a Proxy 'stars' Object from a Native Service}
 \usage{
 cms_native_proxy(
   product,

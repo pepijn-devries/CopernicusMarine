@@ -26,7 +26,7 @@ by default).}
 Returns \code{NULL} invisibly.
 }
 \description{
-The \code{\link[=cms_download_subset]{cms_download_subset()}} returns a \code{stars} class object.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} The \code{\link[=cms_download_subset]{cms_download_subset()}} returns a \code{stars} class object.
 This is fine if you want to use it directly in R. But if
 you want to open it in external software, you need a more
 exceptable exchange format. You can use this function to

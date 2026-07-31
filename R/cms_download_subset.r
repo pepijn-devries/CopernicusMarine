@@ -1,4 +1,4 @@
-#' Subset and download a specific marine product from Copernicus
+#' Subset and Download a Specific Marine Product from Copernicus
 #'
 #' `r lifecycle::badge('stable')` Subset and download a specific marine product
 #' from Copernicus.
@@ -440,7 +440,7 @@ cms_download_subset <- function(
   )
 }
 
-#' Get a proxy stars object from a Zarr service
+#' Get a Proxy 'stars' Object from a Zarr Service
 #' 
 #' `r lifecycle::badge('stable')` The advantage of
 #' [`stars_proxy` objects](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects),

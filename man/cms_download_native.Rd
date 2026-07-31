@@ -3,7 +3,7 @@
 \name{cms_download_native}
 \alias{cms_download_native}
 \alias{cms_list_native_files}
-\title{Download raw files as provided to Copernicus Marine}
+\title{Download Raw Files as Provided to Copernicus Marine}
 \usage{
 cms_download_native(
   destination,

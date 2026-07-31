@@ -1,6 +1,6 @@
 #' Store Typical Copernicus Marine Rasters Objects as NCDF
 #' 
-#' The [cms_download_subset()] returns a `stars` class object.
+#' `r lifecycle::badge('experimental')` The [cms_download_subset()] returns a `stars` class object.
 #' This is fine if you want to use it directly in R. But if
 #' you want to open it in external software, you need a more
 #' exceptable exchange format. You can use this function to

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cms_login.r
 \name{cms_login}
 \alias{cms_login}
-\title{Contact Copernicus Marine login page}
+\title{Contact Copernicus Marine Login Page}
 \usage{
 cms_login(username = cms_get_username(), password = cms_get_password())
 }
