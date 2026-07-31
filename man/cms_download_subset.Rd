@@ -44,7 +44,8 @@ When omitted, the entire available vertical range is selected.}
 Otherwise, this function will silently proceed.}
 
 \item{asset}{Type of asset to be used when subsetting data. Should be one
-of \code{"default"}, \code{"ARCO"}, \code{"static"}, \code{"omi"}, or \code{"downsampled4"}.
+of \code{"default"}, \code{"ARCO"}, \code{"static"}, \code{"omi"}, \code{"downsampled4"},
+"\code{timeChunked}", or \code{"geoChunked"}.
 When missing, set to \code{NULL} or set to \code{"default"}, it will use the first
 asset available for the requested product and layer, in the order as listed
 before.}
