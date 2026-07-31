@@ -1,4 +1,4 @@
-#' Contact Copernicus Marine login page
+#' Contact Copernicus Marine Login Page
 #' 
 #' `r lifecycle::badge('stable')` Contact Copernicus Marine login page
 #' and check if login is successful.
@@ -66,7 +66,7 @@ cms_login <- function(
   invisible()
 }
 
-#' Set or get Copernicus account details
+#' Set or get Copernicus Account Details
 #' 
 #' `r lifecycle::badge('stable')` Set or get username and password throughout an R session.
 #' This can be used to obscure your account details in an R script and

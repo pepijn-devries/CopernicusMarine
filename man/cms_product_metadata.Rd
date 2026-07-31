@@ -2,7 +2,7 @@
 % Please edit documentation in R/cms_product_metadata.r
 \name{cms_product_metadata}
 \alias{cms_product_metadata}
-\title{Obtain product meta data}
+\title{Obtain Product meta Data}
 \usage{
 cms_product_metadata(product, ...)
 }

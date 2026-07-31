@@ -2,7 +2,7 @@
 % Please edit documentation in R/cms_download_subset.r
 \name{cms_download_subset}
 \alias{cms_download_subset}
-\title{Subset and download a specific marine product from Copernicus}
+\title{Subset and Download a Specific Marine Product from Copernicus}
 \usage{
 cms_download_subset(
   product,

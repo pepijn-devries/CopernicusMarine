@@ -2,7 +2,7 @@
 % Please edit documentation in R/cms_cite_product.r
 \name{cms_cite_product}
 \alias{cms_cite_product}
-\title{How to cite a Copernicus marine product}
+\title{How to Cite a Copernicus Marine Product}
 \usage{
 cms_cite_product(product)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cms_download_native.R
 \name{cms_native_s3}
 \alias{cms_native_s3}
-\title{Navigate through CopernicusMarine native file via S3}
+\title{Navigate Through Copernicus Marine Native File via S3}
 \usage{
 cms_native_s3(
   config = list(),

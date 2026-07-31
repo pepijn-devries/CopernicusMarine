@@ -2,7 +2,7 @@
 % Please edit documentation in R/cms_download_subset.r
 \name{cms_zarr_proxy}
 \alias{cms_zarr_proxy}
-\title{Get a proxy stars object from a Zarr service}
+\title{Get a Proxy 'stars' Object from a Zarr Service}
 \usage{
 cms_zarr_proxy(
   product,

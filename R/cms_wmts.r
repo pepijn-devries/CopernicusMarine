@@ -41,7 +41,7 @@
 
 }
 
-#' Obtain a WMTS entry for specific Copernicus marine products and add to a leaflet map
+#' Obtain a WMTS Entry for Specific Copernicus Marine Products and add to a Leaflet Map
 #'
 #' `r lifecycle::badge('stable')` Functions for retrieving Web Map Tile Services information for
 #' specific products, layers and variables and add them to a `leaflet` map.

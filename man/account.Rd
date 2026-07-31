@@ -5,7 +5,7 @@
 \alias{cms_get_password}
 \alias{cms_set_username}
 \alias{cms_set_password}
-\title{Set or get Copernicus account details}
+\title{Set or get Copernicus Account Details}
 \usage{
 cms_get_username()
 

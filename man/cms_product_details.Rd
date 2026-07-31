@@ -2,7 +2,7 @@
 % Please edit documentation in R/cms_product_details.r
 \name{cms_product_details}
 \alias{cms_product_details}
-\title{Obtain details for a specific Copernicus marine product}
+\title{Obtain Details for a Specific Copernicus Marine Product}
 \usage{
 cms_product_details(product, ...)
 }

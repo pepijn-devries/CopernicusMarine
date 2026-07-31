@@ -3,7 +3,7 @@
 \name{cms_products_list}
 \alias{cms_products_list}
 \alias{cms_products_list2}
-\title{List products available from data.marine.copernicus.eu}
+\title{List Products Available from <data.marine.copernicus.eu>}
 \usage{
 cms_products_list(..., info_type = c("list", "meta"))
 

@@ -1,7 +1,7 @@
 #' @include generics.r
 NULL
 
-#' Navigate through CopernicusMarine native file via S3
+#' Navigate Through Copernicus Marine Native File via S3
 #' 
 #' `r lifecycle::badge('experimental')`
 #' Native files (i.e. files as provided by suppliers) are hosted with the
@@ -49,7 +49,7 @@ cms_native_s3 <- function(
   }
 }
 
-#' Download raw files as provided to Copernicus Marine
+#' Download Raw Files as Provided to Copernicus Marine
 #' 
 #' `r lifecycle::badge('stable')` Full marine data sets can be downloaded using the functions
 #' documented here. Use `cms_list_native_files()` to list available files, and
@@ -231,7 +231,7 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
   
 }
 
-#' Get a proxy stars object from a native service
+#' Get a Proxy 'stars' Object from a Native Service
 #' 
 #' `r lifecycle::badge('stable')` The advantage of
 #' [`stars_proxy` objects](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects),
