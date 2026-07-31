@@ -12,3 +12,4 @@ man-roxygen
 ^codecov\.yml$
 ^vignettes\.*\.html$
 ^vignettes\.*\.R$
+^vignette/translate_files$
