@@ -70,10 +70,10 @@ cms_download_subset(
 - asset:
 
   Type of asset to be used when subsetting data. Should be one of
-  `"default"`, `"ARCO"`, `"static"`, `"omi"`, or `"downsampled4"`. When
-  missing, set to `NULL` or set to `"default"`, it will use the first
-  asset available for the requested product and layer, in the order as
-  listed before.
+  `"default"`, `"ARCO"`, `"static"`, `"omi"`, `"downsampled4"`,
+  "`timeChunked`", or `"geoChunked"`. When missing, set to `NULL` or set
+  to `"default"`, it will use the first asset available for the
+  requested product and layer, in the order as listed before.
 
 - ...:
 
