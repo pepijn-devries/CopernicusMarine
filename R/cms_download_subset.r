@@ -21,7 +21,8 @@
 #' @param progress A logical value. When `TRUE` (default) progress is reported to the console.
 #' Otherwise, this function will silently proceed.
 #' @param asset Type of asset to be used when subsetting data. Should be one
-#' of `"default"`, `"ARCO"`, `"static"`, `"omi"`, or `"downsampled4"`.
+#' of `"default"`, `"ARCO"`, `"static"`, `"omi"`, `"downsampled4"`,
+#' "`timeChunked`", or `"geoChunked"`.
 #' When missing, set to `NULL` or set to `"default"`, it will use the first
 #' asset available for the requested product and layer, in the order as listed
 #' before.
@@ -64,7 +65,8 @@ cms_download_subset <- function(
     password = cms_get_password()) {
   if (missing(asset)) asset <- NULL
   if (is.null(asset)) asset <- "default"
-  asset <- match.arg(asset, c("default", "ARCO", "static", "omi", "downsampled4"))
+  asset <- match.arg(asset, c("default", "ARCO", "static", "omi", "downsampled4",
+                              "timeChunked", "geoChunked"))
 
   if (missing(variable) || is.null(variable)) variable <- character(0)
   region        <- if (missing(region)) NULL else region
@@ -266,6 +268,9 @@ cms_download_subset <- function(
   omi            <- meta$assets[[1]]$omi
   ds4            <- meta$assets[[1]]$downsampled4
   
+  if (asset == "timeChunked") return(time_chunked)
+  if (asset == "geoChunked") return(geo_chunked)
+  
   if (asset == "default" && (!is.null(time_chunked) || !is.null(geo_chunked)))
     asset <- "ARCO"
   
@@ -280,8 +285,7 @@ cms_download_subset <- function(
     asset <- "ds4"
   }
   
-  if (asset == "ARCO") { ## Time or geo-chunked
-    
+  if (asset %in% c("ARCO", "timeChunked", "geoChunked")) {
     if (!is.null(time_chunked)) {
       indices_timec  <- .get_chunk_indices(subset_request, variables,
                                            time_chunked, dimnames, dim_properties)
