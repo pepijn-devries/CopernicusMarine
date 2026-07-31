@@ -1,8 +1,8 @@
 # Get Copernicus Marine Terminology Glossary
 
-Function that returns a `data.frame` with a glossary of terminology used
-by the Copernicus Marine Data Service. It is the same `data.frame` that
-is used to render
+**\[stable\]** Function that returns a `data.frame` with a glossary of
+terminology used by the Copernicus Marine Data Service. It is the same
+`data.frame` that is used to render
 [`vignette("glossary")`](https://pepijn-devries.github.io/CopernicusMarine/articles/glossary.md).
 
 ## Usage

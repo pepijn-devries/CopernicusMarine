@@ -1,4 +1,4 @@
-# Get information about Copernicus Marine clients
+# Get Information About Copernicus Marine Clients
 
 **\[stable\]** This function retrieves the client information from the
 Copernicus Marine Service. Among others, it lists where to find the

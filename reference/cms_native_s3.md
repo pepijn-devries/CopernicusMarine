@@ -1,4 +1,4 @@
-# Navigate through CopernicusMarine native file via S3
+# Navigate Through Copernicus Marine Native File via S3
 
 **\[experimental\]** Native files (i.e. files as provided by suppliers)
 are hosted with the [Amazon Simple Storage Service

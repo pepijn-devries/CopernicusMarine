@@ -1,4 +1,4 @@
-# Obtain details for a specific Copernicus marine product
+# Obtain Details for a Specific Copernicus Marine Product
 
 **\[stable\]** Obtain details for a specific Copernicus marine product.
 

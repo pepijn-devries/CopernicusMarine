@@ -1,4 +1,4 @@
-# Download raw files as provided to Copernicus Marine
+# Download Raw Files as Provided to Copernicus Marine
 
 **\[stable\]** Full marine data sets can be downloaded using the
 functions documented here. Use `cms_list_native_files()` to list

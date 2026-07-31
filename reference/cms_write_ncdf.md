@@ -1,6 +1,6 @@
 # Store Typical Copernicus Marine Rasters Objects as NCDF
 
-The
+**\[experimental\]** The
 [`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
 returns a `stars` class object. This is fine if you want to use it
 directly in R. But if you want to open it in external software, you need

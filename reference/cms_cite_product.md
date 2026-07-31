@@ -1,4 +1,4 @@
-# How to cite a Copernicus marine product
+# How to Cite a Copernicus Marine Product
 
 **\[stable\]** Get details for properly citing a Copernicus product.
 

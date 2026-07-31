@@ -1,4 +1,4 @@
-# Set or get Copernicus account details
+# Set or get Copernicus Account Details
 
 **\[stable\]** Set or get username and password throughout an R session.
 This can be used to obscure your account details in an R script and

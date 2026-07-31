@@ -1,4 +1,4 @@
-# Obtain product meta data
+# Obtain Product meta Data
 
 **\[stable\]** Obtain product meta data such as spatio-temporal bounds
 of the data.

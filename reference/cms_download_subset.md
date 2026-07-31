@@ -1,4 +1,4 @@
-# Subset and download a specific marine product from Copernicus
+# Subset and Download a Specific Marine Product from Copernicus
 
 **\[stable\]** Subset and download a specific marine product from
 Copernicus.

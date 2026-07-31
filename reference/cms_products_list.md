@@ -1,4 +1,4 @@
-# List products available from data.marine.copernicus.eu
+# List Products Available from \<data.marine.copernicus.eu\>
 
 **\[stable\]** Collect a list of products and some brief descriptions
 for marine products available from Copernicus. `cms_products_list()`

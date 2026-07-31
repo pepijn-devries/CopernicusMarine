@@ -1,4 +1,4 @@
-# Get a proxy stars object from a native service
+# Get a Proxy 'stars' Object from a Native Service
 
 **\[stable\]** The advantage of [`stars_proxy`
 objects](https://r-spatial.github.io/stars/articles/stars2.html#stars-proxy-objects),
