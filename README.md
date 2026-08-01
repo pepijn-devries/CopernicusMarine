@@ -28,7 +28,7 @@ programme and facilitates retrieval of information from
   meta-information.
 - Download and use the data directly in R.
 
-## Why use `CopernicusMarine`
+## Why Use `CopernicusMarine`
 
 Copernicus Marine offers access to their data services through a [Python
 application interface](https://pypi.org/project/copernicusmarine/). For
@@ -127,20 +127,39 @@ native_files <-
     "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
     max = 10)
 native_files
-#> # A tibble: 10 × 9
-#>    Key   LastModified ETag  Size  Owner_ID Owner_DisplayName StorageClass Bucket
-#>    <chr> <chr>        <chr> <chr> <chr>    <chr>             <chr>        <chr> 
-#>  1 nati… 2024-04-18T… "\"4… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
-#>  2 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
-#>  3 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
-#>  4 nati… 2024-04-18T… "\"c… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
-#>  5 nati… 2024-04-18T… "\"2… 1938… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
-#>  6 nati… 2024-04-18T… "\"0… 1938… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
-#>  7 nati… 2024-04-18T… "\"5… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
-#>  8 nati… 2024-04-18T… "\"5… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
-#>  9 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
-#> 10 nati… 2024-04-18T… "\"1… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…
-#> # ℹ 1 more variable: base_url <chr>
+#>                                                                                                                                                              Key
+#> 1  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220601-20220601_3D-uovo_hcst_R20220615.nc
+#> 2  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220602-20220602_3D-uovo_hcst_R20220615.nc
+#> 3  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220603-20220603_3D-uovo_hcst_R20220615.nc
+#> 4  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220604-20220604_3D-uovo_hcst_R20220615.nc
+#> 5  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220605-20220605_3D-uovo_hcst_R20220615.nc
+#> 6  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220606-20220606_3D-uovo_hcst_R20220615.nc
+#> 7  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220607-20220607_3D-uovo_hcst_R20220615.nc
+#> 8  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220608-20220608_3D-uovo_hcst_R20220622.nc
+#> 9  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220609-20220609_3D-uovo_hcst_R20220622.nc
+#> 10 native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220610-20220610_3D-uovo_hcst_R20220622.nc
+#>           LastModified                                   ETag       Size
+#> 1  2024-04-18 15:10:35 "4861eb87b345d6d4f9db438d65a14832-232" 1939007453
+#> 2  2024-04-18 15:10:52 "925a1faf0821efaa3714f76e716c0877-232" 1939116986
+#> 3  2024-04-18 15:11:10 "924a5992ebdefda7d33c84b2da441a64-232" 1939263598
+#> 4  2024-04-18 15:11:27 "cb651f56b56cea2f9af57c9c13236082-232" 1939067595
+#> 5  2024-04-18 15:11:42 "250d5ad3351b9d51b85fe71ec9feddbc-232" 1938891867
+#> 6  2024-04-18 15:11:58 "0808cac15870cc8b4225278ab19f5c1e-232" 1938981754
+#> 7  2024-04-18 15:12:16 "57094e222da33e8900ffe11adbd9c43f-232" 1939169524
+#> 8  2024-04-18 15:12:35 "5412dc75f6a6bb2986d1d83195d28fd9-232" 1939241026
+#> 9  2024-04-18 15:12:51 "96f2661e1da6260d6f32ed382b70925d-232" 1939215570
+#> 10 2024-04-18 15:13:04 "161fcf7147a9f72e8e11060084f29779-232" 1939313977
+#>    StorageClass        Bucket                 base_url
+#> 1      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com
+#> 2      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com
+#> 3      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com
+#> 4      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com
+#> 5      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com
+#> 6      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com
+#> 7      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com
+#> 8      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com
+#> 9      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com
+#> 10     STANDARD mdl-native-14 s3.waw3-1.cloudferro.com
 ```
 
 Downloading a specific (or multiple file) can be done with:
@@ -186,7 +205,7 @@ leaflet::leaflet() |>
 
 <img src="man/figures/README-leaflet-1.png" alt="Static example image of a leaflet map"  />
 
-### Citing the data you use
+### Citing the Data You Use
 
 A Copernicus account comes with several terms of use. One of these is
 that you [properly

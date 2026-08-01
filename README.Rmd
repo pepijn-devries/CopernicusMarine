@@ -32,7 +32,7 @@ retrieval of information from <https://data.marine.copernicus.eu>. With the pack
  * List available marine data for Copernicus and provide meta-information.
  * Download and use the data directly in R.
 
-## Why use `CopernicusMarine`
+## Why Use `CopernicusMarine`
 
 Copernicus Marine offers access to their data services through a
 [Python application interface](https://pypi.org/project/copernicusmarine/).
@@ -152,7 +152,7 @@ leaflet::leaflet() |>
   )
 ```
 
-### Citing the data you use
+### Citing the Data You Use
 
 A Copernicus account comes with several terms of use. One of these is that you
 [properly cite](https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-copernicus-marine-products-and-services)
