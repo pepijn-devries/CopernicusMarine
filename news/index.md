@@ -1,6 +1,6 @@
 # Changelog
 
-## CopernicusMarine v0.4.8.0007
+## CopernicusMarine v0.4.8.0008
 
 - Added
   [`cms_write_ncdf()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_write_ncdf.md)

@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.8.0007</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.8.0008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,7 +79,7 @@
 </ul>
 </div>
 <div class="section level2">
-<h2 id="why-use-copernicusmarine">Why use <code>CopernicusMarine</code>
+<h2 id="why-use-copernicusmarine">Why Use <code>CopernicusMarine</code>
 <a class="anchor" aria-label="anchor" href="#why-use-copernicusmarine"></a>
 </h2>
 <p>Copernicus Marine offers access to their data services through a <a href="https://pypi.org/project/copernicusmarine/" class="external-link">Python application interface</a>. For R users this requires complex installation procedures and is difficult to maintain in a stable R package. The <code>CopernicusMarine</code> R package has a much simpler installation procedure (see below) and does not depend on third party software, other than packages available from <a href="https://cran.r-project.org/" class="external-link">CRAN</a>.</p>
@@ -138,20 +138,39 @@ Downloading a complete Copernicus marine product
 <span>    <span class="st">"cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m"</span>,</span>
 <span>    max <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">native_files</span></span>
-<span><span class="co">#&gt; # A tibble: 10 × 9</span></span>
-<span><span class="co">#&gt;    Key   LastModified ETag  Size  Owner_ID Owner_DisplayName StorageClass Bucket</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;        &lt;chr&gt; </span></span>
-<span><span class="co">#&gt;  1 nati… 2024-04-18T… "\"4… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
-<span><span class="co">#&gt;  2 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
-<span><span class="co">#&gt;  3 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
-<span><span class="co">#&gt;  4 nati… 2024-04-18T… "\"c… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
-<span><span class="co">#&gt;  5 nati… 2024-04-18T… "\"2… 1938… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
-<span><span class="co">#&gt;  6 nati… 2024-04-18T… "\"0… 1938… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
-<span><span class="co">#&gt;  7 nati… 2024-04-18T… "\"5… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
-<span><span class="co">#&gt;  8 nati… 2024-04-18T… "\"5… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
-<span><span class="co">#&gt;  9 nati… 2024-04-18T… "\"9… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
-<span><span class="co">#&gt; 10 nati… 2024-04-18T… "\"1… 1939… b8c2197… cloud_38953_ext_… STANDARD     mdl-n…</span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: base_url &lt;chr&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt;                                                                                                                                                              Key</span></span>
+<span><span class="co">#&gt; 1  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220601-20220601_3D-uovo_hcst_R20220615.nc</span></span>
+<span><span class="co">#&gt; 2  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220602-20220602_3D-uovo_hcst_R20220615.nc</span></span>
+<span><span class="co">#&gt; 3  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220603-20220603_3D-uovo_hcst_R20220615.nc</span></span>
+<span><span class="co">#&gt; 4  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220604-20220604_3D-uovo_hcst_R20220615.nc</span></span>
+<span><span class="co">#&gt; 5  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220605-20220605_3D-uovo_hcst_R20220615.nc</span></span>
+<span><span class="co">#&gt; 6  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220606-20220606_3D-uovo_hcst_R20220615.nc</span></span>
+<span><span class="co">#&gt; 7  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220607-20220607_3D-uovo_hcst_R20220615.nc</span></span>
+<span><span class="co">#&gt; 8  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220608-20220608_3D-uovo_hcst_R20220622.nc</span></span>
+<span><span class="co">#&gt; 9  native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220609-20220609_3D-uovo_hcst_R20220622.nc</span></span>
+<span><span class="co">#&gt; 10 native/GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m_202406/2022/06/glo12_rg_1d-m_20220610-20220610_3D-uovo_hcst_R20220622.nc</span></span>
+<span><span class="co">#&gt;           LastModified                                   ETag       Size</span></span>
+<span><span class="co">#&gt; 1  2024-04-18 15:10:35 "4861eb87b345d6d4f9db438d65a14832-232" 1939007453</span></span>
+<span><span class="co">#&gt; 2  2024-04-18 15:10:52 "925a1faf0821efaa3714f76e716c0877-232" 1939116986</span></span>
+<span><span class="co">#&gt; 3  2024-04-18 15:11:10 "924a5992ebdefda7d33c84b2da441a64-232" 1939263598</span></span>
+<span><span class="co">#&gt; 4  2024-04-18 15:11:27 "cb651f56b56cea2f9af57c9c13236082-232" 1939067595</span></span>
+<span><span class="co">#&gt; 5  2024-04-18 15:11:42 "250d5ad3351b9d51b85fe71ec9feddbc-232" 1938891867</span></span>
+<span><span class="co">#&gt; 6  2024-04-18 15:11:58 "0808cac15870cc8b4225278ab19f5c1e-232" 1938981754</span></span>
+<span><span class="co">#&gt; 7  2024-04-18 15:12:16 "57094e222da33e8900ffe11adbd9c43f-232" 1939169524</span></span>
+<span><span class="co">#&gt; 8  2024-04-18 15:12:35 "5412dc75f6a6bb2986d1d83195d28fd9-232" 1939241026</span></span>
+<span><span class="co">#&gt; 9  2024-04-18 15:12:51 "96f2661e1da6260d6f32ed382b70925d-232" 1939215570</span></span>
+<span><span class="co">#&gt; 10 2024-04-18 15:13:04 "161fcf7147a9f72e8e11060084f29779-232" 1939313977</span></span>
+<span><span class="co">#&gt;    StorageClass        Bucket                 base_url</span></span>
+<span><span class="co">#&gt; 1      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com</span></span>
+<span><span class="co">#&gt; 2      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com</span></span>
+<span><span class="co">#&gt; 3      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com</span></span>
+<span><span class="co">#&gt; 4      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com</span></span>
+<span><span class="co">#&gt; 5      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com</span></span>
+<span><span class="co">#&gt; 6      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com</span></span>
+<span><span class="co">#&gt; 7      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com</span></span>
+<span><span class="co">#&gt; 8      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com</span></span>
+<span><span class="co">#&gt; 9      STANDARD mdl-native-14 s3.waw3-1.cloudferro.com</span></span>
+<span><span class="co">#&gt; 10     STANDARD mdl-native-14 s3.waw3-1.cloudferro.com</span></span></code></pre></div>
 <p>Downloading a specific (or multiple file) can be done with:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/cms_download_native.html">cms_download_native</a></span><span class="op">(</span></span>
@@ -180,7 +199,7 @@ Copernicus Web Map Tile Services (WMTS)
 <span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-leaflet-1.png" alt="Static example image of a leaflet map"></p>
 <div class="section level3">
-<h3 id="citing-the-data-you-use">Citing the data you use<a class="anchor" aria-label="anchor" href="#citing-the-data-you-use"></a>
+<h3 id="citing-the-data-you-use">Citing the Data You Use<a class="anchor" aria-label="anchor" href="#citing-the-data-you-use"></a>
 </h3>
 <p>A Copernicus account comes with several terms of use. One of these is that you <a href="https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-copernicus-marine-products-and-services" class="external-link">properly cite</a> the data you use in publications. In fact, we also have credit the data used in this documentation, which can be easily done with the following code:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
