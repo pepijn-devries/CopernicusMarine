@@ -430,14 +430,9 @@ cms_download_subset <- function(
 }
 
 .code_to_period <- function(x) {
-  switch(
-    x,
-    PT1H = lubridate::period(1, "hour"),
-    PT5H = lubridate::period(6, "hour"),
-    P1D = lubridate::period(1, "days"),
-    P1M = lubridate::period(1, "months"),
-    stop("Unknown time period '%s'", x)
-  )
+  x <- lubridate::period(x)
+  if (is.na(x)) stop("Unknown time period '%s'", x)
+  x
 }
 
 #' Get a Proxy 'stars' Object from a Zarr Service
