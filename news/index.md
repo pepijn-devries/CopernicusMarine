@@ -1,11 +1,13 @@
 # Changelog
 
-## CopernicusMarine v0.4.8.0008
+## CopernicusMarine v0.4.8.0009
 
 - Added
   [`cms_write_ncdf()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_write_ncdf.md)
 - Fix for issue
   [186](https://github.com/pepijn-devries/CopernicusMarine/issues/186)
+- Fix for issue
+  [198](https://github.com/pepijn-devries/CopernicusMarine/issues/198)
 - Improved test coverage
 - Switched from using `paws` to `paws.storage`, this reduces dependency
   footprint considerably
