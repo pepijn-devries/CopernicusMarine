@@ -31,7 +31,7 @@ cms_native_s3 <- function(
     endpoint    = "https://s3.waw3-1.cloudferro.com",
     region      = "us-east-1",
     ...) {
-
+  
   if (requireNamespace("paws.storage")) {
     paws.storage::s3(
       config      = config,
@@ -106,9 +106,9 @@ cms_download_native <- function(destination, product, layer, pattern, prefix, pr
   if (missing(pattern)) pattern <- ""
   if (missing(prefix)) prefix <- ""
   .try_login(username, password)
-
+  
   file_list <- cms_list_native_files(product, layer, pattern, prefix)
-
+  
   for (i in nrow(file_list)) {
     path_out <- unlist(strsplit(file_list$Key[[i]], "/"))[-1:-2]
     file_out <- path_out[length(path_out)]
@@ -133,7 +133,7 @@ cms_download_native <- function(destination, product, layer, pattern, prefix, pr
     con_in <-
       httr2::request(url) |>
       httr2::req_perform_connection()
-
+    
     if (progress) cli::cli_inform("Downloading file {i} of {nrow(file_list)}.")
     if (progress) cli::cli_progress_bar(type = "download", total = as.numeric(file_list$Size))
     
@@ -188,7 +188,7 @@ cms_list_native_files <- function(product, layer, pattern, prefix, max = Inf, ..
     if (length(token) == 0 ||
         length(result) >= ifelse(is.null(max), Inf, max)) break
   }
-
+  
   result |> lapply(function(x) {
     x[lengths(x) == 1] |> as.data.frame()
   }) |>
@@ -266,7 +266,7 @@ cms_native_proxy <- function(product, layer, pattern, prefix, variable, ...,
   if (missing(prefix)) prefix <- ""
   .try_login(username, password)
   if (missing(variable) || is.null(variable)) variable <- character(0)
-
+  
   file_list <- cms_list_native_files(product, layer, pattern, prefix)
   if (nrow(file_list) > 1)
     rlang::warn(c(
@@ -275,9 +275,9 @@ cms_native_proxy <- function(product, layer, pattern, prefix, variable, ...,
       i = "Add a specific 'pattern' to reduce the number of matches"
     ))
   file_list <- file_list[1,]
-
+  
   fmt <- if (grepl("\\.nc$|\\.ncf$|\\.ncdf$|\\.netcdf$|\\.h5$", file_list$Key) &
-      sf::st_drivers("raster", "^HDF5$")$vsi)
+             sf::st_drivers("raster", "^HDF5$")$vsi)
     "HDF5:%s" else "%s"
   paste0(
     "https://",

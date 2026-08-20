@@ -91,7 +91,7 @@ test_that("Codes are converted correctly to periods", {
   expect_true({
     all((lapply(c("PT1H", "PT5H", "P1D", "P1M"), CopernicusMarine:::.code_to_period) |>
            lapply(as.numeric) |>
-           unlist()) == c(3600, 21600, 86400, 2629800))
+           unlist()) == c(3600, 18000, 86400, 2629800))
   })
 })
 
@@ -202,6 +202,7 @@ test_that("Subset can be written correctly to ncdf", {
         longitude = "longitude_bnds",
         latitude  = "latitude_bnds")
       )
+    unlink(fl, force = TRUE)
     all(
       stars::st_get_dimension_values(datnc, "time") |>
         as.POSIXct() ==
