@@ -167,8 +167,10 @@ cms_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")$doi
 
 More R packages for exploring other Copernicus data services:
 
- * [CopernicusClimate](https://github.com/pepijn-devries/CopernicusClimate)
+ * [CopernicusClimate](https://pepijn-devries.github.io/CopernicusClimate/)
  Dedicated to climate change datasets
+ * [CopernicusDataspace](https://pepijn-devries.github.io/CopernicusDataspace/)
+ Dedicated to Sentinel mission satellite data
 
 ## Resources
 
