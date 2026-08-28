@@ -4,7 +4,7 @@
 [`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md)
 returns a `stars` class object. This is fine if you want to use it
 directly in R. But if you want to open it in external software, you need
-a more exceptable exchange format. You can use this function to store
+a more acceptable exchange format. You can use this function to store
 the `stars` object as a [NetCDF](https://en.wikipedia.org/wiki/NetCDF)
 file.
 
@@ -60,6 +60,13 @@ by
 [`cms_download_subset()`](https://pepijn-devries.github.io/CopernicusMarine/reference/cms_download_subset.md).
 It might work on other `stars` objects, but it is not guaranteed.
 
+Writing multidimensional data to a standardised format is the source of
+many headaches. The current implementation is not ideal, which is why it
+is currently experimental. Perhaps future GDAL release will have better
+support for writing higher dimension raster data. To be safe, you can
+also save your data as `.rdata`, or reduce the dimensions by storing
+specific slices.
+
 ## See also
 
 Other supporting:
@@ -89,5 +96,8 @@ if (interactive()) {
       longitude = "longitude_bnds",
       latitude  = "latitude_bnds",
       elevation = "elevation_bnds"))
+
+  ## clean up after our selves
+  unlink(fn, TRUE, TRUE)
 }
 ```

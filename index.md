@@ -216,6 +216,8 @@ More R packages for exploring other Copernicus data services:
 
 - [CopernicusClimate](https://github.com/pepijn-devries/CopernicusClimate)
   Dedicated to climate change datasets
+- [CopernicusDataspace](https://github.com/pepijn-devries/CopernicusDataspace)
+  Dedicated to Sentinel mission satellite data
 
 ## Resources
 
