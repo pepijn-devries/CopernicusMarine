@@ -1,4 +1,4 @@
-CopernicusMarine v0.4.8.0010
+CopernicusMarine v0.4.9
 -------------
 
  * Added `cms_write_ncdf()`
