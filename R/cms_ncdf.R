@@ -3,7 +3,7 @@
 #' `r lifecycle::badge('experimental')` The [cms_download_subset()] returns a `stars` class object.
 #' This is fine if you want to use it directly in R. But if
 #' you want to open it in external software, you need a more
-#' exceptable exchange format. You can use this function to
+#' acceptable exchange format. You can use this function to
 #' store the `stars` object as a [NetCDF](https://en.wikipedia.org/wiki/NetCDF)
 #' file.
 #' 
@@ -19,6 +19,13 @@
 #' The `cms_write_ncdf()` function is tailored to `stars`
 #' objects returned by `cms_download_subset()`. It might
 #' work on other `stars` objects, but it is not guaranteed.
+#' 
+#' Writing multidimensional data to a standardised format is the
+#' source of many headaches. The current implementation is not ideal,
+#' which is why it is currently experimental. Perhaps future GDAL
+#' release will have better support for writing higher dimension
+#' raster data. To be safe, you can also save your data as `.rdata`,
+#' or reduce the dimensions by storing specific slices.
 #' @param x A `stars` class object created with [cms_download_subset()].
 #' Note that this is not a highly generic NetCDF writer, so it
 #' makes certain assumptions about the `stars` object, that
@@ -51,6 +58,9 @@
 #'       longitude = "longitude_bnds",
 #'       latitude  = "latitude_bnds",
 #'       elevation = "elevation_bnds"))
+#'
+#'   ## clean up after our selves
+#'   unlink(fn, TRUE, TRUE)
 #' }
 #' @export
 cms_write_ncdf <- function(x, file, missval = -999, prec = "double", ...) {
@@ -100,12 +110,16 @@ cms_write_ncdf <- function(x, file, missval = -999, prec = "double", ...) {
           prec = prec
         )
     }
+    ## Use explicit order for writing dimensions to nc
+    target_dims <- c("longitude", "latitude", "elevation", "time")
+    matched_dims <- target_dims[target_dims %in% dimnames(x)]
     for (v_nm in names(x)) {
       nc_vars[[v_nm]] <- ncdf4::ncvar_def(
-        name = v_nm, units = units::deparse_unit(x[[v_nm]]),
-        dim = nc_dims[dimnames(x)],
+        name    = v_nm,
+        units   = units::deparse_unit(x[[v_nm]]),
+        dim     = nc_dims[matched_dims],
         missval = missval,
-        prec = prec)
+        prec    = prec)
       
     }
     nc_vars[["crs_var"]] <- ncdf4::ncvar_def(
@@ -133,7 +147,7 @@ cms_write_ncdf <- function(x, file, missval = -999, prec = "double", ...) {
       ncdf4::ncvar_put(
         nc_file,
         varid = nc_vars[[v_nm]],
-        vals = as.array(x[[v_nm]]))
+        vals = as.array(aperm(x[v_nm], matched_dims)[[v_nm]]))
       ncdf4::ncatt_put(nc_file, v_nm, "grid_mapping", "crs")
     }
     ncdf4::nc_close(nc_file)

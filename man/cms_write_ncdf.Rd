@@ -29,7 +29,7 @@ Returns \code{NULL} invisibly.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} The \code{\link[=cms_download_subset]{cms_download_subset()}} returns a \code{stars} class object.
 This is fine if you want to use it directly in R. But if
 you want to open it in external software, you need a more
-exceptable exchange format. You can use this function to
+acceptable exchange format. You can use this function to
 store the \code{stars} object as a \href{https://en.wikipedia.org/wiki/NetCDF}{NetCDF}
 file.
 }
@@ -46,6 +46,13 @@ using \code{\link[stars:read_mdim]{stars::read_mdim()}}.
 The \code{cms_write_ncdf()} function is tailored to \code{stars}
 objects returned by \code{cms_download_subset()}. It might
 work on other \code{stars} objects, but it is not guaranteed.
+
+Writing multidimensional data to a standardised format is the
+source of many headaches. The current implementation is not ideal,
+which is why it is currently experimental. Perhaps future GDAL
+release will have better support for writing higher dimension
+raster data. To be safe, you can also save your data as \code{.rdata},
+or reduce the dimensions by storing specific slices.
 }
 \examples{
 if (interactive()) {
@@ -67,6 +74,9 @@ if (interactive()) {
       longitude = "longitude_bnds",
       latitude  = "latitude_bnds",
       elevation = "elevation_bnds"))
+
+  ## clean up after our selves
+  unlink(fn, TRUE, TRUE)
 }
 }
 \seealso{
