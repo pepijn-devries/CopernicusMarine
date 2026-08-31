@@ -115,6 +115,8 @@ cms_download_subset <- function(
   missing_dims <- lapply(result, \(x) {
     setdiff(all_dims, dimnames(x))
   }) |> unlist() |> unique()
+  dim_order <- lapply(result, dimnames)
+  dim_order <- dim_order[order(-lengths(dim_order))] |> unlist() |> unique()
   if (length(missing_dims) > 0) {
     dim_vals <- lapply(missing_dims, \(x) {
       for (i in length(result)) {
@@ -123,8 +125,6 @@ cms_download_subset <- function(
       }
       dv
     }) |> stats::setNames(missing_dims)
-    dim_order <- lapply(result, dimnames)
-    dim_order <- dim_order[order(-lengths(dim_order))] |> unlist() |> unique()
     result <- lapply(result, \(x) {
       for (dm in names(dim_vals)) {
         current_length <- stars::st_get_dimension_values(x, dm) |> length()
