@@ -123,6 +123,8 @@ cms_download_subset <- function(
       }
       dv
     }) |> stats::setNames(missing_dims)
+    dim_order <- lapply(result, dimnames)
+    dim_order <- dim_order[order(-lengths(dim_order))] |> unlist() |> unique()
     result <- lapply(result, \(x) {
       for (dm in names(dim_vals)) {
         current_length <- stars::st_get_dimension_values(x, dm) |> length()
@@ -139,8 +141,6 @@ cms_download_subset <- function(
     })
   }
   ## Apparently, the dimension order can be different for each variable
-  dim_order <- dimnames(result[[1]])
-  ## Take order from first variable and apply to all
   result <- lapply(result, aperm, dim_order)
   result <- do.call(c, result)
   Sys.setenv(GDAL_NUM_THREADS = numthr)
