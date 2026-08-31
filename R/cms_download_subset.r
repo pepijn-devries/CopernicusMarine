@@ -138,6 +138,10 @@ cms_download_subset <- function(
       x
     })
   }
+  ## Apparently, the dimension order can be different for each variable
+  dim_order <- dimnames(result[[1]])
+  ## Take order from first variable and apply to all
+  result <- lapply(result, aperm, dim_order)
   result <- do.call(c, result)
   Sys.setenv(GDAL_NUM_THREADS = numthr)
 
