@@ -56,6 +56,11 @@ cms_native_s3(
     regional or legacy
     <https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html>
 
+  - **use_dual_stack**: Set this to `true` to use the dualstack (IPv4
+    and IPv6) endpoint for a service, where available, falling back to
+    the regular endpoint when it isn't. Defaults to the
+    `AWS_USE_DUALSTACK_ENDPOINT` environment variable when unset.
+
 - credentials:
 
   Optional credentials shorthand for the config parameter

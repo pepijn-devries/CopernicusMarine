@@ -15,7 +15,7 @@ used to navigate and download these files."><meta property="og:image" content="h
 
     <a class="navbar-brand me-2" href="../index.html">CopernicusMarine</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.9.0002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.9.0003</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,6 +85,7 @@ used to navigate and download these files.</p>
 <li><p><strong>timeout</strong>: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.</p></li>
 <li><p><strong>s3_force_path_style</strong>: Set this to <code>true</code> to force the request to use path-style addressing, i.e. <code>http://s3.amazonaws.com/BUCKET/KEY</code>.</p></li>
 <li><p><strong>sts_regional_endpoint</strong>: Set sts regional endpoint resolver to regional or legacy <a href="https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html" class="external-link">https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html</a></p></li>
+<li><p><strong>use_dual_stack</strong>: Set this to <code>true</code> to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the <code>AWS_USE_DUALSTACK_ENDPOINT</code> environment variable when unset.</p></li>
 </ul></dd>
 
 
