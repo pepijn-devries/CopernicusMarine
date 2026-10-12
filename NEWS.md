@@ -1,4 +1,4 @@
-CopernicusMarine v0.4.9.0002
+CopernicusMarine v0.5.0
 -------------
 
  * Fix for issue [202](https://github.com/pepijn-devries/CopernicusMarine/issues/202)
