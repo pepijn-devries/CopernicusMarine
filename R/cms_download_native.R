@@ -122,14 +122,7 @@ cms_download_native <- function(destination, product, layer, pattern, prefix, pr
       if (j > 10) stop("Failed to create directory for downloaded file")
     }
     con_out <- file(file.path(path_out, file_out), "wb")
-    cms_s3 <- cms_native_s3(
-      endpoint = paste0("https://", file_list$base_url[[1]]))
-    url <-
-      cms_s3$generate_presigned_url(
-        "get_object",
-        params = list(Bucket = file_list$Bucket[[1]],
-                      Key = file_list$Key[[1]])
-      )
+    url <- sprintf("%s/%s/%s", file_list$base_url[[1]], file_list$Bucket[[1]], file_list$Key[[1]])
     con_in <-
       httr2::request(url) |>
       httr2::req_perform_connection()

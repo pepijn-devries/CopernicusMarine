@@ -247,6 +247,15 @@ cms_download_subset <- function(
     dplyr::filter(startsWith(.data$id, subset_request$layer)) |>
     dplyr::filter(dplyr::row_number() == 1)
   
+  if (length(meta$properties) == 0) {
+    cli::cli_abort(
+      c(
+        x = "Layer not found for product '{subset_request$layer}'",
+        i = c("Check if the layer id is correct and try again.",
+              "Use {.fun CopernicusMarine::cms_product_metadata}.")
+      )
+    )
+  }
   var_properties <- meta$properties[[1]]$`cube:variables`
   dim_properties <- meta$properties[[1]]$`cube:dimensions`
   

@@ -24,7 +24,9 @@ export(cms_wmts_details)
 export(cms_wmts_get_capabilities)
 export(cms_write_ncdf)
 export(cms_zarr_proxy)
-importFrom(rlang,.data)
-importFrom(rlang,.env)
-importFrom(rlang,`!!!`)
-importFrom(rlang,`:=`)
+importFrom(rlang,
+  "!!!",
+  ":=",
+  .data,
+  .env
+)

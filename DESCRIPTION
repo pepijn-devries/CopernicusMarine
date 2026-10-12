@@ -1,7 +1,7 @@
 Package: CopernicusMarine
 Type: Package
 Title: Search Download and Handle Data from Copernicus Marine Service Information
-Version: 0.4.9.0002
+Version: 0.4.9.0003
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre", "dtc"),
     email = "pepijn.devries@outlook.com",
     comment = c(ORCID = "0000-0002-7961-6646")))
@@ -39,6 +39,7 @@ Suggests:
     ncmeta,
     ncdf4,
     paws.storage,
+    paws.common (>= 0.8.0),
     rmarkdown,
     units,
     testthat (>= 3.0.0)
@@ -71,4 +72,4 @@ Collate:
     'translate.R'
 Language: en-GB
 VignetteBuilder: knitr
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0

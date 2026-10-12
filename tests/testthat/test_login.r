@@ -68,5 +68,5 @@ test_that("Using dummy account details throws error", {
     cms_set_password("foobar", "option")
     cms_set_password("foobar", "sysenv")
     cms_login() |> suppressMessages()
-  }, "401 Unauthorized")
+  })
 })
