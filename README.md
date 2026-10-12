@@ -209,7 +209,7 @@ leaflet::leaflet() |>
 
 A Copernicus account comes with several terms of use. One of these is
 that you [properly
-cite](https://help.marine.copernicus.eu/en/articles/4444611-how-to-cite-copernicus-marine-products-and-services)
+cite](https://help.marine.copernicus.eu/en/articles/4444611-citing-copernicus-marine-products-and-services)
 the data you use in publications. In fact, we also have credit the data
 used in this documentation, which can be easily done with the following
 code:
@@ -223,9 +223,9 @@ cms_cite_product("GLOBAL_ANALYSISFORECAST_PHY_001_024")$doi
 
 More R packages for exploring other Copernicus data services:
 
-- [CopernicusClimate](https://github.com/pepijn-devries/CopernicusClimate)
+- [CopernicusClimate](https://pepijn-devries.github.io/CopernicusClimate/)
   Dedicated to climate change datasets
-- [CopernicusDataspace](https://github.com/pepijn-devries/CopernicusDataspace)
+- [CopernicusDataspace](https://pepijn-devries.github.io/CopernicusDataspace/)
   Dedicated to Sentinel mission satellite data
 
 ## Resources
