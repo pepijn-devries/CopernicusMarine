@@ -72,6 +72,24 @@ test_that("Subsetting out of range results in error", {
   })
 })
 
+test_that("Subsetting with incorrect layer id throws error", {
+  skip_on_cran()
+  has_account_details()
+  skip_if_offline("data.marine.copernicus.eu")
+  expect_error({
+    data_sub <-
+      cms_download_subset(
+        product       = "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+        layer         = "foobar",
+        variable      = c("uo"),
+        region        = c(-1, 50, 10, 55),
+        timerange     = c("2026-01-01", "2026-01-02"),
+        verticalrange = c(0, -2)
+      ) |>
+      suppressMessages()
+  }, "Layer not found")
+})
+
 test_that("A static map can be downloaded", {
   skip_on_cran()
   has_account_details()
